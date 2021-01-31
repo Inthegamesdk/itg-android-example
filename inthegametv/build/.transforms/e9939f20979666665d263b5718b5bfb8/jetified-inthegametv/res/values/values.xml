@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="buttonAnswerGreen">#0D9F00</color>
+    <color name="buttonAnswerGreenFocus">#3DCE30</color>
+    <color name="buttonAnswerRed">#D31515</color>
+    <color name="buttonAnswerRedFocus">#F35555</color>
+    <color name="buttonAnswerYellow">#BDC23F</color>
+    <color name="buttonAnswerYellowFocus">#DDE26F</color>
+    <color name="pollBackgroundColor">#A0000000</color>
+    <color name="transparentRed">#90FF2211</color>
+    <color name="yellowITG">#ffc709</color>
+</resources>

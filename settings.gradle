@@ -1,0 +1,3 @@
+include ':inthegametv'
+include ':app'
+rootProject.name = "InthegameTVExample"
