@@ -54,6 +54,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //load the ITG overlay over the video content
         val overlay = ITGOverlayView(context)
         overlay.load("ORLvsNYCFC", "orlandofcchannel")
         overlay.listener = this
@@ -137,10 +138,13 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         mPlayer?.prepare(mediaSource)
     }
 
+    // let the overlay handle the back button press if it needs to
+    // (to dismiss interactions)
     fun handleBackPressIfNeeded() : Boolean {
         return mOverlay?.handleBackPressIfNeeded() ?: false
     }
 
+    // overlay will request the video to play/pause for some interactions
     override fun overlayRequestedPause() {
         shouldNotShowControls = true
         mPlayerGlue?.pause()
@@ -159,6 +163,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         }
     }
 
+    //pass play/pause events to overlay so that it can track the video time
     override fun onPlayAction() {
         val time = mPlayer?.currentPosition ?: 0
         mOverlay?.videoPlaying(time)
