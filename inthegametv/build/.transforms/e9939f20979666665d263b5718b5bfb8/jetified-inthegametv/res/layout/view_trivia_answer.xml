@@ -14,6 +14,7 @@
         android:gravity="center"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
+        android:textSize="11sp"
         android:textStyle="bold"
         android:background="@drawable/button_answer_selector_red"
         android:text="answer"

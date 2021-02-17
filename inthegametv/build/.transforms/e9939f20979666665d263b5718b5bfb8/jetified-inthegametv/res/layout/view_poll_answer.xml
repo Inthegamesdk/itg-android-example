@@ -11,8 +11,11 @@
         android:id="@+id/answerButton"
         android:layout_width="match_parent"
         android:layout_height="24dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
         android:gravity="center"
         android:textStyle="bold"
+        android:textSize="11sp"
         android:background="@drawable/button_answer_selector_red"
         android:text="answer"
         android:focusable="true"/>
