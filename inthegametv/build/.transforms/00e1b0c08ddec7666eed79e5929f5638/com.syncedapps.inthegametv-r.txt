@@ -754,9 +754,11 @@ id radio
 id right_icon
 id right_side
 id screen
+id scrollContainer
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
+id scroller
 id search_badge
 id search_bar
 id search_button
@@ -791,6 +793,7 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textView
 id time
 id timerText
 id timerText2

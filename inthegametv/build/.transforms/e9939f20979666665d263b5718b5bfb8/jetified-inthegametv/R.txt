@@ -753,9 +753,11 @@ int id radio 0x0
 int id right_icon 0x0
 int id right_side 0x0
 int id screen 0x0
+int id scrollContainer 0x0
 int id scrollIndicatorDown 0x0
 int id scrollIndicatorUp 0x0
 int id scrollView 0x0
+int id scroller 0x0
 int id search_badge 0x0
 int id search_bar 0x0
 int id search_button 0x0
@@ -790,6 +792,7 @@ int id text 0x0
 int id text2 0x0
 int id textSpacerNoButtons 0x0
 int id textSpacerNoTitle 0x0
+int id textView 0x0
 int id time 0x0
 int id timerText 0x0
 int id timerText2 0x0
