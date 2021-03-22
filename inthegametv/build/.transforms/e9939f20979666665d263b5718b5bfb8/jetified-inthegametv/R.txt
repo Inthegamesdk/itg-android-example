@@ -24,8 +24,10 @@ int anim btn_radio_to_on_mtrl_ring_outer_animation 0x0
 int anim btn_radio_to_on_mtrl_ring_outer_path_animation 0x0
 int anim fade_in 0x0
 int anim grow_middle 0x0
+int anim slide_bottom_out 0x0
 int anim slide_left_in 0x0
 int anim slide_right_out 0x0
+int anim slide_up_in 0x0
 int attr actionBarDivider 0x0
 int attr actionBarItemBackground 0x0
 int attr actionBarPopupTheme 0x0

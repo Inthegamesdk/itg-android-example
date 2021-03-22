@@ -6,6 +6,6 @@
     android:id="@+id/container"
     android:layout_gravity="bottom"
     android:gravity="bottom"
-    android:paddingBottom="40dp">
+    android:paddingBottom="0dp">
 
 </LinearLayout>

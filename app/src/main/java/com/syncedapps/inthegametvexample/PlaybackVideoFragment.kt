@@ -24,14 +24,13 @@ import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import com.syncedapps.inthegametv.ITGOverlayView
-import com.syncedapps.inthegametv.ITGSettings
-import java.util.*
-import kotlin.concurrent.schedule
+import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
+import com.syncedapps.inthegametvexample.CustomViews.CustomTriviaView
 
 
 /** Handles video playback with media controls. */
-class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, VideoPlayerGlue.OnActionClickedListener {
+class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener, VideoPlayerGlue.OnActionClickedListener {
 
     private val UPDATE_DELAY = 16
 
@@ -54,10 +53,20 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //load the ITG overlay over the video content
+        //create the overlay
         val overlay = ITGOverlayView(context)
+        //load your channel to start up the ITG system
         overlay.load("ORLvsNYCFC", "orlandofcchannel")
         overlay.listener = this
+
+        // enable the layout delegate if you wish to set custom layouts
+        overlay.layoutListener = this
+        // you can adjust the spacing between the content and bottom of the screen
+        overlay.setBottomPaddingDp(30)
+        // use this optional variable to set the animation type
+        overlay.animationType = ITGAnimationType.FROM_RIGHT
+
+        //add the overlay to your view hierarchy
         (view as ViewGroup).addView(overlay)
         mOverlay = overlay
     }
@@ -176,4 +185,22 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     override fun onPrevious() { }
 
     override fun onNext() { }
+
+    //the layout methods are optional
+    //use them only if you want to customize the design elements
+
+    override fun customPollView(): ITGPollView? {
+//        return CustomPollView(context)
+        return null
+    }
+
+    override fun customRatingView(): ITGRatingView? {
+//        return CustomRatingView(context)
+        return null
+    }
+
+    override fun customTriviaView(): ITGTriviaView? {
+//        return CustomTriviaView(context)
+        return null
+    }
 }

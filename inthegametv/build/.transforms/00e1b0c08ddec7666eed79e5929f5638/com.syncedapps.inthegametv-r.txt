@@ -25,8 +25,10 @@ anim btn_radio_to_on_mtrl_ring_outer_animation
 anim btn_radio_to_on_mtrl_ring_outer_path_animation
 anim fade_in
 anim grow_middle
+anim slide_bottom_out
 anim slide_left_in
 anim slide_right_out
+anim slide_up_in
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme

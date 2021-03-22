@@ -7,4 +7,6 @@
     <color name="default_background">#3d3d3d</color>
     <color name="dark_gray">#222222</color>
     <color name="medium_gray">#4F4F4F</color>
+    <color name="answer_gray">#999999</color>
+    <color name="custom_background">#5555CC</color>
 </resources>

@@ -16,12 +16,12 @@
         android:id="@+id/answerButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:gravity="center"
         android:textStyle="bold"
         android:scaleType="fitCenter"
-        android:background="@drawable/button_answer_selector_red"
+        android:background="@drawable/button_answer_selector_default"
         android:focusable="true"/>
 
         <TextView
