@@ -58,5 +58,21 @@ fun overlayRequestedPause()
 fun overlayRequestedPlay()
 ```
 
+## Optional Customization
 
+You can also adjust the bottom padding for the content, and the type of animation:
+```
+overlay.setBottomPaddingDp(30)
+overlay.animationType = ITGAnimationType.FROM_RIGHT
+```
 
+If you want to replace our content visuals with your own customizable interfaces, you can implement the layout listener:
+```
+overlay.layoutListener = this
+```
+Then you can create subclasses of our content views with customized layouts, and provide them in the listener methods. A full working example is included in the repository. The listener methods are: 
+```
+fun customPollView(): ITGPollView?
+fun customRatingView(): ITGRatingView?
+fun customTriviaView(): ITGTriviaView?
+```
