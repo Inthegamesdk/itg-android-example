@@ -363,6 +363,7 @@ color dim_foreground_material_dark
 color dim_foreground_material_light
 color error_color_material_dark
 color error_color_material_light
+color flipPromotionBackgroundColor
 color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
@@ -731,6 +732,7 @@ id home
 id icon
 id icon_group
 id image
+id imageView
 id info
 id italic
 id line1

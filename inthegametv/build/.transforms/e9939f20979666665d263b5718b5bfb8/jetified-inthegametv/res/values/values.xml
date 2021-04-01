@@ -6,6 +6,7 @@
     <color name="buttonAnswerRedFocus">#F35555</color>
     <color name="buttonAnswerYellow">#BDC23F</color>
     <color name="buttonAnswerYellowFocus">#DDE26F</color>
+    <color name="flipPromotionBackgroundColor">#A0000000</color>
     <color name="pollBackgroundColor">#A0000000</color>
     <color name="transparentRed">#90FF2211</color>
     <color name="yellowITG">#ffc709</color>

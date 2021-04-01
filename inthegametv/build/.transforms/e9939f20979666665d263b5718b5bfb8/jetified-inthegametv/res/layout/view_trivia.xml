@@ -135,7 +135,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="4dp"
                 android:layout_marginLeft="4dp"
-                android:background="@android:color/black"
+                android:background="@color/flipPromotionBackgroundColor"
                 android:visibility="gone"
                 android:gravity="center">
             </LinearLayout>>
@@ -143,11 +143,11 @@
 
         <ImageButton
             android:id="@+id/smallCloseButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:padding="6dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="24dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/close"
             android:tint="@android:color/white"
             android:scaleType="centerInside"
