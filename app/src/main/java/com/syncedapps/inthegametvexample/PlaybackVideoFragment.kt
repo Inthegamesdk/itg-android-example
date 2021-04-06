@@ -5,6 +5,7 @@ import android.app.Activity
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.leanback.app.VideoSupportFragment
@@ -162,6 +163,17 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     override fun overlayRequestedPlay() {
         shouldNotShowControls = true
         mPlayerGlue?.play()
+    }
+
+    override fun overlayRequestedFocus(focusView: View) {
+        //will be called when the overlay shows content
+        //use this method to send focus to the overlay if needed
+        //focusView is the element that should become focused
+    }
+
+    override fun overlayReleasedFocus() {
+        //overlay finished showing content
+        //if needed you can use this method to focus on your content
     }
 
     override fun showControlsOverlay(runAnimation: Boolean) {
