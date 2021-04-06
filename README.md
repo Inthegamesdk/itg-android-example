@@ -58,6 +58,14 @@ fun overlayRequestedPause()
 fun overlayRequestedPlay()
 ```
 
+The overlay will request focus when showing content, so that the user can interact with the buttons. If the focus transfer is not automatic on your setup, use these listener methods to set the focus accordingly.\
+`focusView` is the overlay element that should be focused.
+
+```
+fun overlayRequestedFocus(focusView: View)
+fun overlayReleasedFocus()
+```
+
 ## Optional Customization
 
 You can also adjust the bottom padding for the content, and the type of animation:
