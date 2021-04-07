@@ -15,6 +15,7 @@ Add the following imports (if missing) to your app's build.gradle:
 ```
     implementation project(':inthegametv')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation ('io.socket:socket.io-client:1.0.1') {
