@@ -734,6 +734,8 @@ int id image 0x0
 int id imageView 0x0
 int id info 0x0
 int id italic 0x0
+int id ivCheckmark 0x0
+int id ivIcon 0x0
 int id line1 0x0
 int id line3 0x0
 int id listMode 0x0

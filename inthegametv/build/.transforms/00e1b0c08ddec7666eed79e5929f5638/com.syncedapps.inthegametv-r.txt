@@ -735,6 +735,8 @@ id image
 id imageView
 id info
 id italic
+id ivCheckmark
+id ivIcon
 id line1
 id line3
 id listMode
