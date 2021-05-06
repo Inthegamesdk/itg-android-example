@@ -636,7 +636,12 @@ drawable circle_white_focused
 drawable close
 drawable close_vector
 drawable ic_close
+drawable ic_point_score
+drawable ic_point_score_yellow
 drawable ic_user
+drawable ic_warning
+drawable ic_wrong
+drawable notice_background
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -713,6 +718,7 @@ id buttonPanel
 id checkbox
 id checked
 id chronometer
+id closeButton
 id closeIcon
 id container
 id content
@@ -730,6 +736,8 @@ id forever
 id group_divider
 id home
 id icon
+id iconLose
+id iconWin
 id icon_group
 id image
 id imageView
@@ -748,6 +756,7 @@ id message
 id multiply
 id none
 id normal
+id noticeContainer
 id notification_background
 id notification_main_column
 id notification_main_column_container
@@ -809,6 +818,7 @@ id titleDividerNoCustom
 id title_template
 id topPanel
 id tvAnswerStats
+id tvInfo
 id tvQuestion
 id tvStatTotal
 id tvStatUser
@@ -859,6 +869,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout custom_dialog
+layout notice
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big

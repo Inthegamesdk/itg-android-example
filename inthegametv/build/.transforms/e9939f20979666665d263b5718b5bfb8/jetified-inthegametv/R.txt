@@ -635,7 +635,12 @@ int drawable circle_white_focused 0x0
 int drawable close 0x0
 int drawable close_vector 0x0
 int drawable ic_close 0x0
+int drawable ic_point_score 0x0
+int drawable ic_point_score_yellow 0x0
 int drawable ic_user 0x0
+int drawable ic_warning 0x0
+int drawable ic_wrong 0x0
+int drawable notice_background 0x0
 int drawable notification_action_background 0x0
 int drawable notification_bg 0x0
 int drawable notification_bg_low 0x0
@@ -712,6 +717,7 @@ int id buttonPanel 0x0
 int id checkbox 0x0
 int id checked 0x0
 int id chronometer 0x0
+int id closeButton 0x0
 int id closeIcon 0x0
 int id container 0x0
 int id content 0x0
@@ -729,6 +735,8 @@ int id forever 0x0
 int id group_divider 0x0
 int id home 0x0
 int id icon 0x0
+int id iconLose 0x0
+int id iconWin 0x0
 int id icon_group 0x0
 int id image 0x0
 int id imageView 0x0
@@ -747,6 +755,7 @@ int id message 0x0
 int id multiply 0x0
 int id none 0x0
 int id normal 0x0
+int id noticeContainer 0x0
 int id notification_background 0x0
 int id notification_main_column 0x0
 int id notification_main_column_container 0x0
@@ -808,6 +817,7 @@ int id titleDividerNoCustom 0x0
 int id title_template 0x0
 int id topPanel 0x0
 int id tvAnswerStats 0x0
+int id tvInfo 0x0
 int id tvQuestion 0x0
 int id tvStatTotal 0x0
 int id tvStatUser 0x0
@@ -858,6 +868,7 @@ int layout abc_search_view 0x0
 int layout abc_select_dialog_material 0x0
 int layout abc_tooltip 0x0
 int layout custom_dialog 0x0
+int layout notice 0x0
 int layout notification_action 0x0
 int layout notification_action_tombstone 0x0
 int layout notification_template_custom_big 0x0

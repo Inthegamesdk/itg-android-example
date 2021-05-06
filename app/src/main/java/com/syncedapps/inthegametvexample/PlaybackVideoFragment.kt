@@ -61,7 +61,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         overlay.listener = this
 
         // enable the layout delegate if you wish to set custom layouts
-        overlay.layoutListener = this
+//        overlay.layoutListener = this
         // you can adjust the spacing between the content and bottom of the screen
         overlay.setBottomPaddingDp(30)
         // use this optional variable to set the animation type
@@ -202,17 +202,22 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     //use them only if you want to customize the design elements
 
     override fun customPollView(): ITGPollView? {
-//        return CustomPollView(context)
+        return CustomPollView(context)
         return null
     }
 
     override fun customRatingView(): ITGRatingView? {
-//        return CustomRatingView(context)
+        return CustomRatingView(context)
         return null
     }
 
     override fun customTriviaView(): ITGTriviaView? {
-//        return CustomTriviaView(context)
+        return CustomTriviaView(context)
+        return null
+    }
+
+    override fun customNoticeView(): ITGNotice? {
+        return CustomNoticeView(context)
         return null
     }
 }

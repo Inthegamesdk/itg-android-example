@@ -4,7 +4,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="284dp"
-    android:layoutDirection="ltr"
     android:layout_gravity="bottom"
     android:gravity="bottom"
     android:layout_marginLeft="200dp">
@@ -88,12 +87,15 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="4dp"
                 android:layout_marginLeft="4dp"
+                android:layoutDirection="locale"
+                android:textDirection="locale"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/tvQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="26dp"
                     android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
                     android:layout_marginTop="2dp"
                     android:maxLines="1"
                     android:textAlignment="textStart"
