@@ -84,4 +84,5 @@ Then you can create subclasses of our content views with customized layouts, and
 fun customPollView(): ITGPollView?
 fun customRatingView(): ITGRatingView?
 fun customTriviaView(): ITGTriviaView?
+fun customNoticeView(): ITGNotice?
 ```
