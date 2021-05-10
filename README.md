@@ -67,6 +67,9 @@ fun overlayRequestedFocus(focusView: View)
 fun overlayReleasedFocus()
 ```
 
+If you want to connect ITG content with your user's account, there are variables in the `load()` method where you can specify your user's ID and display name. The variables are called `userBroadcasterForeignID` and `userInitialName`.
+
+
 ## Optional Customization
 
 You can also adjust the bottom padding for the content, and the type of animation:
