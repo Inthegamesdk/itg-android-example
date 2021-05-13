@@ -10,8 +10,8 @@ android {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 1
-        versionName "0.6.2"
+        versionCode 29
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

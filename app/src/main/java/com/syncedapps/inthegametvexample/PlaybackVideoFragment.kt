@@ -171,7 +171,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         //focusView is the element that should become focused
     }
 
-    override fun overlayReleasedFocus() {
+    override fun overlayReleasedFocus(popMessage: Boolean) {
         //overlay finished showing content
         //if needed you can use this method to focus on your content
     }
