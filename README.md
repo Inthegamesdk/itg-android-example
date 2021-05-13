@@ -60,12 +60,14 @@ fun overlayRequestedPlay()
 ```
 
 The overlay will request focus when showing content, so that the user can interact with the buttons. If the focus transfer is not automatic on your setup, use these listener methods to set the focus accordingly.\
-`focusView` is the overlay element that should be focused.
+`focusView` is the overlay element that should be focused. `popMessage` indicates whether this is a good time to show user engagement content.
 
 ```
 fun overlayRequestedFocus(focusView: View)
-fun overlayReleasedFocus()
+fun overlayReleasedFocus(popMessage: Boolean)
 ```
+
+If you want to customize the frequency of the `popMessage` variable (in terms of how many times user must answer content to trigger it) you can configure `overlay.infoPopupFrequencySequence` .
 
 If you want to connect ITG content with your user's account, there are variables in the `load()` method where you can specify your user's ID and display name. The variables are called `userBroadcasterForeignID` and `userInitialName`.
 
