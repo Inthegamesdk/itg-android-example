@@ -89,5 +89,12 @@ Then you can create subclasses of our content views with customized layouts, and
 fun customPollView(): ITGPollView?
 fun customRatingView(): ITGRatingView?
 fun customTriviaView(): ITGTriviaView?
+fun customWikiView(): ITGWikiView?
 fun customNoticeView(): ITGNotice?
+```
+
+You can adjust the behaviour of the win notifications with these variables:
+```
+overlay.showNotices = false
+overlay.showNoticeAsActivity = true
 ```
