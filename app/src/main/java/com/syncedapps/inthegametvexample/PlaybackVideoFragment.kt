@@ -67,6 +67,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         // use this optional variable to set the animation type
         overlay.animationType = ITGAnimationType.FROM_RIGHT
 
+        // use this variable if you want to hide the win notifications
+//        overlay.showNotices = false
+        // use this if you want notifications to display on the bottom area like regular activities
+//        overlay.showNoticeAsActivity = true
+
         //add the overlay to your view hierarchy
         (view as ViewGroup).addView(overlay)
         mOverlay = overlay
@@ -216,6 +221,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         return null
     }
 
+    override fun customWikiView(): ITGWikiView? {
+        return CustomWikiView(context)
+    }
+    
     override fun customNoticeView(): ITGNotice? {
         return CustomNoticeView(context)
         return null

@@ -14,8 +14,8 @@
     <LinearLayout
         android:id="@+id/container"
         android:orientation="vertical"
-        android:layout_gravity="bottom"
-        android:gravity="bottom"
+        android:layout_gravity="right|bottom"
+        android:gravity="right|bottom"
         android:paddingBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -45,6 +45,14 @@
                 android:src="@drawable/close"
                 android:scaleType="centerInside"
                 android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/errorIcon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/ic_server_error"
+                android:scaleType="centerInside"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/timerView"
@@ -81,6 +89,55 @@
                     android:textColor="@android:color/white"
                     android:text="SEC"/>
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/pointsView"
+                android:orientation="vertical"
+                android:layout_width="50dp"
+                android:layout_height="44dp"
+                android:tint="@android:color/white"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:focusable="true"
+                android:layoutDirection="locale"
+                android:textDirection="locale"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/totalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellowITG"
+                    android:text="TOTAL"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        android:id="@+id/pointsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="14dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/yellowITG"
+                        android:text="3200,5"/>
+                    <TextView
+                        android:id="@+id/ptsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="14dp"
+                        android:textAlignment="center"
+                        android:layout_marginStart="1dp"
+                        android:gravity="center"
+                        android:textSize="6sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/yellowITG"
+                        android:text="pts"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
         <FrameLayout
@@ -89,6 +146,7 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
+                android:id="@+id/questionContainer"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -115,7 +173,23 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:gravity="fill_horizontal"
-                    android:layout_height="32dp" />
+                    android:layout_height="32dp" >
+                    <TextView
+                        android:id="@+id/tvResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:paddingTop="3dp"
+                        android:textAlignment="textStart"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/yellowITG"
+                        android:maxLines="1"
+                        android:layout_gravity="center_vertical"
+                        android:text="Answer result"
+                        android:visibility="gone"/>
+                </LinearLayout>
 
                 <HorizontalScrollView
                     android:id="@+id/scroller"
@@ -140,6 +214,28 @@
                 android:background="@android:color/black"
                 android:visibility="gone"
                 android:gravity="center">
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/errorContainer"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:visibility="gone"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tvError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellowITG"
+                    android:layout_gravity="center_vertical"
+                    android:text="An error occurred and your answer was lost on the web.\nTry again next time." />
             </LinearLayout>>
         </FrameLayout>
 

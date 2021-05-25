@@ -40,6 +40,15 @@
                 android:scaleType="centerInside"
                 android:visibility="gone"/>
 
+            <ImageView
+                android:id="@+id/errorIcon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/ic_server_error"
+                android:scaleType="centerInside"
+                android:visibility="gone"/>
+
             <LinearLayout
                 android:id="@+id/timerView"
                 android:orientation="vertical"
@@ -86,6 +95,7 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
+                android:id="@+id/questionContainer"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -217,7 +227,29 @@
                 android:background="@color/flipPromotionBackgroundColor"
                 android:visibility="gone"
                 android:gravity="center">
-            </LinearLayout>>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/errorContainer"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:visibility="gone"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tvError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellowITG"
+                    android:layout_gravity="center_vertical"
+                    android:text="An error occurred and your answer was lost on the web.\nTry again next time." />
+            </LinearLayout>
         </FrameLayout>
 
         <ImageButton

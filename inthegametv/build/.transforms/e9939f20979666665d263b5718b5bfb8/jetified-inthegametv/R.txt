@@ -23,6 +23,8 @@ int anim btn_radio_to_on_mtrl_dot_group_animation 0x0
 int anim btn_radio_to_on_mtrl_ring_outer_animation 0x0
 int anim btn_radio_to_on_mtrl_ring_outer_path_animation 0x0
 int anim fade_in 0x0
+int anim fade_in_fast 0x0
+int anim fade_out_fast 0x0
 int anim grow_middle 0x0
 int anim slide_bottom_out 0x0
 int anim slide_left_in 0x0
@@ -360,6 +362,7 @@ int color dim_foreground_disabled_material_dark 0x0
 int color dim_foreground_disabled_material_light 0x0
 int color dim_foreground_material_dark 0x0
 int color dim_foreground_material_light 0x0
+int color errorRed 0x0
 int color error_color_material_dark 0x0
 int color error_color_material_light 0x0
 int color flipPromotionBackgroundColor 0x0
@@ -630,6 +633,7 @@ int drawable button_circle_focus_selector 0x0
 int drawable button_circle_selector 0x0
 int drawable check 0x0
 int drawable check_vector 0x0
+int drawable circle_red 0x0
 int drawable circle_white 0x0
 int drawable circle_white_focused 0x0
 int drawable close 0x0
@@ -637,6 +641,7 @@ int drawable close_vector 0x0
 int drawable ic_close 0x0
 int drawable ic_point_score 0x0
 int drawable ic_point_score_yellow 0x0
+int drawable ic_server_error 0x0
 int drawable ic_user 0x0
 int drawable ic_warning 0x0
 int drawable ic_wrong 0x0
@@ -728,6 +733,8 @@ int id decor_content_parent 0x0
 int id default_activity_button 0x0
 int id dialog_button 0x0
 int id edit_query 0x0
+int id errorContainer 0x0
+int id errorIcon 0x0
 int id expand_activities_button 0x0
 int id expanded_menu 0x0
 int id flipContainer 0x0
@@ -762,8 +769,13 @@ int id notification_main_column_container 0x0
 int id off 0x0
 int id on 0x0
 int id parentPanel 0x0
+int id pointsContainer 0x0
+int id pointsText 0x0
+int id pointsView 0x0
 int id progress_circular 0x0
 int id progress_horizontal 0x0
+int id ptsText 0x0
+int id questionContainer 0x0
 int id radio 0x0
 int id right_icon 0x0
 int id right_side 0x0
@@ -805,6 +817,7 @@ int id tag_unhandled_key_event_manager 0x0
 int id tag_unhandled_key_listeners 0x0
 int id text 0x0
 int id text2 0x0
+int id textContainer 0x0
 int id textSpacerNoButtons 0x0
 int id textSpacerNoTitle 0x0
 int id textView 0x0
@@ -816,12 +829,19 @@ int id title 0x0
 int id titleDividerNoCustom 0x0
 int id title_template 0x0
 int id topPanel 0x0
+int id totalText 0x0
 int id tvAnswerStats 0x0
+int id tvContent 0x0
+int id tvError 0x0
 int id tvInfo 0x0
+int id tvPoints 0x0
 int id tvQuestion 0x0
+int id tvResult 0x0
+int id tvScoreTitle 0x0
 int id tvStatTotal 0x0
 int id tvStatUser 0x0
 int id tvTitle 0x0
+int id tvTotalPoints 0x0
 int id unchecked 0x0
 int id uniform 0x0
 int id up 0x0
@@ -888,6 +908,7 @@ int layout view_rating 0x0
 int layout view_rating_answer 0x0
 int layout view_trivia 0x0
 int layout view_trivia_answer 0x0
+int layout view_wiki 0x0
 int string abc_action_bar_home_description 0x0
 int string abc_action_bar_up_description 0x0
 int string abc_action_menu_overflow_description 0x0

@@ -24,6 +24,8 @@ anim btn_radio_to_on_mtrl_dot_group_animation
 anim btn_radio_to_on_mtrl_ring_outer_animation
 anim btn_radio_to_on_mtrl_ring_outer_path_animation
 anim fade_in
+anim fade_in_fast
+anim fade_out_fast
 anim grow_middle
 anim slide_bottom_out
 anim slide_left_in
@@ -361,6 +363,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color errorRed
 color error_color_material_dark
 color error_color_material_light
 color flipPromotionBackgroundColor
@@ -631,6 +634,7 @@ drawable button_circle_focus_selector
 drawable button_circle_selector
 drawable check
 drawable check_vector
+drawable circle_red
 drawable circle_white
 drawable circle_white_focused
 drawable close
@@ -638,6 +642,7 @@ drawable close_vector
 drawable ic_close
 drawable ic_point_score
 drawable ic_point_score_yellow
+drawable ic_server_error
 drawable ic_user
 drawable ic_warning
 drawable ic_wrong
@@ -729,6 +734,8 @@ id decor_content_parent
 id default_activity_button
 id dialog_button
 id edit_query
+id errorContainer
+id errorIcon
 id expand_activities_button
 id expanded_menu
 id flipContainer
@@ -763,8 +770,13 @@ id notification_main_column_container
 id off
 id on
 id parentPanel
+id pointsContainer
+id pointsText
+id pointsView
 id progress_circular
 id progress_horizontal
+id ptsText
+id questionContainer
 id radio
 id right_icon
 id right_side
@@ -806,6 +818,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id text
 id text2
+id textContainer
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textView
@@ -817,12 +830,19 @@ id title
 id titleDividerNoCustom
 id title_template
 id topPanel
+id totalText
 id tvAnswerStats
+id tvContent
+id tvError
 id tvInfo
+id tvPoints
 id tvQuestion
+id tvResult
+id tvScoreTitle
 id tvStatTotal
 id tvStatUser
 id tvTitle
+id tvTotalPoints
 id unchecked
 id uniform
 id up
@@ -889,6 +909,7 @@ layout view_rating
 layout view_rating_answer
 layout view_trivia
 layout view_trivia_answer
+layout view_wiki
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
