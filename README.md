@@ -1,7 +1,8 @@
-# Inthegame SmartTV - Android and Fire TV SDK
+# Inthegame SmartTV - SDK for Android TV, Fire TV, and Android mobile
 
-This SDK allows you to easily integrate the In The Game engagement platform in a Smart TV app. It is compatible with Amazon Fire TV and Android TV.\
-The repository includes an example app that shows how to use the framework. The example app is based on Android's Leanback TV examples.
+This SDK allows you to easily integrate the In The Game engagement platform in a Smart TV or mobile app.\
+It is compatible with Amazon Fire TV, Android TV, and Android mobile phones.\
+The repository includes an example app that shows how to use the framework. The TV example app is based on Android's Leanback TV examples.
 
 
 ## Installation
@@ -84,7 +85,9 @@ If you want to replace our content visuals with your own customizable interfaces
 ```
 overlay.layoutListener = this
 ```
-Then you can create subclasses of our content views with customized layouts, and provide them in the listener methods. A full working example is included in the repository. The listener methods are: 
+Then you can create subclasses of our content views with customized layouts, and provide them in the listener methods. A full working example is included in the repository.\
+The example includes custom layouts for 3 different formats - television, mobile landscape and mobile portrait. You can use only those you need - if your app is for TV only, use the layout-television files on your main layout folder.\
+The listener methods are: 
 ```
 fun customPollView(): ITGPollView?
 fun customRatingView(): ITGRatingView?
@@ -97,4 +100,9 @@ You can adjust the behaviour of the win notifications with these variables:
 ```
 overlay.showNotices = false
 overlay.showNoticeAsActivity = true
+```
+
+You can also hide content when a phone is in portrait mode:
+```
+overlay.hideInPortraitMode = true
 ```
