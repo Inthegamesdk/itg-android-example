@@ -3,10 +3,10 @@
     android:id="@+id/mainContainer"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="284dp"
+    android:layout_height="204dp"
     android:layout_gravity="bottom"
     android:gravity="bottom"
-    android:layout_marginLeft="0dp">
+    android:layout_marginLeft="50dp">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -60,6 +60,8 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:focusable="true"
+                android:layoutDirection="locale"
+                android:textDirection="locale"
                 android:visibility="visible">
                 <TextView
                     android:id="@+id/timerText"
@@ -122,7 +124,7 @@
                             android:layout_height="22dp"
                             android:maxLines="1"
                             android:textAlignment="textStart"
-                            android:textSize="15sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:text="question"/>
@@ -134,7 +136,7 @@
                             android:layout_marginBottom="4dp"
                             android:maxLines="1"
                             android:textAlignment="textStart"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:textAllCaps="true"
@@ -153,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
-                            android:textSize="9sp"
+                            android:textSize="8sp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:layout_marginRight="2dp"
@@ -170,7 +172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:text="0"/>
@@ -178,7 +180,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:layout_marginLeft="3dp"
@@ -189,7 +191,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="@color/yellowITG"
                             android:text="0"/>
@@ -197,7 +199,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAlignment="textStart"
-                            android:textSize="9sp"
+                            android:textSize="8sp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:text=")"
@@ -222,7 +224,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="4dp"
                 android:layout_marginLeft="4dp"
-                android:background="@android:color/black"
+                android:background="@color/flipPromotionBackgroundColor"
                 android:visibility="gone"
                 android:gravity="center">
             </LinearLayout>
@@ -242,21 +244,21 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:textAlignment="textStart"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="@color/yellowITG"
                     android:layout_gravity="center_vertical"
                     android:text="An error occurred and your answer was lost on the web.\nTry again next time." />
-            </LinearLayout>>
+            </LinearLayout>
         </FrameLayout>
 
         <ImageButton
             android:id="@+id/smallCloseButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:padding="6dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="24dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="8dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/close"
             android:tint="@android:color/white"
             android:scaleType="centerInside"

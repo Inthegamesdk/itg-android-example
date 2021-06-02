@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="120dp"
     android:background="@android:color/transparent"
     android:layout_gravity="bottom"
     android:gravity="bottom">
@@ -14,7 +14,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxHeight="200dp"
+        android:maxHeight="120dp"
         android:scaleType="centerInside"
         android:visibility="visible"/>
 </LinearLayout>

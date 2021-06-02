@@ -3,10 +3,10 @@
     android:id="@+id/mainContainer"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="284dp"
+    android:layout_height="204dp"
     android:layout_gravity="bottom"
     android:gravity="bottom"
-    android:layout_marginLeft="200dp">
+    android:layout_marginLeft="50dp">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:textAlignment="textStart"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/white"
                         android:text="question"/>

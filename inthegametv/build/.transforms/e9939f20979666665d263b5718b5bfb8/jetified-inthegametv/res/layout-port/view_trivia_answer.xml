@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="70dp"
+    android:layout_height="24dp"
+    android:layout_weight="1"
+    android:padding="4dp"
+    android:gravity="center">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/answerButton"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:gravity="center"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:background="@drawable/button_answer_selector_red"
+        android:text="@null"
+        android:focusable="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ivCheckmark"
+                android:layout_width="9dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="2dp"/>
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="2dp"/>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="6sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingEnd="6dp"
+                android:maxLines="1"
+                android:text="title"/>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

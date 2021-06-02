@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="150dp"
+    android:layout_width="110dp"
     android:layout_height="48dp"
     android:layout_weight="1"
     android:padding="4dp"
@@ -15,20 +15,20 @@
         android:paddingRight="4dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="11sp"
+        android:textSize="9sp"
         android:maxLines="1"
         android:background="@drawable/button_answer_selector_default"
         android:text="answer"
         android:focusable="true"/>
 
-    <TextView
-        android:gravity="center"
-        android:id="@+id/tvAnswerStats"
-        android:layout_width="match_parent"
-        android:layout_height="14dp"
-        android:layout_marginTop="2dp"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:text="stats"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tvAnswerStats"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:layout_marginTop="2dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="stats"/>
 </LinearLayout>

@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:gravity="top|right"
-        android:layout_height="140dp"/>
+        android:layout_height="120dp"/>
     <LinearLayout
         android:id="@+id/container"
         android:orientation="vertical"
