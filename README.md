@@ -70,6 +70,17 @@ fun overlayReleasedFocus(popMessage: Boolean)
 
 If you want to customize the frequency of the `popMessage` variable (in terms of how many times user must answer content to trigger it) you can configure `overlay.infoPopupFrequencySequence` .
 
+There is an optional button to show external content on custom interfaces, if you wish to use it this is the listener method:
+```
+fun overlayClickedUserArea()
+```
+
+If, during runtime, you want to check if an activity is showing, or close the current activity, these methods are available:
+```
+overlay.isDisplayingInteraction()
+overlay.closeCurrentInteraction()
+```
+       
 If you want to connect ITG content with your user's account, there are variables in the `load()` method where you can specify your user's ID and display name. The variables are called `userBroadcasterForeignID` and `userInitialName`.
 
 
