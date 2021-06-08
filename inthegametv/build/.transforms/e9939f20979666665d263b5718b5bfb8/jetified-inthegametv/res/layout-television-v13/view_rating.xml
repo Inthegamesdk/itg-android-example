@@ -248,9 +248,45 @@
                     android:textStyle="bold"
                     android:textColor="@color/yellowITG"
                     android:layout_gravity="center_vertical"
-                    android:text="An error occurred and your answer was lost on the web.\nTry again next time." />
+                    android:text="@string/error_answer" />
             </LinearLayout>
         </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/extraInfoContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tvCredits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="120"/>
+            <TextView
+                android:id="@+id/tvExPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="5040"/>
+
+            <TextView
+                android:id="@+id/tvLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="6"/>
+            <Button
+                android:id="@+id/userAreaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/white"
+                android:text="User Area" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/smallCloseButton"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_answer">קרתה טעות והשאלה נאבדה במרחבי הרשת. נסה שוב בפעם הבאה</string>
+    <string name="notice_correct">כל הכבוד!</string>
+    <string name="notice_correct_details">"%1$s" נק על בחירה ב "%2$s"</string>
+    <string name="notice_correct_points"> נקודות+%1$s</string>
+    <string name="notice_total_score">סה"כ נקודות</string>
+    <string name="notice_wrong">טעות</string>
+    <string name="notice_wrong_details">"%2$s" ב "%1$s"ענית </string>
+    <string name="points_short">נק</string>
+    <string name="poll_closed">הסקר נסגר</string>
+    <string name="timer_minutes_short_composed">%1$dדק</string>
+    <string name="timer_seconds_short">ש</string>
+    <string name="timer_seconds_short_composed">%1$d ש</string>
+    <string name="total_points_short">סה"כ</string>
+    <string name="trivia_correct_composed">נקודות %1$s נכון, קיבלת </string>
+    <string name="trivia_correct_simple">תשובה נכונה</string>
+    <string name="trivia_wrong">אופס, טעות. המשך לנסות</string>
+</resources>

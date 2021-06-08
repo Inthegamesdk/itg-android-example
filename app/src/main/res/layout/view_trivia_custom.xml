@@ -245,6 +245,42 @@
             </LinearLayout>
         </FrameLayout>
 
+        <LinearLayout
+            android:id="@+id/extraInfoContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tvCredits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="120"/>
+            <TextView
+                android:id="@+id/tvExPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="5040"/>
+
+            <TextView
+                android:id="@+id/tvLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="6"/>
+            <Button
+                android:id="@+id/userAreaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/white"
+                android:text="User Area" />
+        </LinearLayout>
+
         <ImageButton
             android:id="@+id/smallCloseButton"
             android:layout_width="28dp"

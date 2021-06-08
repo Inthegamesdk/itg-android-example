@@ -7,19 +7,46 @@
     android:padding="4dp"
     android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/answerButton"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="11sp"
-        android:maxLines="1"
-        android:background="@drawable/button_answer_selector_default"
-        android:text="answer"
-        android:focusable="true"/>
+        android:layout_height="wrap_content" >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/answerButton"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="11sp"
+            android:maxLines="1"
+            android:background="@drawable/button_answer_selector_default"
+            android:focusable="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="4dp"
+                android:scaleType="centerInside"/>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingEnd="10dp"
+                android:maxLines="1"
+                android:text="title"/>
+        </LinearLayout>
+    </FrameLayout>
 
     <TextView
         android:gravity="center"

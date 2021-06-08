@@ -181,6 +181,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         //if needed you can use this method to focus on your content
     }
 
+    override fun overlayClickedUserArea() {
+        Log.d("ITG", "Clicked user area")
+    }
     override fun showControlsOverlay(runAnimation: Boolean) {
         if (shouldNotShowControls) {
             shouldNotShowControls = false
@@ -208,25 +211,21 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun customPollView(): ITGPollView? {
         return CustomPollView(context)
-        return null
     }
 
     override fun customRatingView(): ITGRatingView? {
         return CustomRatingView(context)
-        return null
     }
 
     override fun customTriviaView(): ITGTriviaView? {
         return CustomTriviaView(context)
-        return null
     }
 
     override fun customWikiView(): ITGWikiView? {
         return CustomWikiView(context)
     }
-    
+
     override fun customNoticeView(): ITGNotice? {
         return CustomNoticeView(context)
-        return null
     }
 }

@@ -15,7 +15,9 @@ class CustomPollAnswerView: ITGPollAnswerView {
         iconPosition = ITGIconPosition.RIGHT
     }
 
-    override fun setButtonStyleSelected() {
-        answerButton.setBackgroundResource(R.drawable.button_answer_selector_correct)
+    override fun setButtonStyleCompleted(selected: Boolean) {
+        if (selected) {
+            answerButton.setBackgroundResource(R.drawable.button_answer_selector_correct)
+        }
     }
 }

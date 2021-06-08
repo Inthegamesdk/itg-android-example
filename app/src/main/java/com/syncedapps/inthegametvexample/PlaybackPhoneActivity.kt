@@ -97,6 +97,9 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     override fun overlayReleasedFocus(popMessage: Boolean) {
     }
 
+    override fun overlayClickedUserArea() {
+    }
+
     //the layout methods are optional
     //use them only if you want to customize the design elements
 

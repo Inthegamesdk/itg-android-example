@@ -11,4 +11,20 @@
     <color name="pollBackgroundColor">#A0000000</color>
     <color name="transparentRed">#90FF2211</color>
     <color name="yellowITG">#ffc709</color>
+    <string name="error_answer">An error occurred and your answer was lost on the web.\nTry again next time.</string>
+    <string name="notice_correct">CONGRATULATIONS!</string>
+    <string name="notice_correct_details">For choosing "%1$s" on "%2$s"</string>
+    <string name="notice_correct_points">+%1$s pts</string>
+    <string name="notice_total_score">Total Score:</string>
+    <string name="notice_wrong">Wrong Prediction</string>
+    <string name="notice_wrong_details">You answered "%1$s" on "%2$s"</string>
+    <string name="points_short">pts</string>
+    <string name="poll_closed">POLL CLOSED</string>
+    <string name="timer_minutes_short_composed">%1$dm</string>
+    <string name="timer_seconds_short">SEC</string>
+    <string name="timer_seconds_short_composed">%1$d SEC</string>
+    <string name="total_points_short">TOTAL</string>
+    <string name="trivia_correct_composed">Right, you got %1$s pts</string>
+    <string name="trivia_correct_simple">Correct answer</string>
+    <string name="trivia_wrong">Oops, wrong answer, keep trying</string>
 </resources>
