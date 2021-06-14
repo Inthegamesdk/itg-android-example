@@ -10,10 +10,10 @@
     <string name="points_short">נק</string>
     <string name="poll_closed">הסקר נסגר</string>
     <string name="timer_minutes_short_composed">%1$dדק</string>
-    <string name="timer_seconds_short">ש</string>
-    <string name="timer_seconds_short_composed">%1$d ש</string>
+    <string name="timer_seconds_short">שניות</string>
+    <string name="timer_seconds_short_composed">%1$d שניות</string>
     <string name="total_points_short">סה"כ</string>
-    <string name="trivia_correct_composed">נקודות %1$s נכון, קיבלת </string>
+    <string name="trivia_correct_composed">אלופים! צדקתם (-:\nבתשובה זאת צברתם %1$s נקודות</string>
     <string name="trivia_correct_simple">תשובה נכונה</string>
-    <string name="trivia_wrong">אופס, טעות. המשך לנסות</string>
+    <string name="trivia_wrong">לא נורא, הפעם לא הצלחתם (-:\nתוכלו לנסות שוב בהמשך</string>
 </resources>

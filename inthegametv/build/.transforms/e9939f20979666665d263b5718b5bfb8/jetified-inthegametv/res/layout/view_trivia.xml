@@ -186,13 +186,13 @@
                         android:layout_height="32dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
-                        android:paddingTop="5dp"
                         android:textAlignment="textStart"
-                        android:textSize="13sp"
+                        android:textSize="11sp"
                         android:textStyle="bold"
                         android:textColor="@color/yellowITG"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:text="Answer result"
                         android:visibility="gone"/>
                 </LinearLayout>

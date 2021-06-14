@@ -177,17 +177,18 @@
                     <TextView
                         android:id="@+id/tvResult"
                         android:layout_width="wrap_content"
-                        android:layout_height="32dp"
+                        android:layout_height="38dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
-                        android:paddingTop="3dp"
+                        android:paddingTop="0dp"
                         android:textAlignment="textStart"
-                        android:textSize="16sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/yellowITG"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:layout_gravity="center_vertical"
-                        android:text="Answer result"
+                        android:gravity="center_vertical"
+                        android:text="Answer result \n extra info"
                         android:visibility="gone"/>
                 </LinearLayout>
 

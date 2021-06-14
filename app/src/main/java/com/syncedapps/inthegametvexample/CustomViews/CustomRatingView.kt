@@ -16,4 +16,13 @@ class CustomRatingView: ITGRatingView {
     override fun createAnswerView(): ITGRatingAnswerView {
         return CustomRatingAnswerView(context)
     }
+
+    override fun didAnswerRating() {
+        // customize view after answering if needed
+    }
+
+    override fun didUpdateStats(average: Double, totalVotes: Int) {
+        // this will be called everytime the rating results are updated,
+        // if you need to display the values in a custom way
+    }
 }

@@ -16,4 +16,8 @@ class CustomTriviaView: ITGTriviaView {
     override fun createAnswerView(): ITGTriviaAnswerView {
         return CustomTriviaAnswerView(context)
     }
+
+    override fun didAnswerTrivia() {
+        //customize view after answering if needed
+    }
 }
