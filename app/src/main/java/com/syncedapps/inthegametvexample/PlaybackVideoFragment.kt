@@ -26,8 +26,10 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
 import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
 import com.syncedapps.inthegametvexample.CustomViews.CustomTriviaView
+import com.syncedapps.inthegametvexample.CustomViews.CustomWikiView
 
 
 /** Handles video playback with media controls. */
