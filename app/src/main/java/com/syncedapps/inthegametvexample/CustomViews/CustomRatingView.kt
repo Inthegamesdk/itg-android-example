@@ -2,6 +2,7 @@ package com.syncedapps.inthegametvexample.CustomViews
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import com.syncedapps.inthegametv.ITGRatingAnswerView
 import com.syncedapps.inthegametv.ITGRatingView
 import com.syncedapps.inthegametvexample.R
@@ -24,5 +25,9 @@ class CustomRatingView: ITGRatingView {
     override fun didUpdateStats(average: Double, totalVotes: Int) {
         // this will be called everytime the rating results are updated,
         // if you need to display the values in a custom way
+    }
+
+    override fun didShowError() {
+        //customize view after error if needed
     }
 }
