@@ -34,7 +34,7 @@ class CustomRatingView: ITGRatingView {
         // if you need to display the values in a custom way
     }
 
-    override fun didShowError() {
+    override fun didShowError(repeatedAnswer: Boolean) {
         //customize view after error if needed
     }
 

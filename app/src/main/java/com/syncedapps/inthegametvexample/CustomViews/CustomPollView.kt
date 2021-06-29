@@ -28,7 +28,7 @@ class CustomPollView: ITGPollView {
         //customize view after answering if needed
     }
 
-    override fun didShowError() {
+    override fun didShowError(repeatedAnswer: Boolean) {
         //customize view after error if needed
     }
 
