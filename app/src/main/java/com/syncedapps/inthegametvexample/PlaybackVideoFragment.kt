@@ -2,6 +2,7 @@ package com.syncedapps.inthegametvexample
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -26,10 +27,14 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametv.interaction.*
+import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
 import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
 import com.syncedapps.inthegametvexample.CustomViews.CustomTriviaView
 import com.syncedapps.inthegametvexample.CustomViews.CustomWikiView
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 /** Handles video playback with media controls. */
@@ -47,7 +52,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         mMovie =
             activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie
 
@@ -55,6 +59,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(resources.getColor(R.color.black))
 
         //create the overlay
         val overlay = ITGOverlayView(context)
@@ -65,9 +70,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
         // you can adjust the spacing between the content and bottom of the screen
-        overlay.setBottomPaddingDp(30)
+        overlay.setBottomPaddingDp(0)
         // use this optional variable to set the animation type
-        overlay.animationType = ITGAnimationType.FROM_RIGHT
+        overlay.animationType = ITGAnimationType.FROM_BOTTOM
 
         // use this variable if you want to hide the win notifications
 //        overlay.showNotices = false
@@ -172,20 +177,39 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         mPlayerGlue?.play()
     }
 
+    //will be called when the overlay shows content
+    //use this method to send focus to the overlay if needed
+    //focusView is the element that should become focused
     override fun overlayRequestedFocus(focusView: View) {
-        //will be called when the overlay shows content
-        //use this method to send focus to the overlay if needed
-        //focusView is the element that should become focused
+        val spacing = convertDpToPixel(requireContext(), 86).toFloat()
+        val total = view!!.height.toFloat()
+        val scale = (total - spacing) / total
+        surfaceView.animate().scaleY(scale)
+        surfaceView.animate().translationY(-spacing / 2)
     }
 
+    //overlay finished showing content
+    //if needed you can use this method to focus on your content
     override fun overlayReleasedFocus(popMessage: Boolean) {
-        //overlay finished showing content
-        //if needed you can use this method to focus on your content
+        surfaceView.animate().scaleY(1f)
+        surfaceView.animate().translationY(0f)
+
+        if (popMessage) {
+            Log.d("ITG", "Show account POPUP")
+        } else {
+            Log.d("ITG", "Do not show popup")
+        }
     }
 
     override fun overlayClickedUserArea() {
         Log.d("ITG", "Clicked user area")
     }
+
+    private fun convertDpToPixel(context: Context, dp: Int): Int {
+        val density = context.applicationContext.resources.displayMetrics.density
+        return Math.round(dp.toFloat() * density)
+    }
+
     override fun showControlsOverlay(runAnimation: Boolean) {
         if (shouldNotShowControls) {
             shouldNotShowControls = false
@@ -229,5 +253,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun customNoticeView(): ITGNotice? {
         return CustomNoticeView(context)
+    }
+
+    override fun customProductView(): ITGProductView? {
+        return CustomProductView(context)
     }
 }

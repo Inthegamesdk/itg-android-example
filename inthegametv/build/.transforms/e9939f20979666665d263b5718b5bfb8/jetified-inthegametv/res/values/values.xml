@@ -1,30 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="accentColor">#ffffff</color>
     <color name="buttonAnswerGreen">#0D9F00</color>
     <color name="buttonAnswerGreenFocus">#3DCE30</color>
     <color name="buttonAnswerRed">#D31515</color>
     <color name="buttonAnswerRedFocus">#F35555</color>
     <color name="buttonAnswerYellow">#BDC23F</color>
     <color name="buttonAnswerYellowFocus">#DDE26F</color>
+    <color name="correct">#1CAA08</color>
     <color name="errorRed">#ff0d0d</color>
     <color name="flipPromotionBackgroundColor">#A0000000</color>
     <color name="pollBackgroundColor">#A0000000</color>
     <color name="transparentRed">#90FF2211</color>
+    <color name="wrong">#E90B0A</color>
     <color name="yellowITG">#ffc709</color>
+    <string name="account_label">Account</string>
+    <string name="button_buy">BUY</string>
+    <string name="button_got_it">GOT IT!</string>
+    <string name="button_next">NEXT</string>
+    <string name="close_label">Close</string>
+    <string name="discount_off">+%1$d off</string>
     <string name="error_answer">An error occurred and your answer was lost on the web.\nTry again next time.</string>
+    <string name="error_generic">An unexpected error occurred.\nPlease try again next time.</string>
+    <string name="level_label">Level</string>
     <string name="notice_correct">CONGRATULATIONS!</string>
     <string name="notice_correct_details">For choosing "%1$s" on "%2$s"</string>
     <string name="notice_correct_points">+%1$s pts</string>
     <string name="notice_total_score">Total Score:</string>
     <string name="notice_wrong">Wrong Prediction</string>
     <string name="notice_wrong_details">You answered "%1$s" on "%2$s"</string>
+    <string name="phone_hint">Phone number</string>
+    <string name="phone_invalid">Invalid phone number</string>
+    <string name="points_label">Points</string>
     <string name="points_short">pts</string>
     <string name="poll_closed">POLL CLOSED</string>
+    <string name="text_check_phone">Please check your phone to complete the purchase</string>
     <string name="timer_minutes_short_composed">%1$dm</string>
     <string name="timer_seconds_short">SEC</string>
     <string name="timer_seconds_short_composed">%1$d SEC</string>
     <string name="total_points_short">TOTAL</string>
-    <string name="trivia_correct_composed">Right, you got %1$s pts</string>
+    <string name="trivia_correct_composed">AWESOME! You won %1$s pts for the correct answer</string>
     <string name="trivia_correct_simple">Correct answer</string>
-    <string name="trivia_wrong">Oops, wrong answer, keep trying</string>
+    <string name="trivia_wrong">Wrong answer\nBetter luck next time</string>
+    <style name="EditTextTheme">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlActivated">#FFFFFF</item>
+        <item name="colorControlHighlight">#FFFFFF</item>
+    </style>
+    <style name="ThemeCompat" parent="Theme.AppCompat">
+        <item name="colorAccent">@android:color/white</item>
+
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+    </style>
 </resources>

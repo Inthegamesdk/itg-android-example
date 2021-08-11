@@ -9,7 +9,7 @@
         android:layout_width="360dp"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:background="@color/custom_background"
+        android:background="@drawable/blue_background"
         android:layoutDirection="ltr"
         android:paddingLeft="20dp"
         android:paddingRight="10dp">

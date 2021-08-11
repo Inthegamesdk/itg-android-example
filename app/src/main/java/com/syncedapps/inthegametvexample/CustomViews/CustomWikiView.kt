@@ -3,8 +3,7 @@ package com.syncedapps.inthegametvexample.CustomViews
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import com.syncedapps.inthegametv.ITGRatingView
-import com.syncedapps.inthegametv.ITGWikiView
+import com.syncedapps.inthegametv.interaction.ITGWikiView
 import com.syncedapps.inthegametvexample.R
 import kotlinx.android.synthetic.main.view_poll_custom.view.*
 
@@ -24,6 +23,6 @@ class CustomWikiView: ITGWikiView {
 
     override fun initialFocusView(): View {
         //select the preferred view to get focus when the view appears
-        return smallCloseButton
+        return super.initialFocusView()
     }
 }

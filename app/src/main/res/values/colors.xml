@@ -9,4 +9,10 @@
     <color name="medium_gray">#4F4F4F</color>
     <color name="answer_gray">#999999</color>
     <color name="custom_background">#5555CC</color>
+    <color name="blue_light">#3333FF</color>
+    <color name="blue_dark">#111155</color>
+    <color name="black">#000000</color>
+    <color name="green_bright">#3DCE30</color>
+    <color name="wrong">#E90B0A</color>
+    <color name="correct">#1CAA08</color>
 </resources>

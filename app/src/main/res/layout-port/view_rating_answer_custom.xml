@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="70dp"
-    android:layout_height="24dp"
+    android:layout_width="80dp"
+    android:layout_height="30dp"
     android:layout_weight="1"
-    android:padding="1dp"
+    android:padding="6dp"
     android:gravity="center">
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:id="@+id/framelayout_answer_rating"
         android:layout_height="22dp"
         android:gravity="center">
 
-    <ImageButton
-        android:id="@+id/answerButton"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:scaleType="fitCenter"
-        android:background="@drawable/button_answer_selector_default"
-        android:focusable="true"/>
+        <ImageButton
+            android:nextFocusUp="@id/answerButton"
+            android:id="@+id/answerButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:scaleType="fitCenter"
+            android:background="@drawable/button_answer_selector_default"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/textView"
@@ -35,6 +38,7 @@
             android:clickable="false"
             android:focusable="false"
             android:text="1"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:fontFamily="@font/titillium"/>
     </FrameLayout>
 </LinearLayout>

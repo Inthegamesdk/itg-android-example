@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametv.interaction.*
+import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
 import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
 import com.syncedapps.inthegametvexample.CustomViews.CustomTriviaView
@@ -121,5 +123,9 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
     override fun customNoticeView(): ITGNotice? {
         return CustomNoticeView(this)
+    }
+
+    override fun customProductView(): ITGProductView? {
+        return CustomProductView(this)
     }
 }

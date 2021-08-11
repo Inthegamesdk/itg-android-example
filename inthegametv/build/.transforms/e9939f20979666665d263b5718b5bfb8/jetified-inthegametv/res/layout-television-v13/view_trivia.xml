@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
+    android:layoutDirection="locale"
     android:layout_width="match_parent"
-    android:layout_height="284dp"
+    android:layout_height="286dp"
     android:layout_gravity="bottom"
-    android:gravity="bottom"
-    android:layout_marginLeft="200dp">
+    android:background="@android:color/transparent"
+    android:gravity="bottom">
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:background="@drawable/poll_background"
-        android:layoutDirection="ltr"
+        android:layout_height="86dp"
+        android:layoutDirection="locale"
+        android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/mainButton"
-            android:orientation="horizontal"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:padding="10dp"
-            android:layout_margin="13dp"
-            android:tint="@android:color/white"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle_selector"
-            android:gravity="center"
-            android:focusable="true"
-            android:nextFocusLeft="@id/mainButton"
-            android:nextFocusDown="@id/mainButton"
-            android:nextFocusUp="@id/mainButton">
+            android:layout_width="76dp"
+            android:focusable="false"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/logo_itg"
+                android:layout_width="50dp"
+                android:visibility="visible"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@drawable/itg_icon"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                app:tint="@android:color/white" />
 
             <ProgressBar
                 android:id="@+id/loadingIndicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:indeterminateTint="@android:color/white"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/closeIcon"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/close"
-                android:scaleType="centerInside"
                 android:visibility="gone"/>
 
             <ImageView
@@ -54,94 +56,36 @@
                 android:src="@drawable/ic_server_error"
                 android:scaleType="centerInside"
                 android:visibility="gone"/>
+        </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/timerView"
-                android:orientation="vertical"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:layout_marginBottom="2dp"
-                android:tint="@android:color/white"
+        <LinearLayout
+            android:focusable="false"
+            android:layout_marginLeft="0dp"
+            android:id="@+id/mainButton"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:tint="@android:color/white"
+            android:scaleType="centerInside"
+            android:gravity="center"
+            android:nextFocusLeft="@id/mainButton"
+            android:nextFocusDown="@id/mainButton"
+            android:nextFocusUp="@id/mainButton">
+
+            <ImageView
+                android:id="@+id/closeIcon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/close"
                 android:scaleType="centerInside"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:focusable="true"
-                android:layoutDirection="locale"
-                android:textDirection="locale"
-                android:visibility="visible">
-                <TextView
-                    android:id="@+id/timerText"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:fontFamily="monospace"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:text="45m"/>
-                <TextView
-                    android:id="@+id/timerText2"
-                    android:layout_width="match_parent"
-                    android:layout_height="14dp"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:fontFamily="monospace"
-                    android:textSize="9sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:text="SEC"/>
+                android:visibility="gone"/>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/pointsView"
-                android:orientation="vertical"
-                android:layout_width="50dp"
-                android:layout_height="44dp"
-                android:tint="@android:color/white"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:focusable="true"
-                android:layoutDirection="locale"
-                android:textDirection="locale"
-                android:visibility="gone">
-                <TextView
-                    android:id="@+id/totalText"
-                    android:layout_width="match_parent"
-                    android:layout_height="14dp"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/yellowITG"
-                    android:text="@string/total_points_short"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal">
-                    <TextView
-                        android:id="@+id/pointsText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="14dp"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/yellowITG"
-                        android:text="3200,5"/>
-                <TextView
-                    android:id="@+id/ptsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="14dp"
-                    android:textAlignment="center"
-                    android:layout_marginStart="1dp"
-                    android:gravity="center"
-                    android:textSize="6sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/yellowITG"
-                    android:text="@string/points_short"/>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
         <FrameLayout
@@ -150,67 +94,84 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:id="@+id/questionContainer"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="4dp"
                 android:layout_marginLeft="4dp"
                 android:layoutDirection="locale"
-                android:textDirection="locale"
-                android:gravity="center"
-                android:visibility="visible">
+                android:gravity="center_vertical">
                 <TextView
                     android:id="@+id/tvQuestion"
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
-                    android:layout_marginLeft="4dp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_gravity="center"
                     android:layout_marginRight="4dp"
-                    android:layout_marginTop="2dp"
-                    android:textAlignment="textStart"
-                    android:textSize="15sp"
+                    android:paddingBottom="3dp"
+                    android:textAlignment="gravity"
+                    android:lineSpacingExtra="-3sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
-                    android:maxLines="1"
-                    android:text="question"/>
+                    android:maxLines="2"
+                    android:text="מה יהיה יה יהיה יה הפרש
+הנקודות בסיום?"
+                    android:fontFamily="@font/titillium"/>
 
                 <LinearLayout
-                    android:id="@+id/container"
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:gravity="fill_horizontal"
-                    android:layout_height="38dp"
-                    android:paddingBottom="6dp">
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:focusable="false"
+                        android:nextFocusLeft="@id/container"
+                        android:id="@+id/container"
+                        android:minWidth="130dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_width="130dp"
+                        android:gravity="center_vertical|left"
+                        android:layout_height="60dp">
+                    </LinearLayout>
+
+                    <HorizontalScrollView
+                        android:id="@+id/scroller"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:visibility="gone">
+                        <LinearLayout
+                            android:id="@+id/scrollContainer"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:gravity="fill_horizontal|center_vertical"
+                            android:layout_height="match_parent" />
+                    </HorizontalScrollView>
+
                     <TextView
                         android:id="@+id/tvResult"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38dp"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:paddingTop="0dp"
-                        android:textAlignment="textStart"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/yellowITG"
+                        android:layout_marginRight="20dp"
+                        android:paddingTop="3dp"
+                        android:textAlignment="gravity"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
                         android:maxLines="2"
                         android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
                         android:text="Answer result"
-                        android:visibility="gone"/>
+                        android:visibility="gone"
+                        android:fontFamily="@font/titillium"/>
+
                 </LinearLayout>
 
-                <HorizontalScrollView
-                    android:id="@+id/scroller"
-                    android:layout_width="match_parent"
-                    android:layout_height="38dp"
-                    android:visibility="gone">
-                    <LinearLayout
-                        android:id="@+id/scrollContainer"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:gravity="fill_horizontal"
-                        android:layout_height="match_parent" />
-                </HorizontalScrollView>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/flipContainer"
@@ -219,82 +180,15 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="4dp"
                 android:layout_marginLeft="4dp"
-                android:background="@color/flipPromotionBackgroundColor"
+                android:background="@android:color/black"
                 android:visibility="gone"
                 android:gravity="center">
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/errorContainer"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="4dp"
-                android:layout_marginLeft="4dp"
-                android:visibility="gone"
-                android:gravity="center_vertical">
-                <TextView
-                    android:id="@+id/tvError"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:textAlignment="textStart"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/yellowITG"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/error_answer" />
-            </LinearLayout>
+            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+
         </FrameLayout>
 
-        <LinearLayout
-            android:id="@+id/extraInfoContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-            <TextView
-                android:id="@+id/tvCredits"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:text="120"/>
-            <TextView
-                android:id="@+id/tvExPoints"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:text="5040"/>
+        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"/>
 
-            <TextView
-                android:id="@+id/tvLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:text="6"/>
-            <Button
-                android:id="@+id/userAreaButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@android:color/white"
-                android:text="User Area" />
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/smallCloseButton"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:padding="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/close"
-            android:tint="@android:color/white"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle_focus_selector"
-            android:focusable="true"
-            android:layout_gravity="top"/>
     </LinearLayout>
 </LinearLayout>

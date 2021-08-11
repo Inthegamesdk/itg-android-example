@@ -3,11 +3,9 @@ package com.syncedapps.inthegametvexample
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import com.syncedapps.inthegametv.ITGPollAnswerView
-import com.syncedapps.inthegametv.ITGPollView
-import com.syncedapps.inthegametv.PollAnswer
+import com.syncedapps.inthegametv.interaction.ITGPollAnswerView
+import com.syncedapps.inthegametv.interaction.ITGPollView
 import com.syncedapps.inthegametvexample.CustomViews.CustomPollAnswerView
-import kotlinx.android.synthetic.main.view_poll_answer_custom.view.*
 import kotlinx.android.synthetic.main.view_poll_custom.view.*
 
 class CustomPollView: ITGPollView {
@@ -39,10 +37,6 @@ class CustomPollView: ITGPollView {
     override fun initialFocusView(didAnswer: Boolean): View {
         //select the preferred view to get focus when the view appears
         //(this is an example implementation, if you remove the override you'll use the SDK default)
-        if (didAnswer) {
-            return super.initialFocusView(didAnswer)
-        } else {
-            return getAnswerViews().randomOrNull() ?: smallCloseButton
-        }
+        return super.initialFocusView(didAnswer)
     }
 }

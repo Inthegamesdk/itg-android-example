@@ -3,8 +3,8 @@ package com.syncedapps.inthegametvexample.CustomViews
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import com.syncedapps.inthegametv.ITGTriviaAnswerView
-import com.syncedapps.inthegametv.ITGTriviaView
+import com.syncedapps.inthegametv.interaction.ITGTriviaAnswerView
+import com.syncedapps.inthegametv.interaction.ITGTriviaView
 import com.syncedapps.inthegametvexample.R
 
 class CustomTriviaView: ITGTriviaView {

@@ -3,8 +3,8 @@ package com.syncedapps.inthegametvexample.CustomViews
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import com.syncedapps.inthegametv.ITGRatingAnswerView
-import com.syncedapps.inthegametv.ITGRatingView
+import com.syncedapps.inthegametv.interaction.ITGRatingAnswerView
+import com.syncedapps.inthegametv.interaction.ITGRatingView
 import com.syncedapps.inthegametvexample.R
 
 class CustomRatingView: ITGRatingView {
