@@ -112,6 +112,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onStop() {
         super.onStop()
+        mOverlay?.shutdown()
         if (Util.SDK_INT > 23) {
             releasePlayer()
         }

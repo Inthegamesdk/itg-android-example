@@ -5,7 +5,7 @@
     <string name="button_got_it">GOT IT!</string>
     <string name="button_next">NEXT</string>
     <string name="close_label">Close</string>
-    <string name="discount_off">+%1$d off</string>
+    <string name="discount_off">+%1$d\%% off</string>
     <string name="error_answer">קרתה טעות והשאלה נאבדה במרחבי הרשת. נסה שוב בפעם הבאה</string>
     <string name="error_generic">An unexpected error occurred.\nPlease try again next time.</string>
     <string name="level_label">Level</string>

@@ -22,18 +22,19 @@
             android:layout_width="112dp"
             android:focusable="false"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:layout_marginTop="11dp"
+            android:gravity="center"
+            android:layout_marginBottom="2dp">
 
             <ImageView
                 android:id="@+id/ivProduct"
                 android:layout_width="96dp"
                 android:visibility="visible"
-                android:layout_height="68dp"
+                android:layout_height="66dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:background="@drawable/itg_icon"
+                android:src="@drawable/itg_icon"
                 android:focusable="false"
                 android:scaleType="fitXY" />
 
@@ -41,7 +42,7 @@
                 android:id="@+id/errorIcon"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginBottom="1dp"
                 android:src="@drawable/ic_server_error"
                 android:scaleType="centerInside"
                 android:visibility="gone"/>
@@ -99,7 +100,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="112dp"
+                    android:layout_width="122dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center">
@@ -109,6 +110,8 @@
                         android:layout_height="30dp"
                         android:background="@drawable/button_answer_selector"
                         android:text="BUY"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:textSize="19dp"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -178,8 +181,9 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
                         android:textSize="21dp"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:imeOptions="actionNext"
+                        android:privateImeOptions="horizontalAlignment=right"
                         android:nextFocusForward="@+id/nextButton"
                         android:fontFamily="@font/titillium"
                         style="@style/EditTextTheme"/>
