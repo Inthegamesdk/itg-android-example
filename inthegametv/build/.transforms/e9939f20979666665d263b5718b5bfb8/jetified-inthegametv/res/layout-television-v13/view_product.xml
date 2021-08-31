@@ -36,7 +36,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="fitXY" />
+                android:scaleType="fitCenter" />
 
             <ImageView
                 android:id="@+id/errorIcon"
@@ -112,7 +112,7 @@
                         android:text="BUY"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
-                        android:textSize="19dp"
+                        android:textSize="18dp"
                         android:textStyle="bold"
                         android:gravity="center"
                         android:textColor="@android:color/white"
@@ -195,7 +195,7 @@
                     android:layout_height="30dp"
                     android:background="@drawable/button_answer_selector"
                     android:text="@string/button_next"
-                    android:textSize="19dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textColor="@android:color/white"
@@ -230,7 +230,7 @@
                     android:layout_height="30dp"
                     android:background="@drawable/button_answer_selector"
                     android:text="@string/button_got_it"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textColor="@android:color/white"
