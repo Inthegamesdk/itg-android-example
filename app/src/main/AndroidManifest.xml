@@ -42,7 +42,8 @@
         </activity>
 
         <activity android:name=".DetailsActivity" />
-        <activity android:name=".PlaybackActivity" />
+        <activity android:name=".PlaybackActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".BrowseErrorActivity" />
         <activity android:name=".PlaybackPhoneActivity" />
     </application>
