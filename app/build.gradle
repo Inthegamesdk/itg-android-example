@@ -10,8 +10,8 @@ android {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 47
-        versionName "1.4.3"
+        versionCode 48
+        versionName "1.4.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,12 +46,11 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation ('io.socket:socket.io-client:1.0.1') {
-        exclude group: 'org.json', module: 'json'
-    }
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.4.0'
+
+    implementation 'com.pusher:pusher-java-client:2.2.6'
 
     implementation project(':inthegametv')
 }

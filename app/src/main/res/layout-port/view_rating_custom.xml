@@ -234,24 +234,21 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/flipContainer"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:background="@android:color/black"
-                    android:visibility="gone"
-                    android:gravity="center">
-                </LinearLayout>
-
-
-                <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
-
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/flipContainer"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:background="@android:color/black"
+                android:visibility="gone"
+                android:gravity="center">
+            </LinearLayout>
+
+            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
 
         </FrameLayout>
 

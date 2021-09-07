@@ -115,7 +115,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_marginLeft="2dp"
-                android:background="#00000000"
+                android:background="@android:color/black"
                 android:visibility="gone"
                 android:gravity="center"
                 android:focusable="false"

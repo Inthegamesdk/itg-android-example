@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout-port/view_notice_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-port/view_poll_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-port/view_rating_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-television/view_notice_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-television/view_poll_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-television/view_rating_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_notice_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_poll_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_rating_custom.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
