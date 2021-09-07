@@ -19,9 +19,9 @@ Add the following imports (if missing) to your app's build.gradle:
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation ('io.socket:socket.io-client:1.0.1') {
-        exclude group: 'org.json', module: 'json'
-    }
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.pusher:pusher-java-client:2.2.6'
 ```
 
 ## Usage
