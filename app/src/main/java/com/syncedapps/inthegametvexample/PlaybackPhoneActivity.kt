@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.MediaController
 import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
+import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
 import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
@@ -50,9 +51,12 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     }
 
     fun addOverlay() {
+        //specify the environment - with custom values if needed
+        val environment = ITGEnvironment.testDefault
+
         val overlay = ITGOverlayView(this)
         //load your channel to start up the ITG system
-        overlay.load("ORLvsNYCFC", "orlandofcchannel")
+        overlay.load("ORLvsNYCFC", "orlandofcchannel", environment)
         overlay.listener = this
 
         // enable the layout delegate if you wish to set custom layouts

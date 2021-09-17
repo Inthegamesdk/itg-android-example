@@ -28,6 +28,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
+import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
 import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
@@ -61,14 +62,18 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(resources.getColor(R.color.black))
 
+        //specify the environment - with custom values if needed
+        val environment = ITGEnvironment.testDefault
+
         //create the overlay
         val overlay = ITGOverlayView(context)
         //load your channel to start up the ITG system
-        overlay.load("ORLvsNYCFC", "orlandofcchannel")
+        overlay.load("ORLvsNYCFC", "orlandofcchannel", environment)
         overlay.listener = this
 
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
+
         // you can adjust the spacing between the content and bottom of the screen
         overlay.setBottomPaddingDp(0)
         // use this optional variable to set the animation type
@@ -76,8 +81,15 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
         // use this variable if you want to hide the win notifications
 //        overlay.showNotices = false
+
         // use this if you want notifications to display on the bottom area like regular activities
 //        overlay.showNoticeAsActivity = true
+
+        //it's possible to customize the auto-close time after answering
+//        overlay.defaultAutoCloseTime = 10
+
+        //optional delay before showing injected activities
+//        overlay.injectionDelay = 5
 
         //add the overlay to your view hierarchy
         (view as ViewGroup).addView(overlay)
