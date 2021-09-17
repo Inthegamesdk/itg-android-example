@@ -35,8 +35,9 @@ private var mOverlay: ITGOverlayView? = null
 
 And configure it on the fragment's `onViewCreated`:
 ```
+val environment = ITGEnvironment.testDefault
 val overlay = ITGOverlayView(context)
-overlay.load("<your_channel_id>", "<your_broadcaster_name>")
+overlay.load("<your_channel_id>", "<your_broadcaster_name>", environment)
 overlay.listener = this
 (view as ViewGroup).addView(overlay)
 mOverlay = overlay
@@ -83,6 +84,18 @@ overlay.closeCurrentInteraction()
        
 If you want to connect ITG content with your user's account, there are variables in the `load()` method where you can specify your user's ID and display name. The variables are called `userBroadcasterForeignID` and `userInitialName`.
 
+## Custom Environments
+
+If you are provided with custom environment settings, please specify them before loading the overlay:
+```
+val environment = ITGEnvironment(
+    apiBaseURL = "xxxxx",
+    imageBaseURL = "xxxxx",
+    pusherKey = "xxxxx",
+    pusherCluster = "xxxxx",
+    envName = "xxxxx"
+)
+```
 
 ## Optional Customization
 
