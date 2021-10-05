@@ -11,6 +11,7 @@
     android:gravity="bottom"
     android:background="@android:color/transparent">
     <LinearLayout
+        android:id="@+id/activityContainer"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="64dp"
@@ -33,7 +34,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:background="@drawable/itg_icon"
+                android:src="@drawable/itg_icon"
                 android:focusable="false"
                 android:scaleType="centerInside"
                 app:tint="@android:color/white" />

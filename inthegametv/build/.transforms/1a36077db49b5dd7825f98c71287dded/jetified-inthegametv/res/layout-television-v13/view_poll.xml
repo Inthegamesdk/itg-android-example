@@ -11,6 +11,7 @@
     android:gravity="bottom"
     android:background="@android:color/transparent">
     <LinearLayout
+        android:id="@+id/activityContainer"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
@@ -32,7 +33,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:background="@drawable/itg_icon"
+                android:src="@drawable/itg_icon"
                 android:focusable="false"
                 android:scaleType="centerInside"
                 app:tint="@android:color/white" />
@@ -83,16 +84,16 @@
                     tools:text="וששששששששששששש" />
 
                 <LinearLayout
-                    android:focusable="false"
-                    android:layout_marginLeft="20dp"
-                    android:layout_gravity="center"
                     android:id="@+id/container"
-                    android:nextFocusLeft="@id/container"
-                    android:orientation="horizontal"
-                    android:layout_width="0dp"
+                    android:layout_width="483dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
                     android:layout_weight="1"
+                    android:focusable="false"
                     android:gravity="center"
-                    android:layout_height="match_parent">
+                    android:nextFocusLeft="@id/container"
+                    android:orientation="horizontal">
 
                 </LinearLayout>
                 <HorizontalScrollView

@@ -1854,6 +1854,7 @@ int id action_mode_bar_stub 0x0
 int id action_mode_close_button 0x0
 int id action_text 0x0
 int id actions 0x0
+int id activityContainer 0x0
 int id activity_chooser_view_content 0x0
 int id add 0x0
 int id alertTitle 0x0

@@ -1855,6 +1855,7 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_text
 id actions
+id activityContainer
 id activity_chooser_view_content
 id add
 id alertTitle
