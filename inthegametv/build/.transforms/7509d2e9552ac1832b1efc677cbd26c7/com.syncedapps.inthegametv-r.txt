@@ -2437,6 +2437,11 @@ string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
 string close_label
+string close_options_day
+string close_options_forever
+string close_options_next
+string close_options_title
+string close_options_week
 string discount_off
 string error_answer
 string error_generic

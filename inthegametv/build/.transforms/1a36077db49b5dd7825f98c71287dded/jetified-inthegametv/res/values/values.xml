@@ -19,6 +19,11 @@
     <string name="button_got_it">GOT IT!</string>
     <string name="button_next">NEXT</string>
     <string name="close_label">Close</string>
+    <string name="close_options_day">One Day</string>
+    <string name="close_options_forever">Forever</string>
+    <string name="close_options_next">This Question</string>
+    <string name="close_options_title">Close Interaction</string>
+    <string name="close_options_week">One Week</string>
     <string name="discount_off">%1$d\%% off</string>
     <string name="error_answer">An error occurred and your answer was lost on the web.\nTry again next time.</string>
     <string name="error_generic">An unexpected error occurred.\nPlease try again next time.</string>

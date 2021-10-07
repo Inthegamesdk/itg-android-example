@@ -11,10 +11,7 @@ import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
-import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
-import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
-import com.syncedapps.inthegametvexample.CustomViews.CustomTriviaView
-import com.syncedapps.inthegametvexample.CustomViews.CustomWikiView
+import com.syncedapps.inthegametvexample.CustomViews.*
 import kotlinx.android.synthetic.main.activity_phone_playback.*
 import java.net.URI
 
@@ -131,5 +128,9 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
     override fun customProductView(): ITGProductView? {
         return CustomProductView(this)
+    }
+
+    override fun customCloseOptionsView(): ITGCloseOptionsView? {
+        return CustomCloseOptionsView(this)
     }
 }

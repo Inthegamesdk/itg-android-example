@@ -30,10 +30,7 @@ import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
-import com.syncedapps.inthegametvexample.CustomViews.CustomNoticeView
-import com.syncedapps.inthegametvexample.CustomViews.CustomRatingView
-import com.syncedapps.inthegametvexample.CustomViews.CustomTriviaView
-import com.syncedapps.inthegametvexample.CustomViews.CustomWikiView
+import com.syncedapps.inthegametvexample.CustomViews.*
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -55,7 +52,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         super.onCreate(savedInstanceState)
         mMovie =
             activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -270,5 +266,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun customProductView(): ITGProductView? {
         return CustomProductView(context)
+    }
+
+    override fun customCloseOptionsView(): ITGCloseOptionsView? {
+        return CustomCloseOptionsView(context)
     }
 }
