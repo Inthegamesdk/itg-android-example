@@ -23,8 +23,9 @@
             android:stateListAnimator="@null" />
 
         <LinearLayout
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:minWidth="40dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -37,8 +38,8 @@
                 android:scaleType="fitXY" />
 
             <TextView
-                android:paddingStart="5dp"
-                android:paddingEnd="2dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:gravity="center_vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:textAlignment="center"
         android:textStyle="bold"
         android:text="35"

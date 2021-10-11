@@ -28,6 +28,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
+import com.syncedapps.inthegametv.network.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.*
@@ -212,6 +213,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun overlayClickedUserArea() {
         Log.d("ITG", "Clicked user area")
+    }
+
+    override fun overlayClosedByUser(type: CloseOption, timestamp: Long) {
+        //called when user closes the ITG service for a period of time
     }
 
     private fun convertDpToPixel(context: Context, dp: Int): Int {

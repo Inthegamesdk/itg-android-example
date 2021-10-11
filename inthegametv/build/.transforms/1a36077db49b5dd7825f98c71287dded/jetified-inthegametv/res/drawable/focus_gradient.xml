@@ -4,7 +4,7 @@
     <corners android:radius="6dp"/>
     <gradient
         android:angle="0"
-        android:startColor="@color/yellowITG"
+        android:startColor="@color/buttonYellow"
         android:endColor="@android:color/transparent"
         android:type="linear"/>
 </shape>

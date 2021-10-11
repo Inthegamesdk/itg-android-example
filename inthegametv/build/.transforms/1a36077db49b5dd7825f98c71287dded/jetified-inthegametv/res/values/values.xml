@@ -7,6 +7,7 @@
     <color name="buttonAnswerRedFocus">#F35555</color>
     <color name="buttonAnswerYellow">#BDC23F</color>
     <color name="buttonAnswerYellowFocus">#DDE26F</color>
+    <color name="buttonYellow">#f7c846</color>
     <color name="correct">#1CAA08</color>
     <color name="errorRed">#ff0d0d</color>
     <color name="flipPromotionBackgroundColor">#A0000000</color>

@@ -1011,6 +1011,7 @@ int color buttonAnswerRed 0x0
 int color buttonAnswerRedFocus 0x0
 int color buttonAnswerYellow 0x0
 int color buttonAnswerYellowFocus 0x0
+int color buttonYellow 0x0
 int color button_material_dark 0x0
 int color button_material_light 0x0
 int color cardview_dark_background 0x0

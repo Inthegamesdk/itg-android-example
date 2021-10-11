@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.MediaController
 import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
+import com.syncedapps.inthegametv.network.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.*
@@ -101,6 +102,9 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     }
 
     override fun overlayClickedUserArea() {
+    }
+
+    override fun overlayClosedByUser(type: CloseOption, timestamp: Long) {
     }
 
     //the layout methods are optional
