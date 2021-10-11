@@ -76,6 +76,11 @@ There is an optional button to show external content on custom interfaces, if yo
 fun overlayClickedUserArea()
 ```
 
+If the user decides to close the ITG service for a period of time, this listener method will notify you:
+```
+fun overlayClosedByUser(type: CloseOption, timestamp: Long)
+```
+
 If, during runtime, you want to check if an activity is showing, or close the current activity, these methods are available:
 ```
 overlay.isDisplayingInteraction()
@@ -83,6 +88,12 @@ overlay.closeCurrentInteraction()
 ```
        
 If you want to connect ITG content with your user's account, there are variables in the `load()` method where you can specify your user's ID and display name. The variables are called `userBroadcasterForeignID` and `userInitialName`.
+
+To close the ITG service for a period of time (from your app's settings, for example), you can use:
+```
+val settings = ITGSettings(context)
+settings.userClosedService(CloseOption.DAY, System.currentTimeMillis())
+```
 
 ## Custom Environments
 
