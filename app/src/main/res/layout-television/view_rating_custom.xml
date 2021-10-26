@@ -219,20 +219,38 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:visibility="gone">
+                        <ImageView
+                            android:id="@+id/resultIcon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/star_fill"
+                            android:layout_marginEnd="10dp"/>
                         <TextView
                             android:id="@+id/tvAverage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0.5"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginEnd="6dp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/yellowITG"
                             android:textSize="23sp"/>
-                        <LinearLayout
-                            android:id="@+id/starContainer"
+                        <TextView
+                            android:id="@+id/tvOutOf"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="2dp"/>
+                            android:text="out of"
+                            android:layout_marginEnd="6dp"
+                            android:textColor="@android:color/white"
+                            android:textSize="21sp"/>
+                        <TextView
+                            android:id="@+id/tvMax"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textStyle="bold"
+                            android:textColor="@color/yellowITG"
+                            android:textSize="23sp"/>
 
                     </LinearLayout>
                 </LinearLayout>

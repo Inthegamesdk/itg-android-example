@@ -220,20 +220,38 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:visibility="gone">
+                        <ImageView
+                            android:id="@+id/resultIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/star_fill"
+                            android:layout_marginEnd="7dp"/>
                         <TextView
                             android:id="@+id/tvAverage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0.5"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginEnd="4dp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:textSize="20sp"/>
-                        <LinearLayout
-                            android:id="@+id/starContainer"
+                            android:textColor="@color/yellowITG"
+                            android:textSize="17sp"/>
+                        <TextView
+                            android:id="@+id/tvOutOf"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="2dp"/>
+                            android:text="out of"
+                            android:layout_marginEnd="4dp"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"/>
+                        <TextView
+                            android:id="@+id/tvMax"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textStyle="bold"
+                            android:textColor="@color/yellowITG"
+                            android:textSize="17sp"/>
 
                     </LinearLayout>
                 </LinearLayout>

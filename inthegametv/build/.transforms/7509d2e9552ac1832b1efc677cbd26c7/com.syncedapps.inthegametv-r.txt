@@ -2086,6 +2086,7 @@ id progress_horizontal
 id questionContainer
 id radio
 id rectangles
+id resultIcon
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2132,7 +2133,6 @@ id src_atop
 id src_in
 id src_over
 id standard
-id starContainer
 id start
 id startHorizontal
 id startToEnd
@@ -2209,7 +2209,9 @@ id tvInfo
 id tvInvalid
 id tvLevel
 id tvLevelLabel
+id tvMax
 id tvName
+id tvOutOf
 id tvPoints
 id tvPrice
 id tvQuestion
