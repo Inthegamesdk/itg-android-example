@@ -22,6 +22,7 @@ Add the following imports (if missing) to your app's build.gradle:
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.pusher:pusher-java-client:2.2.6'
+    implementation 'com.google.zxing:core:3.4.0'
 ```
 
 ## Usage
