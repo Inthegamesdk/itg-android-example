@@ -8,10 +8,16 @@
     <color name="buttonAnswerYellow">#BDC23F</color>
     <color name="buttonAnswerYellowFocus">#DDE26F</color>
     <color name="buttonYellow">#f7c846</color>
+    <color name="cellcomBorder">#7C014C</color>
+    <color name="cellcomButton">#D60585</color>
     <color name="correct">#1CAA08</color>
     <color name="errorRed">#ff0d0d</color>
+    <color name="fieldDark">#232323</color>
     <color name="flipPromotionBackgroundColor">#A0000000</color>
     <color name="pollBackgroundColor">#A0000000</color>
+    <color name="shadow">#40333333</color>
+    <color name="switchOff">#888888</color>
+    <color name="switchTrack">#CCCCCC</color>
     <color name="transparentRed">#90FF2211</color>
     <color name="wrong">#E90B0A</color>
     <color name="yellowITG">#ffc709</color>

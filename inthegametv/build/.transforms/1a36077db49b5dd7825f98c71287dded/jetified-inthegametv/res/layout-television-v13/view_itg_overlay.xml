@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="0dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/noticeContainer"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:gravity="top|right"
-        android:layout_height="140dp"/>
-    <LinearLayout
-        android:id="@+id/container"
+        android:id="@+id/contentContainer"
         android:orientation="vertical"
-        android:layout_gravity="right|bottom"
-        android:gravity="right|bottom"
-        android:paddingBottom="0dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:paddingBottom="0dp">
+
+        <LinearLayout
+            android:id="@+id/noticeContainer"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="top|right"
+            android:layout_height="140dp"/>
+        <LinearLayout
+            android:id="@+id/container"
+            android:orientation="vertical"
+            android:layout_gravity="right|bottom"
+            android:gravity="right|bottom"
+            android:paddingBottom="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/popupContainer"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shadow"
+        android:visibility="gone"/>
+</FrameLayout>

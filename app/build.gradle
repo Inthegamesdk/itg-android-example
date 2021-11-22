@@ -10,8 +10,8 @@ android {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 55
-        versionName "1.6.3"
+        versionCode 56
+        versionName "1.6.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,6 +51,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
     implementation 'com.pusher:pusher-java-client:2.2.6'
+
+    //for qr codes
+    implementation 'com.google.zxing:core:3.4.0'
 
     implementation project(':inthegametv')
 }
