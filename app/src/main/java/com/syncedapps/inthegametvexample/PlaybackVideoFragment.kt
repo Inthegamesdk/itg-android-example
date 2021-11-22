@@ -63,7 +63,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         val environment = ITGEnvironment.testDefault
 
         //create the overlay
-        val overlay = ITGOverlayView(context)
+        val overlay = ITGOverlayView(requireContext())
         //load your channel to start up the ITG system
         overlay.load("ORLvsNYCFC", "orlandofcchannel", environment)
         overlay.listener = this
