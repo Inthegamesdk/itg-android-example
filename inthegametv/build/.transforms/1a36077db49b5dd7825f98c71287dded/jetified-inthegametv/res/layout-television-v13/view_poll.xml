@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:focusable="false"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -93,7 +93,8 @@
                     android:focusable="false"
                     android:gravity="center"
                     android:nextFocusLeft="@id/container"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="visible">
 
                 </LinearLayout>
                 <HorizontalScrollView
@@ -108,6 +109,162 @@
                         android:gravity="fill_horizontal"
                         android:layout_height="match_parent" />
                 </HorizontalScrollView>
+
+                <LinearLayout
+                    android:id="@+id/wagerContainer"
+                    android:layout_width="483dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="24dp"
+                    android:layout_weight="1"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:nextFocusLeft="@id/container"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/ivWagerIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="2dp"
+                        android:layout_marginStart="16dp"
+                        android:scaleType="fitXY" />
+
+                    <TextView
+                        android:id="@+id/tvWagerAnswer"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:layout_width="wrap_content"
+                        android:maxWidth="180dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:maxLength="18"
+                        android:text="Test"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/titillium" />
+
+                    <Button
+                        android:id="@+id/wagerValueButton"
+                        android:layout_width="80dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/button_answer_selector"
+                        android:focusable="true"
+                        android:text="10/25"
+                        android:gravity="center"
+                        android:stateListAnimator="@null"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/titillium"
+                        android:nextFocusDown="@id/wagerValueButton"
+                        android:nextFocusUp="@id/wagerValueButton" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_up"
+                            android:layout_marginBottom="4dp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_down"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="1sp"
+                        android:layout_height="match_parent"
+                        android:background="@color/buttonYellow"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="8dp"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp">
+                        <Button
+                            android:id="@+id/wagerSubmitButton"
+                            android:layout_width="76dp"
+                            android:nextFocusUp="@id/wagerSubmitButton"
+                            android:layout_height="26dp"
+                            android:background="@drawable/button_answer_selector"
+                            android:focusable="true"
+                            android:text="Submit"
+                            android:paddingStart="8dp"
+                            android:gravity="center|start"
+                            android:stateListAnimator="@null"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/titillium" />
+                        <Button
+                            android:id="@+id/wagerBackButton"
+                            android:nextFocusDown="@id/wagerBackButton"
+                            android:layout_width="76dp"
+                            android:layout_height="26dp"
+                            android:background="@drawable/button_answer_selector"
+                            android:focusable="true"
+                            android:text="Back"
+                            android:paddingStart="8dp"
+                            android:gravity="center|start"
+                            android:stateListAnimator="@null"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/titillium" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/wagerResultContainer"
+                    android:layout_width="483dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="24dp"
+                    android:layout_weight="1"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:nextFocusLeft="@id/container"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/ivWagerResultIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="2dp"
+                        android:layout_marginStart="16dp"
+                        android:scaleType="fitXY" />
+                    <TextView
+                        android:id="@+id/tvWagerCompleted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:focusable="false"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="center_vertical"
+                        android:lineSpacingExtra="-3sp"
+                        android:maxLines="2"
+                        android:textAlignment="gravity"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/titillium"
+                        tools:text="Wager 30 on Answer 1 Potential Win 60" />
+
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/flipContainer"

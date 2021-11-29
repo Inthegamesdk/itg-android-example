@@ -1698,6 +1698,8 @@ int drawable abc_textfield_search_default_mtrl_alpha 0x0
 int drawable abc_textfield_search_material 0x0
 int drawable abc_vector_test 0x0
 int drawable activity_background 0x0
+int drawable arrow_down 0x0
+int drawable arrow_up 0x0
 int drawable avd_hide_password 0x0
 int drawable avd_show_password 0x0
 int drawable btn_checkbox_checked_mtrl 0x0
@@ -2001,6 +2003,8 @@ int id itg_bottom_buttons 0x0
 int id ivCheckmark 0x0
 int id ivIcon 0x0
 int id ivProduct 0x0
+int id ivWagerIcon 0x0
+int id ivWagerResultIcon 0x0
 int id jumpToEnd 0x0
 int id jumpToStart 0x0
 int id labeled 0x0
@@ -2261,6 +2265,8 @@ int id tvStatTotal 0x0
 int id tvStatUser 0x0
 int id tvTitle 0x0
 int id tvTotalPoints 0x0
+int id tvWagerAnswer 0x0
+int id tvWagerCompleted 0x0
 int id unchecked 0x0
 int id uniform 0x0
 int id unlabeled 0x0
@@ -2269,6 +2275,11 @@ int id userAreaButton 0x0
 int id user_points 0x0
 int id view_offset_helper 0x0
 int id visible 0x0
+int id wagerBackButton 0x0
+int id wagerContainer 0x0
+int id wagerResultContainer 0x0
+int id wagerSubmitButton 0x0
+int id wagerValueButton 0x0
 int id webView 0x0
 int id withinBounds 0x0
 int id wrap 0x0
@@ -2558,11 +2569,13 @@ int string notice_correct_points 0x0
 int string notice_total_score 0x0
 int string notice_wrong 0x0
 int string notice_wrong_details 0x0
+int string notice_wrong_details_wager 0x0
 int string password_toggle_content_description 0x0
 int string path_password_eye 0x0
 int string path_password_eye_mask_strike_through 0x0
 int string path_password_eye_mask_visible 0x0
 int string path_password_strike_through 0x0
+int string phone_error 0x0
 int string phone_hint 0x0
 int string phone_invalid 0x0
 int string points_label 0x0

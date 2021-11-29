@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.leanback.app.VideoSupportFragment
@@ -174,6 +175,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     // (to dismiss interactions)
     fun handleBackPressIfNeeded() : Boolean {
         return mOverlay?.handleBackPressIfNeeded() ?: false
+    }
+
+    fun receivedKeyEvent(event: KeyEvent) {
+        mOverlay?.receivedKeyEvent(event)
     }
 
     // overlay will request the video to play/pause for some interactions

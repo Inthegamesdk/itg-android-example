@@ -25,4 +25,13 @@ class PlaybackActivity : FragmentActivity() {
             super.onBackPressed()
         }
     }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (event != null) {
+            val fragment =
+                supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
+            fragment?.receivedKeyEvent(event)
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 }

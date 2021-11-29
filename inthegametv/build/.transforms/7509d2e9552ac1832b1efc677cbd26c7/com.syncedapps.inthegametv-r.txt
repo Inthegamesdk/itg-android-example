@@ -1699,6 +1699,8 @@ drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable activity_background
+drawable arrow_down
+drawable arrow_up
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -2002,6 +2004,8 @@ id itg_bottom_buttons
 id ivCheckmark
 id ivIcon
 id ivProduct
+id ivWagerIcon
+id ivWagerResultIcon
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -2262,6 +2266,8 @@ id tvStatTotal
 id tvStatUser
 id tvTitle
 id tvTotalPoints
+id tvWagerAnswer
+id tvWagerCompleted
 id unchecked
 id uniform
 id unlabeled
@@ -2270,6 +2276,11 @@ id userAreaButton
 id user_points
 id view_offset_helper
 id visible
+id wagerBackButton
+id wagerContainer
+id wagerResultContainer
+id wagerSubmitButton
+id wagerValueButton
 id webView
 id withinBounds
 id wrap
@@ -2559,11 +2570,13 @@ string notice_correct_points
 string notice_total_score
 string notice_wrong
 string notice_wrong_details
+string notice_wrong_details_wager
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string phone_error
 string phone_hint
 string phone_invalid
 string points_label

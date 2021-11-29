@@ -20,6 +20,8 @@
     <string name="notice_total_score">סה"כ נקודות</string>
     <string name="notice_wrong">טעות</string>
     <string name="notice_wrong_details">"%2$s" ב "%1$s"ענית </string>
+    <string name="notice_wrong_details_wager">You lost "%1$s" pts for "%2$s" on "%3$s"</string>
+    <string name="phone_error">Could not send the SMS to this number</string>
     <string name="phone_hint">Phone number</string>
     <string name="phone_invalid">Invalid phone number</string>
     <string name="points_label">Points</string>
