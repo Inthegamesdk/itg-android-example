@@ -56,6 +56,11 @@ The method will return true if the overlay uses the event to close content. If f
 ```
 val usedEvent = mOverlay?.handleBackPressIfNeeded() == true
 ```
+For some custom controls we need you to pass key events to the overlay. If you plan to support wager predictions, use this method to pass each KeyEvent (from your activity's onKeyDown):
+```
+mOverlay?.receivedKeyEvent(event)
+```
+
 Some interactive content requires a pause in the video. To use this feature, override the ITGOverlayView's listener methods to detect when it requests these events.
 ```
 fun overlayRequestedPause()
