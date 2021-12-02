@@ -20,6 +20,7 @@
         <Button
             android:id="@+id/answerButton"
             android:nextFocusUp="@id/answerButton"
+            android:nextFocusDown="@id/answerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

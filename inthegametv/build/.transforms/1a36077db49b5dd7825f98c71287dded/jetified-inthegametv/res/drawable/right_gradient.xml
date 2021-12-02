@@ -8,8 +8,8 @@
         android:angle="0"
         android:centerX="0.6"
         android:startColor="@android:color/transparent"
-        android:centerColor="@color/cellcomButton"
-        android:endColor="@color/cellcomButton"
+        android:centerColor="@color/buttonYellow"
+        android:endColor="@color/buttonYellow"
         android:type="linear"/>
 
 </shape>

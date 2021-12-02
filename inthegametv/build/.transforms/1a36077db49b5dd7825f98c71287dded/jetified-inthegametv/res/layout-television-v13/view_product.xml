@@ -117,6 +117,9 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:textColor="@android:color/white"
+                        android:nextFocusUp="@id/buyButton"
+                        android:nextFocusDown="@id/buyButton"
+                        android:nextFocusLeft="@id/buyButton"
                         android:fontFamily="@font/titillium"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -160,7 +163,7 @@
                     android:layout_margin="12dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/errorRed"
-                    android:text="@string/phone_invalid"
+                    android:text="@string/product_phone_invalid"
                     android:textSize="15dp"
                     android:maxLines="2"
                     android:visibility="invisible"
@@ -174,7 +177,7 @@
                     android:layout_marginEnd="16dp"
                     app:hintTextColor="@android:color/white"
                     style="@style/EditTextTheme"
-                    android:hint="@string/phone_hint">
+                    android:hint="@string/product_phone_hint">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPhone"
@@ -185,6 +188,9 @@
                         android:inputType="number"
                         android:imeOptions="actionNext"
                         android:privateImeOptions="horizontalAlignment=right"
+                        android:nextFocusUp="@id/etPhone"
+                        android:nextFocusDown="@id/etPhone"
+                        android:nextFocusLeft="@id/etPhone"
                         android:nextFocusForward="@+id/nextButton"
                         android:fontFamily="@font/titillium"
                         style="@style/EditTextTheme"/>
@@ -199,6 +205,8 @@
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:nextFocusUp="@id/nextButton"
+                    android:nextFocusDown="@id/nextButton"
                     android:textColor="@android:color/white"
                     android:fontFamily="@font/titillium"/>
             </LinearLayout>
@@ -218,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:maxLines="2"
-                    android:text="@string/text_check_phone"
+                    android:text="@string/product_check_phone"
                     android:gravity="start"
                     android:textAlignment="gravity"
                     android:lineSpacingExtra="-3sp"
@@ -235,6 +243,9 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textColor="@android:color/white"
+                    android:nextFocusUp="@id/gotItButton"
+                    android:nextFocusDown="@id/gotItButton"
+                    android:nextFocusLeft="@id/gotItButton"
                     android:fontFamily="@font/titillium"/>
             </LinearLayout>
             <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>

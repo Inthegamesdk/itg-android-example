@@ -82,6 +82,7 @@
                         android:gravity="start"
                         android:textColor="@android:color/white"
                         android:text="test sdfsdafsd\ntest test test\nTEST"
+                        android:nextFocusLeft="@id/tvContent"
                         android:fontFamily="@font/titillium"/>
                 </LinearLayout>
             </ScrollView>

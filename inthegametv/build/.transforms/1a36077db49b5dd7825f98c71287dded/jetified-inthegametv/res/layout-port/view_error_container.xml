@@ -21,7 +21,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
-            android:text="@string/error_answer"
+            android:text="@string/error_error_content"
             android:textAlignment="gravity"
             android:textColor="@android:color/white"
             android:textSize="12sp"

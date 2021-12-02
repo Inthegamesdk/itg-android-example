@@ -18,7 +18,7 @@
         android:layout_marginVertical="36dp"
         android:layout_marginLeft="130dp"
         android:layoutDirection="rtl"
-        android:textDirection="rtl"
+        android:textDirection="inherit"
         android:gravity="right">
         <TextView
             android:id="@+id/tvTitle"
@@ -34,14 +34,23 @@
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="14dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:textColor="@android:color/white"
             android:textSize="12sp"/>
 
         <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+
+        <TextView
             android:id="@+id/tvPhone"
-            android:layout_width="200dp"
+            android:layout_width="240dp"
             android:layout_height="30dp"
             android:layout_marginBottom="2dp"
             android:paddingHorizontal="16dp"
@@ -63,15 +72,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:gravity="right"
-            android:text="@string/phone_invalid"
-            android:textColor="@color/cellcomButton"
+            android:text="@string/product_phone_invalid"
+            android:textColor="@color/buttonYellow"
             android:fontFamily="@font/titillium"
             android:textSize="15sp" />
 
         <LinearLayout
             android:id="@+id/saveContainer"
             android:orientation="horizontal"
-            android:layout_width="200dp"
+            android:layout_width="240dp"
             android:layout_height="30dp"
             android:layout_marginVertical="8dp"
             android:clickable="true"
@@ -80,11 +89,12 @@
             android:nextFocusDown="@id/buttonSend"
             android:nextFocusLeft="@id/saveContainer">
             <TextView
+                android:id="@+id/tvSavePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:paddingRight="16dp"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:gravity="right|center_vertical"
                 android:text="Save phone"
                 android:textColor="@android:color/white"
@@ -127,7 +137,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:indeterminateTint="@color/cellcomButton"
+                android:indeterminateTint="@color/buttonYellow"
                 android:visibility="gone"/>
             <Button
                 android:id="@+id/buttonSend"
@@ -223,9 +233,9 @@
                 android:id="@+id/padClear"
                 android:layout_width="45dp"
                 android:layout_height="match_parent"
-                android:src="@android:drawable/ic_input_delete"
-                android:padding="4dp"
-                android:scaleX="-1"
+                android:src="@drawable/delete"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
                 android:foregroundTint="@android:color/white"
                 android:background="@drawable/button_center_selector"
                 android:gravity="center"
@@ -324,7 +334,7 @@
                 android:layout_width="45dp"
                 android:layout_height="match_parent"
                 android:text="clr"
-                android:textSize="15dp"
+                android:textSize="11dp"
                 android:fontFamily="@font/titillium"
                 android:textColor="@android:color/white"
                 android:background="@drawable/button_center_selector"

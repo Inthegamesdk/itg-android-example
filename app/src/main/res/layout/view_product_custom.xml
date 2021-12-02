@@ -156,7 +156,7 @@
                     android:layout_margin="3dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/errorRed"
-                    android:text="@string/phone_invalid"
+                    android:text="@string/product_phone_invalid"
                     android:textSize="11dp"
                     android:maxLines="3"
                     android:visibility="invisible"
@@ -170,7 +170,7 @@
                     android:layout_marginEnd="6dp"
                     app:hintTextColor="@android:color/white"
                     style="@style/EditTextTheme"
-                    android:hint="@string/phone_hint">
+                    android:hint="@string/product_phone_hint">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPhone"
@@ -213,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:maxLines="2"
-                    android:text="@string/text_check_phone"
+                    android:text="@string/product_check_phone"
                     android:gravity="start"
                     android:textAlignment="gravity"
                     android:lineSpacingExtra="-3sp"

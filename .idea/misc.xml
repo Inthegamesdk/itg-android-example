@@ -3,19 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout-port/view_info_custom.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout-port/view_notice_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-port/view_poll_answer_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-port/view_poll_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-port/view_product_custom.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout-port/view_rating_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-port/view_trivia_answer_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-television/view_info_custom.xml" value="0.19797178130511464" />
         <entry key="app/src/main/res/layout-television/view_notice_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-television/view_poll_answer_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-television/view_poll_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-television/view_product_custom.xml" value="0.19797178130511464" />
         <entry key="app/src/main/res/layout-television/view_rating_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-television/view_trivia_answer_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_info_custom.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/view_notice_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_poll_answer_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_poll_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_product_custom.xml" value="0.19797178130511464" />
         <entry key="app/src/main/res/layout/view_rating_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_trivia_answer_custom.xml" value="0.1" />
       </map>

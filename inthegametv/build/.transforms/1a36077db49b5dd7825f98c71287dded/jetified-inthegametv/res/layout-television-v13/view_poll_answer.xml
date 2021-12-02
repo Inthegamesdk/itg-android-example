@@ -16,6 +16,7 @@
             android:id="@+id/answerButton"
             android:layout_width="match_parent"
             android:nextFocusUp="@id/answerButton"
+            android:nextFocusDown="@id/answerButton"
             android:layout_height="30dp"
             android:background="@drawable/button_answer_selector"
             android:focusable="true"
