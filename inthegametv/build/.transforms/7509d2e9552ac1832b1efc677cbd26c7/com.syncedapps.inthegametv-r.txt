@@ -1793,6 +1793,7 @@ drawable popup_background
 drawable popup_field_focused
 drawable popup_field_normal
 drawable popup_field_selector
+drawable popup_save_phone_selector
 drawable right_gradient
 drawable star_empty
 drawable star_fill
@@ -1885,6 +1886,8 @@ id animateToStart
 id answerButton
 id answerContainer
 id arc
+id arrowDown
+id arrowUp
 id asConfigured
 id async
 id auto
@@ -2161,6 +2164,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id separator
 id shortcut
 id sin
 id slide

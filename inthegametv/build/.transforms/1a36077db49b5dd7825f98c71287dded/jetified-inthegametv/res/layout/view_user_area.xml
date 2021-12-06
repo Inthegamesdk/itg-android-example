@@ -85,7 +85,7 @@
             android:layout_marginVertical="8dp"
             android:clickable="true"
             android:focusable="true"
-            android:background="@drawable/popup_field_selector"
+            android:background="@drawable/popup_save_phone_selector"
             android:nextFocusDown="@id/buttonSend"
             android:nextFocusLeft="@id/saveContainer">
             <TextView

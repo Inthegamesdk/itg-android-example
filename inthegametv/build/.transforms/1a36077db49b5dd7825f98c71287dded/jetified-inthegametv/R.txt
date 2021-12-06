@@ -1792,6 +1792,7 @@ int drawable popup_background 0x0
 int drawable popup_field_focused 0x0
 int drawable popup_field_normal 0x0
 int drawable popup_field_selector 0x0
+int drawable popup_save_phone_selector 0x0
 int drawable right_gradient 0x0
 int drawable star_empty 0x0
 int drawable star_fill 0x0
@@ -1884,6 +1885,8 @@ int id animateToStart 0x0
 int id answerButton 0x0
 int id answerContainer 0x0
 int id arc 0x0
+int id arrowDown 0x0
+int id arrowUp 0x0
 int id asConfigured 0x0
 int id async 0x0
 int id auto 0x0
@@ -2160,6 +2163,7 @@ int id search_voice_btn 0x0
 int id select_dialog_listview 0x0
 int id selected 0x0
 int id selection_type 0x0
+int id separator 0x0
 int id shortcut 0x0
 int id sin 0x0
 int id slide 0x0
