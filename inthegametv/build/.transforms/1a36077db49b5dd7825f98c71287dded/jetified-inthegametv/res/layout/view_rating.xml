@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layoutDirection="locale"
+        android:layoutDirection="ltr"
         android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
@@ -57,7 +57,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
@@ -71,7 +71,7 @@
                     android:gravity="center_vertical">
                     <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="130dp"
+                        android:layout_width="110dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
@@ -100,9 +100,9 @@
                                 android:id="@+id/tvTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="4dp"
+                                android:layout_marginBottom="0dp"
                                 android:maxLines="3"
-                                android:maxWidth="130dp"
+                                android:maxWidth="110dp"
                                 android:text="Question?"
                                 android:gravity="start"
                                 android:layout_gravity="start"
@@ -110,7 +110,7 @@
                                 android:textAlignment="gravity"
                                 android:lineSpacingExtra="-3sp"
                                 android:textColor="@android:color/white"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/titillium"
                                 />

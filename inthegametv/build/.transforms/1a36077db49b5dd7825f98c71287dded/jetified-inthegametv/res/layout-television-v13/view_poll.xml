@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="286dp"
-    android:layoutDirection="locale"
+    android:layoutDirection="ltr"
     android:layout_gravity="bottom"
     android:gravity="bottom"
     android:background="@android:color/transparent">
@@ -93,6 +93,7 @@
                     android:focusable="false"
                     android:gravity="center"
                     android:nextFocusLeft="@id/container"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
@@ -104,6 +105,7 @@
                     android:visibility="gone">
                     <LinearLayout
                         android:id="@+id/scrollContainer"
+                        android:layoutDirection="locale"
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:gravity="fill_horizontal"

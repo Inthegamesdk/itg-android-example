@@ -1,23 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="0dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/noticeContainer"
+        android:id="@+id/featuresContainer"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:gravity="top|right"
-        android:layout_height="60dp"/>
-    <LinearLayout
-        android:id="@+id/container"
-        android:orientation="vertical"
-        android:layout_gravity="right|bottom"
-        android:gravity="right|bottom"
+        android:layout_height="match_parent"
         android:paddingBottom="0dp"
+        android:layoutDirection="ltr">
+
+        <com.syncedapps.inthegametv.menu.ITGMenu
+            android:id="@+id/menu"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:visibility="invisible"/>
+        <com.syncedapps.inthegametv.menu.ITGSidebar
+            android:id="@+id/sidebar"
+            android:orientation="vertical"
+            android:layout_width="192dp"
+            android:layout_gravity="right"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/contentContainer"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:paddingBottom="0dp">
+
+        <LinearLayout
+            android:id="@+id/noticeContainer"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="top|right"
+            android:layout_height="60dp"/>
+        <LinearLayout
+            android:id="@+id/container"
+            android:orientation="vertical"
+            android:layout_gravity="right|bottom"
+            android:gravity="right|bottom"
+            android:paddingBottom="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/popupContainer"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shadow"
+        android:visibility="gone"/>
+</FrameLayout>

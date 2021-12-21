@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:focusable="true">
+    <LinearLayout
+        android:id="@+id/itemContainer"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="3dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/item_background">
+        <TextView
+            android:id="@+id/tvRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="14dp"
+            android:layout_marginHorizontal="6dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="30"
+            android:textSize="9dp"
+            android:fontFamily="@font/titilliumweb_semibold"
+            android:textColor="@android:color/white" />
+        <ImageView
+            android:id="@+id/iconView"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_user"/>
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:maxLines="1"
+            android:text="John Doe"
+            android:textSize="9dp"
+            android:fontFamily="@font/titillium"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:text="John Doe"
+            android:textSize="9dp"
+            android:fontFamily="@font/titilliumweb_semibold"
+            android:textColor="@color/yellowITG" />
+    </LinearLayout>
+</LinearLayout>

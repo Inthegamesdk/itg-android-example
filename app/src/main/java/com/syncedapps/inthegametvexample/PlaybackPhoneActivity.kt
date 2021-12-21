@@ -1,11 +1,14 @@
 package com.syncedapps.inthegametvexample
 
 import android.app.Activity
+import android.content.Context
+import android.content.res.Configuration
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.MediaController
 import com.syncedapps.inthegametv.*
 import com.syncedapps.inthegametv.interaction.*
@@ -23,6 +26,10 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_playback)
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         val settings = ITGSettings(this)
         settings.clearUserToken()
@@ -56,6 +63,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         //load your channel to start up the ITG system
         overlay.load("ORLvsNYCFC", "orlandofcchannel", environment)
         overlay.listener = this
+        overlay.menuEnabled = true
 
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
@@ -96,9 +104,17 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     }
 
     override fun overlayRequestedFocus(focusView: View) {
+        val pixelSpacing = if (isPortrait()) 64 else 86
+        val spacing = convertDpToPixel(this, pixelSpacing).toFloat()
+        val total = container!!.height.toFloat()
+        val scale = (total - spacing) / total
+        videoView.animate().scaleY(scale)
+        videoView.animate().translationY(-spacing / 2)
     }
 
     override fun overlayReleasedFocus(popMessage: Boolean) {
+        videoView.animate().scaleY(1f)
+        videoView.animate().translationY(0f)
     }
 
     override fun overlayClickedUserArea() {
@@ -107,6 +123,11 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     override fun overlayClosedByUser(type: CloseOption, timestamp: Long) {
     }
 
+    override fun overlayDidShowSidebar() {
+    }
+
+    override fun overlayDidHideSidebar() {
+    }
     //the layout methods are optional
     //use them only if you want to customize the design elements
 
@@ -136,5 +157,15 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
     override fun customCloseOptionsView(): ITGCloseOptionsView? {
         return CustomCloseOptionsView(this)
+    }
+
+    private fun convertDpToPixel(context: Context, dp: Int): Int {
+        val density = context.applicationContext.resources.displayMetrics.density
+        return Math.round(dp.toFloat() * density)
+    }
+
+    private fun isPortrait(): Boolean {
+        val orientation = resources.configuration.orientation
+        return (orientation == Configuration.ORIENTATION_PORTRAIT)
     }
 }

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="12dp"
+    android:gravity="center_horizontal|top">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:layoutDirection="ltr">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="MY"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/yellowITG" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="ACCOUNT"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:visibility="visible">
+            <ImageButton
+                android:id="@+id/avatarButton"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_user_photo"
+                android:background="@drawable/item_circle_selector"
+                android:nextFocusUp="@id/avatarButton"
+                android:nextFocusDown="@id/etUsername"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"/>
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginBottom="16dp"
+                android:paddingHorizontal="6dp"
+                android:gravity="center_vertical"
+                android:hint="Username"
+                android:fontFamily="@font/titillium"
+                android:textSize="11dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/edit_text_background"
+                android:nextFocusUp="@id/avatarButton"
+                android:nextFocusDown="@id/etEmail"
+                android:nextFocusForward="@id/etEmail"/>
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginBottom="19dp"
+                android:paddingHorizontal="6dp"
+                android:gravity="center_vertical"
+                android:hint="Email"
+                android:fontFamily="@font/titillium"
+                android:textSize="11dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/edit_text_background"
+                android:nextFocusDown="@id/saveButton"
+                android:nextFocusUp="@id/etUsername"
+                android:nextFocusForward="@id/saveButton"/>
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:paddingHorizontal="14dp"
+                android:text="Save"
+                android:fontFamily="@font/titillium"
+                android:textSize="11dp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/account_button_selector"
+                android:nextFocusUp="@id/etEmail"
+                android:nextFocusDown="@id/saveButton"/>
+
+            <TextView
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Invalid username"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/wrong"
+                android:visibility="invisible" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/gridContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:visibility="gone">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/pictureSaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:paddingHorizontal="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="12dp"
+                android:text="Save"
+                android:fontFamily="@font/titillium"
+                android:textSize="11dp"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:background="@drawable/account_button_selector"
+                android:nextFocusUp="@id/recyclerView"
+                android:nextFocusDown="@id/pictureSaveButton"/>
+
+            <ProgressBar
+                android:id="@+id/loadingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminateTint="@android:color/white"
+                android:visibility="invisible"/>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

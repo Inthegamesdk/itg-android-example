@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
-    android:layoutDirection="locale"
+    android:layoutDirection="ltr"
     android:layout_width="match_parent"
     android:layout_height="166dp"
     android:layout_gravity="bottom"
@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layoutDirection="locale"
+        android:layoutDirection="ltr"
         android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
@@ -42,8 +42,8 @@
 
             <ProgressBar
                 android:id="@+id/loadingIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:indeterminateTint="@android:color/white"
@@ -102,11 +102,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_marginLeft="2dp"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:gravity="center_vertical">
                 <TextView
                     android:id="@+id/tvQuestion"
-                    android:layout_width="110dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
                     android:layout_gravity="center"
@@ -114,7 +114,7 @@
                     android:paddingBottom="2dp"
                     android:textAlignment="gravity"
                     android:lineSpacingExtra="-3sp"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:maxLines="3"
@@ -132,6 +132,7 @@
                         android:focusable="false"
                         android:nextFocusLeft="@id/container"
                         android:id="@+id/container"
+                        android:layoutDirection="locale"
                         android:minWidth="60dp"
                         android:orientation="horizontal"
                         android:layout_weight="1"
@@ -149,6 +150,7 @@
                         android:visibility="gone">
                         <LinearLayout
                             android:id="@+id/scrollContainer"
+                            android:layoutDirection="locale"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:gravity="fill_horizontal|center_vertical"

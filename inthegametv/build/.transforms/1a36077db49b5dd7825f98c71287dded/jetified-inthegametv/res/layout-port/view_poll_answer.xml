@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_height="match_parent"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="8dp">
 
         <Button
             android:id="@+id/answerButton"
@@ -31,8 +31,8 @@
 
             <ImageView
                 android:id="@+id/ivIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
                 android:padding="1dp"
                 android:layout_marginStart="2dp"
                 android:scaleType="fitXY" />
@@ -49,7 +49,7 @@
                 android:maxLength="18"
                 android:text=""
                 android:textColor="@android:color/white"
-                android:textSize="9sp"
+                android:textSize="7sp"
                 android:fontFamily="@font/titillium" />
         </LinearLayout>
     </FrameLayout>

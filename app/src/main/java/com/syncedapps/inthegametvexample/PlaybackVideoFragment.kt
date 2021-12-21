@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.leanback.app.RowsSupportFragment
 import androidx.leanback.app.VideoSupportFragment
 import androidx.leanback.app.VideoSupportFragmentGlueHost
 import androidx.leanback.widget.CursorObjectAdapter
@@ -77,6 +78,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         // use this optional variable to set the animation type
         overlay.animationType = ITGAnimationType.FROM_BOTTOM
 
+        overlay.menuEnabled = true
         // use this variable if you want to hide the win notifications
 //        overlay.showNotices = false
 
@@ -106,6 +108,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         if (Util.SDK_INT <= 23 || mPlayer == null) {
             initializePlayer()
         }
+        removeKeyInterceptor()
     }
 
     /** Pauses the player.  */
@@ -178,7 +181,25 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     }
 
     fun receivedKeyEvent(event: KeyEvent) {
+        if (event?.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+            if (isControlsOverlayVisible) {
+                hideControlsOverlay(true)
+            } else if(mOverlay?.isDisplayingInteraction() == false
+                && mOverlay?.isSidebarVisible() == false) {
+                showControlsOverlay(true)
+                if (mOverlay?.isMenuVisible() == true) {
+                    mOverlay?.hideMenu()
+                }
+            }
+        }
         mOverlay?.receivedKeyEvent(event)
+    }
+
+    fun removeKeyInterceptor() {
+        val rowsSupportFragment = childFragmentManager.findFragmentById(
+            androidx.leanback.R.id.playback_controls_dock
+        ) as RowsSupportFragment?
+        rowsSupportFragment?.verticalGridView?.setOnKeyInterceptListener { false }
     }
 
     // overlay will request the video to play/pause for some interactions
@@ -222,6 +243,19 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun overlayClosedByUser(type: CloseOption, timestamp: Long) {
         //called when user closes the ITG service for a period of time
+    }
+
+    override fun overlayDidShowSidebar() {
+        val spacing = convertDpToPixel(requireContext(), 192).toFloat()
+        val total = view!!.width.toFloat()
+        val scale = (total - spacing) / total
+        surfaceView.animate().scaleX(scale)
+        surfaceView.animate().translationX(-spacing / 2)
+    }
+
+    override fun overlayDidHideSidebar() {
+        surfaceView.animate().scaleX(1f)
+        surfaceView.animate().translationX(0f)
     }
 
     private fun convertDpToPixel(context: Context, dp: Int): Int {

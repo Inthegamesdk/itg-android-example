@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
-    android:layoutDirection="locale"
+    android:layoutDirection="ltr"
     android:layout_width="match_parent"
     android:layout_height="286dp"
     android:layout_gravity="bottom"
@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layoutDirection="locale"
+        android:layoutDirection="ltr"
         android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
@@ -102,7 +102,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="4dp"
                 android:layout_marginLeft="4dp"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:gravity="center_vertical">
                 <TextView
                     android:id="@+id/tvQuestion"
@@ -131,6 +131,7 @@
                     <LinearLayout
                         android:focusable="false"
                         android:nextFocusLeft="@id/container"
+                        android:layoutDirection="locale"
                         android:id="@+id/container"
                         android:minWidth="130dp"
                         android:orientation="horizontal"
@@ -149,6 +150,7 @@
                         android:visibility="gone">
                         <LinearLayout
                             android:id="@+id/scrollContainer"
+                            android:layoutDirection="locale"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:gravity="fill_horizontal|center_vertical"

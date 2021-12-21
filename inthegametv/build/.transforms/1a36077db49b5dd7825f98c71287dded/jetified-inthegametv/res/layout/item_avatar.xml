@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="54dp"
+    android:layout_height="54dp"
+    android:padding="13dp"
+    android:background="@drawable/item_circle_selector"
+    android:focusable="true">
+    <ImageView
+        android:id="@+id/avatarView"
+        android:layout_width="28dp"
+        android:layout_height="28dp" />
+</LinearLayout>
+
+

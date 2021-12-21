@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layoutDirection="locale"
+        android:layoutDirection="ltr"
         android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
@@ -56,7 +56,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
@@ -70,7 +70,7 @@
                     android:gravity="center_vertical">
                     <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="80dp"
+                        android:layout_width="72dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
@@ -85,9 +85,9 @@
                                 android:id="@+id/tvQuestion"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:maxLines="1"
+                                android:maxLines="3"
                                 android:textAlignment="textStart"
-                                android:textSize="20sp"
+                                android:textSize="7sp"
                                 android:textStyle="bold"
                                 android:visibility="gone"
                                 android:textColor="@android:color/white"
@@ -100,7 +100,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="2dp"
                                 android:maxLines="2"
-                                android:maxWidth="106dp"
+                                android:maxWidth="70dp"
                                 android:text="Question?"
                                 android:gravity="start"
                                 android:layout_gravity="start|center_vertical"
@@ -108,7 +108,7 @@
                                 android:textAlignment="gravity"
                                 android:lineSpacingExtra="-3sp"
                                 android:textColor="@android:color/white"
-                                android:textSize="10sp"
+                                android:textSize="8sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/titillium"
                                 />

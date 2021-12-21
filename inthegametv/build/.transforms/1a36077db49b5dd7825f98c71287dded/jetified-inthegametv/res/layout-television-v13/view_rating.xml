@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layoutDirection="locale"
+        android:layoutDirection="ltr"
         android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
@@ -57,7 +57,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
