@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -127,6 +128,19 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     }
 
     override fun overlayDidHideSidebar() {
+    }
+
+    override fun overlayDidTapVideo() {
+        if (mediaController?.isShowing == true) {
+            mediaController?.hide()
+        } else {
+            mediaController?.show(0)
+            Handler().postDelayed({
+                if (mediaController?.isShowing == true) {
+                    mediaController?.hide()
+                }
+            }, 2000)
+        }
     }
     //the layout methods are optional
     //use them only if you want to customize the design elements

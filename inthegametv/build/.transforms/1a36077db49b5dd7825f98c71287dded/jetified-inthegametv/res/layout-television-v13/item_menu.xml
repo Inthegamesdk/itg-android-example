@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal|top"
+    android:layout_width="68dp"
+    android:layout_height="62dp"
+    android:focusable="true">
+
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingVertical="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_leaderboard"
+        android:tint="@drawable/item_menu_tint_selector"
+        android:background="@drawable/item_menu_selector"/>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginTop="5dp"
+        android:paddingHorizontal="7dp"
+        android:text="Item"
+        android:gravity="center"
+        android:fontFamily="@font/titillium"
+        android:textStyle="bold"
+        android:textSize="8sp"
+        android:textColor="@android:color/black"
+        android:background="@drawable/item_menu_text_background"
+        android:visibility="invisible"/>
+</LinearLayout>

@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:id="@+id/framelayout_answer_rating"
-        android:layout_height="22dp"
+        android:layout_height="18dp"
         android:gravity="center">
 
         <ImageButton
@@ -18,12 +18,12 @@
             android:id="@+id/answerButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
             android:gravity="center"
             android:textStyle="bold"
             android:scaleType="fitCenter"
-            android:background="@drawable/button_answer_selector"
+            android:background="@drawable/focus_gradient"
             android:focusable="true"/>
 
         <TextView

@@ -24,7 +24,7 @@
             android:layout_width="40dp"
             android:focusable="false"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="7dp"
             android:gravity="center">
 
             <ImageView
@@ -95,7 +95,7 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="11dp"
                 android:id="@+id/questionContainer"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

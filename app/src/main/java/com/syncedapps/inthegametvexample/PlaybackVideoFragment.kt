@@ -258,6 +258,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         surfaceView.animate().translationX(0f)
     }
 
+    override fun overlayDidTapVideo() {}
+
     private fun convertDpToPixel(context: Context, dp: Int): Int {
         val density = context.applicationContext.resources.displayMetrics.density
         return Math.round(dp.toFloat() * density)

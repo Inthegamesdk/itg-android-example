@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="11dp"
                 android:focusable="false"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                         android:layout_marginStart="6dp"
                         android:layout_marginEnd="1dp"
                         android:layout_height="15dp"
-                        android:background="@drawable/button_answer_selector"
+                        android:background="@drawable/focus_gradient"
                         android:focusable="true"
                         android:text="10/25"
                         android:gravity="center"
@@ -175,6 +175,7 @@
                             android:id="@+id/arrowUpButton"
                             android:layout_width="12dp"
                             android:layout_height="12dp"
+                            android:padding="2dp"
                             android:scaleType="fitCenter"
                             android:src="@drawable/arrow_up"
                             android:background="@android:color/transparent"
@@ -184,6 +185,7 @@
                             android:id="@+id/arrowDownButton"
                             android:layout_width="12dp"
                             android:layout_height="12dp"
+                            android:padding="2dp"
                             android:scaleType="fitCenter"
                             android:background="@android:color/transparent"
                             android:src="@drawable/arrow_down"/>
@@ -194,9 +196,9 @@
                         android:layout_width="1sp"
                         android:layout_height="match_parent"
                         android:background="@color/buttonYellow"
-                        android:layout_marginHorizontal="3dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginBottom="2dp"/>
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="8dp"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -208,10 +210,11 @@
                             android:layout_width="36dp"
                             android:nextFocusUp="@id/wagerSubmitButton"
                             android:layout_height="13dp"
-                            android:background="@drawable/button_answer_selector"
+                            android:background="@drawable/focus_gradient"
                             android:focusable="true"
                             android:text="Submit"
                             android:paddingStart="2dp"
+                            android:layout_marginBottom="3dp"
                             android:gravity="center|start"
                             android:stateListAnimator="@null"
                             android:textColor="@android:color/white"
@@ -223,7 +226,7 @@
                             android:nextFocusDown="@id/wagerBackButton"
                             android:layout_width="36dp"
                             android:layout_height="13dp"
-                            android:background="@drawable/button_answer_selector"
+                            android:background="@drawable/focus_gradient"
                             android:focusable="true"
                             android:text="Back"
                             android:paddingStart="2dp"

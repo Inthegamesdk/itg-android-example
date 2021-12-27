@@ -5,13 +5,14 @@
     android:layout_width="110dp"
     android:layout_height="36dp"
     android:layout_weight="1"
-    android:padding="4dp"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="6dp"
     android:gravity="center">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:id="@+id/framelayout_answer_rating"
-        android:layout_height="26dp"
+        android:layout_height="24dp"
         android:gravity="center">
 
         <ImageButton
@@ -24,7 +25,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:scaleType="fitCenter"
-            android:background="@drawable/button_answer_selector"
+            android:background="@drawable/focus_gradient"
             android:focusable="true"/>
 
         <TextView

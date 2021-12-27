@@ -16,8 +16,8 @@
             android:id="@+id/answerButton"
             android:layout_width="match_parent"
             android:nextFocusUp="@id/answerButton"
-            android:layout_height="26dp"
-            android:background="@drawable/button_answer_selector"
+            android:layout_height="24dp"
+            android:background="@drawable/focus_gradient"
             android:focusable="true"
             android:gravity="center"
             android:stateListAnimator="@null" />
