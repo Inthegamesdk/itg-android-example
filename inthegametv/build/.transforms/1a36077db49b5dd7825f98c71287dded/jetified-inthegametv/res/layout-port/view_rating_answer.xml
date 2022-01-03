@@ -23,7 +23,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:scaleType="fitCenter"
-            android:background="@drawable/focus_gradient"
+            android:background="@drawable/mobile_button"
             android:focusable="true"/>
 
         <TextView

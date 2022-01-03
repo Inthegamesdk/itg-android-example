@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="11dp"
                     android:id="@+id/questionContainer"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="2dp"
-                                android:layout_marginTop="3dp"
+                                android:layout_marginTop="2dp"
                                 android:maxLines="2"
                                 android:maxWidth="70dp"
                                 android:text="Question?"

@@ -8,6 +8,7 @@
     android:paddingStart="4dp"
     android:paddingEnd="4dp"
     android:paddingVertical="1dp"
+    android:layoutDirection="ltr"
     android:gravity="center">
 
     <FrameLayout
@@ -28,7 +29,7 @@
             android:textSize="9sp"
             android:textStyle="bold"
             android:maxLines="1"
-            android:background="@drawable/focus_gradient"
+            android:background="@drawable/mobile_button"
             android:text="@null"
             android:stateListAnimator="@null"
             android:focusable="true"/>

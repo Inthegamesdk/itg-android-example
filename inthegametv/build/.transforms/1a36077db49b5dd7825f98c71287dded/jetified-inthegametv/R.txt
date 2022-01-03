@@ -1013,6 +1013,7 @@ int color buttonAnswerYellow 0x0
 int color buttonAnswerYellowFocus 0x0
 int color buttonYellow 0x0
 int color buttonYellowDark 0x0
+int color buttonYellowFaded 0x0
 int color button_material_dark 0x0
 int color button_material_light 0x0
 int color cardview_dark_background 0x0
@@ -1790,6 +1791,8 @@ int drawable material_ic_keyboard_arrow_previous_black_24dp 0x0
 int drawable material_ic_keyboard_arrow_right_black_24dp 0x0
 int drawable material_ic_menu_arrow_down_black_24dp 0x0
 int drawable material_ic_menu_arrow_up_black_24dp 0x0
+int drawable mobile_button 0x0
+int drawable mobile_button_popup 0x0
 int drawable mtrl_dialog_background 0x0
 int drawable mtrl_dropdown_arrow 0x0
 int drawable mtrl_ic_arrow_drop_down 0x0
@@ -1821,6 +1824,8 @@ int drawable popup_field_normal 0x0
 int drawable popup_field_selector 0x0
 int drawable popup_save_phone_selector 0x0
 int drawable prediction_result_shape 0x0
+int drawable pressed_gradient 0x0
+int drawable pressed_right_gradient 0x0
 int drawable right_gradient 0x0
 int drawable star_empty 0x0
 int drawable star_fill 0x0
@@ -2661,6 +2666,7 @@ int string predictions_congratulations 0x0
 int string predictions_number_pts 0x0
 int string predictions_prediction_closed 0x0
 int string predictions_total_score 0x0
+int string predictions_wager_submitted 0x0
 int string predictions_wrong_prediction 0x0
 int string predictions_wrong_prediction_answer 0x0
 int string predictions_wrong_prediction_wager 0x0

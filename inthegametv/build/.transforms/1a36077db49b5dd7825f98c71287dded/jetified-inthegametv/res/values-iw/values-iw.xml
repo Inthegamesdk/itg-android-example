@@ -36,6 +36,7 @@
     <string name="predictions_number_pts">" נקודות+{{ point }}"</string>
     <string name="predictions_prediction_closed">הסקר נסגר</string>
     <string name="predictions_total_score">סה"כ נקודות</string>
+    <string name="predictions_wager_submitted">Wager submitted for {{answer}}</string>
     <string name="predictions_wrong_prediction">טעות</string>
     <string name="predictions_wrong_prediction_answer">"{{ question }} ב {{ answer }}sענית "</string>
     <string name="predictions_wrong_prediction_wager">You lost "%1$s" pts for "%2$s" on "%3$s"</string>

@@ -1014,6 +1014,7 @@ color buttonAnswerYellow
 color buttonAnswerYellowFocus
 color buttonYellow
 color buttonYellowDark
+color buttonYellowFaded
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -1791,6 +1792,8 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable mobile_button
+drawable mobile_button_popup
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1822,6 +1825,8 @@ drawable popup_field_normal
 drawable popup_field_selector
 drawable popup_save_phone_selector
 drawable prediction_result_shape
+drawable pressed_gradient
+drawable pressed_right_gradient
 drawable right_gradient
 drawable star_empty
 drawable star_fill
@@ -2662,6 +2667,7 @@ string predictions_congratulations
 string predictions_number_pts
 string predictions_prediction_closed
 string predictions_total_score
+string predictions_wager_submitted
 string predictions_wrong_prediction
 string predictions_wrong_prediction_answer
 string predictions_wrong_prediction_wager

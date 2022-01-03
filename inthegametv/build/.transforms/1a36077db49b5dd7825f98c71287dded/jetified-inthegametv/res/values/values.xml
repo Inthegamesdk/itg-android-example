@@ -9,6 +9,7 @@
     <color name="buttonAnswerYellowFocus">#DDE26F</color>
     <color name="buttonYellow">#f7c846</color>
     <color name="buttonYellowDark">#D5AA16</color>
+    <color name="buttonYellowFaded">#80f7c846</color>
     <color name="cellcomBorder">#7C014C</color>
     <color name="cellcomButton">#D60585</color>
     <color name="correct">#1CAA08</color>
@@ -64,6 +65,7 @@
     <string name="predictions_number_pts">+{{ point }} pts</string>
     <string name="predictions_prediction_closed">Prediction is closed</string>
     <string name="predictions_total_score">Total Score:</string>
+    <string name="predictions_wager_submitted">Wager submitted for {{answer}}</string>
     <string name="predictions_wrong_prediction">Wrong Prediction</string>
     <string name="predictions_wrong_prediction_answer">You answered {{ answer }} on {{ question }}</string>
     <string name="predictions_wrong_prediction_wager">You lost {{ point }} pts for {{ answer }} on {{ question }}"</string>

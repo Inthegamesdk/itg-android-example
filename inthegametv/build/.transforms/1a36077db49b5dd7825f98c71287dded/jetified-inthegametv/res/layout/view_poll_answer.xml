@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <FrameLayout
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:nextFocusUp="@id/answerButton"
             android:layout_height="24dp"
-            android:background="@drawable/focus_gradient"
+            android:background="@drawable/mobile_button"
             android:focusable="true"
             android:gravity="center"
             android:stateListAnimator="@null" />

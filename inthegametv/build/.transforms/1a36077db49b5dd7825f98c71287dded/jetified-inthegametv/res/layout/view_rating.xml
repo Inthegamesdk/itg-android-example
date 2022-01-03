@@ -70,13 +70,13 @@
                     android:layout_marginLeft="2dp"
                     android:gravity="center_vertical">
                     <LinearLayout
+                        android:layout_marginTop="2dp"
                         android:orientation="vertical"
                         android:layout_width="110dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
-                        android:layout_marginTop="12dp"
-                        android:gravity="right">
+                        android:gravity="right|center_vertical">
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="wrap_content"
@@ -100,8 +100,8 @@
                                 android:id="@+id/tvTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
                                 android:layout_marginBottom="0dp"
-                                android:layout_marginTop="6dp"
                                 android:maxLines="3"
                                 android:maxWidth="110dp"
                                 android:text="Question?"
@@ -109,7 +109,7 @@
                                 android:layout_gravity="start|center_vertical"
                                 android:layout_weight="0.35"
                                 android:textAlignment="gravity"
-                                android:lineSpacingExtra="-3sp"
+                                android:lineSpacingExtra="-5sp"
                                 android:textColor="@android:color/white"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
@@ -124,7 +124,6 @@
                             android:layout_marginLeft="8dp"
                             android:layout_gravity="center_vertical"
                             android:visibility="gone"
-                            tools:visibility="visible"
                             android:layout_marginRight="12dp"
                             android:layout_marginBottom="4dp"
                             android:gravity="bottom">

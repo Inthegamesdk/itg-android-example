@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+        android:drawable="@drawable/pressed_gradient" /> <!-- focused -->
+    <item android:drawable="@drawable/focus_gradient" /> <!-- default -->
+</selector>

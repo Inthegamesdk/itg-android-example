@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:layout_gravity="center">
             <LinearLayout
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="13dp"
                 android:focusable="false"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -210,7 +210,7 @@
                             android:layout_width="36dp"
                             android:nextFocusUp="@id/wagerSubmitButton"
                             android:layout_height="13dp"
-                            android:background="@drawable/focus_gradient"
+                            android:background="@drawable/mobile_button"
                             android:focusable="true"
                             android:text="Submit"
                             android:paddingStart="2dp"
@@ -226,7 +226,7 @@
                             android:nextFocusDown="@id/wagerBackButton"
                             android:layout_width="36dp"
                             android:layout_height="13dp"
-                            android:background="@drawable/focus_gradient"
+                            android:background="@drawable/mobile_button"
                             android:focusable="true"
                             android:text="Back"
                             android:paddingStart="2dp"
