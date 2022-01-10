@@ -2662,9 +2662,11 @@ int string personalArea_type_10_digits 0x0
 int string personalArea_will_send_sms 0x0
 int string points_short 0x0
 int string polls_poll_closed 0x0
+int string predictions_back 0x0
 int string predictions_congratulations 0x0
 int string predictions_number_pts 0x0
 int string predictions_prediction_closed 0x0
+int string predictions_submit 0x0
 int string predictions_total_score 0x0
 int string predictions_wager_submitted 0x0
 int string predictions_wrong_prediction 0x0

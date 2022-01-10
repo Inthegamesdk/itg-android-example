@@ -32,9 +32,11 @@
     <string name="personalArea_will_send_sms">Will send an SMS to *** - **** {{ number }}</string>
     <string name="points_short">נק</string>
     <string name="polls_poll_closed">הסקר נסגר</string>
+    <string name="predictions_back">BACK</string>
     <string name="predictions_congratulations">כל הכבוד!</string>
     <string name="predictions_number_pts">" נקודות+{{ point }}"</string>
     <string name="predictions_prediction_closed">הסקר נסגר</string>
+    <string name="predictions_submit">SUBMIT</string>
     <string name="predictions_total_score">סה"כ נקודות</string>
     <string name="predictions_wager_submitted">Wager submitted for {{answer}}</string>
     <string name="predictions_wrong_prediction">טעות</string>

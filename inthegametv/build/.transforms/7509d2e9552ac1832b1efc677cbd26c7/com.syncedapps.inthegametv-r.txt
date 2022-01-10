@@ -2663,9 +2663,11 @@ string personalArea_type_10_digits
 string personalArea_will_send_sms
 string points_short
 string polls_poll_closed
+string predictions_back
 string predictions_congratulations
 string predictions_number_pts
 string predictions_prediction_closed
+string predictions_submit
 string predictions_total_score
 string predictions_wager_submitted
 string predictions_wrong_prediction

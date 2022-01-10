@@ -61,9 +61,11 @@
     <string name="personalArea_will_send_sms">Will send an SMS to *** - **** {{ number }}</string>
     <string name="points_short">pts</string>
     <string name="polls_poll_closed">POLL CLOSED</string>
+    <string name="predictions_back">BACK</string>
     <string name="predictions_congratulations">CONGRATULATIONS!</string>
     <string name="predictions_number_pts">+{{ point }} pts</string>
     <string name="predictions_prediction_closed">Prediction is closed</string>
+    <string name="predictions_submit">SUBMIT</string>
     <string name="predictions_total_score">Total Score:</string>
     <string name="predictions_wager_submitted">Wager submitted for {{answer}}</string>
     <string name="predictions_wrong_prediction">Wrong Prediction</string>
