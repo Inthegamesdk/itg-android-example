@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="0dp"
-        android:layoutDirection="ltr">
+        android:layoutDirection="inherit">
 
         <com.syncedapps.inthegametv.menu.ITGMenu
             android:id="@+id/menu"
             android:layout_gravity="left|bottom"
             android:layout_marginBottom="80dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_weight="1"

@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="8dp"
     android:layout_marginVertical="4dp"
-    android:layoutDirection="ltr"
-    android:textDirection="locale"
+    android:layoutDirection="inherit"
     android:background="@drawable/popup_background">
 
     <LinearLayout
@@ -14,12 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginVertical="8dp"
-        android:layout_marginLeft="8dp"
-        android:layoutDirection="rtl"
-        android:textDirection="inherit"
-        android:gravity="right">
+        android:layout_marginEnd="8dp"
+        android:layoutDirection="inherit"
+        android:gravity="start">
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
@@ -54,9 +52,7 @@
             android:layout_height="16dp"
             android:layout_marginBottom="2dp"
             android:paddingHorizontal="6dp"
-            android:textDirection="locale"
-            android:textAlignment="textEnd"
-            android:gravity="right|center_vertical"
+            android:gravity="start|center_vertical"
             android:text="0"
             android:textColor="@android:color/white"
             android:fontFamily="@font/titillium"
@@ -64,14 +60,13 @@
             android:clickable="true"
             android:focusable="true"
             android:nextFocusUp="@id/tvPhone"
-            android:nextFocusLeft="@id/tvPhone"
             android:background="@drawable/popup_field_selector"/>
         <TextView
             android:id="@+id/tvInvalid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:gravity="right"
+            android:gravity="start"
             android:text="@string/product_phone_invalid"
             android:textColor="@color/buttonYellow"
             android:fontFamily="@font/titillium"
@@ -86,16 +81,14 @@
             android:clickable="true"
             android:focusable="true"
             android:background="@drawable/popup_save_phone_selector"
-            android:nextFocusDown="@id/buttonSend"
-            android:nextFocusLeft="@id/saveContainer">
+            android:nextFocusDown="@id/buttonSend">
             <TextView
                 android:id="@+id/tvSavePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingRight="8dp"
-                android:textAlignment="textEnd"
-                android:gravity="right|center_vertical"
+                android:paddingStart="8dp"
+                android:gravity="start|center_vertical"
                 android:text="Save phone"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/titillium"
@@ -114,16 +107,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right|bottom"
+            android:gravity="start|bottom"
             android:layout_marginVertical="2dp" >
             <TextView
                 android:id="@+id/tvDoneInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:paddingRight="8dp"
+                android:paddingStart="8dp"
                 android:textAlignment="center"
-                android:gravity="right|center_vertical"
+                android:gravity="start|center_vertical"
                 android:text="Message send info stuff"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/titillium"
@@ -134,7 +127,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginBottom="2dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:indeterminateTint="@color/buttonYellow"
@@ -144,8 +137,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:layout_marginBottom="2dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="16dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/titillium"
                 android:textSize="8sp"
@@ -154,16 +147,14 @@
                 android:background="@drawable/mobile_button_popup"
                 android:nextFocusUp="@id/saveContainer"
                 android:nextFocusDown="@id/buttonSend"
-                android:nextFocusRight="@id/pad0"
-                android:nextFocusLeft="@id/buttonSend"
                 android:gravity="center"/>
             <Button
                 android:id="@+id/buttonResend"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:layout_marginBottom="2dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="16dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/titillium"
                 android:textSize="8sp"
@@ -172,16 +163,14 @@
                 android:nextFocusUp="@id/saveContainer"
                 android:background="@drawable/mobile_button_popup"
                 android:gravity="center"
-                android:nextFocusRight="@id/pad0"
-                android:nextFocusLeft="@id/buttonResend"
                 android:visibility="gone"/>
             <Button
                 android:id="@+id/buttonDone"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:layout_marginBottom="2dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="16dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/titillium"
                 android:textSize="8sp"
@@ -190,16 +179,14 @@
                 android:background="@drawable/mobile_button_popup"
                 android:gravity="center"
                 android:nextFocusDown="@id/buttonDone"
-                android:nextFocusRight="@id/pad0"
-                android:nextFocusLeft="@id/buttonDone"
                 android:visibility="gone"/>
             <TextView
                 android:id="@+id/tvSendInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="8dp"
+                android:paddingStart="8dp"
                 android:textAlignment="center"
-                android:gravity="right|center_vertical"
+                android:gravity="start|center_vertical"
                 android:text="SMS will arrive within 2 minutes or something like that"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/titillium"
@@ -228,7 +215,8 @@
             android:orientation="horizontal"
             android:gravity="right"
             android:layout_width="match_parent"
-            android:layout_height="13dp">
+            android:layout_height="13dp"
+            android:layoutDirection="ltr">
             <ImageButton
                 android:id="@+id/padClear"
                 android:layout_width="25dp"
@@ -240,8 +228,7 @@
                 android:background="@drawable/button_center_selector"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:nextFocusUp="@id/padClear"
-                android:nextFocusLeft="@id/tvPhone"/>
+                android:nextFocusUp="@id/padClear"/>
             <Button
                 android:id="@+id/pad1"
                 android:layout_width="13dp"
@@ -274,7 +261,6 @@
                 android:background="@drawable/button_center_selector"
                 android:fontFamily="@font/titillium"
                 android:gravity="center"
-                android:nextFocusRight="@id/pad3"
                 android:nextFocusUp="@id/pad3"
                 android:text="3"
                 android:textColor="@android:color/white"
@@ -285,7 +271,8 @@
             android:orientation="horizontal"
             android:gravity="right"
             android:layout_width="match_parent"
-            android:layout_height="13dp">
+            android:layout_height="13dp"
+            android:layoutDirection="ltr">
 
             <Button
                 android:id="@+id/pad4"
@@ -297,8 +284,7 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/button_center_selector"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:nextFocusLeft="@id/tvPhone"/>
+                android:textStyle="bold"/>
             <Button
                 android:id="@+id/pad5"
                 android:layout_width="13dp"
@@ -320,7 +306,6 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/button_center_selector"
                 android:gravity="center"
-                android:nextFocusRight="@id/pad6"
                 android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
@@ -328,7 +313,8 @@
             android:orientation="horizontal"
             android:gravity="right"
             android:layout_width="match_parent"
-            android:layout_height="13dp">
+            android:layout_height="13dp"
+            android:layoutDirection="ltr">
             <Button
                 android:id="@+id/padBtn"
                 android:layout_width="25dp"
@@ -339,8 +325,7 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/button_center_selector"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:nextFocusLeft="@id/tvPhone"/>
+                android:textStyle="bold"/>
             <Button
                 android:id="@+id/pad7"
                 android:layout_width="13dp"
@@ -373,14 +358,14 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/button_center_selector"
                 android:gravity="center"
-                android:nextFocusRight="@id/pad9"
                 android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:gravity="right"
             android:layout_width="match_parent"
-            android:layout_height="13dp">
+            android:layout_height="13dp"
+            android:layoutDirection="ltr">
 
             <Button
                 android:id="@+id/pad0"
@@ -394,7 +379,6 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_marginRight="13dp"
-                android:nextFocusLeft="@id/tvPhone"
                 android:nextFocusDown="@id/pad0"/>
         </LinearLayout>
     </LinearLayout>

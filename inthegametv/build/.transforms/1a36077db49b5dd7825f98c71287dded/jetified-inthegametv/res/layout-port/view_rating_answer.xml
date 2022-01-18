@@ -5,6 +5,7 @@
     android:layout_height="30dp"
     android:layout_weight="1"
     android:padding="6dp"
+    android:layoutDirection="inherit"
     android:gravity="center">
 
     <FrameLayout

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="286dp"
-    android:layoutDirection="ltr"
+    android:layoutDirection="inherit"
     android:layout_gravity="bottom"
     android:gravity="bottom"
     android:background="@android:color/transparent">
@@ -55,11 +55,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:layoutDirection="ltr"
+            android:layoutDirection="inherit"
             android:textDirection="locale"
             android:layout_marginTop="12dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="8dp"
             android:gravity="center">
 
             <ScrollView
@@ -82,7 +82,6 @@
                         android:gravity="start"
                         android:textColor="@android:color/white"
                         android:text="test sdfsdafsd\ntest test test\nTEST"
-                        android:nextFocusLeft="@id/tvContent"
                         android:fontFamily="@font/titillium"/>
                 </LinearLayout>
             </ScrollView>

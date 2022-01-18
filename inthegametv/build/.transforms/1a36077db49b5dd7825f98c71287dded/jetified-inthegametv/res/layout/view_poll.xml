@@ -61,8 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/questionContainer"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="4dp"
                 android:gravity="center">
 
                 <TextView
@@ -72,7 +72,7 @@
                     android:layout_marginTop="0dp"
                     android:paddingBottom="2dp"
                     android:focusable="false"
-                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp"
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="-5sp"
                     android:maxLines="3"
@@ -85,10 +85,9 @@
 
                 <LinearLayout
                     android:focusable="false"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
                     android:layout_gravity="center"
                     android:id="@+id/container"
-                    android:nextFocusLeft="@id/container"
                     android:layoutDirection="locale"
                     android:orientation="horizontal"
                     android:layout_width="0dp"
@@ -116,11 +115,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:focusable="false"
                     android:gravity="center"
-                    android:nextFocusLeft="@id/container"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -164,8 +162,7 @@
                         android:textStyle="bold"
                         android:fontFamily="@font/titillium"
                         android:nextFocusDown="@id/wagerValueButton"
-                        android:nextFocusUp="@id/wagerValueButton"
-                        android:nextFocusLeft="@id/wagerValueButton"/>
+                        android:nextFocusUp="@id/wagerValueButton"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -245,11 +242,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:focusable="false"
                     android:gravity="center"
-                    android:nextFocusLeft="@id/container"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -266,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:focusable="false"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:gravity="center_vertical"
                         android:lineSpacingExtra="-5sp"
                         android:maxLines="2"
@@ -284,8 +280,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
                 android:background="@android:color/black"
                 android:visibility="gone"
                 android:gravity="center"

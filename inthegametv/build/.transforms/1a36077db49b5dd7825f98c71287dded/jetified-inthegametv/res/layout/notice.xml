@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:background="@drawable/notice_background"
-        android:layoutDirection="locale"
+        android:layoutDirection="ltr"
         android:paddingLeft="12dp"
         android:paddingRight="10dp">
         <ImageView
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:textDirection="locale"
                 android:orientation="vertical"
                 android:visibility="visible">
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layoutDirection="locale"
+                android:layoutDirection="ltr"
                 android:textDirection="locale"
                 android:orientation="horizontal"
                 android:visibility="gone">

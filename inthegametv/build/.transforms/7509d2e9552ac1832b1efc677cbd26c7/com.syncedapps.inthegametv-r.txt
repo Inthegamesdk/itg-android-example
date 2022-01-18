@@ -36,6 +36,8 @@ anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
 anim slide_bottom_out
 anim slide_left_in
+anim slide_left_out
+anim slide_right_in
 anim slide_right_out
 anim slide_up_in
 animator design_appbar_state_list_animator
@@ -1743,6 +1745,7 @@ drawable circle_white
 drawable circle_white_focused
 drawable close
 drawable close_vector
+drawable coin
 drawable delete
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1751,7 +1754,10 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable edit_text_background
 drawable edit_text_background_focused
+drawable extended_gradient_rtl
+drawable extended_pressed_gradient_rtl
 drawable focus_gradient
+drawable focus_gradient_rtl
 drawable horizontal_gradient
 drawable ic_account
 drawable ic_clock_black_24dp
@@ -1770,6 +1776,7 @@ drawable ic_user
 drawable ic_user_photo
 drawable ic_warning
 drawable ic_wrong
+drawable inverted_background
 drawable item_background
 drawable item_background_focused
 drawable item_background_selector
@@ -1826,8 +1833,7 @@ drawable popup_field_selector
 drawable popup_save_phone_selector
 drawable prediction_result_shape
 drawable pressed_gradient
-drawable pressed_right_gradient
-drawable right_gradient
+drawable pressed_gradient_rtl
 drawable star_empty
 drawable star_fill
 drawable star_half
@@ -2168,6 +2174,7 @@ id phonePad
 id photoView
 id pictureSaveButton
 id pin
+id pointsBadge
 id pointsContainer
 id popupContainer
 id position

@@ -35,6 +35,8 @@ int anim mtrl_bottom_sheet_slide_out 0x0
 int anim mtrl_card_lowers_interpolator 0x0
 int anim slide_bottom_out 0x0
 int anim slide_left_in 0x0
+int anim slide_left_out 0x0
+int anim slide_right_in 0x0
 int anim slide_right_out 0x0
 int anim slide_up_in 0x0
 int animator design_appbar_state_list_animator 0x0
@@ -1742,6 +1744,7 @@ int drawable circle_white 0x0
 int drawable circle_white_focused 0x0
 int drawable close 0x0
 int drawable close_vector 0x0
+int drawable coin 0x0
 int drawable delete 0x0
 int drawable design_fab_background 0x0
 int drawable design_ic_visibility 0x0
@@ -1750,7 +1753,10 @@ int drawable design_password_eye 0x0
 int drawable design_snackbar_background 0x0
 int drawable edit_text_background 0x0
 int drawable edit_text_background_focused 0x0
+int drawable extended_gradient_rtl 0x0
+int drawable extended_pressed_gradient_rtl 0x0
 int drawable focus_gradient 0x0
+int drawable focus_gradient_rtl 0x0
 int drawable horizontal_gradient 0x0
 int drawable ic_account 0x0
 int drawable ic_clock_black_24dp 0x0
@@ -1769,6 +1775,7 @@ int drawable ic_user 0x0
 int drawable ic_user_photo 0x0
 int drawable ic_warning 0x0
 int drawable ic_wrong 0x0
+int drawable inverted_background 0x0
 int drawable item_background 0x0
 int drawable item_background_focused 0x0
 int drawable item_background_selector 0x0
@@ -1825,8 +1832,7 @@ int drawable popup_field_selector 0x0
 int drawable popup_save_phone_selector 0x0
 int drawable prediction_result_shape 0x0
 int drawable pressed_gradient 0x0
-int drawable pressed_right_gradient 0x0
-int drawable right_gradient 0x0
+int drawable pressed_gradient_rtl 0x0
 int drawable star_empty 0x0
 int drawable star_fill 0x0
 int drawable star_half 0x0
@@ -2167,6 +2173,7 @@ int id phonePad 0x0
 int id photoView 0x0
 int id pictureSaveButton 0x0
 int id pin 0x0
+int id pointsBadge 0x0
 int id pointsContainer 0x0
 int id popupContainer 0x0
 int id position 0x0

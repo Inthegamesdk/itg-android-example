@@ -7,6 +7,7 @@
     android:layout_weight="1"
     android:paddingHorizontal="5dp"
     android:paddingVertical="6dp"
+    android:layoutDirection="inherit"
     android:gravity="center">
 
     <FrameLayout

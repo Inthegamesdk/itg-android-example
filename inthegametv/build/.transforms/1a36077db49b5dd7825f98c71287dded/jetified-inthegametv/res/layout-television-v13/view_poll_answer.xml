@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:layoutDirection="ltr"
+    android:layoutDirection="inherit"
     android:orientation="vertical">
 
     <FrameLayout
@@ -22,7 +22,25 @@
             android:background="@drawable/button_answer_selector"
             android:focusable="true"
             android:gravity="center"
-            android:stateListAnimator="@null" />
+            android:layout_gravity="center"
+            android:stateListAnimator="@null"
+            android:layout_marginStart="4dp"/>
+
+        <TextView
+            android:id="@+id/pointsBadge"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/coin"
+            android:layout_gravity="start|center_vertical"
+            android:text="100\npts"
+            android:textSize="8dp"
+            android:lines="2"
+            android:textColor="@android:color/white"
+            android:lineSpacingMultiplier="0.7"
+            android:fontFamily="@font/titillium"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -30,8 +48,14 @@
             android:minWidth="50dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="4dp">
 
+            <View
+                android:id="@+id/spacer"
+                android:layout_width="32dp"
+                android:layout_height="4dp"
+                android:visibility="gone"/>
             <ImageView
                 android:id="@+id/ivIcon"
                 android:layout_width="30dp"
@@ -61,8 +85,8 @@
         android:id="@+id/tvAnswerStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:layout_gravity="center"
         android:textAlignment="center"

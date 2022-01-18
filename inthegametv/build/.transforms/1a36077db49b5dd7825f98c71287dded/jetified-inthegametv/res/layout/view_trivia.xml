@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
-    android:layoutDirection="ltr"
+    android:layoutDirection="inherit"
     android:layout_width="match_parent"
     android:layout_height="206dp"
     android:layout_gravity="bottom"
@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layoutDirection="ltr"
+        android:layoutDirection="inherit"
         android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
         android:gravity="center">
@@ -61,17 +61,14 @@
 
         <LinearLayout
             android:focusable="false"
-            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:id="@+id/mainButton"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:tint="@android:color/white"
             android:scaleType="centerInside"
-            android:gravity="center"
-            android:nextFocusLeft="@id/mainButton"
-            android:nextFocusDown="@id/mainButton"
-            android:nextFocusUp="@id/mainButton">
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/closeIcon"
@@ -100,17 +97,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="4dp"
-                android:layoutDirection="ltr"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="4dp"
+                android:layoutDirection="inherit"
                 android:gravity="center_vertical">
                 <TextView
                     android:id="@+id/tvQuestion"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_gravity="center"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:paddingBottom="3dp"
                     android:textAlignment="gravity"
                     android:lineSpacingExtra="-5sp"
@@ -125,20 +122,19 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_width="0dp"
                     android:layout_height="match_parent">
                     <LinearLayout
                         android:focusable="false"
-                        android:nextFocusLeft="@id/container"
                         android:id="@+id/container"
-                        android:layoutDirection="locale"
+                        android:layoutDirection="inherit"
                         android:minWidth="100dp"
                         android:orientation="horizontal"
                         android:layout_weight="3"
                         android:layout_gravity="center"
                         android:layout_width="100dp"
-                        android:gravity="center_vertical|left"
+                        android:gravity="center_vertical|start"
                         android:layout_height="60dp">
                     </LinearLayout>
 
@@ -150,7 +146,7 @@
                         android:visibility="gone">
                         <LinearLayout
                             android:id="@+id/scrollContainer"
-                            android:layoutDirection="locale"
+                            android:layoutDirection="inherit"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:gravity="fill_horizontal|center_vertical"
@@ -162,8 +158,8 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="16dp"
                         android:paddingTop="3dp"
                         android:textAlignment="gravity"
                         android:textSize="13sp"
@@ -183,8 +179,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
                 android:background="@android:color/black"
                 android:visibility="gone"
                 android:gravity="center">

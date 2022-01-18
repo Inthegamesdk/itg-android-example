@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="166dp"
-    android:layoutDirection="ltr"
+    android:layoutDirection="inherit"
     android:layout_gravity="bottom"
     android:gravity="bottom"
     android:background="@android:color/transparent">
@@ -61,8 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/questionContainer"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="2dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="2dp"
                 android:gravity="center">
 
                 <TextView
@@ -72,7 +72,7 @@
                     android:layout_marginTop="0dp"
                     android:paddingBottom="1dp"
                     android:focusable="false"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="-3sp"
                     android:maxLines="3"
@@ -85,11 +85,10 @@
 
                 <LinearLayout
                     android:focusable="false"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
                     android:layout_gravity="center"
                     android:id="@+id/container"
-                    android:layoutDirection="locale"
-                    android:nextFocusLeft="@id/container"
+                    android:layoutDirection="inherit"
                     android:orientation="horizontal"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -104,7 +103,7 @@
                     android:visibility="gone">
                     <LinearLayout
                         android:id="@+id/scrollContainer"
-                        android:layoutDirection="locale"
+                        android:layoutDirection="inherit"
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:gravity="fill_horizontal|center_vertical"
@@ -116,11 +115,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:focusable="false"
                     android:gravity="center"
-                    android:nextFocusLeft="@id/container"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -164,8 +162,7 @@
                         android:textStyle="bold"
                         android:fontFamily="@font/titillium"
                         android:nextFocusDown="@id/wagerValueButton"
-                        android:nextFocusUp="@id/wagerValueButton"
-                        android:nextFocusLeft="@id/wagerValueButton"/>
+                        android:nextFocusUp="@id/wagerValueButton"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -244,11 +241,10 @@
                     android:layout_width="483dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     android:focusable="false"
                     android:gravity="center"
-                    android:nextFocusLeft="@id/container"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -265,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:focusable="false"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
                         android:gravity="center_vertical"
                         android:lineSpacingExtra="-3sp"
                         android:maxLines="2"
@@ -283,8 +279,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
                 android:background="@android:color/black"
                 android:visibility="gone"
                 android:gravity="center"
