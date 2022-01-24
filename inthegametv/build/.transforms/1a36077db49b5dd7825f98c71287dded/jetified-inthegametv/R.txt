@@ -1745,6 +1745,7 @@ int drawable circle_white_focused 0x0
 int drawable close 0x0
 int drawable close_vector 0x0
 int drawable coin 0x0
+int drawable coin2 0x0
 int drawable delete 0x0
 int drawable design_fab_background 0x0
 int drawable design_ic_visibility 0x0
@@ -1757,8 +1758,11 @@ int drawable extended_gradient_rtl 0x0
 int drawable extended_pressed_gradient_rtl 0x0
 int drawable focus_gradient 0x0
 int drawable focus_gradient_rtl 0x0
+int drawable focus_gradient_spaced 0x0
+int drawable focus_gradient_spaced_rtl 0x0
 int drawable horizontal_gradient 0x0
 int drawable ic_account 0x0
+int drawable ic_circle_arrow 0x0
 int drawable ic_clock_black_24dp 0x0
 int drawable ic_close 0x0
 int drawable ic_keyboard_black_24dp 0x0
@@ -1771,6 +1775,7 @@ int drawable ic_point_score 0x0
 int drawable ic_point_score_yellow 0x0
 int drawable ic_predictions 0x0
 int drawable ic_server_error 0x0
+int drawable ic_shop 0x0
 int drawable ic_user 0x0
 int drawable ic_user_photo 0x0
 int drawable ic_warning 0x0
@@ -1833,6 +1838,8 @@ int drawable popup_save_phone_selector 0x0
 int drawable prediction_result_shape 0x0
 int drawable pressed_gradient 0x0
 int drawable pressed_gradient_rtl 0x0
+int drawable pressed_gradient_spaced 0x0
+int drawable pressed_gradient_spaced_rtl 0x0
 int drawable star_empty 0x0
 int drawable star_fill 0x0
 int drawable star_half 0x0
@@ -2037,6 +2044,7 @@ int id home 0x0
 int id honorRequest 0x0
 int id icon 0x0
 int id iconLose 0x0
+int id iconPurchase 0x0
 int id iconView 0x0
 int id iconWin 0x0
 int id icon_group 0x0
@@ -2321,11 +2329,13 @@ int id tvInvalid 0x0
 int id tvLevel 0x0
 int id tvLevelLabel 0x0
 int id tvMax 0x0
+int id tvMy 0x0
 int id tvName 0x0
 int id tvOutOf 0x0
 int id tvPhone 0x0
 int id tvPoints 0x0
 int id tvPrice 0x0
+int id tvPurchase 0x0
 int id tvQuestion 0x0
 int id tvRank 0x0
 int id tvResult 0x0
@@ -2334,6 +2344,7 @@ int id tvScoreTitle 0x0
 int id tvSendInfo 0x0
 int id tvStatTotal 0x0
 int id tvStatUser 0x0
+int id tvSubtitle 0x0
 int id tvTitle 0x0
 int id tvTotalPoints 0x0
 int id tvUserName 0x0
@@ -2447,6 +2458,7 @@ int layout item_avatar 0x0
 int layout item_leaderboard 0x0
 int layout item_menu 0x0
 int layout item_prediction 0x0
+int layout item_shop 0x0
 int layout material_chip_input_combo 0x0
 int layout material_clock_display 0x0
 int layout material_clock_display_divider 0x0
@@ -2529,6 +2541,7 @@ int layout view_promotion 0x0
 int layout view_promotion_flip 0x0
 int layout view_rating 0x0
 int layout view_rating_answer 0x0
+int layout view_shop 0x0
 int layout view_sidebar 0x0
 int layout view_trivia 0x0
 int layout view_trivia_answer 0x0
@@ -2586,10 +2599,10 @@ int string exposed_dropdown_menu_content_description 0x0
 int string fab_transformation_scrim_behavior 0x0
 int string fab_transformation_sheet_behavior 0x0
 int string generalOverlay_level 0x0
+int string generalOverlay_minutes_composed 0x0
 int string generalOverlay_point 0x0
 int string generalOverlay_seconds 0x0
-int string general_minutes_composed 0x0
-int string general_seconds_composed 0x0
+int string generalOverlay_seconds_composed 0x0
 int string hide_bottom_view_on_scroll_behavior 0x0
 int string icon_content_description 0x0
 int string item_view_role_description 0x0
@@ -2658,6 +2671,7 @@ int string personalArea_close_personal_area 0x0
 int string personalArea_enter_number_to_get_sms 0x0
 int string personalArea_exit 0x0
 int string personalArea_footer_note 0x0
+int string personalArea_number_incorrect 0x0
 int string personalArea_open_personal_area 0x0
 int string personalArea_price_discount 0x0
 int string personalArea_product_bottom_label 0x0
@@ -2685,6 +2699,21 @@ int string product_discount_off 0x0
 int string product_phone_hint 0x0
 int string product_phone_invalid 0x0
 int string search_menu_title 0x0
+int string sideMenu_account 0x0
+int string sideMenu_email 0x0
+int string sideMenu_label_name 0x0
+int string sideMenu_label_points 0x0
+int string sideMenu_label_rank 0x0
+int string sideMenu_leaderboard 0x0
+int string sideMenu_lost 0x0
+int string sideMenu_my 0x0
+int string sideMenu_pending 0x0
+int string sideMenu_predictions 0x0
+int string sideMenu_rank 0x0
+int string sideMenu_save 0x0
+int string sideMenu_shop 0x0
+int string sideMenu_username 0x0
+int string sideMenu_won 0x0
 int string status_bar_notification_info_overflow 0x0
 int string total_points_short 0x0
 int string trivia_correct_simple 0x0

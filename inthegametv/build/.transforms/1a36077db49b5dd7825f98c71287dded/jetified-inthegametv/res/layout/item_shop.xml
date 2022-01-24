@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true">
+    <LinearLayout
+        android:id="@+id/itemContainer"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="4dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/item_background">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/photoView"
+            android:scaleType="centerCrop"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="start|top"
+            android:orientation="vertical"
+            android:paddingVertical="3dp"
+            android:paddingHorizontal="7dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="Title"/>
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/titillium"
+                android:textSize="8sp"
+                android:textColor="@android:color/white"
+                android:translationY="-1dp"
+                android:lines="1"
+                android:text="Title text text text"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="end|bottom"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tvPurchase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/titillium"
+                    android:textSize="7sp"
+                    android:textColor="@color/buttonYellow"
+                    android:text="PURCHASE"/>
+                <ImageView
+                    android:id="@+id/iconPurchase"
+                    android:layout_marginStart="2dp"
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_circle_arrow" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

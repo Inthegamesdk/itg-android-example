@@ -182,6 +182,7 @@
                         android:id="@+id/etPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textDirection="ltr"
                         android:backgroundTint="@android:color/white"
                         android:textSize="21dp"
                         android:inputType="number"

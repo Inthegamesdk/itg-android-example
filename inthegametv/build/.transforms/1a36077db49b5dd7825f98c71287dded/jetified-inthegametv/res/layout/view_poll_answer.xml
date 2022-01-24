@@ -10,8 +10,7 @@
         android:id="@+id/framelayout_answer_poll"
         android:layout_width="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_height="match_parent"
-        android:layout_marginTop="12dp">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/answerButton"
@@ -22,18 +21,16 @@
             android:focusable="true"
             android:gravity="center"
             android:stateListAnimator="@null"
-            android:layout_gravity="center"
-            android:layout_marginStart="3dp"/>
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/pointsBadge"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:background="@drawable/coin"
+            android:background="@drawable/coin2"
             android:layout_gravity="start|center_vertical"
-            android:text="100\npts"
-            android:textSize="6dp"
-            android:lines="2"
+            android:text="100"
+            android:textSize="8dp"
             android:textColor="@android:color/white"
             android:lineSpacingMultiplier="0.7"
             android:fontFamily="@font/titillium"
@@ -47,11 +44,10 @@
             android:minWidth="40dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginStart="3dp">
+            android:orientation="horizontal">
             <View
                 android:id="@+id/spacer"
-                android:layout_width="24dp"
+                android:layout_width="28dp"
                 android:layout_height="4dp"
                 android:visibility="gone"/>
             <ImageView
@@ -62,11 +58,29 @@
                 android:layout_marginStart="4dp"
                 android:scaleType="fitXY" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:orientation="vertical">
+
             <TextView
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
+                android:id="@+id/tvAnswerStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="start"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:text="35"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:fontFamily="@font/titillium"
+                android:translationY="3dp"/>
+            <TextView
                 android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:maxLines="1"
@@ -77,21 +91,7 @@
                 android:textSize="11sp"
                 android:fontFamily="@font/titillium" />
         </LinearLayout>
+        </LinearLayout>
     </FrameLayout>
-
-    <TextView
-        android:id="@+id/tvAnswerStats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:text="35"
-        android:textColor="@android:color/white"
-        android:textSize="9sp"
-        android:fontFamily="@font/titillium" />
 
 </LinearLayout>

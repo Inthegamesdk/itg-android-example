@@ -11,6 +11,7 @@
         android:layout_marginVertical="10dp"
         android:layoutDirection="inherit">
         <TextView
+            android:id="@+id/tvMy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -19,6 +20,7 @@
             android:textStyle="bold"
             android:textColor="@color/yellowITG" />
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"

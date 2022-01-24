@@ -1746,6 +1746,7 @@ drawable circle_white_focused
 drawable close
 drawable close_vector
 drawable coin
+drawable coin2
 drawable delete
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1758,8 +1759,11 @@ drawable extended_gradient_rtl
 drawable extended_pressed_gradient_rtl
 drawable focus_gradient
 drawable focus_gradient_rtl
+drawable focus_gradient_spaced
+drawable focus_gradient_spaced_rtl
 drawable horizontal_gradient
 drawable ic_account
+drawable ic_circle_arrow
 drawable ic_clock_black_24dp
 drawable ic_close
 drawable ic_keyboard_black_24dp
@@ -1772,6 +1776,7 @@ drawable ic_point_score
 drawable ic_point_score_yellow
 drawable ic_predictions
 drawable ic_server_error
+drawable ic_shop
 drawable ic_user
 drawable ic_user_photo
 drawable ic_warning
@@ -1834,6 +1839,8 @@ drawable popup_save_phone_selector
 drawable prediction_result_shape
 drawable pressed_gradient
 drawable pressed_gradient_rtl
+drawable pressed_gradient_spaced
+drawable pressed_gradient_spaced_rtl
 drawable star_empty
 drawable star_fill
 drawable star_half
@@ -2038,6 +2045,7 @@ id home
 id honorRequest
 id icon
 id iconLose
+id iconPurchase
 id iconView
 id iconWin
 id icon_group
@@ -2322,11 +2330,13 @@ id tvInvalid
 id tvLevel
 id tvLevelLabel
 id tvMax
+id tvMy
 id tvName
 id tvOutOf
 id tvPhone
 id tvPoints
 id tvPrice
+id tvPurchase
 id tvQuestion
 id tvRank
 id tvResult
@@ -2335,6 +2345,7 @@ id tvScoreTitle
 id tvSendInfo
 id tvStatTotal
 id tvStatUser
+id tvSubtitle
 id tvTitle
 id tvTotalPoints
 id tvUserName
@@ -2448,6 +2459,7 @@ layout item_avatar
 layout item_leaderboard
 layout item_menu
 layout item_prediction
+layout item_shop
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -2530,6 +2542,7 @@ layout view_promotion
 layout view_promotion_flip
 layout view_rating
 layout view_rating_answer
+layout view_shop
 layout view_sidebar
 layout view_trivia
 layout view_trivia_answer
@@ -2587,10 +2600,10 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string generalOverlay_level
+string generalOverlay_minutes_composed
 string generalOverlay_point
 string generalOverlay_seconds
-string general_minutes_composed
-string general_seconds_composed
+string generalOverlay_seconds_composed
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
@@ -2659,6 +2672,7 @@ string personalArea_close_personal_area
 string personalArea_enter_number_to_get_sms
 string personalArea_exit
 string personalArea_footer_note
+string personalArea_number_incorrect
 string personalArea_open_personal_area
 string personalArea_price_discount
 string personalArea_product_bottom_label
@@ -2686,6 +2700,21 @@ string product_discount_off
 string product_phone_hint
 string product_phone_invalid
 string search_menu_title
+string sideMenu_account
+string sideMenu_email
+string sideMenu_label_name
+string sideMenu_label_points
+string sideMenu_label_rank
+string sideMenu_leaderboard
+string sideMenu_lost
+string sideMenu_my
+string sideMenu_pending
+string sideMenu_predictions
+string sideMenu_rank
+string sideMenu_save
+string sideMenu_shop
+string sideMenu_username
+string sideMenu_won
 string status_bar_notification_info_overflow
 string total_points_short
 string trivia_correct_simple
