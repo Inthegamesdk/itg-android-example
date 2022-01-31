@@ -2183,6 +2183,7 @@ id photoView
 id pictureSaveButton
 id pin
 id pointsBadge
+id pointsBadgeLabel
 id pointsContainer
 id popupContainer
 id position
@@ -2194,7 +2195,6 @@ id questionContainer
 id radio
 id rectangles
 id recyclerView
-id resultIcon
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2247,6 +2247,7 @@ id src_atop
 id src_in
 id src_over
 id standard
+id starContainer
 id start
 id startHorizontal
 id startToEnd
@@ -2312,6 +2313,7 @@ id triangle
 id tvAnswer
 id tvAnswerStats
 id tvAverage
+id tvAverageLabel
 id tvContent
 id tvCredits
 id tvCreditsLabel
@@ -2329,10 +2331,8 @@ id tvInstructions
 id tvInvalid
 id tvLevel
 id tvLevelLabel
-id tvMax
 id tvMy
 id tvName
-id tvOutOf
 id tvPhone
 id tvPoints
 id tvPrice

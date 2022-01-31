@@ -2182,6 +2182,7 @@ int id photoView 0x0
 int id pictureSaveButton 0x0
 int id pin 0x0
 int id pointsBadge 0x0
+int id pointsBadgeLabel 0x0
 int id pointsContainer 0x0
 int id popupContainer 0x0
 int id position 0x0
@@ -2193,7 +2194,6 @@ int id questionContainer 0x0
 int id radio 0x0
 int id rectangles 0x0
 int id recyclerView 0x0
-int id resultIcon 0x0
 int id reverseSawtooth 0x0
 int id right 0x0
 int id rightToLeft 0x0
@@ -2246,6 +2246,7 @@ int id src_atop 0x0
 int id src_in 0x0
 int id src_over 0x0
 int id standard 0x0
+int id starContainer 0x0
 int id start 0x0
 int id startHorizontal 0x0
 int id startToEnd 0x0
@@ -2311,6 +2312,7 @@ int id triangle 0x0
 int id tvAnswer 0x0
 int id tvAnswerStats 0x0
 int id tvAverage 0x0
+int id tvAverageLabel 0x0
 int id tvContent 0x0
 int id tvCredits 0x0
 int id tvCreditsLabel 0x0
@@ -2328,10 +2330,8 @@ int id tvInstructions 0x0
 int id tvInvalid 0x0
 int id tvLevel 0x0
 int id tvLevelLabel 0x0
-int id tvMax 0x0
 int id tvMy 0x0
 int id tvName 0x0
-int id tvOutOf 0x0
 int id tvPhone 0x0
 int id tvPoints 0x0
 int id tvPrice 0x0
