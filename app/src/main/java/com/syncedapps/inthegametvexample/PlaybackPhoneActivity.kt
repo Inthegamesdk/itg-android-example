@@ -52,8 +52,15 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
             mp.setVolume(1f, 1f)
         }
 
-        mediaController = MediaController(this)
-        videoView.setMediaController(mediaController!!)
+        videoView.setOnPreparedListener {
+            it.setOnVideoSizeChangedListener { _, _, _ ->
+                if (mediaController == null) {
+                    mediaController = MediaController(this)
+                    videoView.setMediaController(mediaController!!)
+                }
+                mediaController?.setAnchorView(outerContainer)
+            }
+        }
     }
 
     fun addOverlay() {
