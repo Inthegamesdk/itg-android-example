@@ -108,7 +108,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="2dp"
-                    android:textAlignment="gravity"
+                    android:textAlignment="viewStart"
                     android:lineSpacingExtra="-3sp"
                     android:textSize="8sp"
                     android:textStyle="bold"

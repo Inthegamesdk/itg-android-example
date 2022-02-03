@@ -79,6 +79,7 @@
     <string name="product_phone_invalid">Invalid phone number</string>
     <string name="sideMenu_account">Account</string>
     <string name="sideMenu_email">Email</string>
+    <string name="sideMenu_info_saved">User information saved"</string>
     <string name="sideMenu_label_name">Name"</string>
     <string name="sideMenu_label_points">Points"</string>
     <string name="sideMenu_label_rank">Rank"</string>

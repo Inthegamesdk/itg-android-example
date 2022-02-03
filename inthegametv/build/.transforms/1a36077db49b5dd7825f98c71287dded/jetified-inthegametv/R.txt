@@ -2701,6 +2701,7 @@ int string product_phone_invalid 0x0
 int string search_menu_title 0x0
 int string sideMenu_account 0x0
 int string sideMenu_email 0x0
+int string sideMenu_info_saved 0x0
 int string sideMenu_label_name 0x0
 int string sideMenu_label_points 0x0
 int string sideMenu_label_rank 0x0
