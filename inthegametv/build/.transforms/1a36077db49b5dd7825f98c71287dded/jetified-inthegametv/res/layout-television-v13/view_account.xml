@@ -65,6 +65,8 @@
                 android:hint="Username"
                 android:fontFamily="@font/titillium"
                 android:textSize="11dp"
+                android:maxLines="1"
+                android:inputType="text"
                 android:textColor="@android:color/white"
                 android:background="@drawable/edit_text_background"
                 android:nextFocusUp="@id/avatarButton"
@@ -83,6 +85,8 @@
                 android:textSize="11dp"
                 android:textColor="@android:color/white"
                 android:background="@drawable/edit_text_background"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/saveButton"
                 android:nextFocusUp="@id/etUsername"
                 android:nextFocusForward="@id/saveButton"/>

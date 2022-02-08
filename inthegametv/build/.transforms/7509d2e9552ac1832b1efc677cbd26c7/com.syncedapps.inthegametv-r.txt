@@ -2702,6 +2702,8 @@ string product_phone_invalid
 string search_menu_title
 string sideMenu_account
 string sideMenu_email
+string sideMenu_email_validation
+string sideMenu_info_saved
 string sideMenu_label_name
 string sideMenu_label_points
 string sideMenu_label_rank
@@ -2714,6 +2716,7 @@ string sideMenu_rank
 string sideMenu_save
 string sideMenu_shop
 string sideMenu_username
+string sideMenu_username_validation
 string sideMenu_won
 string status_bar_notification_info_overflow
 string total_points_short

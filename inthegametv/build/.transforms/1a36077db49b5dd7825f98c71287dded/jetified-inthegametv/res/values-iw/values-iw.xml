@@ -50,6 +50,7 @@
     <string name="product_phone_invalid">Invalid phone number</string>
     <string name="sideMenu_account">חשבון</string>
     <string name="sideMenu_email">Email</string>
+    <string name="sideMenu_email_validation">Invalid email"</string>
     <string name="sideMenu_info_saved">User information saved"</string>
     <string name="sideMenu_label_name">Name"</string>
     <string name="sideMenu_label_points">Points"</string>
@@ -63,6 +64,7 @@
     <string name="sideMenu_save">Save</string>
     <string name="sideMenu_shop">Shop</string>
     <string name="sideMenu_username">Username</string>
+    <string name="sideMenu_username_validation">Invalid username"</string>
     <string name="sideMenu_won">נצחונות</string>
     <string name="total_points_short">סה"כ</string>
     <string name="trivia_correct_simple">תשובה נכונה</string>

@@ -4,6 +4,29 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/contentContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="0dp">
+
+        <LinearLayout
+            android:id="@+id/noticeContainer"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="top|right"
+            android:layout_height="60dp"/>
+        <LinearLayout
+            android:id="@+id/container"
+            android:orientation="vertical"
+            android:layout_gravity="end|bottom"
+            android:gravity="end|bottom"
+            android:paddingBottom="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/featuresContainer"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -26,29 +49,6 @@
             android:layout_width="192dp"
             android:layout_gravity="end"
             android:layout_height="match_parent"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/contentContainer"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="0dp">
-
-        <LinearLayout
-            android:id="@+id/noticeContainer"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:gravity="top|right"
-            android:layout_height="60dp"/>
-        <LinearLayout
-            android:id="@+id/container"
-            android:orientation="vertical"
-            android:layout_gravity="end|bottom"
-            android:gravity="end|bottom"
-            android:paddingBottom="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/popupContainer"
