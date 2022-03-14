@@ -192,6 +192,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
                 }
             }
         }
+        if (isControlsOverlayVisible && event?.keyCode == KeyEvent.KEYCODE_DPAD_UP) return
         mOverlay?.receivedKeyEvent(event)
     }
 
