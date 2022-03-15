@@ -1116,6 +1116,7 @@ int color material_timepicker_modebutton_tint 0x0
 int color menuDefault 0x0
 int color menuFocused 0x0
 int color menuTextBackground 0x0
+int color message_field_border 0x0
 int color mtrl_btn_bg_color_selector 0x0
 int color mtrl_btn_ripple_color 0x0
 int color mtrl_btn_stroke_color_selector 0x0
@@ -1736,6 +1737,10 @@ int drawable button_center_selector 0x0
 int drawable button_circle_focus_selector 0x0
 int drawable button_circle_selector 0x0
 int drawable button_popup_selector 0x0
+int drawable chat_button_background 0x0
+int drawable chat_button_selected 0x0
+int drawable chat_button_selector 0x0
+int drawable chat_title 0x0
 int drawable check 0x0
 int drawable check_vector 0x0
 int drawable checkmark 0x0
@@ -1762,9 +1767,13 @@ int drawable focus_gradient_spaced 0x0
 int drawable focus_gradient_spaced_rtl 0x0
 int drawable horizontal_gradient 0x0
 int drawable ic_account 0x0
+int drawable ic_arrow_page 0x0
+int drawable ic_chat 0x0
 int drawable ic_circle_arrow 0x0
+int drawable ic_clear_chat 0x0
 int drawable ic_clock_black_24dp 0x0
 int drawable ic_close 0x0
+int drawable ic_field_clear 0x0
 int drawable ic_keyboard_black_24dp 0x0
 int drawable ic_leaderboard 0x0
 int drawable ic_mtrl_checked_circle 0x0
@@ -1774,6 +1783,8 @@ int drawable ic_mtrl_chip_close_circle 0x0
 int drawable ic_point_score 0x0
 int drawable ic_point_score_yellow 0x0
 int drawable ic_predictions 0x0
+int drawable ic_send_chat 0x0
+int drawable ic_send_message 0x0
 int drawable ic_server_error 0x0
 int drawable ic_shop 0x0
 int drawable ic_user 0x0
@@ -1784,6 +1795,8 @@ int drawable inverted_background 0x0
 int drawable item_background 0x0
 int drawable item_background_focused 0x0
 int drawable item_background_selector 0x0
+int drawable item_cheer_focused 0x0
+int drawable item_cheer_selector 0x0
 int drawable item_circle_background 0x0
 int drawable item_circle_focused 0x0
 int drawable item_circle_selector 0x0
@@ -1803,6 +1816,8 @@ int drawable material_ic_keyboard_arrow_previous_black_24dp 0x0
 int drawable material_ic_keyboard_arrow_right_black_24dp 0x0
 int drawable material_ic_menu_arrow_down_black_24dp 0x0
 int drawable material_ic_menu_arrow_up_black_24dp 0x0
+int drawable message_background 0x0
+int drawable message_field_background 0x0
 int drawable mobile_button 0x0
 int drawable mobile_button_popup 0x0
 int drawable mtrl_dialog_background 0x0
@@ -1845,6 +1860,7 @@ int drawable star_fill 0x0
 int drawable star_half 0x0
 int drawable switch_thumb 0x0
 int drawable test_custom_background 0x0
+int drawable title_cheer_chat 0x0
 int drawable tooltip_frame_dark 0x0
 int drawable tooltip_frame_light 0x0
 int drawable vertical_gradient 0x0
@@ -1943,11 +1959,13 @@ int id autoCompleteToEnd 0x0
 int id autoCompleteToStart 0x0
 int id avatarButton 0x0
 int id avatarView 0x0
+int id avatarsView 0x0
 int id barrier 0x0
 int id baseline 0x0
 int id blocking 0x0
 int id bottom 0x0
 int id bounce 0x0
+int id buttonClear 0x0
 int id buttonContainer 0x0
 int id buttonDone 0x0
 int id buttonPanel 0x0
@@ -1956,6 +1974,10 @@ int id buttonSend 0x0
 int id buyButton 0x0
 int id buyContainer 0x0
 int id cancel_button 0x0
+int id categoryButton1 0x0
+int id categoryButton2 0x0
+int id categoryButton3 0x0
+int id categoryButton4 0x0
 int id center 0x0
 int id chain 0x0
 int id checkbox 0x0
@@ -1971,6 +1993,7 @@ int id clear_text 0x0
 int id clockwise 0x0
 int id closeButton 0x0
 int id closeIcon 0x0
+int id composeContainer 0x0
 int id confirm_button 0x0
 int id container 0x0
 int id content 0x0
@@ -2105,6 +2128,9 @@ int id material_value_index 0x0
 int id menu 0x0
 int id menuButton 0x0
 int id message 0x0
+int id messageContainer 0x0
+int id messageField 0x0
+int id messagesView 0x0
 int id middle 0x0
 int id mini 0x0
 int id month_grid 0x0
@@ -2358,6 +2384,7 @@ int id uniform 0x0
 int id unlabeled 0x0
 int id up 0x0
 int id userAreaButton 0x0
+int id userIconView 0x0
 int id user_points 0x0
 int id view_offset_helper 0x0
 int id visible 0x0
@@ -2455,6 +2482,8 @@ int layout design_navigation_menu_item 0x0
 int layout design_text_input_end_icon 0x0
 int layout design_text_input_start_icon 0x0
 int layout item_avatar 0x0
+int layout item_chat 0x0
+int layout item_cheer 0x0
 int layout item_leaderboard 0x0
 int layout item_menu 0x0
 int layout item_prediction 0x0
@@ -2529,6 +2558,7 @@ int layout text_view_with_line_height_from_style 0x0
 int layout text_view_with_theme_line_height 0x0
 int layout text_view_without_line_height 0x0
 int layout view_account 0x0
+int layout view_chat 0x0
 int layout view_error_container 0x0
 int layout view_extra_info 0x0
 int layout view_itg_overlay 0x0
@@ -2700,6 +2730,9 @@ int string product_phone_hint 0x0
 int string product_phone_invalid 0x0
 int string search_menu_title 0x0
 int string sideMenu_account 0x0
+int string sideMenu_chat 0x0
+int string sideMenu_chat_title 0x0
+int string sideMenu_cheer 0x0
 int string sideMenu_email 0x0
 int string sideMenu_email_validation 0x0
 int string sideMenu_info_saved 0x0

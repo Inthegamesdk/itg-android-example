@@ -36,8 +36,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
+                android:scaleType="centerInside"/>
 
             <ImageView
                 android:id="@+id/errorIcon"

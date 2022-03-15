@@ -36,6 +36,7 @@
                 android:fontFamily="@font/titillium"
                 android:textSize="11sp"
                 android:textStyle="bold"
+                android:lines="1"
                 android:textColor="@android:color/white"
                 android:text="Title"/>
 

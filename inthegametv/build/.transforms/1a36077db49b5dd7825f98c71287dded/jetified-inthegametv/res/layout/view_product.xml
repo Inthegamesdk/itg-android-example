@@ -51,7 +51,7 @@
         <FrameLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.85"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="34dp">
@@ -238,7 +238,10 @@
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"/>
+        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"/>
 
     </LinearLayout>
 </LinearLayout>

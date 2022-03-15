@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:padding="4dp"
+    android:background="@drawable/item_cheer_selector"
+    android:focusable="true">
+    <ImageView
+        android:id="@+id/avatarView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:scaleType="fitCenter"/>
+</LinearLayout>
+
+

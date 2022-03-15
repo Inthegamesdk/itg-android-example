@@ -35,8 +35,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
+                android:scaleType="centerInside"/>
 
             <ImageView
                 android:id="@+id/errorIcon"
@@ -52,7 +51,7 @@
             android:orientation="vertical"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.84"
             android:layout_gravity="center"
             android:layoutDirection="inherit"
             android:textDirection="locale"
@@ -86,7 +85,10 @@
             </ScrollView>
         </LinearLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"/>
+        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.16"/>
 
     </LinearLayout>
 </LinearLayout>

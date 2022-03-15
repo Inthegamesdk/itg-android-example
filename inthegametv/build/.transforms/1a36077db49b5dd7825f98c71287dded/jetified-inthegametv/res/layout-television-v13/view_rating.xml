@@ -36,8 +36,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
+                android:scaleType="centerInside"/>
 
             <ImageView
                 android:id="@+id/errorIcon"
@@ -71,10 +70,10 @@
                     android:gravity="center_vertical">
                     <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="220dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"
+                        android:layout_marginEnd="0dp"
                         android:layout_marginTop="2dp"
                         android:gravity="end|center_vertical">
                         <LinearLayout
@@ -199,7 +198,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="12dp"
                         android:layout_marginEnd="15dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal" />
@@ -213,7 +212,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="12dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
@@ -241,7 +240,8 @@
                             android:layout_marginStart="8dp"
                             android:textStyle="bold"
                             android:textColor="@android:color/white"
-                            android:textSize="23sp"/>
+                            android:textSize="23sp"
+                            android:layout_marginEnd="30dp"/>
                     </LinearLayout>
                 </LinearLayout>
 

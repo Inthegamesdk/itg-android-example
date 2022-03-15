@@ -35,8 +35,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/errorIcon"
@@ -253,7 +252,7 @@
                         android:scaleType="fitXY" />
                     <TextView
                         android:id="@+id/tvWagerCompleted"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:focusable="false"

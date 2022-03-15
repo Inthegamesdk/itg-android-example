@@ -21,6 +21,7 @@
     <color name="menuDefault">#52000000</color>
     <color name="menuFocused">#52FFFFFF</color>
     <color name="menuTextBackground">#99FFFFFF</color>
+    <color name="message_field_border">#DCDCDC</color>
     <color name="pollBackgroundColor">#A0000000</color>
     <color name="shadow">#40333333</color>
     <color name="sidebarBackground">#454545</color>
@@ -78,6 +79,9 @@
     <string name="product_phone_hint">Phone number</string>
     <string name="product_phone_invalid">Invalid phone number</string>
     <string name="sideMenu_account">Account</string>
+    <string name="sideMenu_chat">Chat</string>
+    <string name="sideMenu_chat_title">Chat</string>
+    <string name="sideMenu_cheer">Cheer</string>
     <string name="sideMenu_email">Email</string>
     <string name="sideMenu_email_validation">Invalid email"</string>
     <string name="sideMenu_info_saved">User information saved"</string>

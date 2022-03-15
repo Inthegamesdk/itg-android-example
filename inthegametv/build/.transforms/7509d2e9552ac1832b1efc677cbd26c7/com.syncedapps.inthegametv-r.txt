@@ -1117,6 +1117,7 @@ color material_timepicker_modebutton_tint
 color menuDefault
 color menuFocused
 color menuTextBackground
+color message_field_border
 color mtrl_btn_bg_color_selector
 color mtrl_btn_ripple_color
 color mtrl_btn_stroke_color_selector
@@ -1737,6 +1738,10 @@ drawable button_center_selector
 drawable button_circle_focus_selector
 drawable button_circle_selector
 drawable button_popup_selector
+drawable chat_button_background
+drawable chat_button_selected
+drawable chat_button_selector
+drawable chat_title
 drawable check
 drawable check_vector
 drawable checkmark
@@ -1763,9 +1768,13 @@ drawable focus_gradient_spaced
 drawable focus_gradient_spaced_rtl
 drawable horizontal_gradient
 drawable ic_account
+drawable ic_arrow_page
+drawable ic_chat
 drawable ic_circle_arrow
+drawable ic_clear_chat
 drawable ic_clock_black_24dp
 drawable ic_close
+drawable ic_field_clear
 drawable ic_keyboard_black_24dp
 drawable ic_leaderboard
 drawable ic_mtrl_checked_circle
@@ -1775,6 +1784,8 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_point_score
 drawable ic_point_score_yellow
 drawable ic_predictions
+drawable ic_send_chat
+drawable ic_send_message
 drawable ic_server_error
 drawable ic_shop
 drawable ic_user
@@ -1785,6 +1796,8 @@ drawable inverted_background
 drawable item_background
 drawable item_background_focused
 drawable item_background_selector
+drawable item_cheer_focused
+drawable item_cheer_selector
 drawable item_circle_background
 drawable item_circle_focused
 drawable item_circle_selector
@@ -1804,6 +1817,8 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable message_background
+drawable message_field_background
 drawable mobile_button
 drawable mobile_button_popup
 drawable mtrl_dialog_background
@@ -1846,6 +1861,7 @@ drawable star_fill
 drawable star_half
 drawable switch_thumb
 drawable test_custom_background
+drawable title_cheer_chat
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable vertical_gradient
@@ -1944,11 +1960,13 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id avatarButton
 id avatarView
+id avatarsView
 id barrier
 id baseline
 id blocking
 id bottom
 id bounce
+id buttonClear
 id buttonContainer
 id buttonDone
 id buttonPanel
@@ -1957,6 +1975,10 @@ id buttonSend
 id buyButton
 id buyContainer
 id cancel_button
+id categoryButton1
+id categoryButton2
+id categoryButton3
+id categoryButton4
 id center
 id chain
 id checkbox
@@ -1972,6 +1994,7 @@ id clear_text
 id clockwise
 id closeButton
 id closeIcon
+id composeContainer
 id confirm_button
 id container
 id content
@@ -2106,6 +2129,9 @@ id material_value_index
 id menu
 id menuButton
 id message
+id messageContainer
+id messageField
+id messagesView
 id middle
 id mini
 id month_grid
@@ -2359,6 +2385,7 @@ id uniform
 id unlabeled
 id up
 id userAreaButton
+id userIconView
 id user_points
 id view_offset_helper
 id visible
@@ -2456,6 +2483,8 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout item_avatar
+layout item_chat
+layout item_cheer
 layout item_leaderboard
 layout item_menu
 layout item_prediction
@@ -2530,6 +2559,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout view_account
+layout view_chat
 layout view_error_container
 layout view_extra_info
 layout view_itg_overlay
@@ -2701,6 +2731,9 @@ string product_phone_hint
 string product_phone_invalid
 string search_menu_title
 string sideMenu_account
+string sideMenu_chat
+string sideMenu_chat_title
+string sideMenu_cheer
 string sideMenu_email
 string sideMenu_email_validation
 string sideMenu_info_saved
