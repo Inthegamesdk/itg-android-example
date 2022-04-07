@@ -23,7 +23,7 @@
             android:textAlignment="center"
             android:gravity="center"
             android:text="30"
-            android:textSize="9dp"
+            android:textSize="9sp"
             android:fontFamily="@font/titilliumweb_semibold"
             android:textColor="@android:color/white" />
         <ImageView
@@ -34,14 +34,14 @@
             android:src="@drawable/ic_user"/>
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginHorizontal="8dp"
             android:maxLines="1"
             android:text="John Doe"
-            android:textSize="9dp"
-            android:fontFamily="@font/titillium"
+            android:textSize="9sp"
+            android:fontFamily="@font/titilliumweb_regular"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
             android:text="John Doe"
-            android:textSize="9dp"
+            android:textSize="9sp"
             android:fontFamily="@font/titilliumweb_semibold"
             android:textColor="@color/yellowITG" />
     </LinearLayout>

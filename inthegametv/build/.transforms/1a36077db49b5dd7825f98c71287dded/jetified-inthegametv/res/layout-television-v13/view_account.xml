@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="12dp"
+    android:background="@color/sidebarBackground"
     android:gravity="center_horizontal|top">
 
     <LinearLayout
@@ -16,25 +17,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
+            android:fontFamily="@font/titilliumweb_bold"
             android:text="MY"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/yellowITG" />
+
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="ACCOUNT"
-            android:textSize="14dp"
+            android:fontFamily="@font/titilliumweb_bold"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@android:color/white" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sidebar_separator"
+        android:orientation="horizontal" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <LinearLayout
             android:id="@+id/formContainer"
             android:layout_width="match_parent"
@@ -63,15 +77,15 @@
                 android:paddingHorizontal="6dp"
                 android:gravity="center_vertical"
                 android:hint="Username"
-                android:fontFamily="@font/titillium"
-                android:textSize="11dp"
+                android:fontFamily="@font/titilliumweb_regular"
+                android:textSize="11sp"
                 android:maxLines="1"
-                android:inputType="text"
+                android:inputType="textVisiblePassword"
                 android:textColor="@android:color/white"
                 android:background="@drawable/edit_text_background"
                 android:nextFocusUp="@id/avatarButton"
                 android:nextFocusDown="@id/etEmail"
-                android:nextFocusForward="@id/etEmail"/>
+                android:nextFocusForward="@id/etEmail" />
 
             <EditText
                 android:id="@+id/etEmail"
@@ -81,15 +95,15 @@
                 android:paddingHorizontal="6dp"
                 android:gravity="center_vertical"
                 android:hint="Email"
-                android:fontFamily="@font/titillium"
-                android:textSize="11dp"
+                android:fontFamily="@font/titilliumweb_regular"
+                android:textSize="11sp"
                 android:textColor="@android:color/white"
                 android:background="@drawable/edit_text_background"
                 android:maxLines="1"
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@id/saveButton"
                 android:nextFocusUp="@id/etUsername"
-                android:nextFocusForward="@id/saveButton"/>
+                android:nextFocusForward="@id/saveButton" />
 
             <Button
                 android:id="@+id/saveButton"
@@ -97,13 +111,13 @@
                 android:layout_height="27dp"
                 android:paddingHorizontal="14dp"
                 android:text="Save"
-                android:fontFamily="@font/titillium"
-                android:textSize="11dp"
+                android:fontFamily="@font/titilliumweb_regular"
+                android:textSize="11sp"
                 android:textColor="@android:color/white"
                 android:textAllCaps="false"
                 android:background="@drawable/account_button_selector"
                 android:nextFocusUp="@id/etEmail"
-                android:nextFocusDown="@id/saveButton"/>
+                android:nextFocusDown="@id/saveButton" />
 
             <TextView
                 android:id="@+id/tvError"
@@ -111,7 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Invalid username"
-                android:textSize="10dp"
+                android:fontFamily="@font/titilliumweb_bold"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 android:textColor="@color/wrong"
                 android:visibility="invisible" />
@@ -137,13 +152,13 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="12dp"
                 android:text="Save"
-                android:fontFamily="@font/titillium"
-                android:textSize="11dp"
+                android:fontFamily="@font/titilliumweb_regular"
+                android:textSize="11sp"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:background="@drawable/account_button_selector"
                 android:nextFocusUp="@id/recyclerView"
-                android:nextFocusDown="@id/pictureSaveButton"/>
+                android:nextFocusDown="@id/pictureSaveButton" />
 
             <ProgressBar
                 android:id="@+id/loadingIndicator"

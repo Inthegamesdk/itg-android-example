@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
     android:layoutDirection="inherit"
@@ -100,49 +101,67 @@
                 android:layout_marginStart="4dp"
                 android:layoutDirection="inherit"
                 android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/tvQuestion"
                     android:layout_width="110dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="3dp"
-                    android:paddingBottom="3dp"
-                    android:textAlignment="viewStart"
-                    android:lineSpacingExtra="-5sp"
+                    android:gravity="center_vertical|start"
+                    android:lineSpacingExtra="-4.5sp"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:maxLines="3"
                     android:text="מה יהיה יה יהיה יה הפרש
 הנקודות בסיום?"
-                    android:fontFamily="@font/titillium"/>
+                    android:fontFamily="@font/titillium" />
 
-                <LinearLayout
+                <FrameLayout
+                    android:id="@+id/flDeliminator"
+                    android:layout_width="0.9dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/base_separator" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_width="0dp"
                     android:layout_height="match_parent">
+
                     <LinearLayout
                         android:focusable="false"
                         android:id="@+id/container"
                         android:layoutDirection="inherit"
-                        android:minWidth="100dp"
+                        android:layout_width="wrap_content"
                         android:orientation="horizontal"
                         android:layout_weight="3"
                         android:layout_gravity="center"
-                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
                         android:gravity="center_vertical|start"
-                        android:layout_height="60dp">
-                    </LinearLayout>
+                        android:maxWidth="120dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <HorizontalScrollView
                         android:id="@+id/scroller"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
                         <LinearLayout
                             android:id="@+id/scrollContainer"
                             android:layoutDirection="inherit"
@@ -154,23 +173,27 @@
 
                     <TextView
                         android:id="@+id/tvResult"
-                        android:layout_width="100dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
-                        android:paddingTop="3dp"
                         android:textAlignment="gravity"
                         android:textSize="13sp"
                         android:lineSpacingExtra="-5sp"
                         android:textColor="@android:color/white"
                         android:maxLines="3"
                         android:layout_gravity="center_vertical"
-                        android:text="Answer result"
+                        android:fontFamily="@font/titillium"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:visibility="gone"
-                        android:fontFamily="@font/titillium"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/container"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="AWESOME!\n+{{ point }} pts for the correct answer"
+                        tools:visibility="visible" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
             <LinearLayout

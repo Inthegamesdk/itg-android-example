@@ -14,7 +14,7 @@
             android:id="@+id/noticeContainer"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:gravity="top|right"
+            android:gravity="center_vertical|right"
             android:layout_height="140dp"/>
         <LinearLayout
             android:id="@+id/container"

@@ -14,7 +14,7 @@
             android:id="@+id/noticeContainer"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:gravity="top|right"
+            android:gravity="center_vertical|right"
             android:layout_height="60dp"/>
         <LinearLayout
             android:id="@+id/container"
@@ -34,10 +34,25 @@
         android:paddingBottom="0dp"
         android:layoutDirection="inherit">
 
+        <ImageButton
+            android:id="@+id/openMenuButton"
+            android:layout_width="22dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="102dp"
+            android:background="@drawable/item_menu_btn_selector"
+            android:contentDescription="@string/open_menu_button"
+            android:paddingVertical="10dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_open_menu"
+            android:tint="@drawable/item_menu_tint_selector" />
+
         <com.syncedapps.inthegametv.menu.ITGMenu
             android:id="@+id/menu"
             android:layout_gravity="left|bottom"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="80dp"
             android:layout_marginStart="2dp"
             android:layout_width="match_parent"
             android:layout_height="62dp"

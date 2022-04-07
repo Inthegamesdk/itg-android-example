@@ -6,7 +6,7 @@ import com.syncedapps.inthegametv.interaction.ITGNotice
 import com.syncedapps.inthegametvexample.R
 
 class CustomNoticeView: ITGNotice {
-    constructor(context: Context?) : super(context)
+    constructor(context: Context) : super(context)
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_notice_custom, this, true)

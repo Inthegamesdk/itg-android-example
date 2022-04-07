@@ -5,57 +5,76 @@
 
     <LinearLayout
         android:id="@+id/contentContainer"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingBottom="0dp">
 
         <LinearLayout
             android:id="@+id/noticeContainer"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:gravity="top|right"
-            android:layout_height="120dp"/>
+            android:layout_height="120dp"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal" />
+
         <LinearLayout
             android:id="@+id/container"
-            android:orientation="vertical"
-            android:layout_gravity="right|bottom"
-            android:gravity="right|bottom"
-            android:paddingBottom="0dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_gravity="right|bottom"
+            android:layout_weight="1"
+            android:gravity="right|bottom"
+            android:orientation="vertical"
+            android:paddingBottom="0dp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/featuresContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="0dp"
-        android:layoutDirection="inherit">
+        android:layoutDirection="inherit"
+        android:orientation="horizontal"
+        android:paddingBottom="0dp">
+
+        <ImageButton
+            android:id="@+id/openMenuButton"
+            android:layout_width="22dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="102dp"
+            android:background="@drawable/item_menu_btn_selector"
+            android:contentDescription="@string/open_menu_button"
+            android:paddingVertical="10dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_open_menu"
+            android:tint="@drawable/item_menu_tint_selector" />
 
         <com.syncedapps.inthegametv.menu.ITGMenu
             android:id="@+id/menu"
-            android:layout_gravity="left|bottom"
-            android:layout_marginBottom="80dp"
-            android:layout_marginStart="20dp"
             android:layout_width="match_parent"
             android:layout_height="62dp"
+            android:layout_gravity="left|bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="80dp"
             android:layout_weight="1"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <com.syncedapps.inthegametv.menu.ITGSidebar
             android:id="@+id/sidebar"
-            android:orientation="vertical"
             android:layout_width="192dp"
+            android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:layout_height="match_parent"/>
+            android:orientation="vertical" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/popupContainer"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/shadow"
-        android:visibility="gone"/>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" />
 </FrameLayout>

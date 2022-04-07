@@ -14,16 +14,13 @@ import androidx.leanback.app.RowsSupportFragment
 import androidx.leanback.app.VideoSupportFragment
 import androidx.leanback.app.VideoSupportFragmentGlueHost
 import androidx.leanback.widget.CursorObjectAdapter
-import com.google.android.exoplayer2.ExoPlayerFactory
-import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.ext.leanback.LeanbackPlayerAdapter
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.trackselection.TrackSelection
-import com.google.android.exoplayer2.trackselection.TrackSelector
+import com.google.android.exoplayer2.source.TrackGroupArray
+import com.google.android.exoplayer2.trackselection.*
 import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
@@ -34,12 +31,11 @@ import com.syncedapps.inthegametv.network.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
 import com.syncedapps.inthegametvexample.CustomViews.*
-import java.util.*
-import kotlin.concurrent.schedule
+
 
 
 /** Handles video playback with media controls. */
-class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener, VideoPlayerGlue.OnActionClickedListener {
+class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener, VideoPlayerGlue.OnActionClickedListener, Player.EventListener {
 
     private val UPDATE_DELAY = 16
 
@@ -62,12 +58,12 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         view.setBackgroundColor(resources.getColor(R.color.black))
 
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.testDefault
+        val environment = ITGEnvironment.devDefault
 
         //create the overlay
         val overlay = ITGOverlayView(requireContext())
         //load your channel to start up the ITG system
-        overlay.load("ORLvsNYCFC", "orlandofcchannel", environment)
+        overlay.load("soccer_predictions", "demos", environment)
         overlay.listener = this
 
         // enable the layout delegate if you wish to set custom layouts
@@ -141,6 +137,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         mPlayerGlue?.setHost(VideoSupportFragmentGlueHost(this))
         mPlayerGlue?.playWhenPrepared()
         isControlsOverlayAutoHideEnabled = true
+        mPlayer?.addListener(this)
         play(mMovie)
 
     }
@@ -308,7 +305,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     }
 
     override fun customNoticeView(): ITGNotice? {
-        return CustomNoticeView(context)
+        return CustomNoticeView(requireContext())
     }
 
     override fun customProductView(): ITGProductView? {
@@ -318,4 +315,24 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     override fun customCloseOptionsView(): ITGCloseOptionsView? {
         return CustomCloseOptionsView(context)
     }
+
+    //ExoPlayer events
+    override fun onSeekProcessed() {
+        Log.i("PLAYER", "On seek")
+        val time = mPlayer?.currentPosition ?: 0
+        mOverlay?.videoPlaying(time)
+    }
+
+    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?) {}
+    override fun onLoadingChanged(isLoading: Boolean) {}
+    override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {}
+    override fun onRepeatModeChanged(repeatMode: Int) {}
+    override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
+    override fun onPlayerError(error: ExoPlaybackException?) {}
+    override fun onPositionDiscontinuity(reason: Int) {}
+    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
+    override fun onTracksChanged(
+        trackGroups: TrackGroupArray?,
+        trackSelections: TrackSelectionArray?
+    ) {}
 }

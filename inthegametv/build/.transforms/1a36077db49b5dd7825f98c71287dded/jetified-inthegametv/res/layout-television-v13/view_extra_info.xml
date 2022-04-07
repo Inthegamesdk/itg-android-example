@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_width="130dp"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="86dp"
     android:layoutDirection="inherit"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_width="130dp">
 
     <LinearLayout
         android:id="@+id/extraInfoContainer"
@@ -147,32 +145,62 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="3dp">
 
-            <Button
-                android:id="@+id/userAreaButton"
-                android:nextFocusUp="@id/userAreaButton"
-                android:nextFocusDown="@id/userAreaButton"
+            <FrameLayout
+                android:id="@+id/userAreaContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/button_answer_selector"
-                android:clickable="true"
-                android:focusable="true"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:paddingStart="5dp"
-                android:paddingTop="1dp"
-                android:paddingEnd="5dp"
-                android:paddingBottom="2dp"
-                android:textColor="@android:color/white"
-                android:textSize="11sp"
-                android:text="@string/personalArea_open_personal_area"
-                android:textAllCaps="false"
-                android:fontFamily="@font/titillium"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/itg_bottom_btn_center"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="5dp">
+
+                <Button
+                    android:id="@+id/menuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_answer_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:nextFocusUp="@id/userAreaButton"
+                    android:nextFocusDown="@id/userAreaButton"
+                    android:paddingStart="5dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/personalArea_open_menu"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/userAreaButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_answer_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:nextFocusUp="@id/userAreaButton"
+                    android:nextFocusDown="@id/userAreaButton"
+                    android:paddingStart="5dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/personalArea_open_personal_area"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
 
             <TextView
                 android:id="@+id/itg_bottom_btn_center"
@@ -185,7 +213,7 @@
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/closeButton"
-                app:layout_constraintStart_toEndOf="@id/userAreaButton"
+                app:layout_constraintStart_toEndOf="@id/userAreaContainer"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

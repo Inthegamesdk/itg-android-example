@@ -50,6 +50,11 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         videoView.setOnPreparedListener { mp: MediaPlayer ->
             mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
             mp.setVolume(1f, 1f)
+
+            mp.setOnSeekCompleteListener { mp ->
+                val time = mp.currentPosition.toLong()
+                mOverlay?.videoPlaying(time)
+            }
         }
 
         videoView.setOnPreparedListener {
@@ -65,11 +70,11 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
     fun addOverlay() {
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.testDefault
+        val environment = ITGEnvironment.devDefault
 
         val overlay = ITGOverlayView(this)
         //load your channel to start up the ITG system
-        overlay.load("ORLvsNYCFC", "orlandofcchannel", environment)
+        overlay.load("soccer_predictions", "demos", environment)
         overlay.listener = this
         overlay.menuEnabled = true
 

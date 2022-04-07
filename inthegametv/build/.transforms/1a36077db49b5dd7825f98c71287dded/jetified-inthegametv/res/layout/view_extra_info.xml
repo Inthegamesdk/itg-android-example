@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="96dp"
     android:layout_height="86dp"
-    android:layoutDirection="inherit"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layoutDirection="inherit">
 
     <LinearLayout
         android:id="@+id/extraInfoContainer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layoutDirection="inherit"
         android:layout_marginStart="0dp"
-        android:orientation="vertical"
-        android:visibility="visible"
+        android:layout_marginBottom="2dp"
         android:gravity="bottom|center_horizontal"
-        android:layout_marginBottom="2dp">
+        android:layoutDirection="inherit"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/timerView"
-            android:focusable="false"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@android:color/white"
-            android:gravity="bottom"
-            android:layout_marginEnd="1dp"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="2dp"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:tint="@android:color/white"
             android:visibility="visible">
+
             <TextView
-                android:focusable="false"
-                android:layout_marginStart="1dp"
                 android:id="@+id/timerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:fontFamily="@font/titillium"
-                android:textSize="22sp"
-                android:textColor="@android:color/white"
-                android:text="40"/>
-            <TextView
+                android:layout_marginStart="1dp"
                 android:focusable="false"
-                android:layout_marginStart="3dp"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:text="40"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/timerText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textStyle="normal"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
+                android:layout_marginStart="3dp"
+                android:focusable="false"
                 android:fontFamily="@font/titillium"
-                android:text="שניות"/>
+                android:gravity="center"
+                android:text="שניות"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,9 +66,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:visibility="gone"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="38dp"
@@ -81,20 +81,20 @@
                     android:id="@+id/tvLevelLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/titillium"
                     android:text="@string/generalOverlay_level"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp"
-                    android:fontFamily="@font/titillium" />
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tvLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/titillium"
                     android:text="6"
                     android:textColor="@android:color/white"
                     android:textSize="11sp"
-                    android:fontFamily="@font/titillium" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -109,21 +109,21 @@
                     android:id="@+id/tvCreditsLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/titillium"
                     android:lines="1"
                     android:text="@string/generalOverlay_point"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp"
-                    android:fontFamily="@font/titillium"/>
+                    android:textSize="11sp" />
 
                 <TextView
-                    android:textStyle="bold"
                     android:id="@+id/tvCredits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/titillium"
                     android:text="25000"
                     android:textColor="@android:color/white"
                     android:textSize="11sp"
-                    android:fontFamily="@font/titillium"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -131,11 +131,11 @@
                 android:id="@+id/tvExPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium"
                 android:text="5040"
                 android:textColor="@android:color/white"
                 android:textSize="11sp"
-                android:visibility="gone"
-                android:fontFamily="@font/titillium"/>
+                android:visibility="gone" />
 
 
         </LinearLayout>
@@ -147,30 +147,64 @@
             android:layout_marginTop="14dp"
             android:layout_marginBottom="3dp">
 
-            <Button
-                android:id="@+id/userAreaButton"
+            <FrameLayout
+                android:id="@+id/userAreaContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
-                android:background="@drawable/button_answer_selector"
-                android:clickable="true"
-                android:focusable="true"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:paddingStart="3dp"
-                android:paddingTop="1dp"
-                android:paddingEnd="3dp"
-                android:paddingBottom="2dp"
-                android:textColor="@android:color/white"
-                android:textSize="9sp"
-                android:text="@string/personalArea_open_personal_area"
-                android:textAllCaps="false"
-                android:fontFamily="@font/titillium"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/itg_bottom_btn_center"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/menuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_answer_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="3dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="3dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/personalArea_open_menu"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="9sp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/userAreaButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_answer_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="3dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="3dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/personalArea_open_personal_area"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="9sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/itg_bottom_btn_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/itg_bottom_btn_center"
@@ -178,13 +212,14 @@
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:focusable="false"
+                android:fontFamily="@font/titillium"
                 android:text="|"
                 android:textColor="@android:color/white"
                 android:textSize="9sp"
-                android:fontFamily="@font/titillium"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/closeButton"
-                app:layout_constraintStart_toEndOf="@id/userAreaButton"
+                app:layout_constraintStart_toEndOf="@id/userAreaContainer"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -192,24 +227,24 @@
                 android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
                 android:background="@drawable/button_answer_selector"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/titillium"
                 android:paddingStart="3dp"
                 android:paddingTop="1dp"
                 android:paddingEnd="3dp"
                 android:paddingBottom="2dp"
+                android:text="@string/personalArea_close_personal_area"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="9sp"
-                android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/itg_bottom_btn_center"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/titillium"
-                android:text="@string/personalArea_close_personal_area" />
+                app:layout_constraintStart_toEndOf="@id/itg_bottom_btn_center"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

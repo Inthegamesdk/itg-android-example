@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainContainer"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -55,7 +54,7 @@
             android:layout_gravity="center"
             android:layoutDirection="inherit"
             android:textDirection="locale"
-            android:layout_marginTop="8dp"
+            android:paddingTop="12dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="8dp"
             android:gravity="center">
@@ -77,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="11sp"
-                        android:gravity="start"
+                        android:gravity="start|center_vertical"
                         android:textColor="@android:color/white"
                         android:text="test sdfsdafsd\ntest test test\nTEST"
                         android:fontFamily="@font/titillium"/>

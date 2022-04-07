@@ -1,128 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="32dp"
-    android:layout_gravity="top|right">
+    android:layout_gravity="center_vertical|end"
+    android:layout_marginHorizontal="28dp"
+    android:background="@drawable/notice_background"
+    android:layoutDirection="ltr"
+    android:minWidth="250dp"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingRight="10dp"
+    android:textDirection="locale">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/titilliumweb_regular"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/closeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Will there be a goal in the next 15 sec?" />
 
     <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginVertical="2dp"
         android:orientation="horizontal"
-        android:background="@drawable/notice_background"
-        android:layoutDirection="ltr"
-        android:paddingLeft="12dp"
-        android:paddingRight="10dp">
+        app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
         <ImageView
             android:id="@+id/iconWin"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginRight="6dp"
-            android:src="@drawable/ic_point_score_yellow"
-            android:layout_gravity="center_vertical"
-            android:scaleType="fitCenter"/>
-        <ImageView
-            android:id="@+id/iconLose"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginRight="6dp"
-            android:src="@drawable/ic_warning"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_gravity="center_vertical"
             android:scaleType="fitCenter"
-            android:visibility="gone"/>
+            android:src="@drawable/ic_win_poll" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:gravity="center"
-            android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/textContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layoutDirection="ltr"
-                android:textDirection="locale"
-                android:orientation="vertical"
-                android:visibility="visible">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CONGRATULATIONS!"
-                    android:textStyle="bold"
-                    android:textSize="13dp"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/titillium"/>
-                <TextView
-                    android:id="@+id/tvPoints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="+500 pts"
-                    android:textStyle="bold"
-                    android:textSize="13dp"
-                    android:textColor="@color/yellowITG"
-                    android:fontFamily="@font/titillium"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/tvInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="X points for 'question name test'"
-                android:textStyle="bold"
-                android:textSize="10dp"
-                android:layout_marginTop="2dp"
-                android:maxLines="2"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/titillium"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/pointsContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layoutDirection="ltr"
-                android:textDirection="locale"
-                android:orientation="horizontal"
-                android:visibility="gone">
-                <TextView
-                    android:id="@+id/tvScoreTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/predictions_total_score"
-                    android:textStyle="bold"
-                    android:textSize="21dp"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/titillium"/>
-                <TextView
-                    android:id="@+id/tvTotalPoints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="1204,5"
-                    android:textStyle="bold"
-                    android:textSize="21dp"
-                    android:textColor="@color/yellowITG"
-                    android:fontFamily="@font/titillium"/>
-            </LinearLayout>
-        </LinearLayout>
-        <ImageButton
-            android:id="@+id/closeButton"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:padding="8dp"
-            android:layout_marginTop="6dp"
-            android:src="@drawable/close"
-            android:tint="@android:color/white"
-            android:scaleType="centerInside"
-            android:background="@drawable/button_circle_focus_selector"
-            android:focusable="true"
-            android:layout_gravity="top"/>
+        <ImageView
+            android:id="@+id/iconLose"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_lose_poll"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/titilliumweb_semibold"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="Yes" />
     </LinearLayout>
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/titilliumweb_regular"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/closeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:text="Good job! This answer brought you 100 points!" />
+
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_circle_focus_selector"
+        android:focusable="true"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/close"
+        android:tint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

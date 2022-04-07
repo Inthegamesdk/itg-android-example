@@ -22,8 +22,8 @@
             android:maxLines="1"
             android:maxLength="14"
             android:text="John Doe"
-            android:textSize="8dp"
-            android:fontFamily="@font/titillium"
+            android:fontFamily="@font/titilliumweb_regular"
+            android:textSize="8sp"
             android:textColor="@android:color/white" />
 
         <LinearLayout

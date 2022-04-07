@@ -33,7 +33,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/titillium"
+                android:fontFamily="@font/titilliumweb_bold"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:lines="1"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/titillium"
+                android:fontFamily="@font/titilliumweb_regular"
                 android:textSize="8sp"
                 android:textColor="@android:color/white"
                 android:translationY="-1dp"
@@ -53,18 +53,23 @@
                 android:text="Title text text text"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/purchaseContainer"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="end|bottom"
                 android:gravity="center_vertical">
                 <TextView
                     android:id="@+id/tvPurchase"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/titillium"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/titilliumweb_regular"
                     android:textSize="7sp"
+                    android:maxLines="1"
                     android:textColor="@color/buttonYellow"
+                    android:gravity="end"
+                    android:textAlignment="textEnd"
                     android:text="PURCHASE"/>
                 <ImageView
                     android:id="@+id/iconPurchase"

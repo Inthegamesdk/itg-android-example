@@ -17,7 +17,7 @@ object MovieList {
         val studio = arrayOf(
                 "Inthegame")
         val videoUrl = arrayOf(
-            "https://media2.inthegame.io/uploads/videos/streamers/a64706dd0f42356e93d299075940c456.857ecbb7a131f9bb4940a6b8ad5ec70e.mp4")
+            "https://media2.inthegame.io/uploads/videos/streamers/278dee276f8d43d11dad3030d0aa449e.a4ef1c02ad73f7b5ed0a6df3809abf12.mp4")
         val bgImageUrl = arrayOf(
                 "ball")
         val cardImageUrl = arrayOf(
