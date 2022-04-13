@@ -2658,6 +2658,7 @@ int string exposed_dropdown_menu_content_description 0x0
 int string fab_transformation_scrim_behavior 0x0
 int string fab_transformation_sheet_behavior 0x0
 int string generalOverlay_level 0x0
+int string generalOverlay_menu 0x0
 int string generalOverlay_minutes_composed 0x0
 int string generalOverlay_point 0x0
 int string generalOverlay_seconds 0x0

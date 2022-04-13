@@ -80,8 +80,8 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
-        //use this variable if you wish to hide all content when phone is on portrait mode
-//        overlay.hideInPortraitMode = true
+        //use this method if you wish to show content when phone is on portrait mode
+//        overlay.showInPortrait(true)
         // you can adjust the spacing between the content and bottom of the screen
 //        overlay.setBottomPaddingDp(30)
         // use this optional variable to set the animation type

@@ -8,14 +8,17 @@
     <string name="closeForever_one_week">One Week</string>
     <string name="closeForever_this_question">This Question</string>
     <string name="closeForever_title">Close Interaction</string>
+    <string name="close_sidebar">Close sidebar</string>
     <string name="error_error_content">קרתה טעות והשאלה נאבדה במרחבי הרשת. נסה שוב בפעם הבאה</string>
     <string name="error_generic">An unexpected error occurred.\nPlease try again next time.</string>
     <string name="error_phone">Could not send the SMS to this number</string>
     <string name="generalOverlay_level">Level</string>
+    <string name="generalOverlay_menu">Menu</string>
     <string name="generalOverlay_minutes_composed">{{ number }}דק</string>
     <string name="generalOverlay_point">Points</string>
     <string name="generalOverlay_seconds">שניות</string>
     <string name="generalOverlay_seconds_composed">{{ number }} שניות</string>
+    <string name="open_menu_button">open menu button</string>
     <string name="personalArea_clear">Clear</string>
     <string name="personalArea_close_personal_area">Close</string>
     <string name="personalArea_enter_number_to_get_sms">Scan the QR code or enter your number in order to receive the registration link:</string>
@@ -48,6 +51,8 @@
     <string name="product_discount_off">{{ number }}% off</string>
     <string name="product_phone_hint">Phone number</string>
     <string name="product_phone_invalid">Invalid phone number</string>
+    <string name="refresh">Refresh</string>
+    <string name="refresh_leaderboard">Refresh Leaderboard</string>
     <string name="sideMenu_account">חשבון</string>
     <string name="sideMenu_chat">Chat</string>
     <string name="sideMenu_chat_title">Chat</string>

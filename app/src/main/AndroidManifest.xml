@@ -34,7 +34,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PhoneActivity">
+        <activity android:name=".PhoneActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -45,7 +46,8 @@
         <activity android:name=".PlaybackActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".BrowseErrorActivity" />
-        <activity android:name=".PlaybackPhoneActivity" />
+        <activity android:name=".PlaybackPhoneActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 
 </manifest>

@@ -47,7 +47,8 @@
             android:paddingEnd="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_open_menu"
-            android:tint="@drawable/item_menu_tint_selector" />
+            android:tint="@drawable/item_menu_tint_selector"
+            android:visibility="invisible"/>
 
         <com.syncedapps.inthegametv.menu.ITGMenu
             android:id="@+id/menu"

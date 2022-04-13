@@ -47,6 +47,7 @@
     <string name="error_generic">An unexpected error occurred.\nPlease try again next time.</string>
     <string name="error_phone">Could not send the SMS to this number</string>
     <string name="generalOverlay_level">Level</string>
+    <string name="generalOverlay_menu">Menu</string>
     <string name="generalOverlay_minutes_composed">{{ number }}m</string>
     <string name="generalOverlay_point">Points</string>
     <string name="generalOverlay_seconds">SEC</string>

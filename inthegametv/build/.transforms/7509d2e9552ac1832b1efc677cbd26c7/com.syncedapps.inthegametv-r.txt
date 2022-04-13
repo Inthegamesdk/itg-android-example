@@ -2659,6 +2659,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string generalOverlay_level
+string generalOverlay_menu
 string generalOverlay_minutes_composed
 string generalOverlay_point
 string generalOverlay_seconds
