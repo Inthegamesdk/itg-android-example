@@ -144,7 +144,13 @@ overlay.showNotices = false
 overlay.showNoticeAsActivity = true
 ```
 
-You can also hide content when a phone is in portrait mode:
+You can show or hide the ITG menu with this variable. Please note that the menu should also be enabled in the channel settings on the admin site.
 ```
-overlay.hideInPortraitMode = true
+overlay.menuEnabled = true
 ```
+
+By default, content is hidden in Portrait mode on mobile phones. If you prefer to show it there is a function to enable it:
+```
+overlay.showInPortrait(true)
+```
+
