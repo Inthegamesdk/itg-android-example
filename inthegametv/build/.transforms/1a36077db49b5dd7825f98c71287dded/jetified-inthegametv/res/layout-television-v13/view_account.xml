@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="12dp"
+    android:paddingHorizontal="10dp"
     android:background="@color/sidebarBackground"
-    android:gravity="center_horizontal|top">
+    android:gravity="center_horizontal|top"
+    tools:layout_gravity="end"
+    tools:layout_width="192dp">
+
+    <FrameLayout
+        android:id="@+id/flSponsorship"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/ivSponsorship"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="2dp"
         android:layoutDirection="inherit">
+
         <TextView
             android:id="@+id/tvMy"
             android:layout_width="wrap_content"
@@ -39,7 +59,7 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/sidebar_separator"
         android:orientation="horizontal" />
@@ -47,6 +67,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="2dp"
         android:layout_weight="1">
 
         <LinearLayout
@@ -117,7 +138,7 @@
                 android:textAllCaps="false"
                 android:background="@drawable/account_button_selector"
                 android:nextFocusUp="@id/etEmail"
-                android:nextFocusDown="@id/saveButton" />
+                />
 
             <TextView
                 android:id="@+id/tvError"
@@ -130,6 +151,63 @@
                 android:textStyle="bold"
                 android:textColor="@color/wrong"
                 android:visibility="invisible" />
+
+            <LinearLayout
+                android:id="@+id/ll_hide_bottom_slip"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/hide_bottom_slip_background_selector"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvHideBottomSlipLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="6dp"
+                    android:textSize="12sp"
+                    android:text="@string/show_bottom_slip"
+                    android:textColor="@color/button_color"
+                    app:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:id="@+id/tvHideBottomSlipValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/titilliumweb_regular"
+                    android:gravity="end|center_vertical"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="6dp"
+                    android:text="@string/hide_8_hours"
+                    android:textColor="@color/button_color"
+                    android:textSize="8sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvHideBottomSlipLeftValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="6dp"
+                android:text="@string/hide_8_hours"
+                android:textColor="@color/button_color"
+                android:textSize="8sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHideBottomList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hide_bottom_slip_list_background"
+                android:visibility="gone"
+                tools:itemCount="3"
+                tools:listitem="@layout/view_hide_slip_item"
+                tools:visibility="visible" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/gridContainer"

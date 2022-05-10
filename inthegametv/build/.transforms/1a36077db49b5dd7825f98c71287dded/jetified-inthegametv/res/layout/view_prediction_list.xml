@@ -7,6 +7,20 @@
     android:background="@color/sidebarBackground"
     android:gravity="center_horizontal|top">
 
+    <FrameLayout
+        android:id="@+id/flSponsorship"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/ivSponsorship"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +45,7 @@
                 android:fontFamily="@font/titilliumweb_bold"
                 android:text="MY"
                 android:textColor="@color/yellowITG"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -42,7 +56,7 @@
                 android:fontFamily="@font/titilliumweb_bold"
                 android:text="PREDICTIONS"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

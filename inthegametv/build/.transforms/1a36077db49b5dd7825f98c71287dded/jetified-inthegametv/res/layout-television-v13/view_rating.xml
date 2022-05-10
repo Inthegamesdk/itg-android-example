@@ -1,186 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="286dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom"
+    android:background="@android:color/transparent"
     android:gravity="bottom"
-    android:background="@android:color/transparent">
+    android:maxHeight="286dp"
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layoutDirection="inherit"
-        android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
-        android:gravity="center">
+        android:background="@drawable/activity_background"
+        android:gravity="center"
+        android:layoutDirection="inherit"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="76dp"
-            android:focusable="false"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="9dp"
+            android:focusable="false"
             android:gravity="center">
 
             <ImageView
                 android:id="@+id/logo_itg"
                 android:layout_width="50dp"
-                android:visibility="visible"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/itg_icon"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/errorIcon"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_server_error"
                 android:scaleType="centerInside"
-                android:visibility="gone"/>
+                android:src="@drawable/ic_server_error"
+                android:visibility="gone" />
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
             <LinearLayout
-                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layoutDirection="inherit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:orientation="horizontal">
+
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:id="@+id/questionContainer"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="4dp"
                     android:layout_marginStart="4dp"
-                    android:gravity="center_vertical">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="170dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
-                        android:layout_marginEnd="0dp"
                         android:layout_marginTop="2dp"
-                        android:gravity="end|center_vertical">
+                        android:layout_marginEnd="0dp"
+                        android:gravity="end|center_vertical"
+                        android:orientation="vertical">
+
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="start"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <TextView
                                 android:id="@+id/tvQuestion"
                                 android:layout_width="match_parent"
                                 android:layout_height="22dp"
+                                android:fontFamily="@font/titillium"
                                 android:maxLines="1"
+                                android:text="question"
                                 android:textAlignment="viewStart"
+                                android:textColor="@android:color/white"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
-                                android:visibility="gone"
-                                android:textColor="@android:color/white"
-                                android:text="question"
-                                android:fontFamily="@font/titillium"/>
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/tvTitle"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="4dp"
-                                android:maxLines="2"
-                                android:maxWidth="250dp"
-                                android:text="Question?"
-                                android:gravity="start"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="start"
+                                android:layout_marginBottom="4dp"
                                 android:layout_weight="0.35"
-                                android:textAlignment="viewStart"
                                 android:fontFamily="@font/titilliumweb_bold"
-                                android:lineSpacingMultiplier="0.88"
+                                android:gravity="start|center_vertical"
+                                android:lineSpacingMultiplier="0.8"
+                                android:maxWidth="250dp"
+                                android:maxLines="2"
+                                android:text="Question?"
+                                android:textAlignment="viewStart"
                                 android:textColor="@android:color/white"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:id="@+id/statsContainer"
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
                             android:layout_gravity="center_vertical"
-                            android:visibility="gone"
+                            android:layout_marginStart="8dp"
                             android:layout_marginEnd="12dp"
                             android:layout_marginBottom="4dp"
-                            android:gravity="bottom">
+                            android:gravity="bottom"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
                             <LinearLayout
-                                android:visibility="gone"
+                                android:id="@+id/stat_to_hide"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:id="@+id/stat_to_hide">
+                                android:visibility="gone">
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="9sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
                                     android:layout_marginEnd="2dp"
                                     android:layout_marginBottom="2dp"
-                                    android:text="("/>
+                                    android:text="("
+                                    android:textAlignment="textStart"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="9sp"
+                                    android:textStyle="bold" />
+
                                 <ImageView
                                     android:layout_width="14dp"
                                     android:layout_height="12dp"
                                     android:layout_marginBottom="4dp"
-                                    android:src="@drawable/ic_user"
-                                    android:scaleType="fitCenter"/>
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_user" />
+
                                 <TextView
                                     android:id="@+id/tvStatUser"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:text="0"
                                     android:textAlignment="textStart"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
                                     android:textColor="@android:color/white"
-                                    android:text="0"/>
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
                                     android:layout_marginStart="3dp"
                                     android:layout_marginEnd="3dp"
-                                    android:text="-"/>
+                                    android:text="-"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
                                 <TextView
                                     android:id="@+id/tvStatTotal"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:text="0"
                                     android:textAlignment="textStart"
-                                    android:textSize="17sp"
-                                    android:textStyle="bold"
                                     android:textColor="@color/yellowITG"
-                                    android:text="0"/>
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="9sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:text=")"
                                     android:layout_marginStart="2dp"
-                                    android:layout_marginBottom="2dp" />
+                                    android:layout_marginBottom="2dp"
+                                    android:text=")"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="9sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -196,60 +212,88 @@
                         android:layout_marginBottom="12dp"
                         android:background="@drawable/base_separator" />
 
-                    <LinearLayout
-                        android:focusable="false"
-                        android:nextFocusRight="@id/container"
-                        android:id="@+id/container"
-                        android:layoutDirection="inherit"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                    <FrameLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="31dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal" />
-
-                    <LinearLayout
-                        android:focusable="false"
-                        android:nextFocusRight="@id/answerContainer"
-                        android:id="@+id/answerContainer"
-                        android:layoutDirection="inherit"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="31dp"
                         android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:id="@+id/container"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="31dp"
+                            android:focusable="false"
+                            android:gravity="center_vertical"
+                            android:layoutDirection="inherit"
+                            android:nextFocusRight="@id/container"
+                            android:orientation="horizontal" />
+
+                        <LinearLayout
+                            android:id="@+id/answerContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="12dp"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:layoutDirection="inherit"
+                            android:nextFocusRight="@id/answerContainer"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
                             <TextView
                                 android:id="@+id/tvAverageLabel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="AVG"
                                 android:layout_marginEnd="8dp"
-                                android:textStyle="bold"
+                                android:text="AVG"
                                 android:textColor="@android:color/white"
-                                android:textSize="23sp"/>
+                                android:textSize="23sp"
+                                android:textStyle="bold" />
+
                             <LinearLayout
                                 android:id="@+id/starContainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingTop="2dp"/>
-                        <TextView
-                            android:id="@+id/tvAverage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0.5"
-                            android:layout_marginStart="8dp"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:textSize="23sp"
-                            android:layout_marginEnd="30dp"/>
-                    </LinearLayout>
+                                android:paddingTop="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvAverage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="30dp"
+                                android:text="0.5"
+                                android:textColor="@android:color/white"
+                                android:textSize="23sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/loadingIndicator"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:indeterminateTint="@android:color/white"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="46dp"
+                        android:layout_marginBottom="12dp">
+
+                        <include layout="@layout/arrow_layout" />
+                    </FrameLayout>
+
                 </LinearLayout>
 
 
@@ -257,22 +301,25 @@
 
             <LinearLayout
                 android:id="@+id/flipContainer"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center">
-            </LinearLayout>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" />
 
 
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"/>
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info" />
 
     </LinearLayout>
 </LinearLayout>

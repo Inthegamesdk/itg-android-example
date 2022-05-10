@@ -1,280 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="166dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom"
+    android:background="@android:color/transparent"
     android:gravity="bottom"
-    android:background="@android:color/transparent">
+    android:maxHeight="210dp"
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layoutDirection="inherit"
-        android:background="@drawable/activity_background"
+        android:layout_height="108dp"
         android:layout_gravity="bottom"
-        android:gravity="center">
-
-        <LinearLayout
-            android:layout_width="40dp"
-            android:focusable="false"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/logo_itg"
-                android:layout_width="28dp"
-                android:visibility="visible"
-                android:layout_height="28dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:src="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="centerInside"/>
-
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="1dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-        </LinearLayout>
+        android:background="@drawable/default_portrait_bg"
+        android:gravity="center"
+        android:layoutDirection="inherit"
+        android:orientation="horizontal">
 
         <FrameLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.84"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="0.84">
+
+
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_gravity="center_vertical"
-                android:layoutDirection="inherit"
+                android:id="@+id/questionContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="top|start"
+                android:orientation="vertical">
+
                 <LinearLayout
-                    android:layout_marginTop="11dp"
-                    android:id="@+id/questionContainer"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginStart="2dp"
-                    android:gravity="center_vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="right|center_vertical"
+                    android:orientation="vertical">
+
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="72dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:gravity="right|center_vertical">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvQuestion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:maxLines="1"
+                            android:text="question"
+                            android:textAlignment="viewStart"
+                            android:textColor="@android:color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center_vertical"
-                            android:gravity="center">
-                            <TextView
-                                android:id="@+id/tvQuestion"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:maxLines="3"
-                                android:textAlignment="viewStart"
-                                android:textSize="7sp"
-                                android:textStyle="bold"
-                                android:visibility="gone"
-                                android:textColor="@android:color/white"
-                                android:text="question"
-                                android:fontFamily="@font/titillium"/>
-
-                            <TextView
-                                android:id="@+id/tvTitle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="2dp"
-                                android:layout_marginTop="2dp"
-                                android:maxLines="2"
-                                android:maxWidth="70dp"
-                                android:text="Question?"
-                                android:gravity="start"
-                                android:layout_gravity="start|center_vertical"
-                                android:layout_weight="0.35"
-                                android:textAlignment="viewStart"
-                                android:lineSpacingExtra="-3sp"
-                                android:textColor="@android:color/white"
-                                android:textSize="8sp"
-                                android:textStyle="bold"
-                                android:fontFamily="@font/titillium"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/statsContainer"
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
-                            android:layout_gravity="center_vertical"
-                            android:visibility="gone"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="1dp"
-                            android:gravity="bottom">
-                            <LinearLayout
-                                android:visibility="gone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/stat_to_hide">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="9sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:layout_marginEnd="2dp"
-                                    android:layout_marginBottom="2dp"
-                                    android:text="("/>
-                                <ImageView
-                                    android:layout_width="14dp"
-                                    android:layout_height="12dp"
-                                    android:layout_marginBottom="4dp"
-                                    android:src="@drawable/ic_user"
-                                    android:scaleType="fitCenter"/>
-                                <TextView
-                                    android:id="@+id/tvStatUser"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:text="0"/>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:layout_marginStart="3dp"
-                                    android:layout_marginEnd="3dp"
-                                    android:text="-"/>
-                                <TextView
-                                    android:id="@+id/tvStatTotal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="17sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/yellowITG"
-                                    android:text="0"/>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="9sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:text=")"
-                                    android:layout_marginStart="2dp"
-                                    android:layout_marginBottom="2dp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
+                            android:layout_weight="0.35"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:gravity="start"
+                            android:lineSpacingExtra="-3sp"
+                            android:maxWidth="70dp"
+                            android:maxLines="2"
+                            android:text="Question?"
+                            android:textAlignment="viewStart"
+                            android:textColor="@android:color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
-                    <FrameLayout
-                        android:id="@+id/flDeliminator"
-                        android:layout_width="0.9dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/base_separator" />
-
                     <LinearLayout
-                        android:focusable="false"
-                        android:nextFocusRight="@id/container"
-                        android:id="@+id/container"
-                        android:layoutDirection="inherit"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/statsContainer"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="17dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal" />
-
-                    <LinearLayout
-                        android:focusable="false"
-                        android:nextFocusRight="@id/answerContainer"
-                        android:id="@+id/answerContainer"
-                        android:layoutDirection="inherit"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="17dp"
-                        android:layout_marginTop="2dp"
-                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="1dp"
+                        android:gravity="bottom"
                         android:orientation="horizontal"
                         android:visibility="gone">
 
-                        <TextView
-                            android:id="@+id/tvAverageLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="AVG"
-                            android:layout_marginEnd="8dp"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:textSize="14sp"/>
                         <LinearLayout
-                            android:id="@+id/starContainer"
+                            android:id="@+id/stat_to_hide"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="2dp"/>
-                        <TextView
-                            android:id="@+id/tvAverage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0.5"
-                            android:layout_marginStart="8dp"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:textSize="14sp"/>
+                            android:layout_height="match_parent"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:text="("
+                                android:textAlignment="textStart"
+                                android:textColor="@android:color/white"
+                                android:textSize="9sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="12dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_user" />
+
+                            <TextView
+                                android:id="@+id/tvStatUser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textAlignment="textStart"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:text="-"
+                                android:textAlignment="textStart"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvStatTotal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/yellowITG"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:text=")"
+                                android:textAlignment="textStart"
+                                android:textColor="@android:color/white"
+                                android:textSize="9sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
                     </LinearLayout>
                 </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="center_vertical"
+                            android:layoutDirection="inherit"
+                            android:nextFocusRight="@id/container"
+                            android:orientation="horizontal" />
+
+                        <LinearLayout
+                            android:id="@+id/answerContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="start|center_vertical"
+                            android:layoutDirection="inherit"
+                            android:nextFocusRight="@id/answerContainer"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            tools:visibility="visible">
+
+                            <TextView
+                                android:id="@+id/tvAverage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/titilliumweb_bold"
+                                android:text="0.5"
+                                android:textColor="@android:color/white"
+                                android:textSize="32sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:id="@+id/starContainer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" />
+
+                        </LinearLayout>
+
+                        <FrameLayout
+                            android:id="@+id/flArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <include layout="@layout/arrow_layout" />
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/loadingIndicator"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                </FrameLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/flipContainer"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
                 android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
                 android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center">
-            </LinearLayout>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" />
 
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.16"/>
+            android:layout_weight="0.12" />
 
     </LinearLayout>
 </LinearLayout>

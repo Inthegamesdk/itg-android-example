@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="96dp"
     android:layout_height="86dp"
-    android:gravity="center_horizontal"
+    android:gravity="end"
+    android:paddingEnd="8dp"
     android:layoutDirection="inherit">
 
     <LinearLayout
         android:id="@+id/extraInfoContainer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="0dp"
         android:layout_marginBottom="2dp"
-        android:gravity="bottom|center_horizontal"
+        android:gravity="bottom|end"
         android:layoutDirection="inherit"
         android:orientation="vertical"
         android:visibility="visible">
@@ -21,9 +22,9 @@
             android:id="@+id/timerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="bottom|end"
             android:layout_marginTop="2dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginBottom="2dp"
             android:focusable="false"
             android:gravity="bottom"
@@ -42,7 +43,7 @@
                 android:text="40"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -56,25 +57,26 @@
                 android:text="שניות"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+                android:textSize="11sp"
+                android:textStyle="normal"
+                android:maxLines="1"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/user_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_vertical|end"
             android:layout_marginTop="5dp"
-            android:gravity="center"
+            android:gravity="center_vertical|end"
             android:orientation="horizontal"
             android:visibility="gone">
 
             <LinearLayout
-                android:layout_width="38dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:gravity="center"
+                android:layout_marginEnd="3dp"
+                android:gravity="end"
                 android:orientation="vertical">
 
                 <TextView
@@ -84,7 +86,7 @@
                     android:fontFamily="@font/titillium"
                     android:text="@string/generalOverlay_level"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvLevel"
@@ -93,16 +95,17 @@
                     android:fontFamily="@font/titillium"
                     android:text="6"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="46dp"
+                android:layout_width="43dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="end"
+                android:paddingEnd="3dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -113,16 +116,17 @@
                     android:lines="1"
                     android:text="@string/generalOverlay_point"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvCredits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/titillium"
-                    android:text="25000"
+                    android:textAlignment="textEnd"
+                    android:text="250000"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -134,7 +138,7 @@
                 android:fontFamily="@font/titillium"
                 android:text="5040"
                 android:textColor="@android:color/white"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:visibility="gone" />
 
 
@@ -176,7 +180,7 @@
                     android:text="@string/personalArea_open_menu"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="9sp"
+                    android:textSize="12sp"
                     android:visibility="gone" />
 
                 <Button
@@ -196,7 +200,7 @@
                     android:text="@string/personalArea_open_personal_area"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="9sp"
+                    android:textSize="12sp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/itg_bottom_btn_center"
@@ -215,7 +219,7 @@
                 android:fontFamily="@font/titillium"
                 android:text="|"
                 android:textColor="@android:color/white"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/closeButton"
@@ -228,7 +232,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
                 android:background="@drawable/button_answer_selector"
                 android:clickable="true"
                 android:focusable="true"
@@ -240,7 +243,7 @@
                 android:text="@string/personalArea_close_personal_area"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/itg_bottom_btn_center"

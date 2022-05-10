@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="42dp"
+    android:background="@drawable/hide_bottom_slip_option_background_selector"
+    android:focusable="true"
+    android:gravity="center_vertical|end"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_hide_bottom_slip_option_value"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="end|center_vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="6dp"
+        android:text="@string/hide_8_hours"
+        android:textColor="@color/button_color"
+        android:textSize="14sp" />
+
+</LinearLayout>

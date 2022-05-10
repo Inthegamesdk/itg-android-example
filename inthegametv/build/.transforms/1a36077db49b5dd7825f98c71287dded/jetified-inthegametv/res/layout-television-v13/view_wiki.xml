@@ -3,11 +3,13 @@
     android:id="@+id/mainContainer"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="286dp"
+    android:layout_height="wrap_content"
+    android:maxHeight="286dp"
     android:layoutDirection="inherit"
     android:layout_gravity="bottom"
     android:gravity="bottom"
     android:background="@android:color/transparent">
+
     <LinearLayout
         android:id="@+id/activityContainer"
         android:orientation="horizontal"
@@ -21,7 +23,7 @@
             android:layout_width="76dp"
             android:focusable="false"
             android:layout_height="match_parent"
-            android:paddingTop="18dp"
+            android:paddingTop="17dp"
             android:gravity="center">
 
             <ImageView

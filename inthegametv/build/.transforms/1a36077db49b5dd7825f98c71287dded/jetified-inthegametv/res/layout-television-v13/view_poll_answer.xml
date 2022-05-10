@@ -45,7 +45,7 @@
                 android:rotation="-12"
                 android:textSize="10dp"
                 android:textColor="@android:color/white"
-                android:lineSpacingMultiplier="0.7"
+                android:lineSpacingMultiplier="0.6"
                 android:fontFamily="@font/titillium"
                 android:textStyle="bold"
                 android:gravity="center"/>

@@ -3,11 +3,13 @@
     android:id="@+id/mainContainer"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="206dp"
+    android:layout_height="wrap_content"
+    android:maxHeight="206dp"
     android:layoutDirection="inherit"
     android:layout_gravity="bottom"
     android:gravity="bottom"
     android:background="@android:color/transparent">
+
     <LinearLayout
         android:id="@+id/activityContainer"
         android:orientation="horizontal"
@@ -50,12 +52,12 @@
             android:orientation="vertical"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.85"
+            android:layout_weight="0.84"
             android:layout_gravity="center"
             android:layoutDirection="inherit"
             android:textDirection="locale"
             android:paddingTop="18dp"
-            android:layout_marginEnd="46dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginStart="6dp"
             android:gravity="center">
 
@@ -87,7 +89,7 @@
         <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.15"/>
+            android:layout_weight="0.16"/>
 
     </LinearLayout>
 </LinearLayout>

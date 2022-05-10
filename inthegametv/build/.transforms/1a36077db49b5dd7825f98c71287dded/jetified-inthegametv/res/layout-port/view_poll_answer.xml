@@ -3,104 +3,111 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:paddingHorizontal="4dp"
     android:layoutDirection="inherit"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="2dp"
+    android:paddingHorizontal="4dp">
 
     <FrameLayout
         android:id="@+id/framelayout_answer_poll"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical">
 
         <Button
             android:id="@+id/answerButton"
             android:layout_width="match_parent"
-            android:nextFocusUp="@id/answerButton"
-            android:layout_height="18dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
             android:background="@drawable/mobile_button"
             android:focusable="true"
             android:gravity="center"
-            android:stateListAnimator="@null"
-            android:layout_gravity="center" />
+            android:nextFocusUp="@id/answerButton"
+            android:stateListAnimator="@null" />
 
         <FrameLayout
             android:id="@+id/pointsBadge"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_gravity="start|center_vertical"
             android:visibility="gone">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/coin2" />
+
             <TextView
                 android:id="@+id/pointsBadgeLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="100"
-                android:rotation="-12"
-                android:textSize="7dp"
-                android:textColor="@android:color/white"
-                android:lineSpacingMultiplier="0.7"
                 android:fontFamily="@font/titillium"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:lineSpacingMultiplier="0.6"
+                android:rotation="-12"
+                android:text="100"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:minWidth="28dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
+            android:minWidth="28dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
             android:orientation="horizontal">
+
             <View
                 android:id="@+id/spacer"
-                android:layout_width="20dp"
+                android:layout_width="45dp"
                 android:layout_height="4dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@+id/ivIcon"
-                android:layout_width="11dp"
-                android:layout_height="11dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="2dp"
                 android:padding="1dp"
-                android:layout_marginStart="2dp"
                 android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="3dp"
-                android:paddingEnd="3dp"
-                android:orientation="vertical">
+                android:layout_marginStart="2dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginEnd="3dp">
 
                 <TextView
                     android:id="@+id/tvAnswerStats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
                     android:layout_gravity="start"
-                    android:textAlignment="textStart"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:gravity="start"
                     android:text="35"
+                    android:textAlignment="textStart"
                     android:textColor="@android:color/white"
-                    android:textSize="7sp"
-                    android:fontFamily="@font/titillium"
-                    android:translationY="2dp" />
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:textStyle="bold"
-                android:maxLength="18"
-                android:text=""
-                android:textColor="@android:color/white"
-                android:textSize="7sp"
-                android:fontFamily="@font/titillium" />
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:gravity="center_vertical"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

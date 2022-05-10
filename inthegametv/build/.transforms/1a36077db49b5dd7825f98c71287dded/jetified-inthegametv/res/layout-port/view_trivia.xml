@@ -3,216 +3,178 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
-    android:layoutDirection="inherit"
     android:layout_width="match_parent"
-    android:layout_height="166dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:background="@android:color/transparent"
-    android:gravity="bottom">
+    android:gravity="bottom"
+    android:layoutDirection="inherit"
+    android:maxHeight="210dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layoutDirection="inherit"
-        android:background="@drawable/activity_background"
+        android:layout_height="108dp"
         android:layout_gravity="bottom"
-        android:gravity="center">
-
-        <LinearLayout
-            android:layout_width="40dp"
-            android:focusable="false"
-            android:layout_height="match_parent"
-            android:layout_marginTop="7dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/logo_itg"
-                android:layout_width="28dp"
-                android:visibility="visible"
-                android:layout_height="28dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:src="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="centerInside" />
-
-            <ProgressBar
-                android:id="@+id/loadingIndicator"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:indeterminateTint="@android:color/white"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="1dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:focusable="false"
-            android:layout_marginStart="0dp"
-            android:id="@+id/mainButton"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@android:color/white"
-            android:scaleType="centerInside"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/closeIcon"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/close"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </LinearLayout>
-
-        </LinearLayout>
+        android:background="@drawable/default_portrait_bg"
+        android:gravity="center"
+        android:layoutDirection="inherit"
+        android:orientation="horizontal">
 
         <FrameLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.84"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="0.84">
+
             <LinearLayout
-                android:layout_marginTop="11dp"
                 android:id="@+id/questionContainer"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
-                android:layout_marginStart="2dp"
-                android:layoutDirection="inherit"
-                android:gravity="center_vertical">
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
+                android:focusable="false"
+                android:gravity="top|start"
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tvQuestion"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="2dp"
-                    android:gravity="center_vertical|start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:ellipsize="end"
+                    android:focusable="false"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:gravity="start"
                     android:lineSpacingExtra="-3sp"
-                    android:textSize="8sp"
-                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:paddingBottom="1dp"
+                    android:textAlignment="viewStart"
                     android:textColor="@android:color/white"
-                    android:maxLines="3"
-                    android:text="מה יהיה יה יהיה יה הפרש
-הנקודות בסיום?"
-                    android:fontFamily="@font/titillium" />
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="Who Are You Rooting For?" />
 
-                <FrameLayout
-                    android:id="@+id/flDeliminator"
-                    android:layout_width="0.9dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/base_separator" />
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:focusable="false"
-                        android:id="@+id/container"
-                        android:layoutDirection="inherit"
-                        android:layout_width="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical|left"
-                        android:maxWidth="70dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <HorizontalScrollView
-                        android:id="@+id/scroller"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/scrollContainer"
+                            android:id="@+id/container"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="start|center_vertical"
                             android:layoutDirection="inherit"
                             android:orientation="horizontal"
-                            android:layout_width="wrap_content"
-                            android:gravity="fill_horizontal|center_vertical"
-                            android:layout_height="match_parent" />
-                    </HorizontalScrollView>
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tvResult"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:textAlignment="gravity"
-                        android:textSize="9sp"
-                        android:textColor="@android:color/white"
-                        android:maxLines="3"
-                        android:lineSpacingExtra="-3sp"
+                        <HorizontalScrollView
+                            android:id="@+id/scroller"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="6dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:id="@+id/scrollContainer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="fill_horizontal|center_vertical"
+                                android:layoutDirection="inherit"
+                                android:orientation="horizontal" />
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:id="@+id/tvResult"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="6dp"
+                            android:fontFamily="@font/titillium"
+                            android:gravity="center_vertical"
+                            android:lineSpacingExtra="-3sp"
+                            android:maxLines="3"
+                            android:textAlignment="gravity"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/container"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="AWESOME!\n+{{ point }} pts for the correct answer"
+                            tools:visibility="visible" />
+
+                        <ProgressBar
+                            android:id="@+id/loadingIndicator"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:indeterminateTint="@android:color/white"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/titillium"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/container"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="AWESOME!\n+{{ point }} pts for the correct answer"
-                        tools:visibility="visible" />
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <include layout="@layout/arrow_layout" />
+                    </FrameLayout>
 
+                </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/flipContainer"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
                 android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
                 android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center">
-            </LinearLayout>
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.16"/>
+            android:layout_weight="0.12" />
 
     </LinearLayout>
 </LinearLayout>

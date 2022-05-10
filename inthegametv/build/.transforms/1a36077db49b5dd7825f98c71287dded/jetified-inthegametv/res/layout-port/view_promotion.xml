@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="100dp"
+    android:layout_height="@dimen/promotion_height"
     android:background="@android:color/transparent"
     android:layout_gravity="bottom"
     android:gravity="bottom">
@@ -19,5 +19,6 @@
         android:layout_height="wrap_content"
         android:maxHeight="100dp"
         android:scaleType="centerInside"
+        android:adjustViewBounds="true"
         android:visibility="visible" />
 </FrameLayout>

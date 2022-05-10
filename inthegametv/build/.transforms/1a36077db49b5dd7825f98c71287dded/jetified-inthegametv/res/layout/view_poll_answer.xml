@@ -17,7 +17,7 @@
             android:id="@+id/answerButton"
             android:layout_width="match_parent"
             android:nextFocusUp="@id/answerButton"
-            android:layout_height="24dp"
+            android:layout_height="32dp"
             android:background="@drawable/mobile_button"
             android:focusable="true"
             android:gravity="center"
@@ -26,8 +26,8 @@
 
         <FrameLayout
             android:id="@+id/pointsBadge"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_gravity="start|center_vertical"
             android:visibility="gone">
             <ImageView
@@ -40,9 +40,9 @@
                 android:layout_height="match_parent"
                 android:text="100"
                 android:rotation="-12"
-                android:textSize="8dp"
+                android:textSize="9dp"
                 android:textColor="@android:color/white"
-                android:lineSpacingMultiplier="0.7"
+                android:lineSpacingMultiplier="0.6"
                 android:fontFamily="@font/titillium"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -57,13 +57,13 @@
             android:orientation="horizontal">
             <View
                 android:id="@+id/spacer"
-                android:layout_width="28dp"
+                android:layout_width="36dp"
                 android:layout_height="4dp"
                 android:visibility="gone"/>
             <ImageView
                 android:id="@+id/ivIcon"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:padding="2dp"
                 android:layout_marginStart="4dp"
                 android:scaleType="fitXY" />
@@ -85,7 +85,7 @@
                 android:textStyle="bold"
                 android:text="35"
                 android:textColor="@android:color/white"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/titillium"
                 android:translationY="3dp"/>
             <TextView
@@ -98,7 +98,7 @@
                 android:maxLength="18"
                 android:text=""
                 android:textColor="@android:color/white"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/titillium" />
         </LinearLayout>
         </LinearLayout>

@@ -23,6 +23,7 @@ import java.net.URI
 class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener {
     private var mediaController: MediaController? = null
     private var mOverlay: ITGOverlayView? = null
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         videoView.start()
 
         videoView.setOnPreparedListener { mp: MediaPlayer ->
+            mediaPlayer = mp
             mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
             mp.setVolume(1f, 1f)
 
@@ -116,8 +118,12 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     override fun overlayRequestedPlay() {
     }
 
-    override fun overlayRequestedFocus(focusView: View) {
-        val pixelSpacing = if (isPortrait()) 64 else 86
+    override fun overlayRequestedFocus(focusView: View) {}
+
+    override fun overlayReleasedFocus(popMessage: Boolean) {}
+
+    override fun overlayResizeVideo(activityHeight: Float) {
+        val pixelSpacing = if (isPortrait()) 108 else 86
         val spacing = convertDpToPixel(this, pixelSpacing).toFloat()
         val total = container!!.height.toFloat()
         val scale = (total - spacing) / total
@@ -125,9 +131,14 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         videoView.animate().translationY(-spacing / 2)
     }
 
-    override fun overlayReleasedFocus(popMessage: Boolean) {
+    override fun overlayResetVideoSize() {
         videoView.animate().scaleY(1f)
         videoView.animate().translationY(0f)
+    }
+
+    override fun overlayRequestedVideoTime() {
+        val time = mediaPlayer?.currentPosition?.toLong() ?: 0
+        mOverlay?.videoPlaying(time)
     }
 
     override fun overlayClickedUserArea() {
@@ -154,6 +165,22 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
             }, 2000)
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        mOverlay?.onStart()
+    }
+
+    override fun onStop() {
+        mOverlay?.onStop()
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        mOverlay?.onDestroyView()
+        super.onDestroy()
+    }
+
     //the layout methods are optional
     //use them only if you want to customize the design elements
 
@@ -183,6 +210,10 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
     override fun customCloseOptionsView(): ITGCloseOptionsView? {
         return CustomCloseOptionsView(this)
+    }
+
+    override fun customNoticeWikiView(): ITGNoticeWiki? {
+        return ITGNoticeWiki(this)
     }
 
     private fun convertDpToPixel(context: Context, dp: Int): Int {

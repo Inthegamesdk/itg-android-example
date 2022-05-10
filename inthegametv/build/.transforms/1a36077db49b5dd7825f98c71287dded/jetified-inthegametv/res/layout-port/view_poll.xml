@@ -1,320 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="166dp"
-    android:layoutDirection="inherit"
+    android:layout_height="wrap_content"
+    android:maxHeight="210dp"
     android:layout_gravity="bottom"
+    android:background="@android:color/transparent"
     android:gravity="bottom"
-    android:background="@android:color/transparent">
+    android:layoutDirection="inherit"
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@drawable/activity_background"
+        android:layout_height="108dp"
         android:layout_gravity="bottom"
-        android:gravity="center">
-        <LinearLayout
-            android:layout_width="32dp"
-            android:focusable="false"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/logo_itg"
-                android:layout_width="28dp"
-                android:visibility="visible"
-                android:layout_height="28dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:src="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="centerInside" />
-
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="1dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-        </LinearLayout>
+        android:background="@drawable/default_portrait_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <FrameLayout
-            android:focusable="false"
             android:layout_width="1dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_weight="0.84"
-            android:layout_gravity="center">
+            android:focusable="false">
+
             <LinearLayout
-                android:layout_marginTop="13dp"
-                android:focusable="false"
-                android:orientation="horizontal"
+                android:id="@+id/questionContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/questionContainer"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="2dp"
-                android:gravity="center">
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
+                android:focusable="false"
+                android:gravity="top|start"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvQuestion"
-                    android:layout_width="64dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:paddingBottom="1dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="10dp"
                     android:focusable="false"
-                    android:layout_marginStart="2dp"
-                    android:gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/titilliumweb_bold"
                     android:lineSpacingExtra="-3sp"
-                    android:maxLines="3"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:paddingBottom="1dp"
                     android:textAlignment="viewStart"
                     android:textColor="@android:color/white"
-                    android:textSize="7sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/titillium"
-                    tools:text="וששששששששששששש" />
+                    tools:text="Who Are You Rooting For?" />
 
-                <FrameLayout
-                    android:id="@+id/flDeliminator"
-                    android:layout_width="0.9dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/base_separator" />
 
                 <LinearLayout
-                    android:focusable="false"
-                    android:layout_marginStart="6dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/container"
-                    android:layoutDirection="inherit"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="16dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="match_parent">
-
-                </LinearLayout>
-
-
-                <HorizontalScrollView
-                    android:id="@+id/scroller"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
-                    android:visibility="gone">
-                    <LinearLayout
-                        android:id="@+id/scrollContainer"
-                        android:layoutDirection="inherit"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:gravity="fill_horizontal|center_vertical"
-                        android:layout_height="match_parent" />
-                </HorizontalScrollView>
+                    android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/wagerContainer"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="1"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/ivWagerIcon"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="4dp"
-                        android:padding="2dp"
-                        android:scaleType="fitXY" />
-
-                    <TextView
-                        android:id="@+id/tvWagerAnswer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/titillium"
-                        android:gravity="center_vertical"
-                        android:maxWidth="80dp"
-                        android:maxLength="18"
-                        android:maxLines="1"
-                        android:paddingStart="3dp"
-                        android:paddingEnd="3dp"
-                        android:text="Test"
-                        android:textColor="@android:color/white"
-                        android:textSize="7sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/wagerValueButton"
-                        android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="1dp"
-                        android:background="@drawable/focus_gradient"
-                        android:focusable="true"
-                        android:fontFamily="@font/titillium"
-                        android:gravity="center"
-                        android:nextFocusUp="@id/wagerValueButton"
-                        android:nextFocusDown="@id/wagerValueButton"
-                        android:stateListAnimator="@null"
-                        android:text="10/25"
-                        android:textColor="@android:color/white"
-                        android:textSize="8sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/arrowUpButton"
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:layout_marginBottom="2dp"
-                            android:background="@android:color/transparent"
-                            android:padding="2dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/arrow_up" />
-
-                        <ImageButton
-                            android:id="@+id/arrowDownButton"
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:background="@android:color/transparent"
-                            android:padding="2dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/arrow_down" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/separator"
-                        android:layout_width="1dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:id="@+id/container"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="start"
+                            android:layoutDirection="inherit"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <HorizontalScrollView
+                            android:id="@+id/scroller"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_marginBottom="8dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:id="@+id/scrollContainer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="fill_horizontal|center_vertical"
+                                android:layoutDirection="inherit"
+                                android:orientation="horizontal" />
+                        </HorizontalScrollView>
+
+                        <LinearLayout
+                            android:id="@+id/wagerContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/ivWagerIcon"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="4dp"
+                                android:padding="2dp"
+                                android:scaleType="fitXY" />
+
+                            <TextView
+                                android:id="@+id/tvWagerAnswer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/titillium"
+                                android:gravity="center_vertical"
+                                android:maxWidth="80dp"
+                                android:maxLength="18"
+                                android:maxLines="1"
+                                android:paddingStart="3dp"
+                                android:paddingEnd="3dp"
+                                android:text="Test"
+                                android:textColor="@android:color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/wagerValueButton"
+                                android:layout_width="50dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginEnd="1dp"
+                                android:background="@drawable/focus_gradient"
+                                android:focusable="true"
+                                android:fontFamily="@font/titillium"
+                                android:gravity="center"
+                                android:nextFocusUp="@id/wagerValueButton"
+                                android:nextFocusDown="@id/wagerValueButton"
+                                android:stateListAnimator="@null"
+                                android:text="10/25"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/arrowUpButton"
+                                    android:layout_width="30dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginBottom="2dp"
+                                    android:background="@android:color/transparent"
+                                    android:padding="2dp"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/arrow_up" />
+
+                                <ImageButton
+                                    android:id="@+id/arrowDownButton"
+                                    android:layout_width="30dp"
+                                    android:layout_height="18dp"
+                                    android:background="@android:color/transparent"
+                                    android:padding="2dp"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/arrow_down" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/separator"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/base_separator"
+                                android:orientation="horizontal" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/wagerSubmitButton"
+                                    android:layout_width="65dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginBottom="3dp"
+                                    android:background="@drawable/mobile_button"
+                                    android:focusable="true"
+                                    android:fontFamily="@font/titillium"
+                                    android:gravity="center|start"
+                                    android:nextFocusUp="@id/wagerSubmitButton"
+                                    android:paddingStart="4dp"
+                                    android:stateListAnimator="@null"
+                                    android:text="Submit"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/wagerBackButton"
+                                    android:layout_width="65dp"
+                                    android:layout_height="20dp"
+                                    android:background="@drawable/mobile_button"
+                                    android:focusable="true"
+                                    android:fontFamily="@font/titillium"
+                                    android:gravity="center|start"
+                                    android:nextFocusDown="@id/wagerBackButton"
+                                    android:paddingStart="4dp"
+                                    android:stateListAnimator="@null"
+                                    android:text="Back"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/wagerResultContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/ivWagerResultIcon"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="6dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY" />
+
+                            <TextView
+                                android:id="@+id/tvWagerCompleted"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:focusable="false"
+                                android:fontFamily="@font/titillium"
+                                android:gravity="center"
+                                android:lineSpacingExtra="-3sp"
+                                android:maxLines="2"
+                                android:textAlignment="gravity"
+                                android:textColor="@android:color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Wager 30 on Answer 1 Potential Win 60" />
+
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/loadingIndicator"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:indeterminateTint="@android:color/white"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/base_separator" />
+                        android:layout_marginBottom="10dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="1dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/wagerSubmitButton"
-                            android:layout_width="36dp"
-                            android:layout_height="13dp"
-                            android:layout_marginBottom="3dp"
-                            android:background="@drawable/mobile_button"
-                            android:focusable="true"
-                            android:fontFamily="@font/titillium"
-                            android:gravity="center|start"
-                            android:nextFocusUp="@id/wagerSubmitButton"
-                            android:paddingStart="2dp"
-                            android:stateListAnimator="@null"
-                            android:text="Submit"
-                            android:textColor="@android:color/white"
-                            android:textSize="8sp"
-                            android:textStyle="bold" />
-
-                        <Button
-                            android:id="@+id/wagerBackButton"
-                            android:layout_width="36dp"
-                            android:layout_height="13dp"
-                            android:background="@drawable/mobile_button"
-                            android:focusable="true"
-                            android:fontFamily="@font/titillium"
-                            android:gravity="center|start"
-                            android:nextFocusDown="@id/wagerBackButton"
-                            android:paddingStart="2dp"
-                            android:stateListAnimator="@null"
-                            android:text="Back"
-                            android:textColor="@android:color/white"
-                            android:textSize="8sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/wagerResultContainer"
-                    android:layout_width="483dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="1"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:id="@+id/ivWagerResultIcon"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:padding="1dp"
-                        android:layout_marginStart="6dp"
-                        android:scaleType="fitXY" />
-                    <TextView
-                        android:id="@+id/tvWagerCompleted"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:focusable="false"
-                        android:layout_marginStart="4dp"
-                        android:gravity="center_vertical"
-                        android:lineSpacingExtra="-3sp"
-                        android:maxLines="2"
-                        android:textAlignment="gravity"
-                        android:textColor="@android:color/white"
-                        android:textSize="8sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/titillium"
-                        tools:text="Wager 30 on Answer 1 Potential Win 60" />
-
+                        <include layout="@layout/arrow_layout" />
+                    </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/flipContainer"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
                 android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
                 android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center"
                 android:focusable="false"
-                >
-            </LinearLayout>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone" />
 
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.16"/>
+            android:layout_weight="0.12" />
 
     </LinearLayout>
 </LinearLayout>

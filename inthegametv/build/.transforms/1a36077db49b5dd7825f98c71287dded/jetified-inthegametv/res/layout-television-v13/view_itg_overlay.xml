@@ -3,59 +3,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/contentContainer"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+    <com.syncedapps.inthegametv.menu.ITGSidebar
+        android:id="@+id/sidebar"
+        android:layout_width="192dp"
         android:layout_height="match_parent"
-        android:paddingBottom="0dp">
+        android:layout_gravity="end"
+        android:orientation="vertical" />
+
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/noticeContainer"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical|right"
-            android:layout_height="140dp"/>
+            android:orientation="horizontal" />
+
         <LinearLayout
             android:id="@+id/container"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="end|bottom"
             android:gravity="end|bottom"
-            android:paddingBottom="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/featuresContainer"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="0dp"
-        android:layoutDirection="inherit">
-
-        <com.syncedapps.inthegametv.menu.ITGMenu
-            android:id="@+id/menu"
-            android:layout_gravity="start|bottom"
-            android:layout_marginBottom="100dp"
-            android:layout_marginStart="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_weight="1"
-            android:visibility="invisible"/>
-        <com.syncedapps.inthegametv.menu.ITGSidebar
-            android:id="@+id/sidebar"
             android:orientation="vertical"
-            android:layout_width="192dp"
-            android:layout_gravity="end"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:paddingBottom="0dp" />
+    </FrameLayout>
+
+    <com.syncedapps.inthegametv.menu.ITGMenu
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:id="@+id/popupContainer"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/shadow"
-        android:visibility="gone"/>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" />
 </FrameLayout>

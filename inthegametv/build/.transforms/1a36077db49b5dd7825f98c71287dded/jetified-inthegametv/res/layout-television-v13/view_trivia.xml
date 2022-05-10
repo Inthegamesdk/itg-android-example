@@ -3,84 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
-    android:layoutDirection="inherit"
     android:layout_width="match_parent"
-    android:layout_height="286dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:background="@android:color/transparent"
-    android:gravity="bottom">
+    android:gravity="bottom"
+    android:layoutDirection="inherit"
+    android:maxHeight="286dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layoutDirection="inherit"
-        android:background="@drawable/activity_background"
         android:layout_gravity="bottom"
-        android:gravity="center">
+        android:background="@drawable/activity_background"
+        android:gravity="center"
+        android:layoutDirection="inherit"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="76dp"
-            android:focusable="false"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="9dp"
+            android:focusable="false"
             android:gravity="center">
 
             <ImageView
                 android:id="@+id/logo_itg"
                 android:layout_width="50dp"
-                android:visibility="visible"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside"/>
-
-            <ProgressBar
-                android:id="@+id/loadingIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:indeterminateTint="@android:color/white"
-                android:visibility="gone"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/itg_icon"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/errorIcon"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_server_error"
                 android:scaleType="centerInside"
-                android:visibility="gone"/>
+                android:src="@drawable/ic_server_error"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
-            android:focusable="false"
-            android:layout_marginStart="0dp"
             android:id="@+id/mainButton"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:tint="@android:color/white"
+            android:layout_marginStart="0dp"
+            android:focusable="false"
+            android:gravity="center"
+            android:orientation="horizontal"
             android:scaleType="centerInside"
-            android:gravity="center">
+            android:tint="@android:color/white">
 
             <ImageView
                 android:id="@+id/closeIcon"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@drawable/close"
                 android:scaleType="centerInside"
-                android:visibility="gone"/>
+                android:src="@drawable/close"
+                android:visibility="gone" />
+
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
             </LinearLayout>
 
@@ -89,32 +82,33 @@
         <FrameLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
             <LinearLayout
-                android:layout_marginTop="16dp"
                 android:id="@+id/questionContainer"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center_vertical"
                 android:layoutDirection="inherit"
-                android:gravity="center_vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvQuestion"
                     android:layout_width="wrap_content"
-                    android:layout_marginStart="7dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:maxWidth="170dp"
-                    android:minWidth="100dp"
+                    android:layout_marginStart="7dp"
                     android:fontFamily="@font/titilliumweb_bold"
-                    android:maxLines="2"
-                    android:lineSpacingMultiplier="0.88"
-                    android:text="What color belt was worn by"
                     android:gravity="center_vertical|start"
+                    android:lineSpacingMultiplier="0.8"
+                    android:maxWidth="170dp"
+                    android:maxLines="2"
+                    android:minWidth="100dp"
+                    android:text="What color belt was worn by"
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -130,12 +124,12 @@
                     android:background="@drawable/base_separator" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/container"
@@ -163,11 +157,11 @@
 
                         <LinearLayout
                             android:id="@+id/scrollContainer"
-                            android:layoutDirection="inherit"
-                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="fill_horizontal|center_vertical"
-                            android:layout_height="match_parent" />
+                            android:layoutDirection="inherit"
+                            android:orientation="horizontal" />
                     </HorizontalScrollView>
 
                     <TextView
@@ -176,15 +170,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="32dp"
-                        android:layout_marginEnd="32dp"
-                        android:lineSpacingExtra="-4.5sp"
-                        android:maxLines="2"
+                        android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/titillium"
+                        android:lineSpacingExtra="-4.5sp"
+                        android:maxLines="2"
                         android:textAlignment="gravity"
-                        android:visibility="gone"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/container"
@@ -192,25 +186,55 @@
                         tools:text="AWESOME!\n+{{ point }} pts for the correct answer"
                         tools:visibility="visible" />
 
+                    <ProgressBar
+                        android:id="@+id/loadingIndicator"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <FrameLayout
+                    android:id="@+id/flArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="46dp"
+                    android:layout_marginBottom="10dp">
+
+                    <include layout="@layout/arrow_layout" />
+                </FrameLayout>
+
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/flipContainer"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center">
-            </LinearLayout>
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
+
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"/>
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info" />
 
     </LinearLayout>
 </LinearLayout>

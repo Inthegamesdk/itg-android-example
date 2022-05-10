@@ -65,7 +65,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         //load your channel to start up the ITG system
         overlay.load("soccer_predictions", "demos", environment)
         overlay.listener = this
-
+        overlay.menuEnabled = true
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
 
@@ -74,7 +74,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         // use this optional variable to set the animation type
         overlay.animationType = ITGAnimationType.FROM_BOTTOM
 
-        overlay.menuEnabled = true
         // use this variable if you want to hide the win notifications
 //        overlay.showNotices = false
 
@@ -94,6 +93,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onStart() {
         super.onStart()
+        mOverlay?.onStart()
         if (Util.SDK_INT > 23) {
             initializePlayer()
         }
@@ -121,11 +121,17 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onStop() {
         super.onStop()
-        mOverlay?.shutdown()
+        mOverlay?.onStop()
         if (Util.SDK_INT > 23) {
             releasePlayer()
         }
     }
+
+    override fun onDestroyView() {
+        mOverlay?.onDestroyView()
+        super.onDestroyView()
+    }
+
 
     private fun initializePlayer() {
         val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
@@ -214,25 +220,30 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     //will be called when the overlay shows content
     //use this method to send focus to the overlay if needed
     //focusView is the element that should become focused
-    override fun overlayRequestedFocus(focusView: View) {
-        val spacing = convertDpToPixel(requireContext(), 86).toFloat()
-        val total = view!!.height.toFloat()
-        val scale = (total - spacing) / total
-        surfaceView.animate().scaleY(scale)
-        surfaceView.animate().translationY(-spacing / 2)
-    }
+    override fun overlayRequestedFocus(focusView: View) {}
 
     //overlay finished showing content
     //if needed you can use this method to focus on your content
-    override fun overlayReleasedFocus(popMessage: Boolean) {
+    override fun overlayReleasedFocus(popMessage: Boolean) {}
+
+    override fun overlayResizeVideo(activityHeight: Float) {
+        if (this.isDetached || context == null) return
+
+        val total = view!!.height.toFloat()
+        val scale = (total - activityHeight) / total
+        surfaceView.animate().scaleY(scale)
+        surfaceView.animate().translationY(-activityHeight / 2)
+    }
+
+    override fun overlayResetVideoSize() {
+        if (this.isDetached || context == null) return
         surfaceView.animate().scaleY(1f)
         surfaceView.animate().translationY(0f)
+    }
 
-        if (popMessage) {
-            Log.d("ITG", "Show account POPUP")
-        } else {
-            Log.d("ITG", "Do not show popup")
-        }
+    override fun overlayRequestedVideoTime() {
+        val time = mPlayer?.currentPosition ?: 0
+        mOverlay?.videoPlaying(time)
     }
 
     override fun overlayClickedUserArea() {
@@ -314,6 +325,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun customCloseOptionsView(): ITGCloseOptionsView? {
         return CustomCloseOptionsView(context)
+    }
+
+    override fun customNoticeWikiView(): ITGNoticeWiki? {
+        return ITGNoticeWiki(requireContext())
     }
 
     //ExoPlayer events

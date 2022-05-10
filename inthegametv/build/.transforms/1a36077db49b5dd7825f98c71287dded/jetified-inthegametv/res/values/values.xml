@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="accentColor">#ffffff</color>
+    <color name="arrowColor">#9E9E9E</color>
     <color name="buttonAnswerGreen">#0D9F00</color>
     <color name="buttonAnswerGreenFocus">#3DCE30</color>
     <color name="buttonAnswerRed">#D31515</color>
@@ -18,12 +19,16 @@
     <color name="errorRed">#ff0d0d</color>
     <color name="fieldDark">#232323</color>
     <color name="flipPromotionBackgroundColor">#A0000000</color>
+    <color name="hideBottomSlipBackground">#252525</color>
     <color name="listItemBackground">#252525</color>
     <color name="listItemFocusedBackground">#686868</color>
     <color name="menuDefault">#52000000</color>
     <color name="menuFocused">#52FFFFFF</color>
     <color name="menuTextBackground">#99FFFFFF</color>
     <color name="message_field_border">#DCDCDC</color>
+    <color name="noticeBackgroundColor">#E6252525</color>
+    <color name="on_button_color">#04B934</color>
+    <color name="personAreaSidePanelBackgroundColor">#ffffff</color>
     <color name="pointsColor">#FFC709</color>
     <color name="pollBackgroundColor">#E6000000</color>
     <color name="refreshButtonBackground">#000000</color>
@@ -34,6 +39,7 @@
     <color name="transparentRed">#90FF2211</color>
     <color name="wrong">#E90B0A</color>
     <color name="yellowITG">#ffc709</color>
+    <dimen name="promotion_height">120dp</dimen>
     <string name="button_buy">BUY</string>
     <string name="button_got_it">GOT IT!</string>
     <string name="button_next">NEXT</string>
@@ -52,6 +58,7 @@
     <string name="generalOverlay_point">Points</string>
     <string name="generalOverlay_seconds">SEC</string>
     <string name="generalOverlay_seconds_composed">{{ number }} SEC</string>
+    <string name="hide_8_hours">Hide - 8 Hours</string>
     <string name="open_menu_button">open menu button</string>
     <string name="personalArea_clear">Clear</string>
     <string name="personalArea_close_personal_area">Close</string>
@@ -82,12 +89,14 @@
     <string name="predictions_wrong_prediction_answer">You answered {{ answer }} on {{ question }}</string>
     <string name="predictions_wrong_prediction_wager">You lost {{ point }} pts for {{ answer }} on {{ question }}"</string>
     <string name="predictions_x_points_prediction">For choosing {{ answer }} on {{ question }}</string>
+    <string name="price_after_discount">price after\ndiscount</string>
     <string name="product_check_phone">Please check your phone to complete the purchase</string>
     <string name="product_discount_off">{{ number }}% off</string>
     <string name="product_phone_hint">Phone number</string>
     <string name="product_phone_invalid">Invalid phone number</string>
     <string name="refresh">Refresh</string>
     <string name="refresh_leaderboard">Refresh Leaderboard</string>
+    <string name="show_bottom_slip">Show Bottom Slip</string>
     <string name="sideMenu_account">Account</string>
     <string name="sideMenu_chat">Chat</string>
     <string name="sideMenu_chat_title">Chat</string>

@@ -1,247 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom"
+    android:background="@android:color/transparent"
     android:gravity="bottom"
-    android:background="@android:color/transparent">
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layoutDirection="inherit"
-        android:background="@drawable/activity_background"
+        android:layout_height="108dp"
         android:layout_gravity="bottom"
-        android:gravity="center">
+        android:background="@drawable/default_portrait_bg"
+        android:gravity="center"
+        android:layoutDirection="inherit"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="52dp"
-            android:focusable="false"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/ivProduct"
-                android:layout_width="48dp"
-                android:visibility="visible"
-                android:layout_height="48dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:src="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="fitXY" />
-
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-        </LinearLayout>
 
         <FrameLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.84"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp">
+            android:layout_weight="0.84">
+
             <LinearLayout
                 android:id="@+id/buyContainer"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layoutDirection="inherit"
-                android:paddingStart="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layoutDirection="inherit"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
                 android:visibility="visible">
+
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="2dp"
-                    android:gravity="center">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tvName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/titilliumweb_bold"
                         android:maxLines="1"
-                        android:textAlignment="textStart"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
                         android:text="Product"
-                        android:fontFamily="@font/titillium"/>
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:maxLines="2"
-                        android:text="Description"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/titillium"
                         android:gravity="start"
-                        android:textAlignment="gravity"
                         android:lineSpacingExtra="3sp"
+                        android:maxLines="1"
+                        android:text="Description"
+                        android:textAlignment="gravity"
                         android:textColor="@android:color/white"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/titillium" />
+                        android:textSize="11sp" />
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:layout_width="68dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <Button
-                        android:id="@+id/buyButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:background="@drawable/mobile_button"
-                        android:text="BUY"
-                        android:textSize="9dp"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textColor="@android:color/white"
-                        android:fontFamily="@font/titillium"/>
+                    android:orientation="horizontal">
+
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:paddingTop="4dp">
-                        <TextView
-                            android:id="@+id/tvPrice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$29.99"
-                            android:textStyle="bold"
-                            android:textSize="8dp"
-                            android:textColor="@android:color/white"
-                            android:fontFamily="@font/titillium"/>
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tvDiscount"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="25% off"
-                            android:textSize="8dp"
-                            android:textColor="@color/yellowITG"
-                            android:fontFamily="@font/titillium"/>
+                            android:fontFamily="@font/titilliumweb_regular"
+                            android:gravity="center_horizontal"
+                            android:maxLines="1"
+                            android:text="price after discount of 20%"
+                            android:textAlignment="gravity"
+                            android:textColor="@android:color/white"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="$29.99"
+                            android:textAlignment="gravity"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+                </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flDeliminatorEnd"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="4dp"
+                        android:background="@drawable/base_separator" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="2dp"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvSendSms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/titilliumweb_regular"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="SMS will be sent to ***-***-*609"
+                            android:textAlignment="gravity"
+                            android:textColor="@android:color/white"
+                            android:textSize="9sp"
+                            tools:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/buyButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="28dp"
+                            android:background="@drawable/mobile_button"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:lines="1"
+                            android:text="BUY"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/phoneContainer"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layoutDirection="inherit"
-                android:paddingStart="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-                <TextView
-                    android:id="@+id/tvInvalid"
-                    android:layout_width="40dp"
-                    android:layout_margin="4dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/errorRed"
-                    android:text="@string/product_phone_invalid"
-                    android:textSize="7dp"
-                    android:maxLines="3"
-                    android:visibility="invisible"
-                    android:fontFamily="@font/titillium"/>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tiPhone"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="4dp"
-                    app:hintTextColor="@android:color/white"
-                    style="@style/EditTextTheme"
-                    android:hint="@string/product_phone_hint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@android:color/white"
-                        android:textDirection="ltr"
-                        android:textSize="12dp"
-                        android:inputType="text"
-                        android:imeOptions="actionNext"
-                        android:nextFocusForward="@+id/nextButton"
-                        android:fontFamily="@font/titillium"
-                        style="@style/EditTextTheme"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/nextButton"
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/mobile_button"
-                    android:text="@string/button_next"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/titillium"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/finalContainer"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layoutDirection="inherit"
-                android:paddingStart="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-                <TextView
-                    android:id="@+id/tvFinal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:maxLines="2"
-                    android:text="@string/product_check_phone"
-                    android:gravity="start"
-                    android:textAlignment="gravity"
-                    android:lineSpacingExtra="-3sp"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/titillium" />
-                <Button
-                    android:id="@+id/gotItButton"
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/mobile_button"
-                    android:text="@string/button_got_it"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/titillium"/>
-            </LinearLayout>
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.16"/>
+            android:layout_weight="0.12" />
 
     </LinearLayout>
 </LinearLayout>

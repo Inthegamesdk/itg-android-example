@@ -3,33 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.syncedapps.inthegametv.menu.ITGSidebar
+        android:id="@+id/sidebar"
+        android:layout_width="242dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:orientation="vertical" />
+
+    <FrameLayout
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="0dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/noticeContainer"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical|right"
             android:orientation="horizontal" />
 
         <LinearLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="right|bottom"
-            android:layout_weight="1"
             android:gravity="right|bottom"
-            android:orientation="vertical"
-            android:paddingBottom="0dp" />
-    </LinearLayout>
+            android:orientation="vertical" />
+    </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/featuresContainer"
+        android:id="@+id/menuContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layoutDirection="inherit"
@@ -48,26 +51,19 @@
             android:paddingStart="4dp"
             android:paddingEnd="8dp"
             android:scaleType="fitCenter"
+            android:visibility="invisible"
             android:src="@drawable/ic_open_menu"
-            android:tint="@drawable/item_menu_tint_selector"
-            android:visibility="invisible"/>
+            android:tint="@drawable/item_menu_tint_selector" />
 
         <com.syncedapps.inthegametv.menu.ITGMenu
             android:id="@+id/menu"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="62dp"
             android:layout_gravity="left|bottom"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="80dp"
             android:layout_weight="1"
             android:visibility="invisible" />
-
-        <com.syncedapps.inthegametv.menu.ITGSidebar
-            android:id="@+id/sidebar"
-            android:layout_width="192dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:orientation="vertical" />
     </LinearLayout>
 
     <LinearLayout
