@@ -132,6 +132,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         super.onDestroyView()
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        mOverlay?.updateOrientation()
+    }
+
 
     private fun initializePlayer() {
         val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
@@ -226,19 +231,34 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     //if needed you can use this method to focus on your content
     override fun overlayReleasedFocus(popMessage: Boolean) {}
 
-    override fun overlayResizeVideo(activityHeight: Float) {
+    override fun overlayResizeVideoHeight(activityHeight: Float) {
         if (this.isDetached || context == null) return
 
-        val total = view!!.height.toFloat()
+        val total = requireView().height.toFloat()
         val scale = (total - activityHeight) / total
         surfaceView.animate().scaleY(scale)
         surfaceView.animate().translationY(-activityHeight / 2)
     }
 
-    override fun overlayResetVideoSize() {
+    override fun overlayResetVideoHeight() {
         if (this.isDetached || context == null) return
         surfaceView.animate().scaleY(1f)
         surfaceView.animate().translationY(0f)
+    }
+
+    override fun overlayResizeVideoWidth(activityWidth: Float) {
+        val overlay = mOverlay ?: return
+        val rtl = overlay.isRTLEnabled()
+
+        val total = requireView().width.toFloat()
+        val scale = (total - activityWidth) / total
+        surfaceView.animate().scaleX(scale)
+        surfaceView.animate().translationX((if(rtl) activityWidth else -activityWidth) / 2)
+    }
+
+    override fun overlayResetVideoWidth() {
+        surfaceView.animate().scaleX(1f)
+        surfaceView.animate().translationX(0f)
     }
 
     override fun overlayRequestedVideoTime() {
@@ -268,6 +288,13 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     }
 
     override fun overlayDidTapVideo() {}
+
+
+    override fun overlayRequestedPortraitTopGap(): Int {
+        //for mobile phones only
+        //we can return 0 on TV
+        return 0
+    }
 
     private fun convertDpToPixel(context: Context, dp: Int): Int {
         val density = context.applicationContext.resources.displayMetrics.density

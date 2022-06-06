@@ -196,13 +196,13 @@
                         android:id="@+id/tvHideBottomSlipLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/titilliumweb_bold"
+                        android:fontFamily="@font/titilliumweb_regular"
                         android:gravity="start|center_vertical"
                         android:lines="1"
                         android:paddingStart="6dp"
                         android:text="@string/show_bottom_slip"
                         android:textColor="@color/button_color"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:autoSizeTextType="uniform" />
 
                     <TextView
@@ -220,7 +220,7 @@
                         android:paddingEnd="6dp"
                         android:text="@string/hide_8_hours"
                         android:textColor="@color/button_color"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -232,8 +232,9 @@
                     android:paddingStart="4dp"
                     android:paddingEnd="6dp"
                     android:text="@string/hide_8_hours"
+                    android:layout_marginBottom="8dp"
                     android:textColor="@color/button_color"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvHideBottomList"
@@ -243,6 +244,7 @@
                     android:nestedScrollingEnabled="false"
                     android:visibility="gone"
                     tools:itemCount="3"
+                    android:layout_marginBottom="8dp"
                     tools:listitem="@layout/view_hide_slip_item"
                     tools:visibility="visible" />
             </LinearLayout>

@@ -17,6 +17,6 @@
         android:paddingEnd="6dp"
         android:text="@string/hide_8_hours"
         android:textColor="@color/button_color"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>

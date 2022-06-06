@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@android:color/transparent"
+    android:gravity="bottom"
+    android:layoutDirection="inherit"
+    android:maxHeight="286dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/activityContainer"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/activity_background"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="76dp"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:paddingTop="17dp">
+
+            <ImageView
+                android:id="@+id/logo_itg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/itg_icon"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/errorIcon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="2dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_server_error"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layoutDirection="inherit"
+            android:orientation="vertical"
+            android:paddingTop="18dp"
+            android:textDirection="locale">
+
+            <ScrollView
+                android:id="@+id/scroller"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:nextFocusUp="@id/scroller"
+                android:nextFocusDown="@id/scroller"
+                android:scrollbarAlwaysDrawVerticalTrack="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/titillium"
+                        android:gravity="start|center_vertical"
+                        android:text="test sdfsdafsd\ntest test test\nTEST"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info_kidoodle" />
+
+    </LinearLayout>
+</LinearLayout>

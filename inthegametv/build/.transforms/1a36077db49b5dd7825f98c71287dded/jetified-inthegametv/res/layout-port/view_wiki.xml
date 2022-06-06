@@ -29,7 +29,7 @@
             android:textDirection="locale"
             android:paddingTop="12dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="34dp"
+            android:layout_marginEnd="40dp"
             android:gravity="center">
 
             <ScrollView
@@ -37,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true"
+                android:paddingVertical="2dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:nextFocusUp="@id/scroller"
                 android:nextFocusDown="@id/scroller">

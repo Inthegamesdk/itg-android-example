@@ -3,23 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainContainer"
-    android:orientation="vertical"
+    android:background="@android:color/transparent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:maxHeight="286dp"
     android:layoutDirection="inherit"
+    android:maxHeight="286dp"
     android:layout_gravity="bottom"
     android:gravity="bottom"
-    android:background="@android:color/transparent">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/activityContainer"
-        android:orientation="horizontal"
+        android:background="@drawable/activity_background"
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:background="@drawable/activity_background"
+        android:gravity="center"
         android:layout_gravity="bottom"
-        android:gravity="center">
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="76dp"
             android:focusable="false"
@@ -30,14 +31,14 @@
             <ImageView
                 android:id="@+id/logo_itg"
                 android:layout_width="50dp"
-                android:visibility="visible"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:scaleType="centerInside"
                 android:layout_gravity="center"
                 android:src="@drawable/itg_icon"
                 android:focusable="false"
-                android:scaleType="centerInside" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/errorIcon"
@@ -46,25 +47,26 @@
                 android:layout_marginBottom="2dp"
                 android:src="@drawable/ic_server_error"
                 android:scaleType="centerInside"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </LinearLayout>
 
         <FrameLayout
-            android:focusable="false"
+            android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_gravity="center">
+            android:focusable="false">
+
             <LinearLayout
+                android:id="@+id/questionContainer"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
-                android:focusable="false"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/questionContainer"
                 android:layout_marginEnd="44dp"
-                android:layout_marginStart="4dp"
-                android:gravity="center">
+                android:focusable="false"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvQuestion"
@@ -338,24 +340,28 @@
                 </FrameLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/flipContainer"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:background="@android:color/black"
-                android:visibility="gone"
+                android:focusable="false"
                 android:gravity="center"
-                android:focusable="false" >
-            </LinearLayout>
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
 
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
 
         </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_extra_info"/>
+        <include
+            android:id="@+id/include_extra_info"
+            layout="@layout/view_extra_info" />
 
     </LinearLayout>
 </LinearLayout>

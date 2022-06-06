@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="150dp"
+    android:gravity="center"
     android:layout_height="42dp"
     android:layout_weight="1"
-    android:padding="6dp"
+    android:orientation="vertical"
     android:layoutDirection="inherit"
-    android:gravity="center">
+    android:padding="6dp">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,17 +15,17 @@
         android:gravity="center">
 
         <ImageButton
-            android:nextFocusDown="@id/answerButton"
+            android:background="@drawable/button_answer_selector"
             android:id="@+id/answerButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
+            android:focusable="true"
+            android:nextFocusDown="@id/answerButton"
             android:gravity="center"
             android:textStyle="bold"
-            android:scaleType="fitCenter"
-            android:background="@drawable/button_answer_selector"
-            android:focusable="true"/>
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/textView"
@@ -37,8 +37,8 @@
             android:textStyle="bold"
             android:clickable="false"
             android:focusable="false"
+            android:fontFamily="@font/titillium"
             android:text="1"
-            android:visibility="gone"
-            android:fontFamily="@font/titillium"/>
+            android:visibility="gone" />
     </FrameLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@
 <resources>
     <color name="accentColor">#ffffff</color>
     <color name="arrowColor">#9E9E9E</color>
+    <color name="arrowKidoodleColor">#ffffff</color>
     <color name="buttonAnswerGreen">#0D9F00</color>
     <color name="buttonAnswerGreenFocus">#3DCE30</color>
     <color name="buttonAnswerRed">#D31515</color>
@@ -11,6 +12,7 @@
     <color name="buttonYellow">#f7c846</color>
     <color name="buttonYellowDark">#D5AA16</color>
     <color name="buttonYellowFaded">#80f7c846</color>
+    <color name="buttonYellowLight">#9EF7C846</color>
     <color name="button_color">#ffffff</color>
     <color name="cellcomBorder">#7C014C</color>
     <color name="cellcomButton">#D60585</color>
@@ -20,6 +22,10 @@
     <color name="fieldDark">#232323</color>
     <color name="flipPromotionBackgroundColor">#A0000000</color>
     <color name="hideBottomSlipBackground">#252525</color>
+    <color name="kidoodleArrow">#FFFFFF</color>
+    <color name="kidoodleButton">#3b3b3b</color>
+    <color name="kidoodleButtonSelected">#686868</color>
+    <color name="kidoodleWager">#ffd100</color>
     <color name="listItemBackground">#252525</color>
     <color name="listItemFocusedBackground">#686868</color>
     <color name="menuDefault">#52000000</color>
@@ -39,7 +45,28 @@
     <color name="transparentRed">#90FF2211</color>
     <color name="wrong">#E90B0A</color>
     <color name="yellowITG">#ffc709</color>
+    <dimen name="kidoodle_question_container_width">280dp</dimen>
     <dimen name="promotion_height">120dp</dimen>
+    <dimen name="sidebar_height_portrait_common">250dp</dimen>
+    <dimen name="sidebar_height_portrait_min">100dp</dimen>
+    <dimen name="sidebar_width">242dp</dimen>
+    <dimen name="sidebar_width_tv">192dp</dimen>
+    <dimen name="slip_content_large_start_margin">16dp</dimen>
+    <dimen name="slip_content_margin_end_arrow_disabled">0dp</dimen>
+    <dimen name="slip_content_margin_end_arrow_enabled">24dp</dimen>
+    <dimen name="slip_content_middle_start_margin">26dp</dimen>
+    <dimen name="slip_content_small_start_margin">36dp</dimen>
+    <dimen name="slip_image_large_vertical_margin">0dp</dimen>
+    <dimen name="slip_image_middle_vertical_margin">10dp</dimen>
+    <dimen name="slip_image_small_vertical_margin">20dp</dimen>
+    <dimen name="slip_tv_base_height">86dp</dimen>
+    <dimen name="slip_tv_content_lift_top">8dp</dimen>
+    <dimen name="slip_tv_lift_top">15dp</dimen>
+    <dimen name="slip_tv_lifted_height">101dp</dimen>
+    <dimen name="slip_tv_no_lift_top">0dp</dimen>
+    <dimen name="slip_tv_no_timer_padding">0dp</dimen>
+    <dimen name="slip_tv_padding">4dp</dimen>
+    <dimen name="slip_tv_timer_padding">4dp</dimen>
     <string name="button_buy">BUY</string>
     <string name="button_got_it">GOT IT!</string>
     <string name="button_next">NEXT</string>

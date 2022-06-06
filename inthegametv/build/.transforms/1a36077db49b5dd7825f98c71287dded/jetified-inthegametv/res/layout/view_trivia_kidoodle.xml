@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@android:color/transparent"
+    android:gravity="bottom"
+    android:layoutDirection="inherit"
+    android:maxHeight="286dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/activityContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/slip_tv_lifted_height"
+        android:layout_gravity="bottom"
+        android:gravity="end|bottom"
+        android:layoutDirection="inherit"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/flLogoSection"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/slip_tv_base_height"
+            android:layout_weight="10"
+            android:background="#262626">
+
+            <LinearLayout
+                android:id="@+id/ll_logo_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/slip_tv_padding"
+                android:layout_marginStart="@dimen/slip_tv_padding"
+                android:background="#000000"
+                android:focusable="false"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/logo_itg"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:focusable="false"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/itg_icon"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/errorIcon"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginBottom="2dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_server_error"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flQuestionSection"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/slip_tv_base_height"
+            android:layout_weight="35"
+            android:background="#262626">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/slip_tv_padding"
+                android:layout_marginStart="@dimen/slip_tv_padding"
+                android:background="#000000"
+                android:focusable="false"
+                android:fontFamily="@font/titilliumweb_semibold"
+                android:gravity="center_vertical"
+                android:lineSpacingMultiplier="0.66"
+                android:maxLines="2"
+                android:paddingHorizontal="14dp"
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                tools:text="What color belt was worn by" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flAnswerSection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="45">
+
+            <FrameLayout
+                android:id="@+id/flAnswerSectionBackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/slip_tv_base_height"
+                android:layout_gravity="bottom"
+                android:background="#262626" />
+
+            <FrameLayout
+                android:id="@+id/flAnswerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingVertical="@dimen/slip_tv_padding"
+                android:paddingStart="@dimen/slip_tv_padding">
+
+                <FrameLayout
+                    android:id="@+id/flAnswerBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/slip_tv_lift_top"
+                    android:background="#000000" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clAnswerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/slip_tv_lift_top"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:focusable="false"
+                        android:gravity="center_vertical|start"
+                        android:layoutDirection="inherit"
+                        android:maxWidth="200dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/scroller"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:id="@+id/scrollContainer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="fill_horizontal|center_vertical"
+                            android:layoutDirection="inherit"
+                            android:orientation="horizontal" />
+                    </HorizontalScrollView>
+
+                    <LinearLayout
+                        android:id="@+id/llAnswers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llWrongAnswer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/ivCheckmarkWrong"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/xmark" />
+
+                            <ImageView
+                                android:id="@+id/ivIconWrong"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvTitleWrong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/titilliumweb_regular"
+                                android:maxLines="1"
+                                android:paddingStart="4dp"
+                                android:text="title"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp" />
+
+                        <LinearLayout
+                            android:id="@+id/llCorrectAnswer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/ivCheckmarkCorrect"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/checkmark" />
+
+                            <ImageView
+                                android:id="@+id/ivIconCorrect"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvTitleCorrect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/titilliumweb_regular"
+                                android:maxLines="1"
+                                android:paddingStart="4dp"
+                                android:text="title"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llCorrectResult"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/llAnswers"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/tvCorrectMsg1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:gravity="center_vertical|start"
+                            android:lineSpacingMultiplier="0.6"
+                            android:text="CORRECT\nANSWER"
+                            android:textColor="#00f000"
+                            android:textFontWeight="1000"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCorrectMsg2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:gravity="center_vertical|start"
+                            android:text="BONUS"
+                            android:textColor="#ffffff"
+                            android:textFontWeight="1000"
+                            android:textSize="45sp"
+                            android:textStyle="bold"
+                            android:translationX="-2dp"
+                            android:translationY="-1dp" />
+
+                        <LinearLayout
+                            android:id="@+id/pointsBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            tools:visibility="visible">
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/coin2" />
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/coin2"
+                                android:translationX="-8dp" />
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/coin2"
+                                android:translationX="-16dp" />
+
+                            <TextView
+                                android:id="@+id/pointsBadgeLabel"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/titilliumweb_regular"
+                                android:gravity="center"
+                                android:lineSpacingMultiplier="0.6"
+                                android:text="+100"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                android:translationX="-8dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llWrongResult"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/llAnswers"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvWrongMsg1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:gravity="end"
+                            android:lineSpacingMultiplier="0.6"
+                            android:text="WRONG\nANSWER"
+                            android:textColor="#e60000"
+                            android:textFontWeight="1000"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvWrongMsg2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:fontFamily="@font/titilliumweb_bold"
+                            android:gravity="start"
+                            android:lineSpacingMultiplier="0.6"
+                            android:text="BETTER LUCK\nNEXT TIME"
+                            android:textColor="#ffffff"
+                            android:textFontWeight="1000"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/loadingIndicator"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <FrameLayout
+                    android:id="@+id/flArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="@dimen/slip_tv_content_lift_top">
+
+                    <include layout="@layout/arrow_layout_kidoodle" />
+                </FrameLayout>
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flErrorSection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/include_error_container"
+                layout="@layout/view_error_container" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flTimerSection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/slip_tv_lift_top"
+            android:layout_weight="10"
+            android:background="#262626"
+            android:paddingVertical="@dimen/slip_tv_padding">
+
+            <include
+                android:id="@+id/include_extra_info"
+                layout="@layout/view_extra_info_kidoodle" />
+        </FrameLayout>
+
+    </LinearLayout>
+</LinearLayout>

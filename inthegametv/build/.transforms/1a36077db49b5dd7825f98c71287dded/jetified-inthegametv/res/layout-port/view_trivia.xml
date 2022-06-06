@@ -112,7 +112,9 @@
                             android:fontFamily="@font/titillium"
                             android:gravity="center_vertical"
                             android:lineSpacingExtra="-3sp"
-                            android:maxLines="3"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:paddingVertical="2dp"
                             android:textAlignment="gravity"
                             android:textColor="@android:color/white"
                             android:textSize="15sp"
@@ -144,7 +146,8 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginBottom="10dp"
+                        tools:visibility="gone">
 
                         <include layout="@layout/arrow_layout" />
                     </FrameLayout>

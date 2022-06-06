@@ -78,7 +78,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         //load your channel to start up the ITG system
         overlay.load("soccer_predictions", "demos", environment)
         overlay.listener = this
-        overlay.menuEnabled = true
+        overlay.showInPortrait(true)
 
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
@@ -122,7 +122,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 
     override fun overlayReleasedFocus(popMessage: Boolean) {}
 
-    override fun overlayResizeVideo(activityHeight: Float) {
+    override fun overlayResizeVideoHeight(activityHeight: Float) {
         val pixelSpacing = if (isPortrait()) 108 else 86
         val spacing = convertDpToPixel(this, pixelSpacing).toFloat()
         val total = container!!.height.toFloat()
@@ -131,10 +131,13 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         videoView.animate().translationY(-spacing / 2)
     }
 
-    override fun overlayResetVideoSize() {
+    override fun overlayResetVideoHeight() {
         videoView.animate().scaleY(1f)
         videoView.animate().translationY(0f)
     }
+
+    override fun overlayResizeVideoWidth(activityWidth: Float) {}
+    override fun overlayResetVideoWidth() {}
 
     override fun overlayRequestedVideoTime() {
         val time = mediaPlayer?.currentPosition?.toLong() ?: 0
@@ -164,6 +167,10 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
                 }
             }, 2000)
         }
+    }
+
+    override fun overlayRequestedPortraitTopGap(): Int {
+        return videoView?.top ?: 0
     }
 
     override fun onStart() {

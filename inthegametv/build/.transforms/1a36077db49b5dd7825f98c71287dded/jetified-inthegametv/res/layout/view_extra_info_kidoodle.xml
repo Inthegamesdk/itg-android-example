@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llExtraContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/slip_tv_padding"
+    android:layoutDirection="inherit"
+    tools:layout_height="80dp"
+    tools:layout_width="86dp">
+
+    <LinearLayout
+        android:id="@+id/extraInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layoutDirection="inherit"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <FrameLayout
+            android:id="@+id/timerView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="#000000"
+            android:focusable="false"
+            android:orientation="vertical"
+            android:tint="@android:color/white"
+            android:visibility="visible"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:focusable="false"
+                android:fontFamily="@font/titilliumweb_bold"
+                android:text="40"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timerText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:focusable="false"
+                android:fontFamily="@font/titilliumweb_light"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="שניות"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/ivTimer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/user_points"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <FrameLayout
+                android:id="@+id/flLevelContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:text="6"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLevelLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/titilliumweb_light"
+                    android:text="@string/generalOverlay_level"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:id="@+id/flPointsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/slip_tv_padding"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCredits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/titilliumweb_bold"
+                    android:text="25000"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCreditsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/titilliumweb_light"
+                    android:lines="1"
+                    android:text="@string/generalOverlay_point"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvExPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium"
+                android:text="5040"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/itg_bottom_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/userAreaContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/menuButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_answer_kidoodle_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:gravity="center"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:nextFocusDown="@id/userAreaButton"
+                    android:paddingVertical="2dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/personalArea_open_menu"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/userAreaButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_answer_kidoodle_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:gravity="center"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:nextFocusDown="@id/userAreaButton"
+                    android:paddingVertical="2dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/personalArea_open_personal_area"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/closeButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_answer_kidoodle_selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_weight="1"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:nextFocusUp="@id/closeButton"
+                android:nextFocusDown="@id/closeButton"
+                android:paddingVertical="2dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="@string/personalArea_close_personal_area"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
