@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginVertical="10dp"
-            android:layoutDirection="inherit"
+            android:layoutDirection="ltr"
             app:layout_constraintEnd_toStartOf="@+id/ib_refresh_panel"
             app:layout_constraintStart_toEndOf="@+id/ib_close_panel"
             app:layout_constraintTop_toTopOf="parent">

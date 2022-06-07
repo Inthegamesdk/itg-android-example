@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="2dp"
-        android:layoutDirection="inherit">
+        android:layoutDirection="ltr">
 
         <TextView
             android:id="@+id/tvMy"
