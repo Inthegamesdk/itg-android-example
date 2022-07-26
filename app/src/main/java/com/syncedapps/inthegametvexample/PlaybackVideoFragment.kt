@@ -3,6 +3,7 @@ package com.syncedapps.inthegametvexample
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -65,7 +66,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         //load your channel to start up the ITG system
         overlay.load("soccer_predictions", "demos", environment)
         overlay.listener = this
-        overlay.menuEnabled = true
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
 
