@@ -1,132 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mainContainer"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clAnswerLayout"
     android:layout_width="match_parent"
-    android:layout_height="206dp"
-    android:layoutDirection="locale"
-    android:layout_gravity="bottom"
-    android:gravity="bottom"
-    android:background="@android:color/transparent">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:background="@drawable/blue_background"
-        android:layout_gravity="bottom"
-        android:gravity="center">
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/slip_tv_lift_top">
+
+    <HorizontalScrollView
+        android:id="@+id/scroller"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layoutDirection="inherit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
         <LinearLayout
-            android:layout_width="66dp"
-            android:focusable="false"
+            android:id="@+id/scrollContainer"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:gravity="fill_horizontal|center_vertical"
+            android:layoutDirection="inherit"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+
+    <HorizontalScrollView
+        android:id="@+id/wagerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layoutDirection="inherit"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/logo_itg"
-                android:layout_width="40dp"
-                android:visibility="visible"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:background="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
-
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-        </LinearLayout>
-
-        <FrameLayout
-            android:focusable="false"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center">
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:focusable="false"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:id="@+id/ivWagerIcon"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/questionContainer"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="4dp"
-                android:gravity="center">
+                android:layout_marginEnd="12dp"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="fitStart"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
-                <TextView
-                    android:id="@+id/tvQuestion"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:paddingBottom="2dp"
-                    android:focusable="false"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center_vertical"
-                    android:lineSpacingExtra="-3sp"
-                    android:maxLines="3"
-                    android:textAlignment="gravity"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/titillium"
-                    tools:text="וששששששששששששש" />
+            <LinearLayout
+                android:id="@+id/llWagerContent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWagerAnswer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:background="@drawable/background_answer_kidoodle_wager"
+                        android:fontFamily="@font/titilliumweb_regular"
+                        android:gravity="center"
+                        android:maxWidth="180dp"
+                        android:maxLength="18"
+                        android:maxLines="1"
+                        android:minWidth="50dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Salah"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvWagerOdds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:gravity="center"
+                        android:text="4/1"
+                        android:textColor="#ffd100"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvWagerAnswer"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWagerAnswer" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/arrowUp"
+                        android:layout_width="13dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="8dp"
+                        android:focusable="true"
+                        android:minHeight="13dp"
+                        android:src="@drawable/ic_arrow_up" />
+
+                    <ImageView
+                        android:id="@+id/arrowDown"
+                        android:layout_width="13dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:focusable="true"
+                        android:minHeight="13dp"
+                        android:src="@drawable/ic_arrow_down" />
+                </FrameLayout>
 
                 <LinearLayout
-                    android:focusable="false"
-                    android:layout_marginLeft="14dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/container"
-                    android:nextFocusLeft="@id/container"
-                    android:orientation="horizontal"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
                     android:gravity="center"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWagerValueLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:text="Play"
+                        android:textAllCaps="true"
+                        android:textColor="#ffd100"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/wagerValueButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:gravity="start|center_vertical"
+                        android:stateListAnimator="@null"
+                        android:text="100"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
 
                 </LinearLayout>
-                <HorizontalScrollView
-                    android:id="@+id/scroller"
-                    android:layout_width="match_parent"
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:visibility="gone">
-                    <LinearLayout
-                        android:id="@+id/scrollContainer"
-                        android:orientation="horizontal"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWagerWinLabel"
                         android:layout_width="wrap_content"
-                        android:gravity="fill_horizontal"
-                        android:layout_height="match_parent" />
-                </HorizontalScrollView>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:text="Win"
+                        android:textAllCaps="true"
+                        android:textColor="#ffd100"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/wagerWinButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:gravity="start|center_vertical"
+                        android:stateListAnimator="@null"
+                        android:text="100"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/wagerSubmitButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/button_wager_answer_kidoodle_rounded_selector"
+                    android:focusable="true"
+                    android:fontFamily="@font/titillium"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:stateListAnimator="@null"
+                    android:text="Submit"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/wagerBackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/button_wager_answer_kidoodle_rounded_selector"
+                    android:focusable="true"
+                    android:fontFamily="@font/titilliumweb_regular"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:stateListAnimator="@null"
+                    android:text="Back"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+
             </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+    <HorizontalScrollView
+        android:id="@+id/wagerVotedScroller"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layoutDirection="inherit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/wagerVotedContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivWagerVotedIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="fitStart"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
             <LinearLayout
-                android:id="@+id/flipContainer"
-                android:orientation="vertical"
+                android:id="@+id/llWagerVotedContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_marginLeft="2dp"
-                android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center"
-                android:focusable="false"
-                >
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWagerVoted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:background="@drawable/background_answer_kidoodle_wager"
+                        android:fontFamily="@font/titilliumweb_regular"
+                        android:gravity="center_vertical"
+                        android:maxWidth="180dp"
+                        android:maxLength="18"
+                        android:maxLines="1"
+                        android:paddingHorizontal="10dp"
+                        android:text="Salah"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvWagerOddsVoted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:gravity="center"
+                        android:text="4/1"
+                        android:textColor="#ffd100"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvWagerVoted"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWagerVoted" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/llWagerVotedMsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="32dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWagerVotedMsg1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:gravity="end"
+                        android:lineSpacingMultiplier="0.6"
+                        android:text="YOU`RE IN THE GAME"
+                        android:textColor="#ffd100"
+                        android:textFontWeight="1000"
+                        android:textSize="29sp"
+                        android:textStyle="bold"
+                        android:translationY="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvWagerVotedMsg2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titilliumweb_bold"
+                        android:gravity="start"
+                        android:lineSpacingMultiplier="0.6"
+                        android:text="GOOD LUCK!"
+                        android:textColor="#ffffff"
+                        android:textFontWeight="1000"
+                        android:textSize="29sp"
+                        android:textStyle="bold"
+                        android:translationY="-4dp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
+        </LinearLayout>
 
-        </FrameLayout>
 
-        <include android:id="@+id/include_extra_info" layout="@layout/view_info_custom"/>
+    </HorizontalScrollView>
 
-    </LinearLayout>
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,92 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mainContainer"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clAnswerLayout"
     android:layout_width="match_parent"
-    android:layout_height="206dp"
-    android:layoutDirection="locale"
-    android:layout_gravity="bottom"
-    android:gravity="bottom"
-    android:background="@android:color/transparent">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:background="@drawable/blue_background"
-        android:layout_gravity="bottom"
-        android:gravity="center">
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/slip_tv_lift_top"
+    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="66dp"
-            android:focusable="false"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+    <TextView
+        android:id="@+id/tvAction"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="@drawable/button_answer_kidoodle_rounded_selector"
+        android:fontFamily="@font/titilliumweb_semibold"
+        android:gravity="center"
+        android:maxLines="1"
+        android:minWidth="50dp"
+        android:paddingHorizontal="10dp"
+        android:text="Salah"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/logo_itg"
-                android:layout_width="40dp"
-                android:visibility="visible"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:background="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
 
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
-        </LinearLayout>
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layoutDirection="locale"
-            android:textDirection="locale"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="34dp"
-            android:layout_marginLeft="6dp"
-            android:gravity="center">
-
-            <ScrollView
-                android:id="@+id/scroller"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:nextFocusUp="@id/scroller"
-                android:nextFocusDown="@id/scroller">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-                    <TextView
-                        android:id="@+id/tvContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="19sp"
-                        android:gravity="start"
-                        android:textColor="@android:color/white"
-                        android:text="test sdfsdafsd\ntest test test\nTEST"
-                        android:fontFamily="@font/titillium"/>
-                </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
-
-        <include android:id="@+id/include_extra_info" layout="@layout/view_info_custom"/>
-
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

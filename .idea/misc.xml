@@ -17,18 +17,26 @@
         <entry key="app/src/main/res/layout-television/view_product_custom.xml" value="0.19797178130511464" />
         <entry key="app/src/main/res/layout-television/view_rating_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout-television/view_trivia_answer_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.340625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.340625" />
+        <entry key="app/src/main/res/layout/activity_phone.xml" value="0.340625" />
         <entry key="app/src/main/res/layout/activity_phone_playback.xml" value="0.14629629629629629" />
+        <entry key="app/src/main/res/layout/view_extra_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_extra_info_custom.xml" value="0.17325227963525835" />
         <entry key="app/src/main/res/layout/view_info_custom.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/view_notice_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_poll_answer_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_poll_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_product_custom.xml" value="0.19797178130511464" />
+        <entry key="app/src/main/res/layout/view_rating_answer_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_rating_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_trivia_answer_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_trivia_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_wiki_custom.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

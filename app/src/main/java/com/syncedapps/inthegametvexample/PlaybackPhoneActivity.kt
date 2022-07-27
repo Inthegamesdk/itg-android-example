@@ -4,34 +4,46 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.media.MediaPlayer
-import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
-import android.view.ViewGroup
+import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.MediaController
 import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.interaction.*
-import com.syncedapps.inthegametv.network.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
-import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
-import com.syncedapps.inthegametvexample.CustomViews.*
-import kotlinx.android.synthetic.main.activity_phone_playback.*
-import java.net.URI
+import com.syncedapps.inthegametvexample.customViews.CustomProductView
+import com.syncedapps.inthegametvexample.customViews.*
+import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
+import kotlin.math.roundToInt
 
 class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener {
+
     private var mediaController: MediaController? = null
     private var mOverlay: ITGOverlayView? = null
     private var mediaPlayer: MediaPlayer? = null
+    private lateinit var binding: ActivityPhonePlaybackBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_phone_playback)
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        binding = ActivityPhonePlaybackBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
 
         val settings = ITGSettings(this)
         settings.clearUserToken()
@@ -40,43 +52,43 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
         addOverlay()
     }
 
-    fun startVideo() {
+    private fun startVideo() {
         val list = MovieList.list
         val movie = list.first()
 
-        videoView.setVideoPath(movie.videoUrl)
-        videoView.requestFocus()
-        videoView.start()
+        binding.videoView.setVideoPath(movie.videoUrl)
+        binding.videoView.requestFocus()
+        binding.videoView.start()
 
-        videoView.setOnPreparedListener { mp: MediaPlayer ->
+        binding.videoView.setOnPreparedListener { mp: MediaPlayer ->
             mediaPlayer = mp
             mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
             mp.setVolume(1f, 1f)
 
-            mp.setOnSeekCompleteListener { mp ->
-                val time = mp.currentPosition.toLong()
+            mp.setOnSeekCompleteListener { _mp ->
+                val time = _mp.currentPosition.toLong()
                 mOverlay?.videoPlaying(time)
             }
         }
 
-        videoView.setOnPreparedListener {
+        binding.videoView.setOnPreparedListener {
             it.setOnVideoSizeChangedListener { _, _, _ ->
                 if (mediaController == null) {
                     mediaController = MediaController(this)
-                    videoView.setMediaController(mediaController!!)
+                    binding.videoView.setMediaController(mediaController!!)
                 }
-                mediaController?.setAnchorView(outerContainer)
+                mediaController?.setAnchorView(binding.outerContainer)
             }
         }
     }
 
-    fun addOverlay() {
+    private fun addOverlay() {
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.devDefault
+        val environment = ITGEnvironment.test
 
         val overlay = ITGOverlayView(this)
         //load your channel to start up the ITG system
-        overlay.load("soccer_predictions", "demos", environment)
+        overlay.load("testchannel", "testings", environment)
         overlay.listener = this
         overlay.showInPortrait(true)
 
@@ -95,7 +107,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
 //        overlay.showNoticeAsActivity = true
 
         //add the overlay to your view hierarchy
-        container.addView(overlay)
+        binding.container.addView(overlay)
         mOverlay = overlay
 
         //we advise you to use your video players' playback listener
@@ -125,15 +137,15 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     override fun overlayResizeVideoHeight(activityHeight: Float) {
         val pixelSpacing = if (isPortrait()) 108 else 86
         val spacing = convertDpToPixel(this, pixelSpacing).toFloat()
-        val total = container!!.height.toFloat()
+        val total = binding.container.height.toFloat()
         val scale = (total - spacing) / total
-        videoView.animate().scaleY(scale)
-        videoView.animate().translationY(-spacing / 2)
+        binding.videoView.animate().scaleY(scale)
+        binding.videoView.animate().translationY(-spacing / 2)
     }
 
     override fun overlayResetVideoHeight() {
-        videoView.animate().scaleY(1f)
-        videoView.animate().translationY(0f)
+        binding.videoView.animate().scaleY(1f)
+        binding.videoView.animate().translationY(0f)
     }
 
     override fun overlayResizeVideoWidth(activityWidth: Float) {}
@@ -161,7 +173,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
             mediaController?.hide()
         } else {
             mediaController?.show(0)
-            Handler().postDelayed({
+            Handler(Looper.getMainLooper()).postDelayed({
                 if (mediaController?.isShowing == true) {
                     mediaController?.hide()
                 }
@@ -170,7 +182,7 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     }
 
     override fun overlayRequestedPortraitTopGap(): Int {
-        return videoView?.top ?: 0
+        return binding.videoView.top
     }
 
     override fun onStart() {
@@ -191,41 +203,50 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     //the layout methods are optional
     //use them only if you want to customize the design elements
 
+    @Suppress("RedundantNullableReturnType")
     override fun customPollView(): ITGPollView? {
         return CustomPollView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customRatingView(): ITGRatingView? {
         return CustomRatingView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customTriviaView(): ITGTriviaView? {
         return CustomTriviaView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customWikiView(): ITGWikiView? {
         return CustomWikiView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customNoticeView(): ITGNotice? {
         return CustomNoticeView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customProductView(): ITGProductView? {
         return CustomProductView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customCloseOptionsView(): ITGCloseOptionsView? {
         return CustomCloseOptionsView(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customNoticeWikiView(): ITGNoticeWiki? {
         return ITGNoticeWiki(this)
     }
 
+    @Suppress("RedundantNullableReturnType")
     private fun convertDpToPixel(context: Context, dp: Int): Int {
         val density = context.applicationContext.resources.displayMetrics.density
-        return Math.round(dp.toFloat() * density)
+        return (dp.toFloat() * density).roundToInt()
     }
 
     private fun isPortrait(): Boolean {

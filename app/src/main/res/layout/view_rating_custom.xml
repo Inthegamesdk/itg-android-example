@@ -1,278 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mainContainer"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clAnswerLayout"
     android:layout_width="match_parent"
-    android:layout_height="206dp"
-    android:layout_gravity="bottom"
-    android:gravity="bottom"
-    android:background="@android:color/transparent">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:layoutDirection="locale"
-        android:background="@drawable/blue_background"
-        android:layout_gravity="bottom"
-        android:gravity="center">
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/slip_tv_lift_top"
+    android:orientation="horizontal">
+
+    <HorizontalScrollView
+        android:id="@+id/scroller"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="66dp"
-            android:focusable="false"
+            android:id="@+id/scrollContainer"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:gravity="fill_horizontal|center_vertical"
+            android:layoutDirection="inherit"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
 
-            <ImageView
-                android:id="@+id/logo_itg"
-                android:layout_width="40dp"
-                android:visibility="visible"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:background="@drawable/itg_icon"
-                android:focusable="false"
-                android:scaleType="centerInside"
-                app:tint="@android:color/white" />
+    <HorizontalScrollView
+        android:id="@+id/hsAnswerScroller"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
-            <ImageView
-                android:id="@+id/errorIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_server_error"
-                android:scaleType="centerInside"
-                android:visibility="gone"/>
+        <LinearLayout
+            android:id="@+id/answerContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:focusable="true"
+            android:gravity="center"
+            android:layoutDirection="inherit"
+            android:nextFocusRight="@id/answerContainer"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tvAverageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="0.5"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/starContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_gravity="center_vertical"
-                android:layoutDirection="locale"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/questionContainer"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:gravity="center_vertical">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="130dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginTop="12dp"
-                        android:gravity="right">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:gravity="center">
-                            <TextView
-                                android:id="@+id/tvQuestion"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:maxLines="1"
-                                android:textAlignment="textStart"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:visibility="gone"
-                                android:textColor="@android:color/white"
-                                android:text="question"
-                                android:fontFamily="@font/titillium"/>
+    </HorizontalScrollView>
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
-                            <TextView
-                                android:id="@+id/tvTitle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="4dp"
-                                android:maxLines="3"
-                                android:maxWidth="130dp"
-                                android:text="Question?"
-                                android:gravity="start"
-                                android:layout_gravity="start"
-                                android:layout_weight="0.35"
-                                android:textAlignment="gravity"
-                                android:lineSpacingExtra="-3sp"
-                                android:textColor="@android:color/white"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:fontFamily="@font/titillium"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/statsContainer"
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="8dp"
-                            android:layout_gravity="center_vertical"
-                            android:visibility="gone"
-                            tools:visibility="visible"
-                            android:layout_marginRight="12dp"
-                            android:layout_marginBottom="4dp"
-                            android:gravity="bottom">
-                            <LinearLayout
-                                android:visibility="gone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/stat_to_hide">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="9sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:layout_marginRight="2dp"
-                                    android:layout_marginBottom="2dp"
-                                    android:text="("/>
-                                <ImageView
-                                    android:layout_width="14dp"
-                                    android:layout_height="12dp"
-                                    android:layout_marginBottom="4dp"
-                                    android:src="@drawable/ic_user"
-                                    android:scaleType="fitCenter"/>
-                                <TextView
-                                    android:id="@+id/tvStatUser"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:text="0"/>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:layout_marginLeft="3dp"
-                                    android:layout_marginRight="3dp"
-                                    android:text="-"/>
-                                <TextView
-                                    android:id="@+id/tvStatTotal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="17sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/yellowITG"
-                                    android:text="0"/>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textAlignment="textStart"
-                                    android:textSize="9sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@android:color/white"
-                                    android:text=")"
-                                    android:layout_marginLeft="2dp"
-                                    android:layout_marginBottom="2dp"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:focusable="false"
-                        android:nextFocusRight="@id/container"
-                        android:id="@+id/container"
-                        android:layoutDirection="locale"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="10dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal" />
-
-                    <LinearLayout
-                        android:focusable="false"
-                        android:nextFocusRight="@id/answerContainer"
-                        android:id="@+id/answerContainer"
-                        android:layoutDirection="locale"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-                        <ImageView
-                            android:id="@+id/resultIcon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/star_fill"
-                            android:layout_marginEnd="7dp"/>
-                        <TextView
-                            android:id="@+id/tvAverage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0.5"
-                            android:layout_marginEnd="4dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/yellowITG"
-                            android:textSize="17sp"/>
-                        <TextView
-                            android:id="@+id/tvOutOf"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="out of"
-                            android:layout_marginEnd="4dp"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"/>
-                        <TextView
-                            android:id="@+id/tvMax"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5"
-                            android:textStyle="bold"
-                            android:textColor="@color/yellowITG"
-                            android:textSize="17sp"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/flipContainer"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="4dp"
-                android:layout_marginLeft="4dp"
-                android:background="@android:color/black"
-                android:visibility="gone"
-                android:gravity="center">
-            </LinearLayout>
-
-            <include android:id="@+id/include_error_container" layout="@layout/view_error_container"/>
-
-        </FrameLayout>
-
-        <include android:id="@+id/include_extra_info" layout="@layout/view_info_custom"/>
-
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

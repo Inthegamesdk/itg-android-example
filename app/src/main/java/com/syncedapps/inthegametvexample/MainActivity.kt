@@ -3,12 +3,13 @@ package com.syncedapps.inthegametvexample
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.FragmentActivity
 import com.syncedapps.inthegametv.ITGSettings
 
 /**
  * Loads [MainFragment].
  */
-class MainActivity : Activity() {
+class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

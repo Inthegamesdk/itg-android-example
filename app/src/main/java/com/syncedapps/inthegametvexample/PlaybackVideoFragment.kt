@@ -1,7 +1,6 @@
 package com.syncedapps.inthegametvexample
 
 import android.annotation.TargetApi
-import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.net.Uri
@@ -11,39 +10,36 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.leanback.app.RowsSupportFragment
 import androidx.leanback.app.VideoSupportFragment
 import androidx.leanback.app.VideoSupportFragmentGlueHost
-import androidx.leanback.widget.CursorObjectAdapter
-import com.google.android.exoplayer2.*
+import com.google.android.exoplayer2.DefaultRenderersFactory
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ext.leanback.LeanbackPlayerAdapter
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
-import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.source.TrackGroupArray
-import com.google.android.exoplayer2.trackselection.*
-import com.google.android.exoplayer2.upstream.BandwidthMeter
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSource
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.util.Util
-import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametv.ITGAnimationType
+import com.syncedapps.inthegametv.ITGOverlayView
+import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.interaction.*
-import com.syncedapps.inthegametv.network.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
-import com.syncedapps.inthegametvdemo.CustomViews.CustomProductView
-import com.syncedapps.inthegametvexample.CustomViews.*
-
+import com.syncedapps.inthegametvexample.customViews.*
+import kotlin.math.roundToInt
 
 
 /** Handles video playback with media controls. */
-class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener, VideoPlayerGlue.OnActionClickedListener, Player.EventListener {
+class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener, VideoPlayerGlue.OnActionClickedListener, Player.Listener {
 
-    private val UPDATE_DELAY = 16
 
     private var mPlayerGlue: VideoPlayerGlue? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
-    private var mPlayer: SimpleExoPlayer? = null
-    private var mTrackSelector: TrackSelector? = null
+    private var mPlayer: ExoPlayer? = null
     private var mMovie: Movie? = null
     private var mOverlay: ITGOverlayView? = null
     private var shouldNotShowControls = false
@@ -56,15 +52,15 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.setBackgroundColor(resources.getColor(R.color.black))
+        view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.devDefault
+        val environment = ITGEnvironment.test
 
         //create the overlay
         val overlay = ITGOverlayView(requireContext())
         //load your channel to start up the ITG system
-        overlay.load("soccer_predictions", "demos", environment)
+        overlay.load("testchannel", "testings", environment)
         overlay.listener = this
         // enable the layout delegate if you wish to set custom layouts
 //        overlay.layoutListener = this
@@ -111,7 +107,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     @TargetApi(Build.VERSION_CODES.N)
     override fun onPause() {
         super.onPause()
-        if (mPlayerGlue != null && mPlayerGlue?.isPlaying() == true) {
+        if (mPlayerGlue != null && mPlayerGlue?.isPlaying == true) {
             mPlayerGlue?.pause()
         }
         if (Util.SDK_INT <= 23) {
@@ -139,13 +135,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
 
     private fun initializePlayer() {
-        val bandwidthMeter: BandwidthMeter = DefaultBandwidthMeter()
-        val videoTrackSelectionFactory: TrackSelection.Factory = AdaptiveTrackSelection.Factory(bandwidthMeter)
-        mTrackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
-        mPlayer = ExoPlayerFactory.newSimpleInstance(activity, mTrackSelector)
-        mPlayerAdapter = LeanbackPlayerAdapter(activity, mPlayer, UPDATE_DELAY)
+        val player =  ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
+        mPlayer = player
+        mPlayerAdapter = LeanbackPlayerAdapter(requireContext(), player, UPDATE_DELAY)
         mPlayerGlue = VideoPlayerGlue(activity, mPlayerAdapter, this)
-        mPlayerGlue?.setHost(VideoSupportFragmentGlueHost(this))
+        mPlayerGlue?.host = VideoSupportFragmentGlueHost(this)
         mPlayerGlue?.playWhenPrepared()
         isControlsOverlayAutoHideEnabled = true
         mPlayer?.addListener(this)
@@ -164,22 +158,28 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     private fun play(movie: Movie?) {
         if (movie == null) return
-        mPlayerGlue?.setTitle(movie.title)
-        mPlayerGlue?.setSubtitle(movie.description)
+        mPlayerGlue?.title = movie.title
+        mPlayerGlue?.subtitle = movie.description
         prepareMediaForPlaying(Uri.parse(movie.videoUrl))
         mPlayerGlue?.play()
     }
 
     private fun prepareMediaForPlaying(mediaSourceUri: Uri) {
-        val userAgent: String = Util.getUserAgent(activity, "VideoPlayerGlue")
-        val mediaSource: MediaSource = ExtractorMediaSource(
-            mediaSourceUri,
-            DefaultDataSourceFactory(activity, userAgent),
-            DefaultExtractorsFactory(),
-            null,
-            null
-        )
-        mPlayer?.prepare(mediaSource)
+        val userAgent: String = Util.getUserAgent(requireContext(), "VideoPlayerGlue")
+
+        val upstreamDataSourceFactory = DefaultHttpDataSource.Factory()
+            .setAllowCrossProtocolRedirects(true)
+            .setUserAgent(userAgent)
+
+        val defaultDataSourceFactory =
+            DefaultDataSource.Factory(requireContext(), upstreamDataSourceFactory)
+
+        defaultDataSourceFactory.createDataSource()
+
+        val mediaSource: MediaSource = ProgressiveMediaSource.Factory(defaultDataSourceFactory)
+            .createMediaSource(MediaItem.fromUri(mediaSourceUri))
+
+        mPlayer?.setMediaSource(mediaSource)
     }
 
     // let the overlay handle the back button press if it needs to
@@ -189,7 +189,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     }
 
     fun receivedKeyEvent(event: KeyEvent) {
-        if (event?.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+        if (event.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
             if (isControlsOverlayVisible) {
                 hideControlsOverlay(true)
             } else if(mOverlay?.isDisplayingInteraction() == false
@@ -200,11 +200,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
                 }
             }
         }
-        if (isControlsOverlayVisible && event?.keyCode == KeyEvent.KEYCODE_DPAD_UP) return
+        if (isControlsOverlayVisible && event.keyCode == KeyEvent.KEYCODE_DPAD_UP) return
         mOverlay?.receivedKeyEvent(event)
     }
 
-    fun removeKeyInterceptor() {
+    private fun removeKeyInterceptor() {
         val rowsSupportFragment = childFragmentManager.findFragmentById(
             androidx.leanback.R.id.playback_controls_dock
         ) as RowsSupportFragment?
@@ -276,7 +276,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun overlayDidShowSidebar() {
         val spacing = convertDpToPixel(requireContext(), 192).toFloat()
-        val total = view!!.width.toFloat()
+        val total = requireView().width.toFloat()
         val scale = (total - spacing) / total
         surfaceView.animate().scaleX(scale)
         surfaceView.animate().translationX(-spacing / 2)
@@ -296,9 +296,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         return 0
     }
 
+    @Suppress("SameParameterValue")
     private fun convertDpToPixel(context: Context, dp: Int): Int {
         val density = context.applicationContext.resources.displayMetrics.density
-        return Math.round(dp.toFloat() * density)
+        return (dp.toFloat() * density).roundToInt()
     }
 
     override fun showControlsOverlay(runAnimation: Boolean) {
@@ -325,56 +326,59 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     //the layout methods are optional
     //use them only if you want to customize the design elements
-
+    @Suppress("RedundantNullableReturnType")
     override fun customPollView(): ITGPollView? {
         return CustomPollView(context)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customRatingView(): ITGRatingView? {
         return CustomRatingView(context)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customTriviaView(): ITGTriviaView? {
         return CustomTriviaView(context)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customWikiView(): ITGWikiView? {
         return CustomWikiView(context)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customNoticeView(): ITGNotice? {
         return CustomNoticeView(requireContext())
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customProductView(): ITGProductView? {
         return CustomProductView(context)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customCloseOptionsView(): ITGCloseOptionsView? {
         return CustomCloseOptionsView(context)
     }
 
+    @Suppress("RedundantNullableReturnType")
     override fun customNoticeWikiView(): ITGNoticeWiki? {
         return ITGNoticeWiki(requireContext())
     }
 
     //ExoPlayer events
-    override fun onSeekProcessed() {
+    override fun onPositionDiscontinuity(
+        oldPosition: Player.PositionInfo,
+        newPosition: Player.PositionInfo,
+        reason: Int
+    ) {
+        super.onPositionDiscontinuity(oldPosition, newPosition, reason)
         Log.i("PLAYER", "On seek")
         val time = mPlayer?.currentPosition ?: 0
         mOverlay?.videoPlaying(time)
     }
 
-    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?) {}
-    override fun onLoadingChanged(isLoading: Boolean) {}
-    override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {}
-    override fun onRepeatModeChanged(repeatMode: Int) {}
-    override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
-    override fun onPlayerError(error: ExoPlaybackException?) {}
-    override fun onPositionDiscontinuity(reason: Int) {}
-    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
-    override fun onTracksChanged(
-        trackGroups: TrackGroupArray?,
-        trackSelections: TrackSelectionArray?
-    ) {}
+    companion object {
+        private const val UPDATE_DELAY = 16
+    }
 }

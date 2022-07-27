@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 100
         versionName "1.9.1"
 
@@ -22,44 +21,46 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget=11
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.leanback:leanback:1.0.0'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
 
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.6.1'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.6.1'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.6.1'
-    implementation 'com.google.android.exoplayer:extension-leanback:2.6.1'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.1'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.1'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.1'
+    implementation 'com.google.android.exoplayer:extension-leanback:2.18.1'
 
+    implementation platform('com.google.firebase:firebase-bom:26.6.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+
+    implementation 'com.google.android.material:material:1.6.1'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.pusher:pusher-java-client:2.2.6'
-
-    //for qr codes
-    implementation 'com.google.zxing:core:3.4.0'
-
-    implementation 'com.localebro:okhttpprofiler:1.0.8'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
-    implementation "com.squareup.okio:okio:3.0.0"
-    implementation 'androidx.fragment:fragment-ktx:1.4.1'
-    implementation 'androidx.activity:activity-ktx:1.4.0'
-
-    implementation project(':inthegametv')
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.6'
 }

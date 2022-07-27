@@ -2,11 +2,12 @@ package com.syncedapps.inthegametvexample
 
 import android.app.Activity
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 
 /**
  * Details activity class that loads [VideoDetailsFragment] class.
  */
-class DetailsActivity : Activity() {
+class DetailsActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

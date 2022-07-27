@@ -58,13 +58,13 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
 
     private final OnActionClickedListener mActionListener;
 
-    private PlaybackControlsRow.RepeatAction mRepeatAction;
-    private PlaybackControlsRow.ThumbsUpAction mThumbsUpAction;
-    private PlaybackControlsRow.ThumbsDownAction mThumbsDownAction;
-    private PlaybackControlsRow.SkipPreviousAction mSkipPreviousAction;
-    private PlaybackControlsRow.SkipNextAction mSkipNextAction;
-    private PlaybackControlsRow.FastForwardAction mFastForwardAction;
-    private PlaybackControlsRow.RewindAction mRewindAction;
+    private final PlaybackControlsRow.RepeatAction mRepeatAction;
+    private final PlaybackControlsRow.ThumbsUpAction mThumbsUpAction;
+    private final PlaybackControlsRow.ThumbsDownAction mThumbsDownAction;
+    private final PlaybackControlsRow.SkipPreviousAction mSkipPreviousAction;
+    private final PlaybackControlsRow.SkipNextAction mSkipNextAction;
+    private final PlaybackControlsRow.FastForwardAction mFastForwardAction;
+    private final PlaybackControlsRow.RewindAction mRewindAction;
 
     public VideoPlayerGlue(
             Context context,
@@ -187,7 +187,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
     public void fastForward() {
         if (getDuration() > -1) {
             long newPosition = getCurrentPosition() + TEN_SECONDS;
-            newPosition = (newPosition > getDuration()) ? getDuration() : newPosition;
+            newPosition = Math.min(newPosition, getDuration());
             getPlayerAdapter().seekTo(newPosition);
         }
     }
