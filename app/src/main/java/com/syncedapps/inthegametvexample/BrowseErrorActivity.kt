@@ -30,32 +30,35 @@ class BrowseErrorActivity : FragmentActivity() {
     private fun testError() {
         mErrorFragment = ErrorFragment()
         supportFragmentManager
-                .beginTransaction()
-                .add(R.id.main_browse_fragment, mErrorFragment)
-                .commit()
+            .beginTransaction()
+            .add(R.id.main_browse_fragment, mErrorFragment)
+            .commit()
 
         mSpinnerFragment = SpinnerFragment()
         supportFragmentManager
-                .beginTransaction()
-                .add(R.id.main_browse_fragment, mSpinnerFragment)
-                .commit()
+            .beginTransaction()
+            .add(R.id.main_browse_fragment, mSpinnerFragment)
+            .commit()
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             supportFragmentManager
-                    .beginTransaction()
-                    .remove(mSpinnerFragment)
-                    .commit()
+                .beginTransaction()
+                .remove(mSpinnerFragment)
+                .commit()
             mErrorFragment.setErrorContent()
         }, TIMER_DELAY)
     }
 
     class SpinnerFragment : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View {
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View {
             val progressBar = ProgressBar(container?.context)
             if (container is FrameLayout) {
-                val layoutParams = FrameLayout.LayoutParams(SPINNER_WIDTH, SPINNER_HEIGHT, Gravity.CENTER)
+                val layoutParams =
+                    FrameLayout.LayoutParams(SPINNER_WIDTH, SPINNER_HEIGHT, Gravity.CENTER)
                 progressBar.layoutParams = layoutParams
             }
             return progressBar

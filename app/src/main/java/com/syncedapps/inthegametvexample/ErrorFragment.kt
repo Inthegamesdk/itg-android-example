@@ -1,8 +1,8 @@
 package com.syncedapps.inthegametvexample
 
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.leanback.app.ErrorSupportFragment
 
 /**

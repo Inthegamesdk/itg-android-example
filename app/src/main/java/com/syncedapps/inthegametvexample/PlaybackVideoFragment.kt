@@ -25,16 +25,16 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.util.Util
 import com.syncedapps.inthegametv.ITGAnimationType
+import com.syncedapps.inthegametv.ITGContent
 import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.data.CloseOption
-import com.syncedapps.inthegametv.interaction.*
 import com.syncedapps.inthegametv.network.ITGEnvironment
-import com.syncedapps.inthegametvexample.customViews.*
 import kotlin.math.roundToInt
 
 
 /** Handles video playback with media controls. */
-class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener, VideoPlayerGlue.OnActionClickedListener, Player.Listener {
+class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayListener,
+    VideoPlayerGlue.OnActionClickedListener, Player.Listener {
 
 
     private var mPlayerGlue: VideoPlayerGlue? = null
@@ -135,7 +135,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
 
     private fun initializePlayer() {
-        val player =  ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
+        val player =
+            ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
         mPlayer = player
         mPlayerAdapter = LeanbackPlayerAdapter(requireContext(), player, UPDATE_DELAY)
         mPlayerGlue = VideoPlayerGlue(activity, mPlayerAdapter, this)
@@ -184,24 +185,32 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     // let the overlay handle the back button press if it needs to
     // (to dismiss interactions)
-    fun handleBackPressIfNeeded() : Boolean {
+    fun handleBackPressIfNeeded(): Boolean {
         return mOverlay?.handleBackPressIfNeeded() ?: false
     }
 
-    fun receivedKeyEvent(event: KeyEvent) {
-        if (event.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-            if (isControlsOverlayVisible) {
-                hideControlsOverlay(true)
-            } else if(mOverlay?.isDisplayingInteraction() == false
-                && mOverlay?.isSidebarVisible() == false) {
-                showControlsOverlay(true)
-                if (mOverlay?.isMenuVisible() == true) {
-                    mOverlay?.hideMenu()
+    fun receivedKeyEvent(event: KeyEvent): Boolean {
+        if (mOverlay?.menuKeyEvent != event.keyCode) {
+            if (event.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                if (isControlsOverlayVisible) {
+                    hideControlsOverlay(true)
+                    return true
+                } else if (mOverlay?.currentContent()
+                        ?.containsAll(listOf(ITGContent.SLIP, ITGContent.POPUP)) == true
+                    && mOverlay?.isSidebarVisible() == false
+                    && mOverlay?.isNoticeFocused() == false
+                ) {
+                    showControlsOverlay(true)
+                    if (mOverlay?.isMenuVisible() == true) {
+                        mOverlay?.hideMenu()
+                    }
+                    return true
                 }
             }
         }
-        if (isControlsOverlayVisible && event.keyCode == KeyEvent.KEYCODE_DPAD_UP) return
+        if (isControlsOverlayVisible && mOverlay?.menuKeyEvent == event.keyCode) return false
         mOverlay?.receivedKeyEvent(event)
+        return false
     }
 
     private fun removeKeyInterceptor() {
@@ -253,7 +262,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         val total = requireView().width.toFloat()
         val scale = (total - activityWidth) / total
         surfaceView.animate().scaleX(scale)
-        surfaceView.animate().translationX((if(rtl) activityWidth else -activityWidth) / 2)
+        surfaceView.animate().translationX((if (rtl) activityWidth else -activityWidth) / 2)
     }
 
     override fun overlayResetVideoWidth() {
@@ -320,51 +329,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         mOverlay?.videoPaused()
     }
 
-    override fun onPrevious() { }
+    override fun onPrevious() {}
 
-    override fun onNext() { }
-
-    //the layout methods are optional
-    //use them only if you want to customize the design elements
-    @Suppress("RedundantNullableReturnType")
-    override fun customPollView(): ITGPollView? {
-        return CustomPollView(context)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customRatingView(): ITGRatingView? {
-        return CustomRatingView(context)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customTriviaView(): ITGTriviaView? {
-        return CustomTriviaView(context)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customWikiView(): ITGWikiView? {
-        return CustomWikiView(context)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customNoticeView(): ITGNotice? {
-        return CustomNoticeView(requireContext())
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customProductView(): ITGProductView? {
-        return CustomProductView(context)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customCloseOptionsView(): ITGCloseOptionsView? {
-        return CustomCloseOptionsView(context)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customNoticeWikiView(): ITGNoticeWiki? {
-        return ITGNoticeWiki(requireContext())
-    }
+    override fun onNext() {}
 
     //ExoPlayer events
     override fun onPositionDiscontinuity(

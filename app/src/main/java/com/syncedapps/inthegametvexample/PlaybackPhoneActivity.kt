@@ -12,16 +12,14 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.MediaController
-import com.syncedapps.inthegametv.*
+import com.syncedapps.inthegametv.ITGOverlayView
+import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
-import com.syncedapps.inthegametv.interaction.*
 import com.syncedapps.inthegametv.network.ITGEnvironment
-import com.syncedapps.inthegametvexample.customViews.CustomProductView
-import com.syncedapps.inthegametvexample.customViews.*
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
 import kotlin.math.roundToInt
 
-class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGOverlayView.ITGLayoutListener {
+class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
 
     private var mediaController: MediaController? = null
     private var mOverlay: ITGOverlayView? = null
@@ -198,49 +196,6 @@ class PlaybackPhoneActivity: Activity(), ITGOverlayView.ITGOverlayListener, ITGO
     override fun onDestroy() {
         mOverlay?.onDestroyView()
         super.onDestroy()
-    }
-
-    //the layout methods are optional
-    //use them only if you want to customize the design elements
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customPollView(): ITGPollView? {
-        return CustomPollView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customRatingView(): ITGRatingView? {
-        return CustomRatingView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customTriviaView(): ITGTriviaView? {
-        return CustomTriviaView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customWikiView(): ITGWikiView? {
-        return CustomWikiView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customNoticeView(): ITGNotice? {
-        return CustomNoticeView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customProductView(): ITGProductView? {
-        return CustomProductView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customCloseOptionsView(): ITGCloseOptionsView? {
-        return CustomCloseOptionsView(this)
-    }
-
-    @Suppress("RedundantNullableReturnType")
-    override fun customNoticeWikiView(): ITGNoticeWiki? {
-        return ITGNoticeWiki(this)
     }
 
     @Suppress("RedundantNullableReturnType")

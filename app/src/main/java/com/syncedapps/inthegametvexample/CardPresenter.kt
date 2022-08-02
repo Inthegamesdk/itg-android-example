@@ -51,12 +51,16 @@ class CardPresenter : Presenter() {
             cardView.contentText = movie.studio
             cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT)
 
-            val resourceID: Int = viewHolder.view.context.resources.getIdentifier(movie.cardImageUrl, "drawable", viewHolder.view.context.packageName)
+            val resourceID: Int = viewHolder.view.context.resources.getIdentifier(
+                movie.cardImageUrl,
+                "drawable",
+                viewHolder.view.context.packageName
+            )
             Glide.with(viewHolder.view.context)
-                    .load(resourceID)
-                    .centerCrop()
-                    .error(mDefaultCardImage)
-                    .into(cardView.mainImageView)
+                .load(resourceID)
+                .centerCrop()
+                .error(mDefaultCardImage)
+                .into(cardView.mainImageView)
         }
     }
 

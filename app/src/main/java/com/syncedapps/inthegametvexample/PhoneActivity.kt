@@ -9,7 +9,7 @@ import android.view.WindowManager
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametvexample.databinding.ActivityPhoneBinding
 
-class PhoneActivity: Activity() {
+class PhoneActivity : Activity() {
 
     private lateinit var binding: ActivityPhoneBinding
 

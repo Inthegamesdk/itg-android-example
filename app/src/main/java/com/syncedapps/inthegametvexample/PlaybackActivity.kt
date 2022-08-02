@@ -1,5 +1,6 @@
 package com.syncedapps.inthegametvexample
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.FragmentActivity
@@ -13,13 +14,14 @@ class PlaybackActivity : FragmentActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(android.R.id.content, PlaybackVideoFragment(), playbackFragmentTag)
-                    .commit()
+                .replace(android.R.id.content, PlaybackVideoFragment(), playbackFragmentTag)
+                .commit()
         }
     }
 
     override fun onBackPressed() {
-        val fragment = supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
+        val fragment =
+            supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
         if (fragment != null && fragment.handleBackPressIfNeeded()) {
             return
         } else {
@@ -27,12 +29,12 @@ class PlaybackActivity : FragmentActivity() {
         }
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (event != null) {
-            val fragment =
-                supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
-            fragment?.receivedKeyEvent(event)
-        }
-        return super.onKeyDown(keyCode, event)
+    @SuppressLint("RestrictedApi")
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        val fragment =
+            supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
+        return (event.action == KeyEvent.ACTION_DOWN && fragment?.receivedKeyEvent(event) ?: false) || super.dispatchKeyEvent(
+            event
+        )
     }
 }
