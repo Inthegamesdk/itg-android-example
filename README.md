@@ -6,4 +6,4 @@ The repository includes an example app that shows how to use the framework. The 
 
 
 #Installation
-In order to setup ITG SDK please follow this [Integration Guide](https://docs.google.com/document/d/1K3DOEo1Od-9pqPZHRLjDhaKLxBLE_z9L2iv8gpw_g04/edit#heading=h.yw7jcye5su2n) 
+In order to setup ITG SDK please follow this [Integration Guide](https://docs.google.com/document/d/1K3DOEo1Od-9pqPZHRLjDhaKLxBLE_z9L2iv8gpw_g04/edit?usp=sharing) 
