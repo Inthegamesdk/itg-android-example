@@ -147,7 +147,7 @@ class PlaybackPhoneActivity : FragmentActivity(),
     override fun overlayReleasedFocus(popMessage: Boolean) {}
 
     override fun overlayResizeVideoHeight(activityHeight: Float) {
-        val pixelSpacing = if (isPortrait()) 108 else 86
+        val pixelSpacing = activityHeight.roundToInt()
         val spacing = convertDpToPixel(this, pixelSpacing).toFloat()
         val total = binding.container.height.toFloat()
         val scale = (total - spacing) / total
