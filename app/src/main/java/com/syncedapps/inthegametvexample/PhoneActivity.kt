@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametvexample.databinding.ActivityPhoneBinding
 
 class PhoneActivity : Activity() {
@@ -29,9 +28,6 @@ class PhoneActivity : Activity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
-        val settings = ITGSettings(this)
-        settings.clearUserToken()
 
         binding.startButton.setOnClickListener {
             val intent = Intent(this, PlaybackPhoneActivity::class.java)

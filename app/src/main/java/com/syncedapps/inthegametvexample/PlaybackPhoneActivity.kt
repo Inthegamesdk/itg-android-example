@@ -1,6 +1,5 @@
 package com.syncedapps.inthegametvexample
 
-import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.media.MediaPlayer
@@ -12,14 +11,18 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.MediaController
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentActivity
 import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
+import kotlinx.coroutines.runBlocking
 import kotlin.math.roundToInt
 
-class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
+class PlaybackPhoneActivity : FragmentActivity(), ITGOverlayView.ITGOverlayListener {
 
     private var mediaController: MediaController? = null
     private var mOverlay: ITGOverlayView? = null
@@ -43,11 +46,25 @@ class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
             )
         }
 
-        val settings = ITGSettings(this)
-        settings.clearUserToken()
+        //test purpose only
+        runBlocking {
+            ITGSettings(
+                this@PlaybackPhoneActivity,
+                ITGEnvironment.stage
+            ).clearAll()
+        }
 
         startVideo()
         addOverlay()
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (mOverlay?.handleBackPressIfNeeded() == false) {
+                    // Back is pressed... Finishing the activity
+                    finish()
+                }
+            }
+        })
     }
 
     private fun startVideo() {
@@ -82,28 +99,22 @@ class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
 
     private fun addOverlay() {
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.test
-
-        val overlay = ITGOverlayView(this)
+        val environment = ITGEnvironment.stage
+        //create the overlay
+        val overlay = ITGOverlayView(this, environment)
         //load your channel to start up the ITG system
-        overlay.load("testchannel", "testings", environment)
+        overlay.load("631da52247f9e460d1039022", "channel_one_stage", "HE")
         overlay.listener = this
+        //enable portrait support if it's needed
         overlay.showInPortrait(true)
-
-        // enable the layout delegate if you wish to set custom layouts
-//        overlay.layoutListener = this
-        //use this method if you wish to show content when phone is on portrait mode
-//        overlay.showInPortrait(true)
-        // you can adjust the spacing between the content and bottom of the screen
-//        overlay.setBottomPaddingDp(30)
         // use this optional variable to set the animation type
-//        overlay.animationType = ITGAnimationType.FROM_RIGHT
+//        overlay.animationType = ITGAnimationType.FROM_BOTTOM
 
-        // use this variable if you want to hide the win notifications
-//        overlay.showNotices = false
         // use this if you want notifications to display on the bottom area like regular activities
-//        overlay.showNoticeAsActivity = true
+//      overlay.showNoticeAsActivity = true
 
+        //optional delay before showing injected activities
+//        overlay.injectionDelay = 5
         //add the overlay to your view hierarchy
         binding.container.addView(overlay)
         mOverlay = overlay
@@ -114,18 +125,18 @@ class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
         //the implementation will depend on what video player you use
     }
 
-    override fun onBackPressed() {
-        if (mOverlay?.handleBackPressIfNeeded() == true) {
-            return
-        } else {
-            super.onBackPressed()
-        }
-    }
-
     override fun overlayRequestedPause() {
     }
 
     override fun overlayRequestedPlay() {
+    }
+
+    override fun overlayRequestedSeekTo(timestampMillis: Long) {
+        try {
+            mediaPlayer?.seekTo(timestampMillis.toInt())
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
     }
 
     override fun overlayRequestedFocus(focusView: View) {}
@@ -179,8 +190,19 @@ class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
         }
     }
 
-    override fun overlayRequestedPortraitTopGap(): Int {
-        return binding.videoView.top
+    override fun overlayReceivedDeeplink(customUrl: String) {
+        //deeplink value could be specified on your own
+        when (customUrl) {
+            "next channel" -> {
+                //TODO open next channel
+            }
+            "previous channel" -> {
+                //TODO open prev channel
+            }
+            else -> {
+                Toast.makeText(this, customUrl, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     override fun onStart() {
@@ -198,7 +220,6 @@ class PlaybackPhoneActivity : Activity(), ITGOverlayView.ITGOverlayListener {
         super.onDestroy()
     }
 
-    @Suppress("RedundantNullableReturnType")
     private fun convertDpToPixel(context: Context, dp: Int): Int {
         val density = context.applicationContext.resources.displayMetrics.density
         return (dp.toFloat() * density).roundToInt()

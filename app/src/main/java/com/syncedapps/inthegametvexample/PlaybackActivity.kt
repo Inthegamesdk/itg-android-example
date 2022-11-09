@@ -3,6 +3,7 @@ package com.syncedapps.inthegametvexample
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.KeyEvent
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
 
 /** Loads [PlaybackVideoFragment]. */
@@ -17,16 +18,20 @@ class PlaybackActivity : FragmentActivity() {
                 .replace(android.R.id.content, PlaybackVideoFragment(), playbackFragmentTag)
                 .commit()
         }
-    }
 
-    override fun onBackPressed() {
-        val fragment =
-            supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
-        if (fragment != null && fragment.handleBackPressIfNeeded()) {
-            return
-        } else {
-            super.onBackPressed()
-        }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val fragment =
+                    supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
+                if (fragment != null && fragment.handleBackPressIfNeeded()) {
+                    return
+                } else {
+                    // Back is pressed... Finishing the activity
+                    finish()
+                }
+
+            }
+        })
     }
 
     @SuppressLint("RestrictedApi")

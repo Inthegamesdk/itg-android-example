@@ -1,5 +1,6 @@
 package com.syncedapps.inthegametvexample
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -14,6 +15,7 @@ import androidx.leanback.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.syncedapps.inthegametvexample.IntentUtils.serializable
 
 /**
  * A wrapper fragment for leanback details screens.
@@ -33,8 +35,7 @@ class VideoDetailsFragment : DetailsSupportFragment() {
 
         mDetailsBackground = DetailsSupportFragmentBackgroundController(this)
 
-        mSelectedMovie =
-            requireActivity().intent.getSerializableExtra(DetailsActivity.MOVIE) as Movie
+        mSelectedMovie = requireActivity().intent.serializable(DetailsActivity.MOVIE)
         if (mSelectedMovie != null) {
             mPresenterSelector = ClassPresenterSelector()
             mAdapter = ArrayObjectAdapter(mPresenterSelector)
@@ -49,6 +50,7 @@ class VideoDetailsFragment : DetailsSupportFragment() {
         }
     }
 
+    @SuppressLint("DiscouragedApi")
     private fun setupDetailsOverviewRow() {
         Log.d(TAG, "doInBackground: " + mSelectedMovie?.toString())
         val row = DetailsOverviewRow(mSelectedMovie)

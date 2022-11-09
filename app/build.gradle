@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 100
         versionName "1.9.1"
 
@@ -39,12 +39,12 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.leanback:leanback:1.0.0'
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.github.bumptech.glide:glide:4.13.2'
 
     implementation 'com.google.android.exoplayer:exoplayer-core:2.18.1'
@@ -62,5 +62,5 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.6'
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.35'
 }

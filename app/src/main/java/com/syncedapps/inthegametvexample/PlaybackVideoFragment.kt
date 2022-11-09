@@ -1,7 +1,6 @@
 package com.syncedapps.inthegametvexample
 
 import android.annotation.TargetApi
-import android.content.Context
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
@@ -10,6 +9,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.RowsSupportFragment
 import androidx.leanback.app.VideoSupportFragment
@@ -27,9 +27,11 @@ import com.google.android.exoplayer2.util.Util
 import com.syncedapps.inthegametv.ITGAnimationType
 import com.syncedapps.inthegametv.ITGContent
 import com.syncedapps.inthegametv.ITGOverlayView
+import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
-import kotlin.math.roundToInt
+import com.syncedapps.inthegametvexample.IntentUtils.serializable
+import kotlinx.coroutines.runBlocking
 
 
 /** Handles video playback with media controls. */
@@ -46,8 +48,13 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mMovie =
-            activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie
+
+        //test purpose only
+        runBlocking {
+            ITGSettings(requireContext(), ITGEnvironment.stage).clearAll()
+        }
+
+        mMovie = requireActivity().intent.serializable(DetailsActivity.MOVIE)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,29 +62,19 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.test
-
+        val environment = ITGEnvironment.stage
         //create the overlay
-        val overlay = ITGOverlayView(requireContext())
+        val overlay = ITGOverlayView(requireContext(), environment)
         //load your channel to start up the ITG system
-        overlay.load("testchannel", "testings", environment)
+        overlay.load("631da52247f9e460d1039022", "channel_one_stage", "HE")
         overlay.listener = this
-        // enable the layout delegate if you wish to set custom layouts
-//        overlay.layoutListener = this
-
         // you can adjust the spacing between the content and bottom of the screen
         overlay.setBottomPaddingDp(0)
         // use this optional variable to set the animation type
         overlay.animationType = ITGAnimationType.FROM_BOTTOM
 
-        // use this variable if you want to hide the win notifications
-//        overlay.showNotices = false
-
         // use this if you want notifications to display on the bottom area like regular activities
-//        overlay.showNoticeAsActivity = true
-
-        //it's possible to customize the auto-close time after answering
-//        overlay.defaultAutoCloseTime = 10
+//      overlay.showNoticeAsActivity = true
 
         //optional delay before showing injected activities
 //        overlay.injectionDelay = 5
@@ -195,10 +192,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
                 if (isControlsOverlayVisible) {
                     hideControlsOverlay(true)
                     return true
-                } else if (mOverlay?.currentContent()
-                        ?.containsAll(listOf(ITGContent.SLIP, ITGContent.POPUP)) == true
-                    && mOverlay?.isSidebarVisible() == false
-                    && mOverlay?.isNoticeFocused() == false
+                } else if (
+                    mOverlay?.currentContent()?.contains(ITGContent.SLIP) == false &&
+                    mOverlay?.currentContent()?.contains(ITGContent.POPUP) == false &&
+                    mOverlay?.isSidebarVisible() == false &&
+                    mOverlay?.isNoticeFocused() == false
                 ) {
                     showControlsOverlay(true)
                     if (mOverlay?.isMenuVisible() == true) {
@@ -229,6 +227,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     override fun overlayRequestedPlay() {
         shouldNotShowControls = true
         mPlayerGlue?.play()
+    }
+
+    override fun overlayRequestedSeekTo(timestampMillis: Long) {
+        shouldNotShowControls = true
+        mPlayerGlue?.seekTo(timestampMillis)
     }
 
     //will be called when the overlay shows content
@@ -283,32 +286,24 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         //called when user closes the ITG service for a period of time
     }
 
-    override fun overlayDidShowSidebar() {
-        val spacing = convertDpToPixel(requireContext(), 192).toFloat()
-        val total = requireView().width.toFloat()
-        val scale = (total - spacing) / total
-        surfaceView.animate().scaleX(scale)
-        surfaceView.animate().translationX(-spacing / 2)
-    }
+    override fun overlayDidShowSidebar() {}
 
-    override fun overlayDidHideSidebar() {
-        surfaceView.animate().scaleX(1f)
-        surfaceView.animate().translationX(0f)
-    }
+    override fun overlayDidHideSidebar() {}
 
     override fun overlayDidTapVideo() {}
-
-
-    override fun overlayRequestedPortraitTopGap(): Int {
-        //for mobile phones only
-        //we can return 0 on TV
-        return 0
-    }
-
-    @Suppress("SameParameterValue")
-    private fun convertDpToPixel(context: Context, dp: Int): Int {
-        val density = context.applicationContext.resources.displayMetrics.density
-        return (dp.toFloat() * density).roundToInt()
+    override fun overlayReceivedDeeplink(customUrl: String) {
+        //deeplink value could be specified on your own
+        when (customUrl) {
+            "next channel" -> {
+                //TODO open next channel
+            }
+            "previous channel" -> {
+                //TODO open prev channel
+            }
+            else -> {
+                Toast.makeText(requireContext(), customUrl, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     override fun showControlsOverlay(runAnimation: Boolean) {
@@ -326,7 +321,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     }
 
     override fun onPauseAction() {
-        mOverlay?.videoPaused()
+        val time = mPlayer?.currentPosition ?: 0
+        mOverlay?.videoPaused(time)
     }
 
     override fun onPrevious() {}
@@ -340,7 +336,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         reason: Int
     ) {
         super.onPositionDiscontinuity(oldPosition, newPosition, reason)
-        Log.i("PLAYER", "On seek")
         val time = mPlayer?.currentPosition ?: 0
         mOverlay?.videoPlaying(time)
     }
