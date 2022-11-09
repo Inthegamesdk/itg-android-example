@@ -22,7 +22,9 @@ import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBindin
 import kotlinx.coroutines.runBlocking
 import kotlin.math.roundToInt
 
-class PlaybackPhoneActivity : FragmentActivity(), ITGOverlayView.ITGOverlayListener {
+class PlaybackPhoneActivity : FragmentActivity(),
+    ITGOverlayView.ITGOverlayListener,
+    PlayStateBroadcastingVideoView.PlayPauseListener{
 
     private var mediaController: MediaController? = null
     private var mOverlay: ITGOverlayView? = null
@@ -71,6 +73,7 @@ class PlaybackPhoneActivity : FragmentActivity(), ITGOverlayView.ITGOverlayListe
         val list = MovieList.list
         val movie = list.first()
 
+        binding.videoView.setPlayPauseListener(this)
         binding.videoView.setVideoPath(movie.videoUrl)
         binding.videoView.requestFocus()
         binding.videoView.start()
@@ -217,6 +220,7 @@ class PlaybackPhoneActivity : FragmentActivity(), ITGOverlayView.ITGOverlayListe
 
     override fun onDestroy() {
         mOverlay?.onDestroyView()
+        binding.videoView.setPlayPauseListener(null)
         super.onDestroy()
     }
 
@@ -228,5 +232,15 @@ class PlaybackPhoneActivity : FragmentActivity(), ITGOverlayView.ITGOverlayListe
     private fun isPortrait(): Boolean {
         val orientation = resources.configuration.orientation
         return (orientation == Configuration.ORIENTATION_PORTRAIT)
+    }
+
+    override fun onPlayVideo() {
+        val time = binding.videoView.currentPosition
+        mOverlay?.videoPlaying(time.toLong())
+    }
+
+    override fun onPauseVideo() {
+        val time = binding.videoView.currentPosition
+        mOverlay?.videoPaused(time.toLong())
     }
 }

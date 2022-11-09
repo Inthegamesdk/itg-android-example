@@ -1,9 +1,7 @@
 package com.syncedapps.inthegametvexample
 
-import android.annotation.TargetApi
 import android.content.res.Configuration
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -101,7 +99,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
     }
 
     /** Pauses the player.  */
-    @TargetApi(Build.VERSION_CODES.N)
     override fun onPause() {
         super.onPause()
         if (mPlayerGlue != null && mPlayerGlue?.isPlaying == true) {

@@ -25,8 +25,8 @@
 
         <activity
             android:name=".InitialActivity"
-            android:exported="true"
             android:banner="@drawable/logo_wide"
+            android:exported="true"
             android:icon="@drawable/logo_wide"
             android:logo="@drawable/logo_wide">
             <intent-filter>
@@ -41,14 +41,17 @@
             android:name=".MainActivity"
             android:screenOrientation="landscape" />
 
-        <activity android:name=".PhoneActivity"
+        <activity
+            android:name=".PhoneActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <activity android:name=".DetailsActivity" />
-        <activity android:name=".PlaybackActivity"
+        <activity
+            android:name=".PlaybackActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".BrowseErrorActivity" />
-        <activity android:name=".PlaybackPhoneActivity"
+        <activity
+            android:name=".PlaybackPhoneActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 

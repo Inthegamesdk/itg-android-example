@@ -1,3 +1,5 @@
+@file:Suppress("SameParameterValue")
+
 package com.syncedapps.inthegametvexample
 
 object MovieList {

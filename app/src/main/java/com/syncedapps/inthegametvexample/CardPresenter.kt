@@ -1,5 +1,6 @@
 package com.syncedapps.inthegametvexample
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.ViewGroup
@@ -41,6 +42,7 @@ class CardPresenter : Presenter() {
         return ViewHolder(cardView)
     }
 
+    @SuppressLint("DiscouragedApi")
     override fun onBindViewHolder(viewHolder: ViewHolder, item: Any) {
         val movie = item as Movie
         val cardView = viewHolder.view as ImageCardView

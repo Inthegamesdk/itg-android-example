@@ -55,6 +55,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
     private final PlaybackControlsRow.SkipNextAction mSkipNextAction;
     private final PlaybackControlsRow.FastForwardAction mFastForwardAction;
     private final PlaybackControlsRow.RewindAction mRewindAction;
+
     public VideoPlayerGlue(
             Context context,
             LeanbackPlayerAdapter playerAdapter,
