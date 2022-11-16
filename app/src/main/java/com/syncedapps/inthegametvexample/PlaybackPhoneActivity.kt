@@ -19,7 +19,6 @@ import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
-import kotlinx.coroutines.runBlocking
 import kotlin.math.roundToInt
 
 class PlaybackPhoneActivity : FragmentActivity(),
@@ -49,12 +48,7 @@ class PlaybackPhoneActivity : FragmentActivity(),
         }
 
         //test purpose only
-        runBlocking {
-            ITGSettings(
-                this@PlaybackPhoneActivity,
-                ITGEnvironment.stage
-            ).clearAll()
-        }
+        ITGSettings(this).clearAll()
 
         startVideo()
         addOverlay()

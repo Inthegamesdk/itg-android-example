@@ -62,5 +62,5 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.41'
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.46'
 }

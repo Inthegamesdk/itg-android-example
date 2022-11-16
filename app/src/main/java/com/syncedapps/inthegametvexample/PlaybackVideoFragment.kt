@@ -29,7 +29,6 @@ import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.network.ITGEnvironment
 import com.syncedapps.inthegametvexample.IntentUtils.serializable
-import kotlinx.coroutines.runBlocking
 
 
 /** Handles video playback with media controls. */
@@ -48,9 +47,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         super.onCreate(savedInstanceState)
 
         //test purpose only
-        runBlocking {
-            ITGSettings(requireContext(), ITGEnvironment.stage).clearAll()
-        }
+        ITGSettings(requireContext()).clearAll()
 
         mMovie = requireActivity().intent.serializable(DetailsActivity.MOVIE)
     }
