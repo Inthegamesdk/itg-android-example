@@ -8,8 +8,8 @@ android {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 140
-        versionName "2.0.40"
+        versionCode 147
+        versionName "2.0.47"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,5 +62,5 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.46'
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.47'
 }
