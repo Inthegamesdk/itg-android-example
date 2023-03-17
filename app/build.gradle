@@ -9,7 +9,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 33
         versionCode 149
-        versionName "2.0.49"
+        versionName "2.1.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,6 +21,7 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
@@ -29,6 +30,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -44,13 +46,13 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
 
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.1'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.1'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.1'
-    implementation 'com.google.android.exoplayer:extension-leanback:2.18.1'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.4'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.4'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.4'
+    implementation 'com.google.android.exoplayer:extension-leanback:2.18.4'
 
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-crashlytics'
@@ -62,5 +64,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.0.47'
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.1.5'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 }

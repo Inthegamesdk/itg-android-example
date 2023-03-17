@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -17,7 +18,7 @@ import androidx.fragment.app.FragmentActivity
 import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
-import com.syncedapps.inthegametv.network.ITGEnvironment
+import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
 import kotlin.math.roundToInt
 
@@ -96,11 +97,10 @@ class PlaybackPhoneActivity : FragmentActivity(),
 
     private fun addOverlay() {
         //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.stage
         //create the overlay
-        val overlay = ITGOverlayView(this, environment)
+        val overlay = ITGOverlayView(this, Const.environment)
         //load your channel to start up the ITG system
-        overlay.load("631da52247f9e460d1039022", "channel_one_stage", "HE")
+        overlay.load(Const.ACCOUNT_ID, Const.CHANNEL_SLUG, Const.LANGUAGE)
         overlay.listener = this
         //enable portrait support if it's needed
         overlay.showInPortrait(true)
@@ -200,6 +200,10 @@ class PlaybackPhoneActivity : FragmentActivity(),
                 Toast.makeText(this, customUrl, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun overlayProducedAnalyticsEvent(eventSnapshot: AnalyticsEventSnapshot) {
+        Log.d(this.javaClass.simpleName, "overlayProducedAnalyticsEvent eventSnapshot $eventSnapshot")
     }
 
     override fun onStart() {

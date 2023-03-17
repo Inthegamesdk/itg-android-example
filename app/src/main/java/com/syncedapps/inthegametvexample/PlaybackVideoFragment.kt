@@ -27,7 +27,7 @@ import com.syncedapps.inthegametv.ITGContent
 import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
-import com.syncedapps.inthegametv.network.ITGEnvironment
+import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
 import com.syncedapps.inthegametvexample.IntentUtils.serializable
 
 
@@ -56,12 +56,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
-        //specify the environment - with custom values if needed
-        val environment = ITGEnvironment.stage
-        //create the overlay
-        val overlay = ITGOverlayView(requireContext(), environment)
+        val overlay = ITGOverlayView(requireContext(), Const.environment)
         //load your channel to start up the ITG system
-        overlay.load("631da52247f9e460d1039022", "channel_one_stage", "HE")
+        overlay.load(Const.ACCOUNT_ID, Const.CHANNEL_SLUG, Const.LANGUAGE)
         overlay.listener = this
         // you can adjust the spacing between the content and bottom of the screen
         overlay.setBottomPaddingDp(0)
@@ -298,6 +295,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
                 Toast.makeText(requireContext(), customUrl, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun overlayProducedAnalyticsEvent(eventSnapshot: AnalyticsEventSnapshot) {
+        Log.d(this.javaClass.simpleName, "overlayProducedAnalyticsEvent eventSnapshot $eventSnapshot")
     }
 
     override fun showControlsOverlay(runAnimation: Boolean) {
