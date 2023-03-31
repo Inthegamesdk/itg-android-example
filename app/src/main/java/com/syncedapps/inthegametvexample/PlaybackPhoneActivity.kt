@@ -19,6 +19,7 @@ import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
+import com.syncedapps.inthegametv.domain.model.UserSnapshot
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
 import kotlin.math.roundToInt
 
@@ -155,6 +156,10 @@ class PlaybackPhoneActivity : FragmentActivity(),
     }
 
     override fun overlayResizeVideoWidth(activityWidth: Float) {}
+    override fun userState(userSnapshot: UserSnapshot) {
+        Log.d(this.javaClass.simpleName, "userState $userSnapshot")
+    }
+
     override fun overlayResetVideoWidth() {}
 
     override fun overlayRequestedVideoTime() {

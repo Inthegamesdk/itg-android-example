@@ -22,7 +22,7 @@ object MovieList {
             "Inthegame"
         )
         val videoUrl = arrayOf(
-            "https://media2.inthegame.io/uploads/videos/streamers/278dee276f8d43d11dad3030d0aa449e.a4ef1c02ad73f7b5ed0a6df3809abf12.mp4"
+            "https://media.inthegame.io/uploads/videos/streamers/e5ba6651e74cd163d9159b4284581c54.6ba8db5ef482491e79b7371146a413b8.mp4"
         )
         val bgImageUrl = arrayOf(
             "ball"

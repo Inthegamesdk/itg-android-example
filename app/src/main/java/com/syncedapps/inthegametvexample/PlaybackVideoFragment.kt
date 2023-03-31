@@ -28,6 +28,7 @@ import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
+import com.syncedapps.inthegametv.domain.model.UserSnapshot
 import com.syncedapps.inthegametvexample.IntentUtils.serializable
 
 
@@ -257,6 +258,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), ITGOverlayView.ITGOverlayL
         val scale = (total - activityWidth) / total
         surfaceView.animate().scaleX(scale)
         surfaceView.animate().translationX((if (rtl) activityWidth else -activityWidth) / 2)
+    }
+
+    override fun userState(userSnapshot: UserSnapshot) {
+        Log.d(this.javaClass.simpleName, "userState $userSnapshot")
     }
 
     override fun overlayResetVideoWidth() {
