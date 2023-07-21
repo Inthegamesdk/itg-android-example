@@ -2,7 +2,7 @@ package com.syncedapps.inthegametvexample
 
 import android.content.Context
 import android.content.res.Configuration
-import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -11,10 +11,19 @@ import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.MediaController
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.FragmentActivity
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.source.MediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.source.hls.HlsMediaSource
+import com.google.android.exoplayer2.upstream.DefaultDataSource
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.syncedapps.inthegametv.ITGOverlayView
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.data.CloseOption
@@ -25,15 +34,24 @@ import kotlin.math.roundToInt
 
 class PlaybackPhoneActivity : FragmentActivity(),
     ITGOverlayView.ITGOverlayListener,
-    PlayStateBroadcastingVideoView.PlayPauseListener{
+    Player.Listener {
 
-    private var mediaController: MediaController? = null
     private var mOverlay: ITGOverlayView? = null
-    private var mediaPlayer: MediaPlayer? = null
     private lateinit var binding: ActivityPhonePlaybackBinding
+    private var player: ExoPlayer? = null
+    private var itgState: Bundle? = null
+    private var playbackPosition: Long = 0L
+    private var playWhenReady: Boolean = true
+    private var controlsTimestamp = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(savedInstanceState != null) {
+            itgState = savedInstanceState.getBundle("itgState")
+            playbackPosition = savedInstanceState.getLong("playbackPosition", 0L)
+            playWhenReady = savedInstanceState.getBoolean("playWhenReady")
+        }
 
         binding = ActivityPhonePlaybackBinding.inflate(layoutInflater)
         val view = binding.root
@@ -47,6 +65,15 @@ class PlaybackPhoneActivity : FragmentActivity(),
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
+        }
+
+        //observe controls
+        binding.videoView.setControllerVisibilityListener { visibility ->
+            if (visibility == View.VISIBLE) {
+                mOverlay?.openMenu()
+            } else {
+                mOverlay?.hideMenu()
+            }
         }
 
         //test purpose only
@@ -65,35 +92,96 @@ class PlaybackPhoneActivity : FragmentActivity(),
         })
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val isLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE
+        if (isLandscape) {
+            binding.videoView.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                verticalBias = 0.5f
+                dimensionRatio = null
+            }
+            binding.container.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                verticalBias = 0.5f
+                topToTop = ConstraintSet.PARENT_ID
+                topToBottom = ConstraintSet.UNSET
+            }
+            Handler(Looper.getMainLooper()).post {
+                if ( binding.videoView.isControllerVisible)
+                    mOverlay?.openMenu()
+                else
+                    mOverlay?.hideMenu()
+            }
+        } else {
+            binding.container.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                verticalBias = 0.5f
+                topToTop = ConstraintSet.UNSET
+                topToBottom = R.id.videoView
+            }
+            binding.videoView.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                verticalBias = 0f
+                dimensionRatio = "16:9"
+            }
+        }
+    }
+
     private fun startVideo() {
         val list = MovieList.list
         val movie = list.first()
 
-        binding.videoView.setPlayPauseListener(this)
-        binding.videoView.setVideoPath(movie.videoUrl)
-        binding.videoView.requestFocus()
-        binding.videoView.start()
+        prepareMediaForPlaying(Uri.parse(movie.videoUrl))
+        player?.playWhenReady = playWhenReady
+        player?.seekTo(0, playbackPosition)
+        player?.prepare()
+    }
 
-        binding.videoView.setOnPreparedListener { mp: MediaPlayer ->
-            mediaPlayer = mp
-            mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
-            mp.setVolume(1f, 1f)
+    private fun prepareMediaForPlaying(mediaSourceUri: Uri) {
+        val upstreamDataSourceFactory = DefaultHttpDataSource.Factory()
+            .setAllowCrossProtocolRedirects(true)
 
-            mp.setOnSeekCompleteListener { _mp ->
-                val time = _mp.currentPosition.toLong()
-                mOverlay?.videoPlaying(time)
+        val defaultDataSourceFactory =
+            DefaultDataSource.Factory(this, upstreamDataSourceFactory)
+
+        defaultDataSourceFactory.createDataSource()
+
+        val mediaSource: MediaSource =
+            if (mediaSourceUri.lastPathSegment?.endsWith(".m3u8") == true) {
+                HlsMediaSource.Factory(defaultDataSourceFactory)
+                    .createMediaSource(
+                        com.google.android.exoplayer2.MediaItem.fromUri(
+                            mediaSourceUri
+                        )
+                    )
+            } else {
+                ProgressiveMediaSource.Factory(defaultDataSourceFactory)
+                    .createMediaSource(
+                        com.google.android.exoplayer2.MediaItem.fromUri(
+                            mediaSourceUri
+                        )
+                    )
             }
-        }
+        player?.setMediaSource(mediaSource)
+    }
 
-        binding.videoView.setOnPreparedListener {
-            it.setOnVideoSizeChangedListener { _, _, _ ->
-                if (mediaController == null) {
-                    mediaController = MediaController(this)
-                    binding.videoView.setMediaController(mediaController!!)
-                }
-                mediaController?.setAnchorView(binding.outerContainer)
+    private fun initializePlayer() {
+        player = ExoPlayer.Builder(this)
+            .setSeekBackIncrementMs(SEEK_INCREMENT)
+            .setSeekForwardIncrementMs(SEEK_INCREMENT)
+            .build()
+            .also { exoPlayer ->
+                exoPlayer.addListener(this)
+                binding.videoView.player = exoPlayer
             }
+    }
+
+    private fun releasePlayer() {
+        Log.d(this.javaClass.simpleName, "releasePlayer")
+        player?.let { exoPlayer ->
+            playbackPosition = exoPlayer.currentPosition
+            playWhenReady = exoPlayer.playWhenReady
+            exoPlayer.removeListener(this)
+            exoPlayer.release()
         }
+        player = null
     }
 
     private fun addOverlay() {
@@ -101,18 +189,11 @@ class PlaybackPhoneActivity : FragmentActivity(),
         //create the overlay
         val overlay = ITGOverlayView(this, Const.environment)
         //load your channel to start up the ITG system
-        overlay.load(Const.ACCOUNT_ID, Const.CHANNEL_SLUG, Const.LANGUAGE)
+        overlay.load(Const.ACCOUNT_ID, Const.CHANNEL_SLUG, Const.LANGUAGE, savedState = itgState)
         overlay.listener = this
         //enable portrait support if it's needed
         overlay.showInPortrait(true)
-        // use this optional variable to set the animation type
-//        overlay.animationType = ITGAnimationType.FROM_BOTTOM
 
-        // use this if you want notifications to display on the bottom area like regular activities
-//      overlay.showNoticeAsActivity = true
-
-        //optional delay before showing injected activities
-//        overlay.injectionDelay = 5
         //add the overlay to your view hierarchy
         binding.container.addView(overlay)
         mOverlay = overlay
@@ -124,19 +205,28 @@ class PlaybackPhoneActivity : FragmentActivity(),
     }
 
     override fun overlayRequestedPause() {
-    }
-
-    override fun overlayRequestedPlay() {
-    }
-
-    override fun overlayRequestedSeekTo(timestampMillis: Long) {
         try {
-            mediaPlayer?.seekTo(timestampMillis.toInt())
+            player?.pause()
         } catch (e: IllegalStateException) {
             e.printStackTrace()
         }
     }
 
+    override fun overlayRequestedPlay() {
+        try {
+            player?.play()
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun overlayRequestedSeekTo(timestampMillis: Long) {
+        try {
+            player?.seekTo(timestampMillis)
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
+    }
     override fun overlayRequestedFocus(focusView: View) {}
 
     override fun overlayReleasedFocus(popMessage: Boolean) {}
@@ -163,8 +253,14 @@ class PlaybackPhoneActivity : FragmentActivity(),
     override fun overlayResetVideoWidth() {}
 
     override fun overlayRequestedVideoTime() {
-        val time = mediaPlayer?.currentPosition?.toLong() ?: 0
-        mOverlay?.videoPlaying(time)
+        player?.let { player ->
+            val state = player.playbackState
+            if (state == Player.STATE_READY && player.isPlaying) {
+                mOverlay?.videoPlaying(player.currentPosition)
+            } else {
+                mOverlay?.videoPaused(player.currentPosition) //let's pause any interactions
+            }
+        }
     }
 
     override fun overlayClickedUserArea() {
@@ -180,15 +276,17 @@ class PlaybackPhoneActivity : FragmentActivity(),
     }
 
     override fun overlayDidTapVideo() {
-        if (mediaController?.isShowing == true) {
-            mediaController?.hide()
+        if (binding.videoView.isControllerVisible) {
+            binding.videoView.hideController()
         } else {
-            mediaController?.show(0)
+            binding.videoView.showController()
+            controlsTimestamp = System.currentTimeMillis()
             Handler(Looper.getMainLooper()).postDelayed({
-                if (mediaController?.isShowing == true) {
-                    mediaController?.hide()
+                val time = System.currentTimeMillis()
+                if (binding.videoView.isControllerVisible && time - controlsTimestamp > 3900) {
+                    binding.videoView.hideController()
                 }
-            }, 2000)
+            }, 4000)
         }
     }
 
@@ -216,15 +314,27 @@ class PlaybackPhoneActivity : FragmentActivity(),
         mOverlay?.onStart()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if ((Build.VERSION.SDK_INT <= 23 || player == null)) {
+            initializePlayer()
+            startVideo()
+        }
+    }
+
     override fun onStop() {
         mOverlay?.onStop()
+        if (Build.VERSION.SDK_INT > 23) {
+            releasePlayer()
+        }
         super.onStop()
     }
 
-    override fun onDestroy() {
-        mOverlay?.onDestroyView()
-        binding.videoView.setPlayPauseListener(null)
-        super.onDestroy()
+    public override fun onPause() {
+        super.onPause()
+        if (Build.VERSION.SDK_INT <= 23) {
+            releasePlayer()
+        }
     }
 
     private fun convertDpToPixel(context: Context, dp: Int): Int {
@@ -232,18 +342,50 @@ class PlaybackPhoneActivity : FragmentActivity(),
         return (dp.toFloat() * density).roundToInt()
     }
 
-    private fun isPortrait(): Boolean {
-        val orientation = resources.configuration.orientation
-        return (orientation == Configuration.ORIENTATION_PORTRAIT)
+    // ExoPlayer events
+    override fun onPositionDiscontinuity(
+        oldPosition: Player.PositionInfo,
+        newPosition: Player.PositionInfo,
+        reason: Int
+    ) {
+        super.onPositionDiscontinuity(oldPosition, newPosition, reason)
+        val time = player?.currentPosition ?: 0
+        Log.d(this.javaClass.simpleName, "onPositionDiscontinuity time=$time")
+        mOverlay?.videoSought(time)
     }
 
-    override fun onPlayVideo() {
-        val time = binding.videoView.currentPosition
-        mOverlay?.videoPlaying(time.toLong())
+    override fun onPlaybackStateChanged(playbackState: Int) {
+        super.onPlaybackStateChanged(playbackState)
+        Log.d(this.javaClass.simpleName, "onPlaybackStateChanged playbackState=$playbackState")
+        val player = player ?: return
+        /** inform the overlay when the player is ready to achieve the best clocks' precision **/
+        if (playbackState == Player.STATE_READY && player.playWhenReady) {
+            mOverlay?.videoPlaying(player.currentPosition)
+        } else if (playbackState != Player.STATE_READY) {
+            mOverlay?.videoPaused(player.currentPosition) //let's pause any scheduling
+        } else {
+            //do nothing
+        }
     }
 
-    override fun onPauseVideo() {
-        val time = binding.videoView.currentPosition
-        mOverlay?.videoPaused(time.toLong())
+    override fun onIsPlayingChanged(isPlaying: Boolean) {
+        super.onIsPlayingChanged(isPlaying)
+        val player = player ?: return
+        Log.d(this.javaClass.simpleName, "onIsPlayingChanged isPlaying=$isPlaying")
+        if (isPlaying)
+            mOverlay?.videoPlaying(player.currentPosition)
+        else
+            mOverlay?.videoPaused(player.currentPosition)
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val itgState = mOverlay?.saveState()
+        outState.putBundle("itgState", itgState)
+        outState.putLong("playbackPosition", playbackPosition)
+        outState.putBoolean("playWhenReady", playWhenReady)
+    }
+
+    companion object {
+        private const val SEEK_INCREMENT = 10_000L
     }
 }

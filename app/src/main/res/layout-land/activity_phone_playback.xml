@@ -7,16 +7,19 @@
     android:layout_gravity="center"
     android:background="@android:color/black">
 
-    <com.syncedapps.inthegametvexample.PlayStateBroadcastingVideoView
+    <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/videoView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50" />
+        app:layout_constraintVertical_bias="0.50"
+        app:auto_show="true"
+        app:surface_type="surface_view"
+        app:use_controller="true"
+        app:controller_layout_id="@layout/layout_exoplayer_control_views"/>
 
     <FrameLayout
         android:id="@+id/container"
