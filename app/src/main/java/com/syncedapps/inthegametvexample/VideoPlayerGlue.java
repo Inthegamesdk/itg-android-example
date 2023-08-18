@@ -56,6 +56,8 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
     private final PlaybackControlsRow.FastForwardAction mFastForwardAction;
     private final PlaybackControlsRow.RewindAction mRewindAction;
 
+    private final PlaybackControlsRow.MoreActions mMoreActions;
+
     public VideoPlayerGlue(
             Context context,
             LeanbackPlayerAdapter playerAdapter,
@@ -74,6 +76,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
         mThumbsDownAction = new PlaybackControlsRow.ThumbsDownAction(context);
         mThumbsDownAction.setIndex(PlaybackControlsRow.ThumbsDownAction.INDEX_OUTLINE);
         mRepeatAction = new PlaybackControlsRow.RepeatAction(context);
+        mMoreActions = new PlaybackControlsRow.MoreActions(context);
     }
 
     @Override
@@ -87,6 +90,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
         adapter.add(mRewindAction);
         adapter.add(mFastForwardAction);
         adapter.add(mSkipNextAction);
+        adapter.add(mMoreActions);
     }
 
     @Override
@@ -104,7 +108,10 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
             return;
         }
         // Super class handles play/pause and delegates to abstract methods next()/previous().
-        super.onActionClicked(action);
+        if (action == mMoreActions)
+            mActionListener.onMoreActions();
+        else
+            super.onActionClicked(action);
     }
 
     // Should dispatch actions that the super class does not supply callbacks for.
@@ -196,5 +203,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
         void onPrevious();
 
         void onNext();
+
+        void onMoreActions();
     }
 }

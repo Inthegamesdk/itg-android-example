@@ -1,8 +1,6 @@
 package com.syncedapps.inthegametvexample
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.KeyEvent
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
 
@@ -32,14 +30,5 @@ class PlaybackActivity : FragmentActivity() {
 
             }
         })
-    }
-
-    @SuppressLint("RestrictedApi")
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        val fragment =
-            supportFragmentManager.findFragmentByTag(playbackFragmentTag) as? PlaybackVideoFragment
-        return (event.action == KeyEvent.ACTION_DOWN && fragment?.receivedKeyEvent(event) ?: false) || super.dispatchKeyEvent(
-            event
-        )
     }
 }
