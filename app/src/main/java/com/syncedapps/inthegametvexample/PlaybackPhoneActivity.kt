@@ -13,26 +13,29 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.OptIn
 import androidx.fragment.app.FragmentActivity
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.ui.StyledPlayerView
-import com.google.android.exoplayer2.upstream.DefaultDataSource
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
+import androidx.media3.common.MediaItem
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.hls.HlsMediaSource
+import androidx.media3.exoplayer.source.MediaSource
+import androidx.media3.exoplayer.source.ProgressiveMediaSource
+import androidx.media3.ui.PlayerView
 import com.syncedapps.inthegametv.ITGContent
 import com.syncedapps.inthegametv.ITGSettings
 import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
 import com.syncedapps.inthegametv.domain.model.UserSnapshot
-import com.syncedapps.inthegametv.integration.ITGExoPlayerAdapter
+import com.syncedapps.inthegametv.integration.ITGMedia3PlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
 import java.util.*
 
 class PlaybackPhoneActivity : FragmentActivity() {
 
-    private var mITGExoPlayerAdapter: ITGExoPlayerAdapter? = null
+    private var mITGPlayerAdapter: ITGMedia3PlayerAdapter? = null
     private var mITGComponent: PhoneITGComponent? = null
     private lateinit var binding: ActivityPhonePlaybackBinding
     private var player: ExoPlayer? = null
@@ -87,6 +90,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
         player?.prepare()
     }
 
+    @OptIn(UnstableApi::class)
     private fun prepareMediaForPlaying(mediaSourceUri: Uri) {
         val upstreamDataSourceFactory = DefaultHttpDataSource.Factory()
             .setAllowCrossProtocolRedirects(true)
@@ -100,40 +104,37 @@ class PlaybackPhoneActivity : FragmentActivity() {
             if (mediaSourceUri.lastPathSegment?.endsWith(".m3u8") == true) {
                 HlsMediaSource.Factory(defaultDataSourceFactory)
                     .createMediaSource(
-                        com.google.android.exoplayer2.MediaItem.fromUri(
-                            mediaSourceUri
-                        )
+                        MediaItem.fromUri(mediaSourceUri)
                     )
             } else {
                 ProgressiveMediaSource.Factory(defaultDataSourceFactory)
                     .createMediaSource(
-                        com.google.android.exoplayer2.MediaItem.fromUri(
-                            mediaSourceUri
-                        )
+                        MediaItem.fromUri(mediaSourceUri)
                     )
             }
         player?.setMediaSource(mediaSource)
     }
 
     @SuppressLint("InflateParams")
-    private fun buildVideoView(): StyledPlayerView {
-        return layoutInflater.inflate(R.layout.styled_player_view, null, false) as StyledPlayerView
+    private fun buildVideoView(): PlayerView {
+        return layoutInflater.inflate(R.layout.styled_player_view, null, false) as PlayerView
     }
 
+    @OptIn(UnstableApi::class)
     private fun initializePlayer() {
         player = ExoPlayer.Builder(this)
             .setSeekBackIncrementMs(SEEK_INCREMENT)
             .setSeekForwardIncrementMs(SEEK_INCREMENT)
             .build()
             .also { exoPlayer ->
-                mITGExoPlayerAdapter?.onPlayerReady(exoPlayer)
+                mITGPlayerAdapter?.onPlayerReady(exoPlayer)
             }
     }
 
     private fun releasePlayer() {
         Log.d(this.javaClass.simpleName, "releasePlayer")
         player?.let { exoPlayer ->
-            mITGExoPlayerAdapter?.onPlayerReleased()
+            mITGPlayerAdapter?.onPlayerReleased()
             playbackPosition = exoPlayer.currentPosition
             playWhenReady = exoPlayer.playWhenReady
             exoPlayer.release()
@@ -143,10 +144,10 @@ class PlaybackPhoneActivity : FragmentActivity() {
 
     private fun addOverlay(savedInstanceState: Bundle?) {
         // load your channel to start up the ITG system
-        val adapter = ITGExoPlayerAdapter(
+        val adapter = ITGMedia3PlayerAdapter(
             playerView = buildVideoView()
         )
-        mITGExoPlayerAdapter = adapter
+        mITGPlayerAdapter = adapter
         val itgComponent = PhoneITGComponent(this)
         mITGComponent = itgComponent
         itgComponent.init(
@@ -238,8 +239,9 @@ class PlaybackPhoneActivity : FragmentActivity() {
             Log.d(this.javaClass.simpleName, "overlayDidEndPresentingContent content $content")
         }
 
+        @UnstableApi
         override fun overlayDidTapVideo() {
-            val videoView = mITGExoPlayerAdapter?.getVideoView() as? StyledPlayerView ?: return
+            val videoView = mITGPlayerAdapter?.getVideoView() as? PlayerView ?: return
             if (videoView.isControllerFullyVisible) {
                 videoView.hideController()
             } else {
