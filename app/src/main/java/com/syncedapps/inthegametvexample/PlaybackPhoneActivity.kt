@@ -1,5 +1,6 @@
 package com.syncedapps.inthegametvexample
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.os.Build
@@ -43,7 +44,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             itgState = savedInstanceState.getBundle("itgState")
             playbackPosition = savedInstanceState.getLong("playbackPosition", 0L)
             playWhenReady = savedInstanceState.getBoolean("playWhenReady")
@@ -80,10 +81,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
     }
 
     private fun startVideo() {
-        val list = MovieList.list
-        val movie = list.first()
-
-        prepareMediaForPlaying(Uri.parse(movie.videoUrl))
+        prepareMediaForPlaying(Uri.parse(Const.VIDEO_URL))
         player?.playWhenReady = playWhenReady
         player?.seekTo(0, playbackPosition)
         player?.prepare()
@@ -117,6 +115,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
         player?.setMediaSource(mediaSource)
     }
 
+    @SuppressLint("InflateParams")
     private fun buildVideoView(): StyledPlayerView {
         return layoutInflater.inflate(R.layout.styled_player_view, null, false) as StyledPlayerView
     }
@@ -153,7 +152,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
         itgComponent.init(
             this,
             adapter,
-            Const.environment,
             Const.ACCOUNT_ID,
             Const.CHANNEL_SLUG,
             language = Const.LANGUAGE,
@@ -207,7 +205,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
         override fun overlayReceivedDeeplink(customUrl: String) {
             when (customUrl) {
                 "next channel" -> {
-                   //TODO
+                    //TODO
                 }
 
                 "previous channel" -> {

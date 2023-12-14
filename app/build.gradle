@@ -42,7 +42,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.leanback:leanback:1.0.0'
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
@@ -53,7 +52,6 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.4'
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.4'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.4'
-    implementation 'com.google.android.exoplayer:extension-leanback:2.18.4'
 
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-crashlytics'
@@ -65,6 +63,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.3.4'
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.3.20'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 }
