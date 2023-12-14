@@ -15,7 +15,6 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.*
 import androidx.fragment.app.FragmentActivity
-import com.google.android.exoplayer2.Player
 import com.kaltura.playkit.PKMediaEntry
 import com.kaltura.playkit.PKMediaFormat
 import com.kaltura.playkit.PKMediaSource
@@ -35,7 +34,7 @@ import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBindin
 import java.util.*
 
 
-class PlaybackPhoneActivity : FragmentActivity(), Player.Listener {
+class PlaybackPhoneActivity : FragmentActivity() {
     private var mITGComponent: PhoneKalturaITGComponent? = null
     private var mITGKalturaAdapter: ITGKalturaPlayerAdapter? = null
 
