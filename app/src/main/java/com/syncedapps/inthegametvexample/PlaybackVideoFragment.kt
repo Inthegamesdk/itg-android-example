@@ -26,7 +26,6 @@ import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
 import com.syncedapps.inthegametv.domain.model.UserSnapshot
 import com.syncedapps.inthegametv.integration.ITGExoLeanbackPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import com.syncedapps.inthegametvexample.IntentUtils.serializable
 import java.util.*
 
 
@@ -39,16 +38,10 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     private var mPlayerGlue: VideoPlayerGlue? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
     private var mPlayer: ExoPlayer? = null
-    private var mMovie: Movie? = null
     private var shouldNotShowControls = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //test purpose only
-        ITGSettings(requireContext()).clearAll()
-
-        mMovie = requireActivity().intent.serializable(DetailsActivity.MOVIE)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +58,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
             requireView(),
             viewLifecycleOwner,
             adapter,
-            Const.environment,
             Const.ACCOUNT_ID,
             Const.CHANNEL_SLUG,
             language = Const.LANGUAGE,
@@ -122,7 +114,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         mPlayerGlue?.host = VideoSupportFragmentGlueHost(this)
         mPlayerGlue?.playWhenPrepared()
         isControlsOverlayAutoHideEnabled = true
-        play(mMovie)
     }
 
     private fun releasePlayer() {
@@ -135,11 +126,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         }
     }
 
-    private fun play(movie: Movie?) {
-        if (movie == null) return
-        mPlayerGlue?.title = movie.title
-        mPlayerGlue?.subtitle = movie.description
-        prepareMediaForPlaying(Uri.parse(movie.videoUrl))
+    private fun play(streamUrl: String?) {
+        prepareMediaForPlaying(Uri.parse(streamUrl))
         mPlayerGlue?.play()
     }
 
@@ -201,6 +189,11 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
             attrs,
             defStyleAttr
         )
+
+        override fun channelInfoDidLoad(streamUrl: String?) {
+            super.channelInfoDidLoad(streamUrl)
+            play(streamUrl)
+        }
 
         //optional
         override fun overlayReceivedDeeplink(customUrl: String) {

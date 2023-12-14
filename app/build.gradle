@@ -65,6 +65,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.3.4'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
+    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.3.20'
 }
