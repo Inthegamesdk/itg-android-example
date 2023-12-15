@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 149
         versionName "2.1.5"
 
@@ -49,11 +49,11 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
 
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.4'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.4'
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.4'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.4'
-    implementation 'com.google.android.exoplayer:extension-leanback:2.18.4'
+    implementation 'androidx.media3:media3-exoplayer:1.2.0'
+    implementation 'androidx.media3:media3-exoplayer-dash:1.2.0'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.2.0'
+    implementation 'androidx.media3:media3-ui-leanback:1.2.0'
+    implementation 'androidx.media3:media3-ui:1.2.0'
 
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-crashlytics'

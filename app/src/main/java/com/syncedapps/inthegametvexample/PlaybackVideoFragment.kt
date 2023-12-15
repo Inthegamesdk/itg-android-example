@@ -8,23 +8,24 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.VideoSupportFragment
 import androidx.leanback.app.VideoSupportFragmentGlueHost
-import com.google.android.exoplayer2.DefaultRenderersFactory
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.ext.leanback.LeanbackPlayerAdapter
-import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.upstream.DefaultDataSource
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
-import com.google.android.exoplayer2.util.Util
-import com.syncedapps.inthegametv.ITGSettings
+import androidx.media3.common.MediaItem
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.common.util.Util
+import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.DefaultRenderersFactory
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.source.MediaSource
+import androidx.media3.exoplayer.source.ProgressiveMediaSource
+import androidx.media3.ui.leanback.LeanbackPlayerAdapter
 import com.syncedapps.inthegametv.data.CloseOption
 import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
 import com.syncedapps.inthegametv.domain.model.UserSnapshot
-import com.syncedapps.inthegametv.integration.ITGExoLeanbackPlayerAdapter
+import com.syncedapps.inthegametv.integration.ITGMedia3LeanbackPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
 import java.util.*
 
@@ -33,23 +34,19 @@ import java.util.*
 class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
 
     private var mITGComponent: ITGLeanbackComponent? = null
-    private var mITGPlayerAdapter: ITGExoLeanbackPlayerAdapter? = null
+    private var mITGPlayerAdapter: ITGMedia3LeanbackPlayerAdapter? = null
 
     private var mPlayerGlue: VideoPlayerGlue? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
     private var mPlayer: ExoPlayer? = null
     private var shouldNotShowControls = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
         // create the overlay
-        val adapter = ITGExoLeanbackPlayerAdapter(
+        val adapter = ITGMedia3LeanbackPlayerAdapter(
             playerView = surfaceView
         )
         mITGPlayerAdapter = adapter
@@ -66,6 +63,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         (requireView() as ViewGroup).addView(mITGComponent, 0)
     }
 
+    @OptIn(UnstableApi::class)
     override fun onStart() {
         super.onStart()
         if (Util.SDK_INT > 23) {
@@ -73,6 +71,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         }
     }
 
+    @OptIn(UnstableApi::class)
     override fun onResume() {
         super.onResume()
         if (Util.SDK_INT <= 23 || mPlayer == null) {
@@ -81,6 +80,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     }
 
     /** Pauses the player.  */
+    @OptIn(UnstableApi::class)
     override fun onPause() {
         super.onPause()
         if (mPlayerGlue != null && mPlayerGlue?.isPlaying == true) {
@@ -91,6 +91,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         }
     }
 
+    @OptIn(UnstableApi::class)
     override fun onStop() {
         super.onStop()
         if (Util.SDK_INT > 23) {
@@ -104,7 +105,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     }
 
 
-    private fun initializePlayer() {
+    @OptIn(UnstableApi::class) private fun initializePlayer() {
         val player =
             ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
         mPlayer = player
@@ -126,11 +127,13 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         }
     }
 
+    @UnstableApi
     private fun play(streamUrl: String?) {
         prepareMediaForPlaying(Uri.parse(streamUrl))
         mPlayerGlue?.play()
     }
 
+    @UnstableApi
     private fun prepareMediaForPlaying(mediaSourceUri: Uri) {
         val userAgent: String = Util.getUserAgent(requireContext(), "VideoPlayerGlue")
 
@@ -190,6 +193,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
             defStyleAttr
         )
 
+        @UnstableApi
         override fun channelInfoDidLoad(streamUrl: String?) {
             super.channelInfoDidLoad(streamUrl)
             play(streamUrl)
