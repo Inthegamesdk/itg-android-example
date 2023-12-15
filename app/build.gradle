@@ -5,10 +5,12 @@ apply plugin: 'kotlin-kapt'
 android {
     namespace = "com.syncedapps.inthegametvexample"
 
+    compileSdkVersion = 34
+
     defaultConfig {
         applicationId "com.syncedapps.inthegametvexample"
         minSdkVersion 22
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 149
         versionName "2.1.5"
 
@@ -23,11 +25,11 @@ android {
     }
     compileOptions {
         coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = 11
+        jvmTarget = 17
     }
     buildFeatures {
         viewBinding = true
