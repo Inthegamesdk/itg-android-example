@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -19,6 +20,12 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
 import java.util.*
 
+import com.syncedapps.inthegametv.integration.ITGExoPlayerAdapter
+import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
+import com.syncedapps.inthegametv.domain.model.Storage
+import com.syncedapps.inthegametv.domain.model.UserRole
+import com.syncedapps.inthegametv.network.ITGEnvironment
+
 class PlaybackPhoneActivity : FragmentActivity() {
 
     private lateinit var binding: ActivityPhonePlaybackBinding
@@ -26,6 +33,10 @@ class PlaybackPhoneActivity : FragmentActivity() {
     private var playbackPosition: Long = 0L
     private var playWhenReady: Boolean = true
     private var videoView : StyledPlayerView? = null
+
+    private var mITGComponent: ITGPlaybackComponent? = null
+    private var mITGPlayerAdapter: ITGExoPlayerAdapter? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +49,52 @@ class PlaybackPhoneActivity : FragmentActivity() {
 
         //add video view
         videoView = buildVideoView()
-        binding.outerContainer.addView(videoView)
 
         startVideo()
+
+        // Initialize ITGPlaybackComponent
+        mITGComponent = ITGPlaybackComponent(this)
+
+
+        // Set up the ITGExoPlayerAdapter with your player view
+        val adapter = ITGExoPlayerAdapter(playerView = videoView)
+        mITGPlayerAdapter = adapter
+
+
+        // Initialize the ITG component with necessary parameters
+        mITGComponent?.init(
+            activity = this, //mandatory: fragment activity instance
+            playerAdapter = adapter, //mandatory: adapter between the player and SDK
+            savedState = savedInstanceState, //mandatory: saved state of the component
+
+            accountId = Const.ACCOUNT_ID, //mandatory: your ITG accountId
+            channelSlug = Const.CHANNEL_SLUG, //mandatory: your channelId on our admin panel
+            extraDataSlug = null, //optional: secondary channel or category
+            userBroadcasterForeignID = null, //optional: your user UUID
+            userInitialName = null, //optional: viewer's name/nickname
+            userRole = UserRole.USER, //optional: 'user', 'guest'
+            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
+            userEmail = null, //optional: viewer's email
+            userPhone = null, //optional: viewer's phone
+            language = null, //optional: 'en', 'es', 'he', 'ru'
+            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
+            storage = Storage.CDN, //optional: 'Storage.CDN', 'Storage.BLOB'
+            webp = false //optional: use webp equivalents for images added via admin panel
+        )
+
+
+        // Add the ITG component to your view hierarchy
+        binding.outerContainer.addView(mITGComponent, 0)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (mITGComponent == null || mITGComponent?.handleBackPressIfNeeded() == false) {
+                    // Implement your own back press action here
+                    finish()
+                }
+            }
+        })
+
     }
 
     private fun restorePlaybackStateIfAny(savedInstanceState: Bundle?) {
@@ -103,6 +157,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
             .setSeekBackIncrementMs(SEEK_INCREMENT)
             .setSeekForwardIncrementMs(SEEK_INCREMENT)
             .build()
+        mITGPlayerAdapter?.onPlayerReady(player)
         videoView?.player = player
         this.player = player
     }
@@ -113,6 +168,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
             playWhenReady = exoPlayer.playWhenReady
             videoView?.player = null
             exoPlayer.release()
+            mITGPlayerAdapter?.onPlayerReleased()
         }
         player = null
     }
@@ -143,6 +199,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
         super.onSaveInstanceState(outState)
         outState.putLong("playbackPosition", playbackPosition)
         outState.putBoolean("playWhenReady", playWhenReady)
+        mITGComponent?.onSaveInstanceState(outState)
     }
 
     companion object {

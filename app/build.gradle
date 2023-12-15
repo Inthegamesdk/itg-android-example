@@ -25,14 +25,22 @@ android {
     }
 
     compileOptions {
+        coreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+
+    kotlinOptions {
+        jvmTarget = 17
+    }
+
 
     buildFeatures {
         viewBinding = true
         dataBinding = true
     }
+
 
 
 }
@@ -70,6 +78,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
+
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
+    implementation 'com.github.Inthegamesdk:itg-android-sdk-latest:2.3.20'
 
 
 }
