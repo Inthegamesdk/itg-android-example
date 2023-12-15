@@ -1,6 +1,5 @@
 package com.syncedapps.inthegametvexample
 
-import com.syncedapps.inthegametv.network.ITGEnvironment
 
 object Const {
     const val ACCOUNT_ID = "653647b68b8364785c095ae3"
