@@ -94,8 +94,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
         val defaultDataSourceFactory =
             DefaultDataSource.Factory(this, upstreamDataSourceFactory)
 
-        defaultDataSourceFactory.createDataSource()
-
         val mediaSource: MediaSource =
             if (mediaSourceUri.lastPathSegment?.endsWith(".m3u8") == true) {
                 HlsMediaSource.Factory(defaultDataSourceFactory)
