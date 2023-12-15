@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 33
+    namespace = "com.syncedapps.inthegametvexample"
+
+    compileSdkVersion = 33
 
     defaultConfig {
         applicationId "com.syncedapps.inthegametvexample"
@@ -40,8 +43,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
+    //noinspection GradleDependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.leanback:leanback:1.0.0'
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -49,22 +53,22 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
 
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.4'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.4'
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.4'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.4'
-    implementation 'com.google.android.exoplayer:extension-leanback:2.18.4'
+    implementation 'androidx.media3:media3-exoplayer:1.2.0'
+    implementation 'androidx.media3:media3-exoplayer-dash:1.2.0'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.2.0'
+    implementation 'androidx.media3:media3-ui-leanback:1.2.0'
+    implementation 'androidx.media3:media3-ui:1.2.0'
 
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-crashlytics'
 
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
     implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.3.20'
 }
