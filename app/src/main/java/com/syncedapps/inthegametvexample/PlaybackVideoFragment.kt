@@ -3,9 +3,10 @@ package com.syncedapps.inthegametvexample
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.VideoSupportFragmentGlueHost
@@ -19,20 +20,15 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.leanback.LeanbackPlayerAdapter
-import com.syncedapps.inthegametv.data.CloseOption
-import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
-import com.syncedapps.inthegametv.domain.model.UserSnapshot
-import com.syncedapps.inthegametv.integration.ITGMedia3LeanbackPlayerAdapter
-import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
 import com.syncedapps.inthegametv.domain.model.Storage
 import com.syncedapps.inthegametv.domain.model.UserRole
+import com.syncedapps.inthegametv.integration.ITGMedia3LeanbackPlayerAdapter
+import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
 import com.syncedapps.inthegametv.network.ITGEnvironment
-import androidx.activity.OnBackPressedCallback
-import android.view.KeyEvent
 
 class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
 
-    private var mITGComponent: ITGLeanbackComponent? = null
+    private var mITGComponent: ITGPlaybackComponent? = null
     private var mITGPlayerAdapter: ITGMedia3LeanbackPlayerAdapter? = null
 
     private var mPlayerGlue: VideoPlayerGlue? = null
@@ -40,6 +36,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     private var mPlayer: ExoPlayer? = null
     private var shouldNotShowControls = false
 
+    @OptIn(UnstableApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
