@@ -23,18 +23,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = 17
-    }
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
-    }
+
+
 }
 
 dependencies {
@@ -55,11 +45,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
 
-    implementation 'androidx.media3:media3-exoplayer:1.2.0'
-    implementation 'androidx.media3:media3-exoplayer-dash:1.2.0'
-    implementation 'androidx.media3:media3-exoplayer-hls:1.2.0'
-    implementation 'androidx.media3:media3-ui-leanback:1.2.0'
-    implementation 'androidx.media3:media3-ui:1.2.0'
+    //noinspection GradleDependency
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.7'
+    //noinspection GradleDependency
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.7'
+    //noinspection GradleDependency
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.7'
+    //noinspection GradleDependency
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
+    //noinspection GradleDependency
+    implementation 'com.google.android.exoplayer:extension-leanback:2.18.7'
 
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-crashlytics'
@@ -71,6 +66,5 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
-    implementation 'com.github.Inthegamesdk:ITGAndroidRelease:2.3.20'
+
 }

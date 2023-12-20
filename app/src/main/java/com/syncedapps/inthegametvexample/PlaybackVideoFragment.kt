@@ -1,15 +1,9 @@
 package com.syncedapps.inthegametvexample
 
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.leanback.app.VideoSupportFragment
 import androidx.leanback.app.VideoSupportFragmentGlueHost
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlayer
@@ -20,20 +14,10 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.util.Util
-import com.syncedapps.inthegametv.ITGSettings
-import com.syncedapps.inthegametv.data.CloseOption
-import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
-import com.syncedapps.inthegametv.domain.model.UserSnapshot
-import com.syncedapps.inthegametv.integration.ITGExoLeanbackPlayerAdapter
-import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import java.util.*
 
 
 /** Handles video playback with media controls. */
 class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
-
-    private var mITGComponent: ITGLeanbackComponent? = null
-    private var mITGPlayerAdapter: ITGExoLeanbackPlayerAdapter? = null
 
     private var mPlayerGlue: VideoPlayerGlue? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
@@ -48,22 +32,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
-        // create the overlay
-        val adapter = ITGExoLeanbackPlayerAdapter(
-            playerView = surfaceView
-        )
-        mITGPlayerAdapter = adapter
-        mITGComponent = ITGLeanbackComponent(requireContext())
-        mITGComponent?.init(
-            requireView(),
-            viewLifecycleOwner,
-            adapter,
-            Const.ACCOUNT_ID,
-            Const.CHANNEL_SLUG,
-            language = Const.LANGUAGE,
-            userBroadcasterForeignID = "android_${Date().time}",
-        )
-        (requireView() as ViewGroup).addView(mITGComponent, 0)
     }
 
     override fun onStart() {
@@ -100,7 +68,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        mITGComponent?.onSaveInstanceState(outState)
     }
 
 
@@ -108,7 +75,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         val player =
             ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
         mPlayer = player
-        mITGPlayerAdapter?.onPlayerReady(player)
         mPlayerAdapter = LeanbackPlayerAdapter(requireContext(), player, UPDATE_DELAY)
         mPlayerGlue = VideoPlayerGlue(activity, mPlayerAdapter, this)
         mPlayerGlue?.host = VideoSupportFragmentGlueHost(this)
@@ -118,7 +84,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
 
     private fun releasePlayer() {
         if (mPlayer != null) {
-            mITGPlayerAdapter?.onPlayerReleased()
             mPlayer?.release()
             mPlayer = null
             mPlayerGlue = null
@@ -149,12 +114,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         mPlayer?.setMediaSource(mediaSource)
     }
 
-    // let the overlay handle the back button press if it needs to
-    // (to dismiss interactions)
-    fun handleBackPressIfNeeded(): Boolean {
-        return mITGComponent?.handleBackPressIfNeeded() ?: false
-    }
-
     override fun showControlsOverlay(runAnimation: Boolean) {
         if (shouldNotShowControls) {
             shouldNotShowControls = false
@@ -174,93 +133,9 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
 
     override fun onMoreActions() {
         hideControlsOverlay(true)
-        mITGComponent?.itgOverlayView?.openMenu()
     }
 
 
-    inner class ITGLeanbackComponent : ITGPlaybackComponent {
-
-        constructor(context: Context) : super(context)
-
-        constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-
-        constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-            context,
-            attrs,
-            defStyleAttr
-        )
-
-        override fun channelInfoDidLoad(streamUrl: String?) {
-            super.channelInfoDidLoad(streamUrl)
-            play(streamUrl)
-        }
-
-        //optional
-        override fun overlayReceivedDeeplink(customUrl: String) {
-            when (customUrl) {
-                "next channel" -> {
-                   //TODO
-                }
-
-                "previous channel" -> {
-                    //TODO
-                }
-
-                else -> {
-                    Toast.makeText(requireContext(), customUrl, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-
-        //optional
-        override fun overlayProducedAnalyticsEvent(eventSnapshot: AnalyticsEventSnapshot) {
-            Log.d(
-                this.javaClass.simpleName,
-                "overlayProducedAnalyticsEvent eventSnapshot $eventSnapshot"
-            )
-        }
-
-        //optional
-        override fun userState(userSnapshot: UserSnapshot) {
-            Log.d(this.javaClass.simpleName, "overlayUserUpdated userSnapshot $userSnapshot")
-        }
-
-        override fun overlayRequestedPlay() {
-            shouldNotShowControls = true
-            super.overlayRequestedPlay()
-        }
-
-        override fun overlayRequestedPause() {
-            shouldNotShowControls = true
-            super.overlayRequestedPlay()
-        }
-
-        override fun overlayRequestedSeekTo(timestampMillis: Long) {
-            shouldNotShowControls = true
-            super.overlayRequestedSeekTo(timestampMillis)
-        }
-
-        override fun overlayRequestedFocus(focusView: View) {
-            Log.d(this.javaClass.simpleName, "overlayRequestedFocus focusView=$focusView")
-        }
-
-        override fun overlayReleasedFocus(popMessage: Boolean) {
-            Log.d(this.javaClass.simpleName, "overlayReleasedFocus popMessage=$popMessage")
-        }
-
-        override fun overlayDidShowSidebar() {}
-
-        override fun overlayDidHideSidebar() {}
-
-        override fun overlayClickedUserArea() {
-            Log.d("ITG", "CLICKED USER AREA")
-        }
-
-        override fun overlayClosedByUser(type: CloseOption, timestamp: Long) {
-            Log.d("ITG", "ITG CLOSED - ${type.name}")
-        }
-
-    }
 
     companion object {
         private const val UPDATE_DELAY = 16
