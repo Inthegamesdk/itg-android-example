@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -25,6 +24,8 @@ import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
 import com.syncedapps.inthegametv.domain.model.Storage
 import com.syncedapps.inthegametv.domain.model.UserRole
 import com.syncedapps.inthegametv.network.ITGEnvironment
+import androidx.activity.OnBackPressedCallback
+import android.view.KeyEvent
 
 class PlaybackPhoneActivity : FragmentActivity() {
 
@@ -36,7 +37,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
 
     private var mITGComponent: ITGPlaybackComponent? = null
     private var mITGPlayerAdapter: ITGExoPlayerAdapter? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -157,7 +157,10 @@ class PlaybackPhoneActivity : FragmentActivity() {
             .setSeekBackIncrementMs(SEEK_INCREMENT)
             .setSeekForwardIncrementMs(SEEK_INCREMENT)
             .build()
+
+        // Notify the ITGPlayerAdapter that the player is ready
         mITGPlayerAdapter?.onPlayerReady(player)
+
         videoView?.player = player
         this.player = player
     }
@@ -167,8 +170,11 @@ class PlaybackPhoneActivity : FragmentActivity() {
             playbackPosition = exoPlayer.currentPosition
             playWhenReady = exoPlayer.playWhenReady
             videoView?.player = null
-            exoPlayer.release()
+
+            // Notify the ITGPlayerAdapter that the player has been released
             mITGPlayerAdapter?.onPlayerReleased()
+
+            exoPlayer.release()
         }
         player = null
     }
@@ -199,8 +205,35 @@ class PlaybackPhoneActivity : FragmentActivity() {
         super.onSaveInstanceState(outState)
         outState.putLong("playbackPosition", playbackPosition)
         outState.putBoolean("playWhenReady", playWhenReady)
+
+        // Saving the state of the SDK
         mITGComponent?.onSaveInstanceState(outState)
     }
+
+    @SuppressLint("RestrictedApi")
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.dispatchKeyEvent(event)
+        // ... rest of your dispatchKeyEvent code
+        return super.dispatchKeyEvent(event)
+    }
+
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.onKeyUp(keyCode, event)
+        // ... rest of your onKeyUp code
+        return super.onKeyUp(keyCode, event)
+    }
+
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.onKeyDown(keyCode, event)
+        // ... rest of your onKeyDown code
+        return super.onKeyDown(keyCode, event)
+    }
+
 
     companion object {
         private const val SEEK_INCREMENT = 10_000L
