@@ -1,12 +1,8 @@
 package com.syncedapps.inthegametvexample
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.VideoSupportFragmentGlueHost
@@ -20,21 +16,27 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.leanback.LeanbackPlayerAdapter
-import com.syncedapps.inthegametv.domain.model.Storage
-import com.syncedapps.inthegametv.domain.model.UserRole
+
 import com.syncedapps.inthegametv.integration.ITGMedia3LeanbackPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
+import com.syncedapps.inthegametv.domain.model.Storage
+import com.syncedapps.inthegametv.domain.model.UserRole
 import com.syncedapps.inthegametv.network.ITGEnvironment
+import androidx.activity.OnBackPressedCallback
+import android.view.KeyEvent
+import android.view.ViewGroup
+import android.annotation.SuppressLint
 
 class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
-
-    private var mITGComponent: ITGPlaybackComponent? = null
-    private var mITGPlayerAdapter: ITGMedia3LeanbackPlayerAdapter? = null
 
     private var mPlayerGlue: VideoPlayerGlue? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
     private var mPlayer: ExoPlayer? = null
     private var shouldNotShowControls = false
+
+    private var mITGComponent: ITGPlaybackComponent? = null
+    private var mITGPlayerAdapter: ITGMedia3LeanbackPlayerAdapter? = null
+
 
     @OptIn(UnstableApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -140,7 +142,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     }
 
 
-    @OptIn(UnstableApi::class) private fun initializePlayer() {
+    @OptIn(UnstableApi::class)
+    private fun initializePlayer() {
         val player =
             ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
         mPlayer = player
@@ -219,8 +222,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     }
 
     @SuppressLint("RestrictedApi")
-    @UnstableApi
-        override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
             return super.dispatchKeyEvent(event)
         // ... rest of your dispatchKeyEvent code
@@ -242,8 +244,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         // ... rest of your onKeyDown code
         return super.onKeyDown(keyCode, event)
     }
-
-
 
 
     companion object {
