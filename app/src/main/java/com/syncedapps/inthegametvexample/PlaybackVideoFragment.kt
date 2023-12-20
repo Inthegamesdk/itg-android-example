@@ -1,16 +1,13 @@
 package com.syncedapps.inthegametvexample
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
-import androidx.leanback.app.VideoSupportFragment
 import androidx.leanback.app.VideoSupportFragmentGlueHost
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
@@ -27,10 +24,12 @@ import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
 import com.syncedapps.inthegametv.domain.model.UserSnapshot
 import com.syncedapps.inthegametv.integration.ITGMedia3LeanbackPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import java.util.*
+import com.syncedapps.inthegametv.domain.model.Storage
+import com.syncedapps.inthegametv.domain.model.UserRole
+import com.syncedapps.inthegametv.network.ITGEnvironment
+import androidx.activity.OnBackPressedCallback
+import android.view.KeyEvent
 
-
-/** Handles video playback with media controls. */
 class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
 
     private var mITGComponent: ITGLeanbackComponent? = null
@@ -45,22 +44,58 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
-        // create the overlay
-        val adapter = ITGMedia3LeanbackPlayerAdapter(
-            playerView = surfaceView
-        )
+        play()
+
+        // Replace 'your_account_id' and 'your_channel_slug' with actual values
+        val accountId = "653647b68b8364785c095ae3"
+        val channelSlug = "espn"
+
+
+        // Initialize ITGPlaybackComponent
+        mITGComponent = ITGPlaybackComponent(requireContext())
+
+
+        // Set up the ITGExoLeanbackPlayerAdapter with your player view
+        val adapter = ITGMedia3LeanbackPlayerAdapter(playerView = surfaceView)
         mITGPlayerAdapter = adapter
-        mITGComponent = ITGLeanbackComponent(requireContext())
+
+
+        // Initialize the ITG component with necessary parameters
         mITGComponent?.init(
-            requireView(),
-            viewLifecycleOwner,
-            adapter,
-            Const.ACCOUNT_ID,
-            Const.CHANNEL_SLUG,
-            language = Const.LANGUAGE,
-            userBroadcasterForeignID = "android_${Date().time}",
+            root = requireView(), //mandatory: root view of the screen
+            lifecycleOwner = viewLifecycleOwner, //mandatory: the view's lifecycle owner
+            playerAdapter = adapter, //mandatory: adapter between the player and SDK
+            savedState = savedInstanceState, //mandatory: saved state of the component
+
+
+            accountId = accountId, //mandatory: your ITG accountId
+            channelSlug = channelSlug, //mandatory: your channelId on our admin panel
+            extraDataSlug = null, //optional: secondary channel or category
+            userBroadcasterForeignID = null, //optional: your user UUID
+            userInitialName = null, //optional: viewer's name/nickname
+            userRole = UserRole.USER, //optional: UserRole.USER, UserRole.GUEST
+            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
+            userEmail = null, //optional: viewer's email
+            userPhone = null, //optional: viewer's phone
+            language = null, //optional: 'en', 'es', 'he', 'ru'
+            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
+            storage = Storage.CDN, //optional: Storage.CDN, Storage.BLOB
+            webp = false //optional: use webp equivalents for images added via admin panel
         )
+
+
+        // Add the ITG component to your view hierarchy
         (requireView() as ViewGroup).addView(mITGComponent, 0)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (mITGComponent == null || mITGComponent?.handleBackPressIfNeeded() == false) {
+                    // Implement your own back press action here
+                    requireActivity().finish()
+                }
+            }
+        })
+
     }
 
     @OptIn(UnstableApi::class)
@@ -76,6 +111,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         super.onResume()
         if (Util.SDK_INT <= 23 || mPlayer == null) {
             initializePlayer()
+            play()
         }
     }
 
@@ -101,6 +137,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+
+        // Saving the state of the SDK
         mITGComponent?.onSaveInstanceState(outState)
     }
 
@@ -109,18 +147,26 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         val player =
             ExoPlayer.Builder(requireContext(), DefaultRenderersFactory(requireContext())).build()
         mPlayer = player
+
+        // Notify the ITGPlayerAdapter that the player is ready
         mITGPlayerAdapter?.onPlayerReady(player)
+
         mPlayerAdapter = LeanbackPlayerAdapter(requireContext(), player, UPDATE_DELAY)
         mPlayerGlue = VideoPlayerGlue(activity, mPlayerAdapter, this)
         mPlayerGlue?.host = VideoSupportFragmentGlueHost(this)
         mPlayerGlue?.playWhenPrepared()
         isControlsOverlayAutoHideEnabled = true
+
+        play()
     }
 
     private fun releasePlayer() {
         if (mPlayer != null) {
-            mITGPlayerAdapter?.onPlayerReleased()
             mPlayer?.release()
+
+            // Notify the ITGPlayerAdapter that the player has been released
+            mITGPlayerAdapter?.onPlayerReleased()
+
             mPlayer = null
             mPlayerGlue = null
             mPlayerAdapter = null
@@ -128,7 +174,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
     }
 
     @UnstableApi
-    private fun play(streamUrl: String?) {
+    private fun play(streamUrl: String? = Const.VIDEO_URL) {
         prepareMediaForPlaying(Uri.parse(streamUrl))
         mPlayerGlue?.play()
     }
@@ -152,12 +198,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         mPlayer?.setMediaSource(mediaSource)
     }
 
-    // let the overlay handle the back button press if it needs to
-    // (to dismiss interactions)
-    fun handleBackPressIfNeeded(): Boolean {
-        return mITGComponent?.handleBackPressIfNeeded() ?: false
-    }
-
     override fun showControlsOverlay(runAnimation: Boolean) {
         if (shouldNotShowControls) {
             shouldNotShowControls = false
@@ -177,94 +217,37 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
 
     override fun onMoreActions() {
         hideControlsOverlay(true)
+
         mITGComponent?.itgOverlayView?.openMenu()
     }
 
-
-    inner class ITGLeanbackComponent : ITGPlaybackComponent {
-
-        constructor(context: Context) : super(context)
-
-        constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-
-        constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-            context,
-            attrs,
-            defStyleAttr
-        )
-
-        @UnstableApi
-        override fun channelInfoDidLoad(streamUrl: String?) {
-            super.channelInfoDidLoad(streamUrl)
-            play(streamUrl)
-        }
-
-        //optional
-        override fun overlayReceivedDeeplink(customUrl: String) {
-            when (customUrl) {
-                "next channel" -> {
-                   //TODO
-                }
-
-                "previous channel" -> {
-                    //TODO
-                }
-
-                else -> {
-                    Toast.makeText(requireContext(), customUrl, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-
-        //optional
-        override fun overlayProducedAnalyticsEvent(eventSnapshot: AnalyticsEventSnapshot) {
-            Log.d(
-                this.javaClass.simpleName,
-                "overlayProducedAnalyticsEvent eventSnapshot $eventSnapshot"
-            )
-        }
-
-        //optional
-        override fun userState(userSnapshot: UserSnapshot) {
-            Log.d(this.javaClass.simpleName, "overlayUserUpdated userSnapshot $userSnapshot")
-        }
-
-        override fun overlayRequestedPlay() {
-            shouldNotShowControls = true
-            super.overlayRequestedPlay()
-        }
-
-        override fun overlayRequestedPause() {
-            shouldNotShowControls = true
-            super.overlayRequestedPlay()
-        }
-
-        override fun overlayRequestedSeekTo(timestampMillis: Long) {
-            shouldNotShowControls = true
-            super.overlayRequestedSeekTo(timestampMillis)
-        }
-
-        override fun overlayRequestedFocus(focusView: View) {
-            Log.d(this.javaClass.simpleName, "overlayRequestedFocus focusView=$focusView")
-        }
-
-        override fun overlayReleasedFocus(popMessage: Boolean) {
-            Log.d(this.javaClass.simpleName, "overlayReleasedFocus popMessage=$popMessage")
-        }
-
-        override fun overlayDidShowSidebar() {}
-
-        override fun overlayDidHideSidebar() {}
-
-        override fun overlayClickedUserArea() {
-            Log.d("ITG", "CLICKED USER AREA")
-        }
-
-        override fun overlayClosedByUser(type: CloseOption, timestamp: Long) {
-            Log.d("ITG", "ITG CLOSED - ${type.name}")
-        }
-
+    @SuppressLint("RestrictedApi")
+    @UnstableApi
+        override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.dispatchKeyEvent(event)
+        // ... rest of your dispatchKeyEvent code
+        return super.dispatchKeyEvent(event)
     }
+
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.onKeyUp(keyCode, event)
+        // ... rest of your onKeyUp code
+        return super.onKeyUp(keyCode, event)
+    }
+
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.onKeyDown(keyCode, event)
+        // ... rest of your onKeyDown code
+        return super.onKeyDown(keyCode, event)
+    }
+
+
+
 
     companion object {
         private const val UPDATE_DELAY = 16
