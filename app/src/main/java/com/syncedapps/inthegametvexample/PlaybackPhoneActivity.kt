@@ -1,19 +1,13 @@
 package com.syncedapps.inthegametvexample
 
-import android.content.Context
-import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.ProgressBar
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.core.view.*
 import androidx.fragment.app.FragmentActivity
 import com.kaltura.playkit.PKMediaEntry
 import com.kaltura.playkit.PKMediaFormat
@@ -26,22 +20,27 @@ import com.kaltura.playkit.plugins.ads.AdEvent
 import com.kaltura.tvplayer.KalturaBasicPlayer
 import com.kaltura.tvplayer.KalturaPlayer
 import com.kaltura.tvplayer.PlayerInitOptions
-import com.syncedapps.inthegametv.domain.model.AnalyticsEventSnapshot
-import com.syncedapps.inthegametv.domain.model.UserSnapshot
-import com.syncedapps.inthegametv.integration.ITGKalturaPlayerAdapter
-import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding
 import java.util.*
 
+import com.syncedapps.inthegametv.integration.ITGKalturaPlayerAdapter
+import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
+import com.syncedapps.inthegametv.domain.model.Storage
+import com.syncedapps.inthegametv.domain.model.UserRole
+import com.syncedapps.inthegametv.network.ITGEnvironment
+import androidx.activity.OnBackPressedCallback
+import android.view.KeyEvent
+import android.annotation.SuppressLint
 
 class PlaybackPhoneActivity : FragmentActivity() {
-    private var mITGComponent: PhoneKalturaITGComponent? = null
-    private var mITGKalturaAdapter: ITGKalturaPlayerAdapter? = null
 
     private lateinit var binding: ActivityPhonePlaybackBinding
     private var playbackPosition: Long = 0L
     private var currentItem: Int = 0
     private var playWhenReady: Boolean = true
+
+    private var mITGComponent: ITGPlaybackComponent? = null
+    private var mITGPlayerAdapter: ITGKalturaPlayerAdapter? = null
 
     companion object {
         private  val TAG = PlaybackPhoneActivity::class.java.simpleName
@@ -50,17 +49,103 @@ class PlaybackPhoneActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("TEST_OVERLAY_RESTORE", "onCreate savedInstanceState=$savedInstanceState")
 
+        restorePlaybackStateIfAny(savedInstanceState)
+
+        binding = ActivityPhonePlaybackBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setupFullscreenMode()
+
+        // Replace 'your_account_id' and 'your_channel_slug' with actual values
+        val accountId = "653647b68b8364785c095ae3"
+        val channelSlug = "espn"
+
+
+        // Initialize ITGPlaybackComponent
+        mITGComponent = ITGPlaybackComponent(this)
+
+
+        // Set up the ITGKalturaPlayerAdapter
+        val adapter = ITGKalturaPlayerAdapter()
+        mITGPlayerAdapter = adapter
+
+
+        // Initialize the ITG component with necessary parameters
+        mITGComponent?.init(
+            activity = this, //mandatory: fragment activity instance
+            playerAdapter = adapter, //mandatory: adapter between the player and SDK
+            savedState = savedInstanceState, //mandatory: saved state of the component
+
+
+            accountId = accountId, //mandatory: your ITG accountId
+            channelSlug = channelSlug, //mandatory: your channelId on our admin panel
+            extraDataSlug = null, //optional: secondary channel or category
+            userBroadcasterForeignID = null, //optional: your user UUID
+            userInitialName = null, //optional: viewer's name/nickname
+            userRole = UserRole.USER, //optional: 'user', 'guest'
+            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
+            userEmail = null, //optional: viewer's email
+            userPhone = null, //optional: viewer's phone
+            language = null, //optional: 'en', 'es', 'he', 'ru'
+            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
+            storage = Storage.CDN, //optional: 'Storage.CDN', 'Storage.BLOB'
+            webp = false //optional: use webp equivalents for images added via admin panel
+        )
+
+
+        // Add the ITG component to your view hierarchy
+        binding.itgContainer.addView(mITGComponent, 0)
+
+        initializePlayer()
+        initUi()
+
+        prepareMediaEntry(Const.VIDEO_URL)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (mITGComponent == null || mITGComponent?.handleBackPressIfNeeded() == false) {
+                    // Implement your own back press action here
+                    finish()
+                }
+            }
+        })
+
+    }
+
+    @SuppressLint("RestrictedApi")
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.dispatchKeyEvent(event)
+        // ... rest of your dispatchKeyEvent code
+        return super.dispatchKeyEvent(event)
+    }
+
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.onKeyUp(keyCode, event)
+        // ... rest of your onKeyUp code
+        return super.onKeyUp(keyCode, event)
+    }
+
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
+            return super.onKeyDown(keyCode, event)
+        // ... rest of your onKeyDown code
+        return super.onKeyDown(keyCode, event)
+    }
+
+
+    private fun restorePlaybackStateIfAny(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
             currentItem = savedInstanceState.getInt("currentItem")
             playbackPosition = savedInstanceState.getLong("playbackPosition", 0L)
             playWhenReady = savedInstanceState.getBoolean("playWhenReady")
         }
-        binding = ActivityPhonePlaybackBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+    }
 
+    private fun setupFullscreenMode() {
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
@@ -70,46 +155,30 @@ class PlaybackPhoneActivity : FragmentActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
-        initUi()
-        addOverlay(savedInstanceState)
-
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (mITGComponent?.handleBackPressIfNeeded() == false) {
-                    // Back is pressed... Finishing the activity
-                    finish()
-                }
-            }
-        })
     }
 
-    private fun addOverlay(savedInstanceState: Bundle?) {
-        val player = player ?: return
-        // load your channel to start up the ITG system
-        val adapter = ITGKalturaPlayerAdapter(controls = null)
-        this.mITGKalturaAdapter = adapter
-        mITGKalturaAdapter?.onPlayerReady(player)
-        val itgComponent = PhoneKalturaITGComponent(this)
-        this.mITGComponent = itgComponent
-        itgComponent.init(
-            this,
-            adapter,
-            Const.ACCOUNT_ID,
-            Const.CHANNEL_SLUG,
-            language = Const.LANGUAGE,
-            userBroadcasterForeignID = Date().time.toString(),
-            savedState = savedInstanceState
+    private fun initializePlayer() {
+        val playerInitOptions = PlayerInitOptions()
+        val  player = KalturaBasicPlayer.create(this, playerInitOptions)
+        player.setPlayerView(
+            FrameLayout.LayoutParams.WRAP_CONTENT,
+            FrameLayout.LayoutParams.MATCH_PARENT
         )
-        binding.itgContainer.addView(itgComponent)
+
+        // Notify the ITGPlayerAdapter that the player is ready
+        mITGPlayerAdapter?.onPlayerReady(player)
+
+        this.player = player
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        mITGComponent?.onSaveInstanceState(outState)
         outState.putInt("currentItem", currentItem)
         outState.putLong("playbackPosition", playbackPosition)
         outState.putBoolean("playWhenReady", playWhenReady)
+
+        // Saving the state of the SDK
+        mITGComponent?.onSaveInstanceState(outState)
     }
 
     private var player: KalturaPlayer? = null
@@ -118,15 +187,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
     private var adCuePoints: AdCuePoints? = null
 
     // KalturaPlayer
-    private fun loadPlaykitPlayer() {
-        val playerInitOptions = PlayerInitOptions()
-        player = KalturaBasicPlayer.create(this, playerInitOptions)
-        player?.setPlayerView(
-            FrameLayout.LayoutParams.WRAP_CONTENT,
-            FrameLayout.LayoutParams.MATCH_PARENT
-        )
-    }
-
     private fun prepareMediaEntry(videoUrl : String?) {
         val pkMediaEntry = createMediaEntry(videoUrl)
         player?.setMedia(pkMediaEntry)
@@ -195,8 +255,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
             binding.replay.visibility = View.GONE
         }
 
-        // If we've already selected a video, load it now.
-        loadPlaykitPlayer()
         binding.playerControls.setPlayer(player)
         addPlayerListeners(binding.progressBarSpinner)
     }
@@ -207,10 +265,14 @@ class PlaybackPhoneActivity : FragmentActivity() {
     }
 
     override fun onDestroy() {
+        @Suppress("SameParameterValue")
         if (player != null) {
-            mITGKalturaAdapter?.onPlayerReleased()
             player?.removeListeners(this)
             player?.destroy()
+
+            // Notify the ITGPlayerAdapter that the player has been released
+            mITGPlayerAdapter?.onPlayerReleased()
+
             player = null
         }
         super.onDestroy()
@@ -262,9 +324,9 @@ class PlaybackPhoneActivity : FragmentActivity() {
 
         player?.addListener(this, AdEvent.cuepointsChanged) { event ->
             Log.d(TAG, "cuepointsChanged. Has Postroll  = " + event.cuePoints.hasPostRoll())
-            adCuePoints = event.cuePoints;
+            adCuePoints = event.cuePoints
             if (adCuePoints != null) {
-                Log.d(TAG, "Has Post roll = " + adCuePoints?.hasPostRoll());
+                Log.d(TAG, "Has Post roll = " + adCuePoints?.hasPostRoll())
             }
 
             log("AD_CUEPOINTS_UPDATED")
@@ -305,7 +367,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
             log("AD_ALL_ADS_COMPLETED")
             val hasPostRoll = adCuePoints?.hasPostRoll() ?: false
             if (adCuePoints != null && hasPostRoll) {
-                binding.replay.visibility = View.VISIBLE;
+                binding.replay.visibility = View.VISIBLE
             }
 
             appProgressBar.visibility = View.INVISIBLE
@@ -430,53 +492,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
 
     private fun log(message: String) {
         Log.d(this.javaClass.simpleName, message)
-    }
-
-    inner class PhoneKalturaITGComponent : ITGPlaybackComponent {
-        constructor(context: Context) : super(context)
-
-        constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-
-        constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-            context,
-            attrs,
-            defStyleAttr
-        )
-
-        //optional
-        override fun overlayReceivedDeeplink(customUrl: String) {
-            when (customUrl) {
-                "next channel" -> {
-                    //TODO
-                }
-
-                "previous channel" -> {
-                    //TODO
-                }
-
-                else -> {
-                    Toast.makeText(this@PlaybackPhoneActivity, customUrl, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-
-        //optional
-        override fun overlayProducedAnalyticsEvent(eventSnapshot: AnalyticsEventSnapshot) {
-            Log.d(
-                this.javaClass.simpleName,
-                "overlayProducedAnalyticsEvent eventSnapshot $eventSnapshot"
-            )
-        }
-
-        override fun userState(userSnapshot: UserSnapshot) {
-            Log.d(this.javaClass.simpleName, "overlayUserUpdated userSnapshot $userSnapshot")
-        }
-
-        override fun channelInfoDidLoad(streamUrl: String?) {
-            runOnUiThread {
-                prepareMediaEntry(streamUrl)
-            }
-        }
     }
 
 }
