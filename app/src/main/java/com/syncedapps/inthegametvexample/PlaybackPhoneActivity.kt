@@ -24,9 +24,6 @@ import java.util.*
 
 import com.syncedapps.inthegametv.integration.ITGMedia3PlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import com.syncedapps.inthegametv.domain.model.Storage
-import com.syncedapps.inthegametv.domain.model.UserRole
-import com.syncedapps.inthegametv.network.ITGEnvironment
 import androidx.activity.OnBackPressedCallback
 import android.view.KeyEvent
 
@@ -57,8 +54,8 @@ class PlaybackPhoneActivity : FragmentActivity() {
         startVideo()
 
         // Replace 'your_account_id' and 'your_channel_slug' with actual values
-        val accountId = "653647b68b8364785c095ae3"
-        val channelSlug = "espn"
+        val accountId = "68b6f55cf49cd69a3dee4a05"
+        val channelSlug = "redgetest"
 
 
         // Initialize ITGPlaybackComponent
@@ -76,20 +73,8 @@ class PlaybackPhoneActivity : FragmentActivity() {
             playerAdapter = adapter, //mandatory: adapter between the player and SDK
             savedState = savedInstanceState, //mandatory: saved state of the component
 
-
             accountId = accountId, //mandatory: your ITG accountId
             channelSlug = channelSlug, //mandatory: your channelId on our admin panel
-            extraDataSlug = null, //optional: secondary channel or category
-            userBroadcasterForeignID = null, //optional: your user UUID
-            userInitialName = null, //optional: viewer's name/nickname
-            userRole = UserRole.USER, //optional: 'user', 'guest'
-            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
-            userEmail = null, //optional: viewer's email
-            userPhone = null, //optional: viewer's phone
-            language = null, //optional: 'en', 'es', 'he', 'ru'
-            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
-            storage = Storage.CDN, //optional: 'Storage.CDN', 'Storage.BLOB'
-            webp = false //optional: use webp equivalents for images added via admin panel
         )
 
 
