@@ -1,11 +1,16 @@
 package com.syncedapps.inthegametvexample
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.OptIn
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.VideoSupportFragmentGlueHost
+import androidx.leanback.media.PlaybackTransportControlGlue
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.common.util.Util
@@ -16,20 +21,12 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.leanback.LeanbackPlayerAdapter
-
 import com.syncedapps.inthegametv.integration.ITGMedia3LeanbackPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import com.syncedapps.inthegametv.domain.model.Storage
-import com.syncedapps.inthegametv.domain.model.UserRole
-import com.syncedapps.inthegametv.network.ITGEnvironment
-import androidx.activity.OnBackPressedCallback
-import android.view.KeyEvent
-import android.view.ViewGroup
-import android.annotation.SuppressLint
 
-class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
+class PlaybackVideoFragment : VideoSupportFragment()  {
 
-    private var mPlayerGlue: VideoPlayerGlue? = null
+    private var mPlayerGlue: PlaybackTransportControlGlue<LeanbackPlayerAdapter>? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
     private var mPlayer: ExoPlayer? = null
     private var shouldNotShowControls = false
@@ -46,8 +43,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         play()
 
         // Replace 'your_account_id' and 'your_channel_slug' with actual values
-        val accountId = "653647b68b8364785c095ae3"
-        val channelSlug = "espn"
+        val accountId = "68b6f55cf49cd69a3dee4a05"
+        val channelSlug = "redgetest"
 
 
         // Initialize ITGPlaybackComponent
@@ -69,17 +66,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
 
             accountId = accountId, //mandatory: your ITG accountId
             channelSlug = channelSlug, //mandatory: your channelId on our admin panel
-            extraDataSlug = null, //optional: secondary channel or category
-            userBroadcasterForeignID = null, //optional: your user UUID
-            userInitialName = null, //optional: viewer's name/nickname
-            userRole = UserRole.USER, //optional: UserRole.USER, UserRole.GUEST
-            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
-            userEmail = null, //optional: viewer's email
-            userPhone = null, //optional: viewer's phone
-            language = null, //optional: 'en', 'es', 'he', 'ru'
-            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
-            storage = Storage.CDN, //optional: Storage.CDN, Storage.BLOB
-            webp = false //optional: use webp equivalents for images added via admin panel
         )
 
 
@@ -152,7 +138,7 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         mITGPlayerAdapter?.onPlayerReady(player)
 
         mPlayerAdapter = LeanbackPlayerAdapter(requireContext(), player, UPDATE_DELAY)
-        mPlayerGlue = VideoPlayerGlue(activity, mPlayerAdapter, this)
+        mPlayerGlue = PlaybackTransportControlGlue(requireActivity(), mPlayerAdapter)
         mPlayerGlue?.host = VideoSupportFragmentGlueHost(this)
         mPlayerGlue?.playWhenPrepared()
         isControlsOverlayAutoHideEnabled = true
@@ -204,21 +190,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         } else {
             super.showControlsOverlay(runAnimation)
         }
-    }
-
-    //pass play/pause events to overlay so that it can track the video time
-    override fun onPlayAction() {}
-
-    override fun onPauseAction() {}
-
-    override fun onPrevious() {}
-
-    override fun onNext() {}
-
-    override fun onMoreActions() {
-        hideControlsOverlay(true)
-
-        mITGComponent?.itgOverlayView?.openMenu()
     }
 
     @SuppressLint("RestrictedApi")

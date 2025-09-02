@@ -40,6 +40,13 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        //If you want to continue even if errors found use following line
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -77,5 +84,5 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
-    implementation 'com.github.Inthegamesdk:itg-android-sdk-latest:2.3.21'
+    implementation 'com.github.Inthegamesdk:itg-android-sdk-latest:2.6.31'
 }
