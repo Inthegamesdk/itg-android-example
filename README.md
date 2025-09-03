@@ -6,4 +6,4 @@ The repository includes an example app that shows how to use the framework. The 
 
 
 # Installation
-In order to setup ITG SDK please follow this [Integration Guide](https://docs.google.com/document/d/1K3DOEo1Od-9pqPZHRLjDhaKLxBLE_z9L2iv8gpw_g04/edit?usp=sharing).
+In order to setup ITG SDK please follow this [Integration Guide](https://feline-firewall-fd9.notion.site/Quick-Integration-1a7a03a4385d80cab5bafe36f4e7b97a).
