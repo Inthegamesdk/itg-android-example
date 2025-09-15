@@ -7,3 +7,6 @@ The repository includes an example app that shows how to use the framework. The 
 
 # Installation
 In order to setup ITG SDK please follow this [Integration Guide](https://feline-firewall-fd9.notion.site/Quick-Integration-1a7a03a4385d80cab5bafe36f4e7b97a).
+
+# Use ExoPlayer, Kaltura Player or Leanback library?
+Please check out the appropriate branch based on the player technology you choose.
