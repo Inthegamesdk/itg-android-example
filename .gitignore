@@ -12,3 +12,13 @@
 /captures
 .externalNativeBuild
 .cxx
+/app/release/exo-leanback-release.apk
+/.idea/shelf/exo_itg.xml
+/.idea/migrations.xml
+/app/release/output-metadata.json
+/.idea/shelf/playkit.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/shelf/exo_itg/shelved.patch
+/.idea/shelf/playkit/shelved.patch
+/.idea/shelf/ss/shelved.patch
+/.idea/shelf/ss.xml
