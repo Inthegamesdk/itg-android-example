@@ -25,9 +25,6 @@ import java.util.*
 
 import com.syncedapps.inthegametv.integration.ITGKalturaPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import com.syncedapps.inthegametv.domain.model.Storage
-import com.syncedapps.inthegametv.domain.model.UserRole
-import com.syncedapps.inthegametv.network.ITGEnvironment
 import androidx.activity.OnBackPressedCallback
 import android.view.KeyEvent
 import android.annotation.SuppressLint
@@ -57,18 +54,15 @@ class PlaybackPhoneActivity : FragmentActivity() {
         setupFullscreenMode()
 
         // Replace 'your_account_id' and 'your_channel_slug' with actual values
-        val accountId = "653647b68b8364785c095ae3"
-        val channelSlug = "espn"
-
+        val accountId = "68650da0324217d506bcc2d4"
+        val channelSlug = "samplechannel"
 
         // Initialize ITGPlaybackComponent
         mITGComponent = ITGPlaybackComponent(this)
 
-
         // Set up the ITGKalturaPlayerAdapter
         val adapter = ITGKalturaPlayerAdapter()
         mITGPlayerAdapter = adapter
-
 
         // Initialize the ITG component with necessary parameters
         mITGComponent?.init(
@@ -76,22 +70,9 @@ class PlaybackPhoneActivity : FragmentActivity() {
             playerAdapter = adapter, //mandatory: adapter between the player and SDK
             savedState = savedInstanceState, //mandatory: saved state of the component
 
-
             accountId = accountId, //mandatory: your ITG accountId
             channelSlug = channelSlug, //mandatory: your channelId on our admin panel
-            extraDataSlug = null, //optional: secondary channel or category
-            userBroadcasterForeignID = null, //optional: your user UUID
-            userInitialName = null, //optional: viewer's name/nickname
-            userRole = UserRole.USER, //optional: 'user', 'guest'
-            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
-            userEmail = null, //optional: viewer's email
-            userPhone = null, //optional: viewer's phone
-            language = null, //optional: 'en', 'es', 'he', 'ru'
-            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
-            storage = Storage.CDN, //optional: 'Storage.CDN', 'Storage.BLOB'
-            webp = false //optional: use webp equivalents for images added via admin panel
         )
-
 
         // Add the ITG component to your view hierarchy
         binding.itgContainer.addView(mITGComponent, 0)
@@ -120,7 +101,6 @@ class PlaybackPhoneActivity : FragmentActivity() {
         return super.dispatchKeyEvent(event)
     }
 
-
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
         if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
             return super.onKeyUp(keyCode, event)
@@ -128,14 +108,12 @@ class PlaybackPhoneActivity : FragmentActivity() {
         return super.onKeyUp(keyCode, event)
     }
 
-
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
             return super.onKeyDown(keyCode, event)
         // ... rest of your onKeyDown code
         return super.onKeyDown(keyCode, event)
     }
-
 
     private fun restorePlaybackStateIfAny(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
