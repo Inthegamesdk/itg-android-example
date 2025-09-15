@@ -3,9 +3,13 @@ package com.syncedapps.inthegametvexample
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.VideoSupportFragmentGlueHost
+import androidx.leanback.media.PlaybackTransportControlGlue
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -15,29 +19,18 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.util.Util
-
 import com.syncedapps.inthegametv.integration.ITGExoLeanbackPlayerAdapter
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent
-import com.syncedapps.inthegametv.domain.model.Storage
-import com.syncedapps.inthegametv.domain.model.UserRole
-import com.syncedapps.inthegametv.network.ITGEnvironment
-import androidx.activity.OnBackPressedCallback
-import android.view.KeyEvent
-import android.view.ViewGroup
 
-class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionClickedListener {
+class PlaybackVideoFragment : VideoSupportFragment() {
 
-    private var mPlayerGlue: VideoPlayerGlue? = null
+    private var mPlayerGlue: PlaybackTransportControlGlue<LeanbackPlayerAdapter>? = null
     private var mPlayerAdapter: LeanbackPlayerAdapter? = null
     private var mPlayer: ExoPlayer? = null
     private var shouldNotShowControls = false
 
     private var mITGComponent: ITGPlaybackComponent? = null
     private var mITGPlayerAdapter: ITGExoLeanbackPlayerAdapter? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,9 +39,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         play()
 
         // Replace 'your_account_id' and 'your_channel_slug' with actual values
-        val accountId = "653647b68b8364785c095ae3"
-        val channelSlug = "espn"
-
+        val accountId = "68650da0324217d506bcc2d4"
+        val channelSlug = "samplechannel"
 
         // Initialize ITGPlaybackComponent
         mITGComponent = ITGPlaybackComponent(requireContext())
@@ -66,20 +58,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
             playerAdapter = adapter, //mandatory: adapter between the player and SDK
             savedState = savedInstanceState, //mandatory: saved state of the component
 
-
             accountId = accountId, //mandatory: your ITG accountId
             channelSlug = channelSlug, //mandatory: your channelId on our admin panel
-            extraDataSlug = null, //optional: secondary channel or category
-            userBroadcasterForeignID = null, //optional: your user UUID
-            userInitialName = null, //optional: viewer's name/nickname
-            userRole = UserRole.USER, //optional: UserRole.USER, UserRole.GUEST
-            userInitialAvatarUrl = null, //optional: viewer's avatar absolute url
-            userEmail = null, //optional: viewer's email
-            userPhone = null, //optional: viewer's phone
-            language = null, //optional: 'en', 'es', 'he', 'ru'
-            itgEnvironment = ITGEnvironment.v2_3, //optional: ITG stable environment route
-            storage = Storage.CDN, //optional: Storage.CDN, Storage.BLOB
-            webp = false //optional: use webp equivalents for images added via admin panel
         )
 
 
@@ -147,7 +127,8 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         mITGPlayerAdapter?.onPlayerReady(player)
 
         mPlayerAdapter = LeanbackPlayerAdapter(requireContext(), player, UPDATE_DELAY)
-        mPlayerGlue = VideoPlayerGlue(activity, mPlayerAdapter, this)
+        mPlayerGlue =
+            PlaybackTransportControlGlue(activity, mPlayerAdapter)
         mPlayerGlue?.host = VideoSupportFragmentGlueHost(this)
         mPlayerGlue?.playWhenPrepared()
         isControlsOverlayAutoHideEnabled = true
@@ -199,21 +180,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         }
     }
 
-    //pass play/pause events to overlay so that it can track the video time
-    override fun onPlayAction() {}
-
-    override fun onPauseAction() {}
-
-    override fun onPrevious() {}
-
-    override fun onNext() {}
-
-    override fun onMoreActions() {
-        hideControlsOverlay(true)
-
-        mITGComponent?.itgOverlayView?.openMenu()
-    }
-
     @SuppressLint("RestrictedApi")
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
@@ -222,7 +188,6 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         return super.dispatchKeyEvent(event)
     }
 
-
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
         if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
             return super.onKeyUp(keyCode, event)
@@ -230,16 +195,12 @@ class PlaybackVideoFragment : VideoSupportFragment(), VideoPlayerGlue.OnActionCl
         return super.onKeyUp(keyCode, event)
     }
 
-
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (mITGComponent?.itgOverlayView?.isKeyEventConsumable(event) == true)
             return super.onKeyDown(keyCode, event)
         // ... rest of your onKeyDown code
         return super.onKeyDown(keyCode, event)
     }
-
-
-
 
     companion object {
         private const val UPDATE_DELAY = 16
