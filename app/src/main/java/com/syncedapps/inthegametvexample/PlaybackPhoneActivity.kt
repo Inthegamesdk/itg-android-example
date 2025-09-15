@@ -87,20 +87,24 @@ class PlaybackPhoneActivity : FragmentActivity(), Player.Listener {
 
     private fun addOverlay(savedInstanceState: Bundle?) {
         val player = player ?: return
+
+        // Replace 'your_account_id' and 'your_channel_slug' with actual values
+        val accountId = "68650da0324217d506bcc2d4"
+        val channelSlug = "samplechannel"
+
         // load your channel to start up the ITG system
-        val adapter = ITGKalturaPlayerAdapter(controls = null)
+        val adapter = ITGKalturaPlayerAdapter()
         this.mITGKalturaAdapter = adapter
         mITGKalturaAdapter?.onPlayerReady(player)
         val itgComponent = PhoneKalturaITGComponent(this)
         this.mITGComponent = itgComponent
         itgComponent.init(
-            this,
-            adapter,
-            Const.ACCOUNT_ID,
-            Const.CHANNEL_SLUG,
-            language = Const.LANGUAGE,
-            userBroadcasterForeignID = Date().time.toString(),
-            savedState = savedInstanceState
+            activity = this,
+            playerAdapter = adapter,
+            savedState = savedInstanceState,
+
+            accountId = accountId,
+            channelSlug = channelSlug,
         )
         binding.itgContainer.addView(itgComponent)
     }
