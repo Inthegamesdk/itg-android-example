@@ -43,8 +43,8 @@ class PlaybackVideoFragment : VideoSupportFragment()  {
         play()
 
         // Replace 'your_account_id' and 'your_channel_slug' with actual values
-        val accountId = "68b6f55cf49cd69a3dee4a05"
-        val channelSlug = "redgetest"
+        val accountId = "68650da0324217d506bcc2d4"
+        val channelSlug = "samplechannel"
 
 
         // Initialize ITGPlaybackComponent
