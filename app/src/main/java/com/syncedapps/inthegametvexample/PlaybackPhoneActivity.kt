@@ -44,6 +44,7 @@ class PlaybackPhoneActivity : FragmentActivity() {
         setContentView(binding.root)
         setupFullscreenMode()
 
+        // Replace 'your_account_id' and 'your_channel_slug' with actual values
         val accountId = "68650da0324217d506bcc2d4"
         val channelSlug = "samplechannel"
 
