@@ -24,9 +24,14 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.syncedapps.inthegametv.integration.ITGExoPlayerAdapter;
 import com.syncedapps.inthegametv.integration.ITGPlaybackComponent;
+import com.syncedapps.inthegametv.network.ITGEnvironment;
 import com.syncedapps.inthegametvexample.databinding.ActivityPhonePlaybackBinding;
 
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class PlaybackPhoneActivityJava extends FragmentActivity {
@@ -64,6 +69,9 @@ public class PlaybackPhoneActivityJava extends FragmentActivity {
         mITGPlayerAdapter = adapter;
 
 
+        Map<String, String> vars = new HashMap<>();
+        vars.put("varName", "varValue");
+
         // Initialize the ITG component with necessary parameters
         mITGComponent.init(
                this, //mandatory: fragment activity instance
@@ -71,6 +79,16 @@ public class PlaybackPhoneActivityJava extends FragmentActivity {
 
                 accountId, //mandatory: your ITG accountId
                 channelSlug, //mandatory: your channelId on our admin panel
+                ITGEnvironment.Companion.getV2_3(), //mandatory: env
+                "foreignId", //optional: user foreign id, provide null if no need
+                Arrays.asList(
+                        "channel1",
+                        "channel2",
+                        "channel3",
+                        "channel4",
+                        "channel5"
+                ),  //optional: virtual channels, provide null if needed
+                vars, //optional: runtime variables, provide new HashMap<>() if needed
                 savedInstanceState,  //mandatory: saved state of the component
                 false
         );
