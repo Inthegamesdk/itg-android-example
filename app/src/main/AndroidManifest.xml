@@ -22,7 +22,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".PlaybackPhoneActivity"
+            android:name=".PlaybackPhoneActivityJava"
             android:screenOrientation="fullSensor"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"
